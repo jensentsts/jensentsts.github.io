@@ -27,7 +27,7 @@
 
 
 
-    <link rel="dns-prefetch" href="https://.disqus.com"/>
+    <link rel="dns-prefetch" href="https://imsun.github.io"/>
 
 
 
@@ -521,7 +521,7 @@
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
                     <p><strong>
                          
-                            本博客遵循CC BY-NC-SA 3.0之协议，转载需要注明出处且遵循相同协议。
+                            本博客遵循CC BY-NC-SA 3.0协议，转载需要注明出处并且需要遵循此协议。
                         </strong>
                         <br>
                         <strong>本文链接：</strong><a href="https://jensentsts.github.io/2021/07/19/ru-he-yong-hexo-da-jian-bo-ke/">https://jensentsts.github.io/2021/07/19/ru-he-yong-hexo-da-jian-bo-ke/</a>
@@ -539,34 +539,32 @@
                 <!-- Post Comments -->
                 
                     
-    <!-- 使用 DISQUS -->
-<div id="disqus-comment">
-    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_config = function () {
-        this.page.url = 'https://jensentsts.github.io/2021/07/19/ru-he-yong-hexo-da-jian-bo-ke/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'https://jensentsts.github.io/2021/07/19/ru-he-yong-hexo-da-jian-bo-ke/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-</script>
-<script type="text/ls-javascript" id="disqus-thread-script">
-    queue.offer(function() {
-            (function() { // DON'T EDIT BELOW THIS LINE
-                var d = document;
-                var s = d.createElement('script');
-                s.src = '//.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', + new Date());
-                (d.head || d.body).appendChild(s);
-            })();
-        });
-</script>
-
+    <!-- 使用 gitcoment -->
+<div id="gitment-comment">
+    <!-- Gitment 评论框 -->
+<div id="container"></div>
 </div>
 <style>
-    #disqus-comment{
+    #gitment-comment{
         background-color: #eee;
         padding: 2pc;
     }
 </style>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: 'https://jensentsts.github.io/2021/07/19/ru-he-yong-hexo-da-jian-bo-ke/', // 可选。默认为 location.href
+        owner: 'jensentsts',
+        repo: 'blog-gitalk',
+        oauth: {
+            client_id: '7cf7b427621a83617027',
+            client_secret: 'ed0537e0dfe307f0af1b864344d68f27bc4129db',
+        },
+    })
+    gitment.render('container')
+</script>
+
 
                 
             </div>
@@ -637,11 +635,11 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="emailto:jensentsts@163.com" target="_blank" title="Email Me">
+                    <a href="emailto:jensentsts@163.com" target="_blank" title="邮哦哦哦哦哦哦">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
-                        Email Me
+                        邮哦哦哦哦哦哦
                     </a>
                 </li>
             
@@ -721,6 +719,14 @@
     
 
     <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">10</span>
+            </a>
+        </li>
+        
     
 </ul>
 
@@ -849,7 +855,7 @@ It will not impact the appearance and can give developers a lot of support :)
             
                 <br>
                 
-                    Have a nice day!
+                    固若金汤 - 雨线难画
                 
             
         </div>
@@ -916,8 +922,7 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
-   <!-- 使用 DISQUS js 代码 -->
-<script id="dsq-count-scr" src="//.disqus.com/count.js" async></script>
+   <!-- Gitment -->
 
 
 
@@ -1015,7 +1020,7 @@ console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viose
             <!--单击显示文字-->
             <script type="text/javascript" src="/js/click_show_text.js"></script>
 			<!--下雪特效-->
-			<script type="text/javascript" src="\js\snow.js"></script>
+			<!--<script type="text/javascript" src="\js\snow.js"></script>-->
         <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {
