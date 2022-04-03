@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>dosbox下使用debug</title>
+      <link href="/2022/04/03/dosbox-xia-shi-yong-debug/"/>
+      <url>/2022/04/03/dosbox-xia-shi-yong-debug/</url>
+      
+        <content type="html"><![CDATA[<p>debug是DOS环境下调试程序的得力助手。</p><span id="more"></span><h1 id="进入debug"><a href="#进入debug" class="headerlink" title="进入debug"></a>进入debug</h1><p>首先<code>mount C 路径</code>然后<code>C:</code>在DOSBOX中设定并选择C盘作为路径</p><p><img src="https://s2.loli.net/2022/04/03/efKzjOXPS9VYwxc.png" alt="设定C盘.png"></p><p>然后输入<code>debug</code>并敲回车，就可以进入debug程序。这样启动的debug程序只是能对整个内存空间进行操作，并不会载入我们想要调试的程序。</p><p>当然，也可以<code>debug 需要调试的程序的路径</code>来调试程序</p><p><img src="https://s2.loli.net/2022/04/03/VEoYeXbnqSg3GdL.png" alt="debug调试程序.png"></p><h1 id="开始用指令调试程序"><a href="#开始用指令调试程序" class="headerlink" title="开始用指令调试程序"></a>开始用指令调试程序</h1><p>在debug里，指令不区分大小写，debug的命令只有一个字母，后面的其他值可以加空格也可以不加空格。</p><p>比如<code>rax</code>和<code>r ax</code>等价</p><p>在写的时候发现了一篇讲得很详细的文章<a href="https://blog.csdn.net/never_late/article/details/111193302">https://blog.csdn.net/never_late/article/details/111193302</a>，，，</p><h2 id="r命令"><a href="#r命令" class="headerlink" title="r命令"></a>r命令</h2><p><strong>直接输入：</strong>查看寄存器的值和当前cs:ip所指向的内存处的指令。</p><p><img src="https://s2.loli.net/2022/04/03/fKeqVjl8U9FCX6m.png" alt="r命令.png"></p><p><strong>r+寄存器名：</strong>查询并编辑寄存器的值</p><p>比如输入rax并回车后，首先会显示ax的取值，接着需要你输入一个小于等于4位的十六进制数字并按回车，修改ax的值。如果不想改变其值，直接按下回车即可。</p><p><img src="https://s2.loli.net/2022/04/03/T1PaY2xGK7p4gE8.png" alt="rax并修改值.png"></p><h2 id="u命令"><a href="#u命令" class="headerlink" title="u命令"></a>u命令</h2><p><strong>直接输入：</strong>查看cs:ip处的一段反汇编代码</p><p><img src="https://s2.loli.net/2022/04/03/nM2dPVL5K7OCgQA.png" alt="u命令直接输入.png"></p><p><strong>u+偏移地址/段地址:偏移地址：</strong>查看目标地址处的一段反汇编代码。如果只写偏移地址，就会显示cs:偏移地址处的一段反汇编代码</p><p><img src="https://s2.loli.net/2022/04/03/euMyNtbQTsi7hIX.png" alt="u命令.png"></p><h2 id="t命令"><a href="#t命令" class="headerlink" title="t命令"></a>t命令</h2><p><strong>直接输入：</strong>执行一行代码（汇编代码），相当于高级语言调试里的逐语句、单步跟踪</p><p><strong>t+数字：</strong>执行若干行代码，行数取决于你的输入</p><p>当然了，使用t命令会使寄存器ip的值的变化</p><h2 id="d命令"><a href="#d命令" class="headerlink" title="d命令"></a>d命令</h2><p><strong>直接输入：</strong>从ds:0开始显示内存中的数据。会在右侧显示程序对应的ASCII值，如果对应的字符无法显示则显示<code>.</code></p><p>多次使用d命令，可以改变查看的内存的偏移地址，以查看后面的数据</p><p><strong>d+数字：</strong>从当前偏移地址+数字的位置开始向后显示内存中的数据</p><p><strong>d+起始地址：</strong>显然，很自然，不难得到，略。</p><p><strong>d+起始地址 终止地址：</strong>显然，很自然，不难得到，略。</p><p><strong>d+起始地址 长度：</strong>显然，很自然，不难得到，略。</p><p><img src="https://s2.loli.net/2022/04/03/ndT5pzN8uUtViF6.png" alt="d命令.png"></p><h2 id="a命令"><a href="#a命令" class="headerlink" title="a命令"></a>a命令</h2><p><strong>直接输入：</strong>编辑cs:ip处的代码</p><p><strong>a+偏移地址/段地址:偏移地址</strong>：修改制定位置处的代码。</p><p>就是在对应的地址上边写汇编，并且只能使用十六进制的数字。按下回车后你的汇编指令会被直接翻译成二进制并放到相应的位置上去。什么也不输入按下回车才会结束编辑。</p><h2 id="e命令"><a href="#e命令" class="headerlink" title="e命令"></a>e命令</h2><p>与a类似，直接修改内存中的数值。</p><h2 id="g命令"><a href="#g命令" class="headerlink" title="g命令"></a>g命令</h2><p>Go！</p><p>执行程序</p><p>可以设置断点：<code>g=地址</code>，将在指定地址处触发断点</p><h2 id="f命令"><a href="#f命令" class="headerlink" title="f命令"></a>f命令</h2><p>fill.</p><p>使用指定的值覆盖制定位置中的值</p><p>f+范围+填充列表</p><p><img src="https://s2.loli.net/2022/04/03/M6Yn1EpLPXBvrcH.png" alt="f命令.png"></p><h2 id="q命令"><a href="#q命令" class="headerlink" title="q命令"></a>q命令</h2><p>退出debug</p><h1 id="咕咕咕……"><a href="#咕咕咕……" class="headerlink" title="咕咕咕……"></a>咕咕咕……</h1><p>鸽了鸽了</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 笔记 </tag>
+            
+            <tag> 汇编 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>草记 | 创新创业大赛专家指导会</title>
       <link href="/2022/03/29/cao-ji-chuang-xin-chuang-ye-da-sai-zhuan-jia-zhi-dao-hui/"/>
       <url>/2022/03/29/cao-ji-chuang-xin-chuang-ye-da-sai-zhuan-jia-zhi-dao-hui/</url>

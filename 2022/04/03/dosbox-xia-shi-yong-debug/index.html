@@ -46,7 +46,7 @@
     
     <title>
         
-            控制台俄罗斯方块 | 
+            dosbox下使用debug | 
         
         海舟的小舱
     </title>
@@ -56,8 +56,8 @@
     <link rel="icon" href="/img/favicon.png">
 
     <meta name="format-detection" content="telephone=no"/>
-    <meta name="description" itemprop="description" content="这是一个控制台项目，一切设计都要从字符角度考虑。这次项目我终于敢放下顾虑，大胆解决问题了，其价值足以我写一篇博客来记录俄罗斯方块不是什么很难的东西，也没人教过我怎么去构建这个项目。说明这个项目是真的简单。">
-    <meta name="keywords" content=",游戏,cpp">
+    <meta name="description" itemprop="description" content="debug是DOS环境下调试程序的得力助手。">
+    <meta name="keywords" content=",笔记,汇编">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -218,7 +218,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="海舟的小舱">
-    <meta name="msapplication-starturl" content="https://jensentsts.github.io/2021/08/15/kong-zhi-tai-e-luo-si-fang-kuai/">
+    <meta name="msapplication-starturl" content="https://jensentsts.github.io/2022/04/03/dosbox-xia-shi-yong-debug/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="海舟的小舱">
@@ -233,16 +233,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="https://jensentsts.github.io/2021/08/15/kong-zhi-tai-e-luo-si-fang-kuai/">
+    <meta property="og:url" content="https://jensentsts.github.io/2022/04/03/dosbox-xia-shi-yong-debug/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="控制台俄罗斯方块 | 海舟的小舱">
+    <meta property="og:title" content="dosbox下使用debug | 海舟的小舱">
     <meta property="og:image" content="/img/favicon.png">
-    <meta property="og:description" content="这是一个控制台项目，一切设计都要从字符角度考虑。这次项目我终于敢放下顾虑，大胆解决问题了，其价值足以我写一篇博客来记录俄罗斯方块不是什么很难的东西，也没人教过我怎么去构建这个项目。说明这个项目是真的简单。">
-    <meta property="og:article:tag" content="游戏"> <meta property="og:article:tag" content="cpp"> 
+    <meta property="og:description" content="debug是DOS环境下调试程序的得力助手。">
+    <meta property="og:article:tag" content="笔记"> <meta property="og:article:tag" content="汇编"> 
 
     
-        <meta property="article:published_time" content="Sun Aug 15 2021 22:15:48 GMT+0800">
-        <meta property="article:modified_time" content="Wed Feb 02 2022 16:45:46 GMT+0800">
+        <meta property="article:published_time" content="Sun Apr 03 2022 22:17:24 GMT+0800">
+        <meta property="article:modified_time" content="Sun Apr 03 2022 22:21:14 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -250,7 +250,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="https://jensentsts.github.io/2021/08/15/kong-zhi-tai-e-luo-si-fang-kuai/index.html" />
+        <link rel="canonical" href="https://jensentsts.github.io/2022/04/03/dosbox-xia-shi-yong-debug/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -262,10 +262,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "https://jensentsts.github.io/2021/08/15/kong-zhi-tai-e-luo-si-fang-kuai/index.html",
-    "headline": "控制台俄罗斯方块",
-    "datePublished": "Sun Aug 15 2021 22:15:48 GMT+0800",
-    "dateModified": "Wed Feb 02 2022 16:45:46 GMT+0800",
+    "mainEntityOfPage": "https://jensentsts.github.io/2022/04/03/dosbox-xia-shi-yong-debug/index.html",
+    "headline": "dosbox下使用debug",
+    "datePublished": "Sun Apr 03 2022 22:17:24 GMT+0800",
+    "dateModified": "Sun Apr 03 2022 22:21:14 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "舟泛四海",
@@ -283,8 +283,8 @@
             "url": "/img/favicon.png"
         }
     },
-    "keywords": ",游戏,cpp",
-    "description": "这是一个控制台项目，一切设计都要从字符角度考虑。这次项目我终于敢放下顾虑，大胆解决问题了，其价值足以我写一篇博客来记录俄罗斯方块不是什么很难的东西，也没人教过我怎么去构建这个项目。说明这个项目是真的简单。",
+    "keywords": ",笔记,汇编",
+    "description": "debug是DOS环境下调试程序的得力助手。",
 }
 </script>
 
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%98%85%E5%89%8D%E6%8F%90%E7%A4%BA"><span class="post-toc-number">1.</span> <span class="post-toc-text">阅前提示</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="post-toc-number">2.</span> <span class="post-toc-text">代码实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E6%A1%86%E6%9E%B6"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">总框架</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B4%B4%E5%9B%BE%E5%AE%9E%E7%8E%B0"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">贴图实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%8C%E7%BC%93%E5%86%B2%E6%B8%B2%E6%9F%93"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">双缓冲渲染</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%BB%98%E5%88%B6%EF%BC%88%E8%BE%93%E5%87%BA%E7%94%BB%E9%9D%A2%EF%BC%89"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">绘制（输出画面）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%86%99%E5%85%A5Buffer"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">写入Buffer</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Buffer%E6%9B%B4%E6%96%B0"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">Buffer更新</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%89%E6%8B%A9%E9%80%89%E9%A1%B9"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">选择选项</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%BF%9B%E5%85%A5debug"><span class="post-toc-number">1.</span> <span class="post-toc-text">进入debug</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%BC%80%E5%A7%8B%E7%94%A8%E6%8C%87%E4%BB%A4%E8%B0%83%E8%AF%95%E7%A8%8B%E5%BA%8F"><span class="post-toc-number">2.</span> <span class="post-toc-text">开始用指令调试程序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#r%E5%91%BD%E4%BB%A4"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">r命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#u%E5%91%BD%E4%BB%A4"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">u命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#t%E5%91%BD%E4%BB%A4"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">t命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#d%E5%91%BD%E4%BB%A4"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">d命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#a%E5%91%BD%E4%BB%A4"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">a命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#e%E5%91%BD%E4%BB%A4"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">e命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#g%E5%91%BD%E4%BB%A4"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">g命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#f%E5%91%BD%E4%BB%A4"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">f命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#q%E5%91%BD%E4%BB%A4"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">q命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%92%95%E5%92%95%E5%92%95%E2%80%A6%E2%80%A6"><span class="post-toc-number">3.</span> <span class="post-toc-text">咕咕咕……</span></a></li></ol>
     </ul>
     
 
@@ -383,7 +383,7 @@
         
     
             <p class="article-headline-p">
-                控制台俄罗斯方块
+                dosbox下使用debug
             </p>
         </div>
 
@@ -402,7 +402,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>舟泛四海</strong>
-        <span>8月 15, 2021</span>
+        <span>4月 03, 2022</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -426,7 +426,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-none-link" href="/tags/cpp/" rel="tag">cpp</a></li><li class="mdl-menu__item"><a class="post_tag-none-link" href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a>
+        <a class="post_tag-none-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li><li class="mdl-menu__item"><a class="post_tag-none-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a>
     </ul>
     
 
@@ -443,7 +443,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=控制台俄罗斯方块&url=https://jensentsts.github.io/2021/08/15/kong-zhi-tai-e-luo-si-fang-kuai/index.html&pic=https://jensentsts.github.io/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=dosbox下使用debug&url=https://jensentsts.github.io/2022/04/03/dosbox-xia-shi-yong-debug/index.html&pic=https://jensentsts.github.io/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -464,7 +464,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=海舟的小舱&title=控制台俄罗斯方块&summary=舟泛四海的个人博客&pics=https://jensentsts.github.io/img/favicon.png&url=https://jensentsts.github.io/2021/08/15/kong-zhi-tai-e-luo-si-fang-kuai/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=海舟的小舱&title=dosbox下使用debug&summary=舟泛四海的个人博客&pics=https://jensentsts.github.io/img/favicon.png&url=https://jensentsts.github.io/2022/04/03/dosbox-xia-shi-yong-debug/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -483,42 +483,48 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>这是一个控制台项目，一切设计都要从字符角度考虑。<br>这次项目我终于敢放下顾虑，大胆解决问题了，其价值足以我写一篇博客来记录<br>俄罗斯方块不是什么很难的东西，也没人教过我怎么去构建这个项目。说明这个项目是真的简单。<br><span id="more"></span><br>这个项目构思不是一瞬间完成的，是先有总的思路，然后考虑某个部分的内容，再接着去做其细节、写成代码，常常因为出现前面考虑不到而去修改前面的东西的情况。看来这种修改是稀松的，不用担心去修改前面的代码，<br>这种修改是一种进步，不用担心不用怕。<br>那咱就挑点重点写写吧<br><img src="https://img0.baidu.com/it/u=1233268571,2245711054&amp;fm=26&amp;fmt=auto&amp;gp=0.jpg" alt="Console Tetris.png"></p>
-<h2 id="阅前提示"><a href="#阅前提示" class="headerlink" title="阅前提示"></a>阅前提示</h2><p>建议先编译看看效果然后再来读博客。<a target="_blank" rel="noopener" href="https://github.com/jensentsts/-/blob/main/Console%20Tetris.cpp">代码链接</a><br>（还有很多需要优化的地方……）  </p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="总框架"><a href="#总框架" class="headerlink" title="总框架"></a>总框架</h3><blockquote>
-<p><code>void gameStart()</code></p>
-</blockquote>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">初始化</span><br><span class="line">无脑死循环：</span><br><span class="line">    处理键盘事件</span><br><span class="line">	更新游戏内的各种数据</span><br><span class="line">	unblockedSleep()</span><br><span class="line">	写入渲染器的缓冲区</span><br><span class="line">	渲染器渲染</span><br></pre></td></tr></tbody></table></figure>
-<p>然后想到这个死循环有停下俩的时候，那就是：游戏失败或者是玩家退出，所以又加上了<code>gameOver</code>和<code>gameExit</code>这俩控制变量，然后在循环之后加上了例如分数记录之类的东西</p>
-<h3 id="贴图实现"><a href="#贴图实现" class="headerlink" title="贴图实现"></a>贴图实现</h3><p>实际上我以前都觉得贴图应该存在一个二维数组里面，但这次我却明白贴图还有多种存储方式。比如我能把一个”山“样的下落物存储在一个一维数组里，把它的贴图当作一个矩形，记录他的宽度，然后一排一排地解析。<br></p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">降维打击前：</span><br><span class="line"> # </span><br><span class="line">###</span><br><span class="line">降维打击之后：</span><br><span class="line"># ### width:3 height:2</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>大概是我第一次在显示这个问题上”活脑筋“，其价值足以我写一篇博客来记录  </p>
-<h3 id="双缓冲渲染"><a href="#双缓冲渲染" class="headerlink" title="双缓冲渲染"></a>双缓冲渲染</h3><p>我把双缓冲渲染改成了三个部分：绘制（输出画面）、写入Buffer、Buffer更新<br>以前我会顾虑：到底在哪里使用双缓冲？<br>我突然就敢放下这个顾虑：”只在游戏部分使用不就行了，其他地方根本就不需要双缓冲。“  </p>
-<h4 id="绘制（输出画面）"><a href="#绘制（输出画面）" class="headerlink" title="绘制（输出画面）"></a>绘制（输出画面）</h4><blockquote>
-<p><code>void render()</code></p>
-</blockquote>
-<p>比较用于绘制的Buffer（<code>renderBuffer[DRAWING]</code>）和显示在屏幕上的信息（<code>renderBuffer[SHOWING]</code>），然后到相应的位置去输出不同的部分。用<code>gotoxy()</code>可以解决调用<code>system('cls')</code>带来的闪屏问题。</p>
-<h4 id="写入Buffer"><a href="#写入Buffer" class="headerlink" title="写入Buffer"></a>写入Buffer</h4><blockquote>
-<p><code>void renderDraw()</code></p>
-</blockquote>
-<p>这次把所有的绘制都封装到了一个函数<code>renderDraw()</code>里，以前的时候我总是会顾虑”逻辑运算完成了，在哪里绘制啊？？？？？？“。现在我通过gameStart()函数里的总流程，实现了贴图绘制的一个封装，就不用担心”这里是一个绘制，那里是一个绘制“导致混乱的问题、避免在这个问题上继续纠结了。<br><code>renderDraw()</code>会在(dropX,dropY)解析下落物的贴图，并写入<code>renderBuffer[DRAWING]</code>，然后把那些已经固定下来的方块一一对应绘制进buffer</p>
-<h4 id="Buffer更新"><a href="#Buffer更新" class="headerlink" title="Buffer更新"></a>Buffer更新</h4><blockquote>
-<p><code>void renderFresh()</code></p>
-</blockquote>
-<p>比较两个buffer[]，然后把旧的推进新的里去。</p>
-<h3 id="选择选项"><a href="#选择选项" class="headerlink" title="选择选项"></a>选择选项</h3><blockquote>
-<p><code>int makeChoice(char**, int[, char*])</code>函数  </p>
-</blockquote>
-<p>如果直接把做选择这个事情封闭起来，那么其它部分代码就不好实现，所以需要让makeChoice()有一个返回值，便于信息传递，而不是简简单单的去显示个动画。<br>首先，肯定要有个变量<code>choice</code>来记录选择……<br>做选择时会有多个选项，每个选项前都要有其被选中的标志，按下回车键确定，因此采用了分行输出每个选项，每个选项前留出空白，在空白区域用<code>-&gt;</code>表示这是当前选中的选项，以<code>-&gt;</code>的左右移动为其动画效果美化纯文字的界面。<br>所以首先要显示每个选项并留出空白<br></p><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; _amo; ++i)</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"   %s\n"</span>, _choice[i]);</span><br></pre></td></tr></tbody></table></figure><br>然后就是考虑动效了。既然<code>-&gt;</code>要上下移动和左右移动——尽管不会同时进行——那么我们就得去确定它的移动坐标变化范围。显然该用WindowsAPI获取选项输出后的光标位置。<br><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HANDLE h = <span class="built_in">GetStdHandle</span>(STD_OUTPUT_HANDLE);</span><br><span class="line">CONSOLE_SCREEN_BUFFER_INFO pos;</span><br><span class="line"><span class="built_in">GetConsoleScreenBufferInfo</span>(h, &amp;pos);</span><br></pre></td></tr></tbody></table></figure><br>简单把<code>-&gt;</code>输出到相应位置十分简单，这里就不讲了。我们直接考虑动效的几个步骤：<p></p>
-<ol>
-<li>清空旧的绘制图案  </li>
-<li>绘制图案  </li>
-</ol>
-<p>清空旧的绘制图案，有如下情况  </p>
-<ul>
-<li>用户改变了选中，旧的<code>-&gt;</code>要清除  </li>
-<li><code>-&gt;</code>移动了，原来位置上的不能再显示了  </li>
-</ul>
-<p>考虑到控制台覆盖先前字符的特性，<code>-&gt;</code>自动移动可以由新的图案直接输出覆盖，而用户改变选中，则需要我们把光标放到相应位置并输出足够的空格。当前动画播放到哪一帧，也需要去记录，就用<code>ani</code>吧。<br>而且，不管用户是否按键，我们都要去更新<code>-&gt;</code>的动画。所以我们不能阻塞进程并获取按键信息，<code>conio.h</code>的<code>kbhit()</code>以及我写的伪非阻塞Sleep<code>unblockedSleep()</code>就派上用场了。<br></p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">if kbhit() == 1:</span><br><span class="line">    光标移动</span><br><span class="line">	覆盖旧-&gt;（无论按什么键什么都去覆盖一下，是为了代neng码tou简ge便lan</span><br><span class="line">	判断按键</span><br><span class="line">		按w：改变choice</span><br><span class="line">		按s：改变choice</span><br><span class="line">		按Enter：return choice</span><br><span class="line">光标移动</span><br><span class="line">在旧-&gt;上直接覆盖当前的帧的图案</span><br><span class="line">unblockedSleep();	// 这样能保证延时时间或对用户按键”随叫随到“的相应</span><br><span class="line">ani++	</span><br></pre></td></tr></tbody></table></figure><br>后来在Esc暂停菜单里我用<code>makeChoice()</code>来实现菜单选项，就又在里面加了个选择后”隐藏“菜单的功能，于是又在按下Enter键后的代码里加上了，让<code>makeChoice</code>自己清除自己的的代码<br>一开始考虑的设计是如<code>&gt;Start!</code>的样式，但是测试之后发现不如<code>-&gt;Start!</code>好康，于是就改成了这个  <p></p>
+        <p>debug是DOS环境下调试程序的得力助手。</p>
+<span id="more"></span>
+<h1 id="进入debug"><a href="#进入debug" class="headerlink" title="进入debug"></a>进入debug</h1><p>首先<code>mount C 路径</code>然后<code>C:</code>在DOSBOX中设定并选择C盘作为路径</p>
+<p><img src="https://s2.loli.net/2022/04/03/efKzjOXPS9VYwxc.png" alt="设定C盘.png"></p>
+<p>然后输入<code>debug</code>并敲回车，就可以进入debug程序。这样启动的debug程序只是能对整个内存空间进行操作，并不会载入我们想要调试的程序。</p>
+<p>当然，也可以<code>debug 需要调试的程序的路径</code>来调试程序</p>
+<p><img src="https://s2.loli.net/2022/04/03/VEoYeXbnqSg3GdL.png" alt="debug调试程序.png"></p>
+<h1 id="开始用指令调试程序"><a href="#开始用指令调试程序" class="headerlink" title="开始用指令调试程序"></a>开始用指令调试程序</h1><p>在debug里，指令不区分大小写，debug的命令只有一个字母，后面的其他值可以加空格也可以不加空格。</p>
+<p>比如<code>rax</code>和<code>r ax</code>等价</p>
+<p>在写的时候发现了一篇讲得很详细的文章<a target="_blank" rel="noopener" href="https://blog.csdn.net/never_late/article/details/111193302">https://blog.csdn.net/never_late/article/details/111193302</a>，，，</p>
+<h2 id="r命令"><a href="#r命令" class="headerlink" title="r命令"></a>r命令</h2><p><strong>直接输入：</strong>查看寄存器的值和当前cs:ip所指向的内存处的指令。</p>
+<p><img src="https://s2.loli.net/2022/04/03/fKeqVjl8U9FCX6m.png" alt="r命令.png"></p>
+<p><strong>r+寄存器名：</strong>查询并编辑寄存器的值</p>
+<p>比如输入rax并回车后，首先会显示ax的取值，接着需要你输入一个小于等于4位的十六进制数字并按回车，修改ax的值。如果不想改变其值，直接按下回车即可。</p>
+<p><img src="https://s2.loli.net/2022/04/03/T1PaY2xGK7p4gE8.png" alt="rax并修改值.png"></p>
+<h2 id="u命令"><a href="#u命令" class="headerlink" title="u命令"></a>u命令</h2><p><strong>直接输入：</strong>查看cs:ip处的一段反汇编代码</p>
+<p><img src="https://s2.loli.net/2022/04/03/nM2dPVL5K7OCgQA.png" alt="u命令直接输入.png"></p>
+<p><strong>u+偏移地址/段地址:偏移地址：</strong>查看目标地址处的一段反汇编代码。如果只写偏移地址，就会显示cs:偏移地址处的一段反汇编代码</p>
+<p><img src="https://s2.loli.net/2022/04/03/euMyNtbQTsi7hIX.png" alt="u命令.png"></p>
+<h2 id="t命令"><a href="#t命令" class="headerlink" title="t命令"></a>t命令</h2><p><strong>直接输入：</strong>执行一行代码（汇编代码），相当于高级语言调试里的逐语句、单步跟踪</p>
+<p><strong>t+数字：</strong>执行若干行代码，行数取决于你的输入</p>
+<p>当然了，使用t命令会使寄存器ip的值的变化</p>
+<h2 id="d命令"><a href="#d命令" class="headerlink" title="d命令"></a>d命令</h2><p><strong>直接输入：</strong>从ds:0开始显示内存中的数据。会在右侧显示程序对应的ASCII值，如果对应的字符无法显示则显示<code>.</code></p>
+<p>多次使用d命令，可以改变查看的内存的偏移地址，以查看后面的数据</p>
+<p><strong>d+数字：</strong>从当前偏移地址+数字的位置开始向后显示内存中的数据</p>
+<p><strong>d+起始地址：</strong>显然，很自然，不难得到，略。</p>
+<p><strong>d+起始地址 终止地址：</strong>显然，很自然，不难得到，略。</p>
+<p><strong>d+起始地址 长度：</strong>显然，很自然，不难得到，略。</p>
+<p><img src="https://s2.loli.net/2022/04/03/ndT5pzN8uUtViF6.png" alt="d命令.png"></p>
+<h2 id="a命令"><a href="#a命令" class="headerlink" title="a命令"></a>a命令</h2><p><strong>直接输入：</strong>编辑cs:ip处的代码</p>
+<p><strong>a+偏移地址/段地址:偏移地址</strong>：修改制定位置处的代码。</p>
+<p>就是在对应的地址上边写汇编，并且只能使用十六进制的数字。按下回车后你的汇编指令会被直接翻译成二进制并放到相应的位置上去。什么也不输入按下回车才会结束编辑。</p>
+<h2 id="e命令"><a href="#e命令" class="headerlink" title="e命令"></a>e命令</h2><p>与a类似，直接修改内存中的数值。</p>
+<h2 id="g命令"><a href="#g命令" class="headerlink" title="g命令"></a>g命令</h2><p>Go！</p>
+<p>执行程序</p>
+<p>可以设置断点：<code>g=地址</code>，将在指定地址处触发断点</p>
+<h2 id="f命令"><a href="#f命令" class="headerlink" title="f命令"></a>f命令</h2><p>fill.</p>
+<p>使用指定的值覆盖制定位置中的值</p>
+<p>f+范围+填充列表</p>
+<p><img src="https://s2.loli.net/2022/04/03/M6Yn1EpLPXBvrcH.png" alt="f命令.png"></p>
+<h2 id="q命令"><a href="#q命令" class="headerlink" title="q命令"></a>q命令</h2><p>退出debug</p>
+<h1 id="咕咕咕……"><a href="#咕咕咕……" class="headerlink" title="咕咕咕……"></a>咕咕咕……</h1><p>鸽了鸽了</p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -527,7 +533,7 @@
                             本博客遵循CC BY-NC-SA 3.0协议，转载需要注明出处并且需要遵循此协议。
                         </strong>
                         <br>
-                        <strong>本文链接：</strong><a href="https://jensentsts.github.io/2021/08/15/kong-zhi-tai-e-luo-si-fang-kuai/">https://jensentsts.github.io/2021/08/15/kong-zhi-tai-e-luo-si-fang-kuai/</a>
+                        <strong>本文链接：</strong><a href="https://jensentsts.github.io/2022/04/03/dosbox-xia-shi-yong-debug/">https://jensentsts.github.io/2022/04/03/dosbox-xia-shi-yong-debug/</a>
                     </p>
                 </blockquote>
         
@@ -578,21 +584,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2021/08/16/python-xue-xi-bi-ji/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2021/07/20/xiao-cang-ben-ji/" id="post_nav-older" class="next-content">
+        <a href="/2022/03/29/cao-ji-chuang-xin-chuang-ye-da-sai-zhuan-jia-zhi-dao-hui/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
