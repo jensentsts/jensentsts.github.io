@@ -1,0 +1,725 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="舟泛四海">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="写一些写博客时踩过的坑，还有用hexo写博客时常用的东西">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo杂谈">
+<meta property="og:url" content="https://jensentsts.github.io/2021/07/20/hexo%E5%8D%9A%E5%AE%A2%E6%9D%82%E8%B0%88/index.html">
+<meta property="og:site_name" content="海舟的小舱">
+<meta property="og:description" content="写一些写博客时踩过的坑，还有用hexo写博客时常用的东西">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jensentsts.github.io/img/hexo%E5%8D%9A%E5%AE%A2%E6%9D%82%E8%B0%88.jpg">
+<meta property="article:published_time" content="2021-07-20T06:52:03.000Z">
+<meta property="article:modified_time" content="2021-12-10T03:47:33.000Z">
+<meta property="article:author" content="舟泛四海">
+<meta property="article:tag" content="长期更新">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="杂谈">
+<meta property="article:tag" content="坑">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jensentsts.github.io/img/hexo%E5%8D%9A%E5%AE%A2%E6%9D%82%E8%B0%88.jpg">
+  
+  
+  
+  <title>hexo杂谈 - 海舟的小舱</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jensentsts.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>舟泛四海泛舟</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="hexo杂谈"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-07-20 14:52" pubdate>
+          2021年7月20日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          23 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">hexo杂谈</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2021年12月10日 中午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>写一些写博客时踩过的坑，还有用hexo写博客时常用的东西  </p>
+<span id="more"></span>
+<p>神里镇文<br><img src="https://upload-bbs.mihoyo.com/upload/2021/07/20/184593067/2a03b66fdf1551d53ddbdf8e2fbbba90_3182517286345932096.jpg?x-oss-process=image//resize,s_500/quality,q_80/auto-orient,0/interlace,1/format,jpg" srcset="/img/loading.gif" lazyload alt="神里我老婆！！！"><br>对图片“查看源代码”有彩蛋</p>
+<h1 id="github的坑"><a href="#github的坑" class="headerlink" title="github的坑"></a>github的坑</h1><h2 id="必看！github的url区分大小写的坑"><a href="#必看！github的url区分大小写的坑" class="headerlink" title="必看！github的url区分大小写的坑"></a>必看！github的url区分大小写的坑</h2><p>比如我博客的url就是 <code>https://jensentsts.github.io/</code> 在<code>/</code>后填写的便是目录<br>理论上来讲，<code>/</code>后边的东西不区分大小写<br>但！是！<br>github是区分大小写的！例如<code>link</code>和<code>Link</code>就不是同一个东西<br>因此如果你用主题文件夹里的<code>_config.yml</code>把你的友链页面设为<code>links/index.md</code>，而你在<code>sources/</code>下的对应文件夹名称为<code>Links</code><br>你在<code>loaclhost:4000</code>里能够正常访问友链页面<br>然而当你在github上点击<code>友链</code>，使用<code>https://jensentsts.github.io/links/index.html</code> 去访问你的友链时，github不能给你返回对应的页面，会报404<br>如果你去你的github库里检查，会发现<code>links</code>正在好好地躺在你的库里<br><strong>解决方案</strong>：大小写完全一致，即在主题的<code>_config.yml</code>里的和在<code>sources/</code>下的名称完全一致</p>
+<h2 id="现在的github使用main分支"><a href="#现在的github使用main分支" class="headerlink" title="现在的github使用main分支"></a>现在的github使用main分支</h2><p>写这一条的时间是2021年12月10日，注意信息的时效性<br>以前都是用<code>master</code>作为主分支的，现在默认生成的是<code>main</code>，注意修改你的<code>_config.yml</code></p>
+<h1 id="这里是杂谈"><a href="#这里是杂谈" class="headerlink" title="这里是杂谈"></a>这里是杂谈</h1><h2 id="为文章添加多个标签"><a href="#为文章添加多个标签" class="headerlink" title="为文章添加多个标签"></a>为文章添加多个标签</h2><p>在你的markdown文件头部，也就是俩<code>---</code>之间的部分，添加如下代码：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">tags: [标签1, 标签2, 标签3]<br></code></pre></td></tr></table></figure>
+<p>当然，这样也是可以的：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">tags:<br>-<span class="hljs-emphasis">_标签1_</span><br>-<span class="hljs-emphasis">_标签2_</span><br></code></pre></td></tr></table></figure>
+<p>上面写的<code>_</code>是空格的意思，<code>-</code>和标签后面都必须有一个空格。</p>
+<h2 id="截取文章摘要"><a href="#截取文章摘要" class="headerlink" title="截取文章摘要"></a>截取文章摘要</h2><p>手动在文章合适的位置添加<code>&lt;!--more--&gt;</code>。不同的主题写</p>
+<h2 id="给文章置顶"><a href="#给文章置顶" class="headerlink" title="给文章置顶"></a>给文章置顶</h2><p>简单粗暴的方法：把date改成99999-12-31 23:59:59<br>然后就是使用现成的库  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ npm uninstall hexo-generator-index --save<br>$ npm install hexo-generator-index-pin-top --save<br></code></pre></td></tr></table></figure>
+<p>然后在你的文章前面的<code>---</code>之间加上<code>top: true</code>即可，比如说：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>title: 友情链接<br><span class="hljs-section">top: true</span><br><span class="hljs-section">---</span><br></code></pre></td></tr></table></figure>
+<p>如果想直接修改主题的文件，你也可以参考<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/42a4efcdf8d7">这篇文章</a></p>
+<h2 id="草稿"><a href="#草稿" class="headerlink" title="草稿"></a>草稿</h2><p>我不用草稿……</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo new draft 文章名称<br>hexo n draft 文章名称<br></code></pre></td></tr></table></figure>
+
+<h2 id="记录你的更新时间"><a href="#记录你的更新时间" class="headerlink" title="记录你的更新时间"></a>记录你的更新时间</h2><p>依旧是在.md文件顶头的<code>---</code>之间写<code>updated: 年年年年-月月-日日 时时:分分:秒秒</code></p>
+<h2 id="使用LaTeX"><a href="#使用LaTeX" class="headerlink" title="使用LaTeX"></a>使用LaTeX</h2><p><strong>首先要保证你的主题是支持LaTeX的！！！</strong>你得阅读主题的文档。如果支持，就去找用<code>kramed</code>或者是<code>pandoc</code>的使用<code>mathjax</code>的教程吧<br>我当时配置了两个小时都没成功，最后发现是Lite主题不支持LaTeX……<br>如果你的主题不支持LaTeX，但你又不想换，可以用知乎的开放API……也就是<code>https://www.zhihu.com/equation?tex=[你的LaTeX公式]</code>，效果：<img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7B2%7D" srcset="/img/loading.gif" lazyload alt="图片挂了QAQ……"><br>当然写进url的公式里的任何<code>\</code>都要转义成%5C<br>因为能支持，所以我才换了<a target="_blank" rel="noopener" href="https://github.com/viosey/hexo-theme-material">material</a> 这个主题……。现在让我们来欣赏一下欧拉恒等式吧：<br>$$ e^{i\pi}+1&#x3D;0 $$<br><strong>如果没有写·per_page: true·，记得在.md文件顶部写<code>mathjax: true</code></strong></p>
+<h2 id="插件推荐"><a href="#插件推荐" class="headerlink" title="插件推荐"></a>插件推荐</h2><p>有的主题可能不支持一些插件<br>列出来的yaml代码， 请在根目录下的_config.yml文件里新增该配置<br>专门针对SEO的优化请看<a target="_blank" rel="noopener" href="https://www.zdynb.cn/2019/hexo-bi-bei-cha-jian.html#toc-heading-15">这篇文章</a>  </p>
+<h3 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h3><blockquote>
+<p>npm i hexo-prism-plugin -s</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">prism_plugin:</span><br>  <span class="hljs-attr">mode:</span> <span class="hljs-string">&#x27;preprocess&#x27;</span>    <span class="hljs-comment"># realtime/preprocess</span><br>  <span class="hljs-attr">theme:</span> <span class="hljs-string">&#x27;tomorrow&#x27;</span>     <span class="hljs-comment"># 主题选项</span><br>  <span class="hljs-attr">line_number:</span> <span class="hljs-literal">false</span>    <span class="hljs-comment"># false</span><br>  <span class="hljs-attr">custom_css:</span><br></code></pre></td></tr></table></figure>
+
+<p>可选主题：</p>
+<blockquote>
+<p>coy,dark,funky,okaidia,solarizedlight,tomorrow,twilight,a11y-dark,atom-dark,<br>base16-ateliersulphurpool.light,cb,darcula,dracula,duotone-dark,duotone-earth,<br>duotone-forest,duotone-light,duotone-sea,duotone-space,ghcolors,hopscotch,<br>material-dark,material-light,material-oceanic,pojoaque,shades-of-purple,<br>synthwave84,vs,xonokai,default,</p>
+</blockquote>
+<h3 id="中文链接转拼音"><a href="#中文链接转拼音" class="headerlink" title="中文链接转拼音"></a>中文链接转拼音</h3><blockquote>
+<p>npm i hexo-permalink-pinyin –save</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">permalink_pinyin:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">separator:</span> <span class="hljs-string">&#x27;-&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="评论emoji表情支持"><a href="#评论emoji表情支持" class="headerlink" title="评论emoji表情支持"></a>评论emoji表情支持</h3><blockquote>
+<p>npm i hexo-filter-github-emojis –save</p>
+</blockquote>
+<p>将markdown中的emoji语法转换为emoji表情  </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">githubEmojis:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">className:</span> <span class="hljs-string">github-emoji</span><br>  <span class="hljs-attr">inject:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">styles:</span><br>  <span class="hljs-attr">customEmojis:</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="压缩html、css、js、图片"><a href="#压缩html、css、js、图片" class="headerlink" title="压缩html、css、js、图片"></a>压缩html、css、js、图片</h3><blockquote>
+<p>npm i hexo-all-minifier –save</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">all_minifier:</span> <span class="hljs-literal">true</span><br><br><span class="hljs-attr">html_minifier:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">ignore_error:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">exclude:</span><br>  <br><span class="hljs-attr">css_minifier:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">exclude:</span> <br>    <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;*.min.css&#x27;</span><br><br><span class="hljs-attr">js_minifier:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">mangle:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">output:</span><br>  <span class="hljs-attr">compress:</span><br>  <span class="hljs-attr">exclude:</span> <br>    <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;*.min.js&#x27;</span><br><br><span class="hljs-attr">image_minifier:</span> <br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">interlaced:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">multipass:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">optimizationLevel:</span> <span class="hljs-number">2</span><br>  <span class="hljs-attr">pngquant:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">progressive:</span> <span class="hljs-literal">false</span><br><br></code></pre></td></tr></table></figure>
+
+<h3 id="速度优化"><a href="#速度优化" class="headerlink" title="速度优化"></a>速度优化</h3><p>见博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/fengdi_yuxi/article/details/94402350">Hexo博客之速度优化</a></p>
+<h3 id="一些美化hexo博客的方法"><a href="#一些美化hexo博客的方法" class="headerlink" title="一些美化hexo博客的方法"></a>一些美化hexo博客的方法</h3><ul>
+<li>添加看板娘：<a href="https://jensentsts.github.io/2021/12/10/hexo-kan-ban-niang/">给你的hexo博客添加可可爱爱的看板娘</a></li>
+<li>添加雪花特效：<a href="https://jensentsts.github.io/2021/12/23/xue-hua-te-xiao/">冬天到啦，给你的博客添加雪花特效！</a></li>
+<li>点击后出现文字：<a target="_blank" rel="noopener" href="https://www.baidu.com/">我还没写</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/hexo/" class="category-chain-item">hexo</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0/">#长期更新</a>
+      
+        <a href="/tags/hexo/">#hexo</a>
+      
+        <a href="/tags/%E6%9D%82%E8%B0%88/">#杂谈</a>
+      
+        <a href="/tags/%E5%9D%91/">#坑</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>hexo杂谈</div>
+      <div>https://jensentsts.github.io/2021/07/20/hexo博客杂谈/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>舟泛四海</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年7月20日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2021年12月10日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/07/20/%E5%B0%8F%E8%88%B1%E6%9C%AC%E7%BA%AA/" title="小舱本纪">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">小舱本纪</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/07/19/%E5%A6%82%E4%BD%95%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" title="如何用hexo搭建博客">
+                        <span class="hidden-mobile">如何用hexo搭建博客</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

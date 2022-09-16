@@ -1,0 +1,713 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="舟泛四海">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="这是一个控制台项目，一切设计都要从字符角度考虑。这次项目我终于敢放下顾虑，大胆解决问题了，其价值足以我写一篇博客来记录俄罗斯方块不是什么很难的东西，也没人教过我怎么去构建这个项目。说明这个项目是真的简单。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="控制台俄罗斯方块">
+<meta property="og:url" content="https://jensentsts.github.io/2021/08/15/%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/index.html">
+<meta property="og:site_name" content="海舟的小舱">
+<meta property="og:description" content="这是一个控制台项目，一切设计都要从字符角度考虑。这次项目我终于敢放下顾虑，大胆解决问题了，其价值足以我写一篇博客来记录俄罗斯方块不是什么很难的东西，也没人教过我怎么去构建这个项目。说明这个项目是真的简单。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jensentsts.github.io/img/%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97.jpg">
+<meta property="article:published_time" content="2021-08-15T14:15:48.000Z">
+<meta property="article:modified_time" content="2022-09-16T07:20:02.981Z">
+<meta property="article:author" content="舟泛四海">
+<meta property="article:tag" content="cpp">
+<meta property="article:tag" content="游戏">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jensentsts.github.io/img/%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97.jpg">
+  
+  
+  
+  <title>控制台俄罗斯方块 - 海舟的小舱</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jensentsts.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>舟泛四海泛舟</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="控制台俄罗斯方块"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-08-15 22:15" pubdate>
+          2021年8月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          20 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">控制台俄罗斯方块</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年9月16日 下午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>这是一个控制台项目，一切设计都要从字符角度考虑。<br>这次项目我终于敢放下顾虑，大胆解决问题了，其价值足以我写一篇博客来记录<br>俄罗斯方块不是什么很难的东西，也没人教过我怎么去构建这个项目。说明这个项目是真的简单。  </p>
+<span id="more"></span>
+<p>这个项目构思不是一瞬间完成的，是先有总的思路，然后考虑某个部分的内容，再接着去做其细节、写成代码，常常因为出现前面考虑不到而去修改前面的东西的情况。看来这种修改是稀松的，不用担心去修改前面的代码，<br>这种修改是一种进步，不用担心不用怕。<br>那咱就挑点重点写写吧<br><img src="https://img0.baidu.com/it/u=1233268571,2245711054&fm=26&fmt=auto&gp=0.jpg" srcset="/img/loading.gif" lazyload alt="Console Tetris.png"></p>
+<h2 id="阅前提示"><a href="#阅前提示" class="headerlink" title="阅前提示"></a>阅前提示</h2><p>建议先编译看看效果然后再来读博客。<a target="_blank" rel="noopener" href="https://github.com/jensentsts/-/blob/main/Console%20Tetris.cpp">代码链接</a><br>（还有很多需要优化的地方……）  </p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="总框架"><a href="#总框架" class="headerlink" title="总框架"></a>总框架</h3><blockquote>
+<p><code>void gameStart()</code></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs Fake++">初始化<br>无脑死循环：<br>    处理键盘事件<br>	更新游戏内的各种数据<br>	unblockedSleep()<br>	写入渲染器的缓冲区<br>	渲染器渲染<br></code></pre></td></tr></table></figure>
+
+<p>然后想到这个死循环有停下俩的时候，那就是：游戏失败或者是玩家退出，所以又加上了<code>gameOver</code>和<code>gameExit</code>这俩控制变量，然后在循环之后加上了例如分数记录之类的东西</p>
+<h3 id="贴图实现"><a href="#贴图实现" class="headerlink" title="贴图实现"></a>贴图实现</h3><p>实际上我以前都觉得贴图应该存在一个二维数组里面，但这次我却明白贴图还有多种存储方式。比如我能把一个”山“样的下落物存储在一个一维数组里，把它的贴图当作一个矩形，记录他的宽度，然后一排一排地解析。  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Fake++">降维打击前：<br> # <br>###<br>降维打击之后：<br># ### width:3 height:2<br></code></pre></td></tr></table></figure>
+
+<p>大概是我第一次在显示这个问题上”活脑筋“，其价值足以我写一篇博客来记录  </p>
+<h3 id="双缓冲渲染"><a href="#双缓冲渲染" class="headerlink" title="双缓冲渲染"></a>双缓冲渲染</h3><p>我把双缓冲渲染改成了三个部分：绘制（输出画面）、写入Buffer、Buffer更新<br>以前我会顾虑：到底在哪里使用双缓冲？<br>我突然就敢放下这个顾虑：”只在游戏部分使用不就行了，其他地方根本就不需要双缓冲。“  </p>
+<h4 id="绘制（输出画面）"><a href="#绘制（输出画面）" class="headerlink" title="绘制（输出画面）"></a>绘制（输出画面）</h4><blockquote>
+<p><code>void render()</code></p>
+</blockquote>
+<p>比较用于绘制的Buffer（<code>renderBuffer[DRAWING]</code>）和显示在屏幕上的信息（<code>renderBuffer[SHOWING]</code>），然后到相应的位置去输出不同的部分。用<code>gotoxy()</code>可以解决调用<code>system(&#39;cls&#39;)</code>带来的闪屏问题。</p>
+<h4 id="写入Buffer"><a href="#写入Buffer" class="headerlink" title="写入Buffer"></a>写入Buffer</h4><blockquote>
+<p><code>void renderDraw()</code></p>
+</blockquote>
+<p>这次把所有的绘制都封装到了一个函数<code>renderDraw()</code>里，以前的时候我总是会顾虑”逻辑运算完成了，在哪里绘制啊？？？？？？“。现在我通过gameStart()函数里的总流程，实现了贴图绘制的一个封装，就不用担心”这里是一个绘制，那里是一个绘制“导致混乱的问题、避免在这个问题上继续纠结了。<br><code>renderDraw()</code>会在(dropX,dropY)解析下落物的贴图，并写入<code>renderBuffer[DRAWING]</code>，然后把那些已经固定下来的方块一一对应绘制进buffer</p>
+<h4 id="Buffer更新"><a href="#Buffer更新" class="headerlink" title="Buffer更新"></a>Buffer更新</h4><blockquote>
+<p><code>void renderFresh()</code></p>
+</blockquote>
+<p>比较两个buffer[]，然后把旧的推进新的里去。</p>
+<h3 id="选择选项"><a href="#选择选项" class="headerlink" title="选择选项"></a>选择选项</h3><blockquote>
+<p><code>int makeChoice(char**, int[, char*])</code>函数  </p>
+</blockquote>
+<p>如果直接把做选择这个事情封闭起来，那么其它部分代码就不好实现，所以需要让makeChoice()有一个返回值，便于信息传递，而不是简简单单的去显示个动画。<br>首先，肯定要有个变量<code>choice</code>来记录选择……<br>做选择时会有多个选项，每个选项前都要有其被选中的标志，按下回车键确定，因此采用了分行输出每个选项，每个选项前留出空白，在空白区域用<code>-&gt;</code>表示这是当前选中的选项，以<code>-&gt;</code>的左右移动为其动画效果美化纯文字的界面。<br>所以首先要显示每个选项并留出空白  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; _amo; ++i)<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;   %s\n&quot;</span>, _choice[i]);<br></code></pre></td></tr></table></figure>
+<p>然后就是考虑动效了。既然<code>-&gt;</code>要上下移动和左右移动——尽管不会同时进行——那么我们就得去确定它的移动坐标变化范围。显然该用WindowsAPI获取选项输出后的光标位置。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">HANDLE h = <span class="hljs-built_in">GetStdHandle</span>(STD_OUTPUT_HANDLE);<br>CONSOLE_SCREEN_BUFFER_INFO pos;<br><span class="hljs-built_in">GetConsoleScreenBufferInfo</span>(h, &amp;pos);<br></code></pre></td></tr></table></figure>
+<p>简单把<code>-&gt;</code>输出到相应位置十分简单，这里就不讲了。我们直接考虑动效的几个步骤：</p>
+<ol>
+<li>清空旧的绘制图案  </li>
+<li>绘制图案</li>
+</ol>
+<p>清空旧的绘制图案，有如下情况  </p>
+<ul>
+<li>用户改变了选中，旧的<code>-&gt;</code>要清除  </li>
+<li><code>-&gt;</code>移动了，原来位置上的不能再显示了</li>
+</ul>
+<p>考虑到控制台覆盖先前字符的特性，<code>-&gt;</code>自动移动可以由新的图案直接输出覆盖，而用户改变选中，则需要我们把光标放到相应位置并输出足够的空格。当前动画播放到哪一帧，也需要去记录，就用<code>ani</code>吧。<br>而且，不管用户是否按键，我们都要去更新<code>-&gt;</code>的动画。所以我们不能阻塞进程并获取按键信息，<code>conio.h</code>的<code>kbhit()</code>以及我写的伪非阻塞Sleep<code>unblockedSleep()</code>就派上用场了。  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs Fake++">if kbhit() == 1:<br>    光标移动<br>	覆盖旧-&gt;（无论按什么键什么都去覆盖一下，是为了代neng码tou简ge便lan<br>	判断按键<br>		按w：改变choice<br>		按s：改变choice<br>		按Enter：return choice<br>光标移动<br>在旧-&gt;上直接覆盖当前的帧的图案<br>unblockedSleep();	// 这样能保证延时时间或对用户按键”随叫随到“的相应<br>ani++	<br></code></pre></td></tr></table></figure>
+<p>后来在Esc暂停菜单里我用<code>makeChoice()</code>来实现菜单选项，就又在里面加了个选择后”隐藏“菜单的功能，于是又在按下Enter键后的代码里加上了，让<code>makeChoice</code>自己清除自己的的代码<br>一开始考虑的设计是如<code> &gt;Start!</code>的样式，但是测试之后发现不如<code> -&gt;Start!</code>好康，于是就改成了这个  </p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%BC%80%E5%8F%91/" class="category-chain-item">开发</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/cpp/">#cpp</a>
+      
+        <a href="/tags/%E6%B8%B8%E6%88%8F/">#游戏</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>控制台俄罗斯方块</div>
+      <div>https://jensentsts.github.io/2021/08/15/控制台俄罗斯方块/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>舟泛四海</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年8月15日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2022年9月16日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/08/16/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="python学习笔记">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">python学习笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/07/20/%E5%B0%8F%E8%88%B1%E6%9C%AC%E7%BA%AA/" title="小舱本纪">
+                        <span class="hidden-mobile">小舱本纪</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
