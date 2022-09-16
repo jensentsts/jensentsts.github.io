@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.7k 字
+          2.9k 字
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
         
-          23 分钟
+          25 分钟
         
       </span>
     
@@ -288,7 +288,13 @@
                 
                 <p>写一些写博客时踩过的坑，还有用hexo写博客时常用的东西  </p>
 <span id="more"></span>
-<p>神里镇文<br><img src="https://upload-bbs.mihoyo.com/upload/2021/07/20/184593067/2a03b66fdf1551d53ddbdf8e2fbbba90_3182517286345932096.jpg?x-oss-process=image//resize,s_500/quality,q_80/auto-orient,0/interlace,1/format,jpg" srcset="/img/loading.gif" lazyload alt="神里我老婆！！！"><br>对图片“查看源代码”有彩蛋</p>
+<p>神里镇文<br><img src="https://upload-bbs.mihoyo.com/upload/2021/07/20/184593067/2a03b66fdf1551d53ddbdf8e2fbbba90_3182517286345932096.jpg?x-oss-process=image//resize,s_500/quality,q_80/auto-orient,0/interlace,1/format,jpg" srcset="/img/loading.gif" lazyload></p>
+<h1 id="一些报错"><a href="#一些报错" class="headerlink" title="一些报错"></a>一些报错</h1><h2 id="Deployer-not-found-git"><a href="#Deployer-not-found-git" class="headerlink" title="Deployer not found: git"></a>Deployer not found: git</h2><p>已经在站点配置文件中写入了</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repository:</span> <span class="hljs-string">git@github.com:jensentsts/jensentsts.github.io.git</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">main</span><br></code></pre></td></tr></table></figure>
+<p>但是执行<code>hexo d</code>报错<code>ERROR Deployer not found: git</code></p>
+<p><strong>解决方案</strong><br>安装<code>hexo-deployer-git</code>插件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">npm install hexo-deployer-git --save<br></code></pre></td></tr></table></figure>
+<p>然后就可以愉快地<code>hexo d</code>啦~</p>
 <h1 id="github的坑"><a href="#github的坑" class="headerlink" title="github的坑"></a>github的坑</h1><h2 id="必看！github的url区分大小写的坑"><a href="#必看！github的url区分大小写的坑" class="headerlink" title="必看！github的url区分大小写的坑"></a>必看！github的url区分大小写的坑</h2><p>比如我博客的url就是 <code>https://jensentsts.github.io/</code> 在<code>/</code>后填写的便是目录<br>理论上来讲，<code>/</code>后边的东西不区分大小写<br>但！是！<br>github是区分大小写的！例如<code>link</code>和<code>Link</code>就不是同一个东西<br>因此如果你用主题文件夹里的<code>_config.yml</code>把你的友链页面设为<code>links/index.md</code>，而你在<code>sources/</code>下的对应文件夹名称为<code>Links</code><br>你在<code>loaclhost:4000</code>里能够正常访问友链页面<br>然而当你在github上点击<code>友链</code>，使用<code>https://jensentsts.github.io/links/index.html</code> 去访问你的友链时，github不能给你返回对应的页面，会报404<br>如果你去你的github库里检查，会发现<code>links</code>正在好好地躺在你的库里<br><strong>解决方案</strong>：大小写完全一致，即在主题的<code>_config.yml</code>里的和在<code>sources/</code>下的名称完全一致</p>
 <h2 id="现在的github使用main分支"><a href="#现在的github使用main分支" class="headerlink" title="现在的github使用main分支"></a>现在的github使用main分支</h2><p>写这一条的时间是2021年12月10日，注意信息的时效性<br>以前都是用<code>master</code>作为主分支的，现在默认生成的是<code>main</code>，注意修改你的<code>_config.yml</code></p>
 <h1 id="这里是杂谈"><a href="#这里是杂谈" class="headerlink" title="这里是杂谈"></a>这里是杂谈</h1><h2 id="为文章添加多个标签"><a href="#为文章添加多个标签" class="headerlink" title="为文章添加多个标签"></a>为文章添加多个标签</h2><p>在你的markdown文件头部，也就是俩<code>---</code>之间的部分，添加如下代码：</p>
