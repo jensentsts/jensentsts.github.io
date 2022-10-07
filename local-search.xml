@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>μVision错误合集</title>
+    <link href="/2022/09/29/%CE%BCVision%E9%94%99%E8%AF%AF%E5%90%88%E9%9B%86/"/>
+    <url>/2022/09/29/%CE%BCVision%E9%94%99%E8%AF%AF%E5%90%88%E9%9B%86/</url>
+    
+    <content type="html"><![CDATA[<p>我会直接放上完整的错误名称，并在下面附上解决方案。</p><span id="more"></span><h1 id="食用说明"><a href="#食用说明" class="headerlink" title="食用说明"></a>食用说明</h1><p><strong>建议使用<code>ctrl+f</code>搜索需要内容，或者在博客顶端搜索栏里搜索你想要的内容。</strong><br>文章内容一些是我在网上查找资料，也有一部分是我自己研究，然后实操能够解决问题的。</p><h1 id="FCARM-Output-Name-not-specified-please-check-‘Options-for-Target-Utilities’"><a href="#FCARM-Output-Name-not-specified-please-check-‘Options-for-Target-Utilities’" class="headerlink" title="FCARM - Output Name not specified, please check ‘Options for Target - Utilities’"></a>FCARM - Output Name not specified, please check ‘Options for Target - Utilities’</h1><p>报错：FCARM - Output Name not specified, please check ‘Options for Target - Utilities’</p><p>原因：</p><ul><li>加载文件时为了选择.S或者.TXT文件<br><img src="https://img-blog.csdnimg.cn/20200702150015162.png" alt="图片来源：https://blog.csdn.net/Mculover666/article/details/107084510"></li><li>未将<code>core</code>引入新建的工程的path</li></ul><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>针对<code>加载文件时为了选择.S或者.TXT文件</code>：<br><img src="https://img-blog.csdnimg.cn/20200702150033918.png" alt="图片来源：https://blog.csdn.net/Mculover666/article/details/107084510"><br>针对<code>未将core引入新建的工程的path</code>：<br>引入。（言简意赅）</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>长期更新</tag>
+      
+      <tag>STM32</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Android萌新入坑Day2</title>
     <link href="/2022/09/20/Android%E8%90%8C%E6%96%B0%E5%85%A5%E5%9D%91Day2/"/>
     <url>/2022/09/20/Android%E8%90%8C%E6%96%B0%E5%85%A5%E5%9D%91Day2/</url>
@@ -13,18 +34,14 @@
     
     <categories>
       
-      <category>Android开发</category>
+      <category>Android笔记</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>笔记</tag>
-      
       <tag>Android</tag>
-      
-      <tag>开发</tag>
       
     </tags>
     
@@ -42,18 +59,14 @@
     
     <categories>
       
-      <category>Android开发</category>
+      <category>Android笔记</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>笔记</tag>
-      
       <tag>Android</tag>
-      
-      <tag>开发</tag>
       
     </tags>
     

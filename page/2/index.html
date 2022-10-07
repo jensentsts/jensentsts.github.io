@@ -16,19 +16,19 @@
   <meta name="author" content="舟泛四海">
   <meta name="keywords" content="">
   
-    <meta name="description" content="嗨~这里是舟泛四海的博客！">
+    <meta name="description" content="嗨~~~~~~~~~~~~~~~~~~~~~~~~~~">
 <meta property="og:type" content="website">
-<meta property="og:title" content="四海泛舟，手摘星辰">
+<meta property="og:title" content="四海泛舟，虚己游世">
 <meta property="og:url" content="https://jensentsts.github.io/page/2/index.html">
-<meta property="og:site_name" content="四海泛舟，手摘星辰">
-<meta property="og:description" content="嗨~这里是舟泛四海的博客！">
+<meta property="og:site_name" content="四海泛舟，虚己游世">
+<meta property="og:description" content="嗨~~~~~~~~~~~~~~~~~~~~~~~~~~">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="舟泛四海">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>四海泛舟，手摘星辰</title>
+  <title>四海泛舟，虚己游世</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -181,13 +181,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/banner.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="悠长人生和白首深情，都是岁月的善举。"></span>
+            <span id="subtitle" data-typed-text="有虚船来触舟，虽有惼心之人不怒"></span>
           
         </div>
 
@@ -218,6 +218,54 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/08/16/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_self">
+          <img src="/img/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.jpg" srcset="/img/loading.gif" lazyload alt="python学习笔记">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/08/16/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_self">
+          python学习笔记
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2021/08/16/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_self">
+        <div>
+          大佬曰：把知识用自己的语言讲出来，你才算是学会了这个知识。我就用这种方式写一下自己的python学习笔记吧，编写博客边复习自己模糊的知识点。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-16 17:16" pubdate>
+              2021-08-16
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>
+            
+              <a href="/tags/python/">#python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
   <div class="row mx-auto index-card">
     
@@ -549,37 +597,7 @@
       }
       var text = subtitle.getAttribute('data-typed-text');
       
-        jQuery.ajax({
-          type: 'GET',
-          url: 'https://v1.hitokoto.cn/?c=d&amp;c=i&amp;c=j&amp;c=k&amp;c=a',
-          headers: {},
-          dataType: 'json',
-          success: function(result) {
-            var apiText;
-            if (result) {
-              var keys = 'hitokoto'.split(',');
-              if (result instanceof Array) {
-                result = result[0];
-              }
-              for (const k of keys) {
-                var value = result[k];
-                if (typeof value === 'string') {
-                  apiText = value;
-                  break;
-                } else if (value instanceof Object) {
-                  result = value;
-                }
-              }
-            }
-            apiText ? typing(apiText) : typing(text);
-          },
-          error: function(xhr, status, error) {
-            if (error) {
-              console.error('Failed to request https://v1.hitokoto.cn/?c=d&amp;c=i&amp;c=j&amp;c=k&amp;c=a:', error);
-            }
-            typing(text);
-          }
-        })
+        typing(text);
       
     })(window, document);
   </script>
