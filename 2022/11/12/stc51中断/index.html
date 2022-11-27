@@ -16,24 +16,24 @@
   <meta name="author" content="舟泛四海">
   <meta name="keywords" content="">
   
-    <meta name="description" content="小壶里都发生了什么事？">
+    <meta name="description" content="基本原理这里不写了，这里就记一下各种寄存器位的作用。以及一点点汇编:)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小壶本纪">
-<meta property="og:url" content="https://jensentsts.github.io/2021/07/20/%E5%B0%8F%E5%A3%B6%E6%9C%AC%E7%BA%AA/index.html">
+<meta property="og:title" content="stc51中断">
+<meta property="og:url" content="https://jensentsts.github.io/2022/11/12/stc51%E4%B8%AD%E6%96%AD/index.html">
 <meta property="og:site_name" content="四海泛舟，虚己游世">
-<meta property="og:description" content="小壶里都发生了什么事？">
+<meta property="og:description" content="基本原理这里不写了，这里就记一下各种寄存器位的作用。以及一点点汇编:)">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://jensentsts.github.io/img/%E5%B0%8F%E5%A3%B6%E6%9C%AC%E7%BA%AA.jpg">
-<meta property="article:published_time" content="2021-07-20T14:44:08.000Z">
-<meta property="article:modified_time" content="2022-09-16T05:23:33.000Z">
+<meta property="og:image" content="https://jensentsts.github.io/img/post/%E7%AC%94%E8%AE%B0/EA%E5%AF%84%E5%AD%98%E5%99%A8%E4%BD%8D.png">
+<meta property="article:published_time" content="2022-11-12T06:38:06.000Z">
+<meta property="article:modified_time" content="2022-11-27T12:38:25.718Z">
 <meta property="article:author" content="舟泛四海">
-<meta property="article:tag" content="长期更新">
+<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://jensentsts.github.io/img/%E5%B0%8F%E5%A3%B6%E6%9C%AC%E7%BA%AA.jpg">
+<meta name="twitter:image" content="https://jensentsts.github.io/img/post/%E7%AC%94%E8%AE%B0/EA%E5%AF%84%E5%AD%98%E5%99%A8%E4%BD%8D.png">
   
   
   
-  <title>小壶本纪 - 四海泛舟，虚己游世</title>
+  <title>stc51中断 - 四海泛舟，虚己游世</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -192,13 +192,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/%E5%B0%8F%E5%A3%B6%E6%9C%AC%E7%BA%AA.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/banner.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="小壶本纪"></span>
+            <span id="subtitle" data-typed-text="stc51中断"></span>
           
         </div>
 
@@ -209,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2021-07-20 22:44" pubdate>
-          2021年7月20日 晚上
+        <time datetime="2022-11-12 14:38" pubdate>
+          2022年11月12日 下午
         </time>
       </span>
     
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          320 字
+          1.3k 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          3 分钟
+          11 分钟
         
       </span>
     
@@ -270,12 +270,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">小壶本纪</h1>
+            <h1 style="display: none">stc51中断</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年9月16日 下午
+                    本文最后更新于：2022年11月27日 晚上
                   
                 
               </p>
@@ -283,15 +283,35 @@
             
               <div class="markdown-body">
                 
-                <p>小壶里都发生了什么事？</p>
+                <p>基本原理这里不写了，这里就记一下各种寄存器位的作用。<br>以及一点点汇编:)</p>
 <span id="more"></span>
-<p>↓看到这张图片的人都能抽到神里↓<br><img src="https://upload-bbs.mihoyo.com/upload/2021/07/20/245327134/32e8d379ecdc173773694240dc5b3ebb_3943520889641554237.jpg?x-oss-process=image//resize,s_500/quality,q_80/auto-orient,0/interlace,1/format,jpg" srcset="/img/loading.gif" lazyload alt="凌华~~~"></p>
-<h1 id="诞生"><a href="#诞生" class="headerlink" title="诞生"></a>诞生</h1><p>2021年7月19日日暮，zf4h突然会想起自己最早接触的和计算机相关的“语言”是html和css<br>并且自己一直都有一个建站梦，而且2019年还在github上做过博客<br>尽管那个博客因zf4h的学业，不幸夭折，但那份记忆仍然在心底闪耀着独属于自己的光芒<br>恰逢高考之后的风平浪静<br>我的博客，<code>海舟的小舱</code>，诞生了。  </p>
-<h1 id="主题更换"><a href="#主题更换" class="headerlink" title="主题更换"></a>主题更换</h1><ul>
-<li>原来使用的是 <a target="_blank" rel="noopener" href="https://github.com/HeskeyBaozi/hexo-theme-lite">Lite</a> ，因为它不支持LaTeX公式，所以，2021年8月16日午换成了 <a target="_blank" rel="noopener" href="https://github.com/bollnh/hexo-theme-material">Material</a> 。</li>
-<li>2022.9.16，换成现在的 <a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a> 啦！</li>
+<p><img src="/./img/post/%E7%AC%94%E8%AE%B0/EA%E5%AF%84%E5%AD%98%E5%99%A8%E4%BD%8D.png" srcset="/img/loading.gif" lazyload alt="EA镇文"></p>
+<h1 id="基本逻辑"><a href="#基本逻辑" class="headerlink" title="基本逻辑"></a>基本逻辑</h1><p>总的来讲，外中断由外部电路电平输入触发，内中断由内部触发。<br><strong>但是！</strong>是否要因为这个触发去做什么事情，由两种寄存器位来控制（TODO：在这里插入一个页内跳转链接）。<br>这两种寄存器，其一是专门记录某种中断是否要触发的设置，多个寄存器位在这个部门任职；另一个则是总管是否要出发中断这件事的寄存器位，由EA单独任职<br>在得到这两种寄存器不可缺一的同意之后，CPU才会触发中断去忙中断的任务（执行中断函数）。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">void</span> <span class="hljs-title function_">func</span><span class="hljs-params">()</span> interrup n using m &#123;<br>	<span class="hljs-comment">// ...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="interrupt-n"><a href="#interrupt-n" class="headerlink" title="interrupt n"></a>interrupt n</h1><p>0：INT0（P3.2上升沿&#x2F;高电平）<br>1：T0<br>2：INT1(P3.3下降沿&#x2F;低电平)<br>3：T1<br>4：串口中断——RI、TI</p>
+<h1 id="using-m"><a href="#using-m" class="headerlink" title="using m"></a>using m</h1><h1 id="中断的开关"><a href="#中断的开关" class="headerlink" title="中断的开关"></a>中断的开关</h1><p>EA：总开关</p>
+<h1 id="中断的种类"><a href="#中断的种类" class="headerlink" title="中断的种类"></a>中断的种类</h1><h2 id="2个外部中断"><a href="#2个外部中断" class="headerlink" title="2个外部中断"></a>2个外部中断</h2><p>INT0（P3.2）：外部中断1<br>INT1（P3.3）：外部中断2</p>
+<h2 id="3个内部中断"><a href="#3个内部中断" class="headerlink" title="3个内部中断"></a>3个内部中断</h2><p>TF0：定时器T0溢出中断<br>TF1：定时器T1溢出中断<br>RI或TI：串口中断。</p>
+<h1 id="TCON的中断"><a href="#TCON的中断" class="headerlink" title="TCON的中断"></a>TCON的中断</h1><p>TODO：写完这一部分。<br>IT0：外部中断0触发方式控制位</p>
+<ul>
+<li>当IT0&#x3D;0时，为电平触发方式</li>
+<li>当IT0&#x3D;1时，为边沿触发方式（下降沿有效）<br>IE0：外部中断0中断请求标志位<br>IT1：外部中断1…………<br>IE1：外部中断1…………<br>TF0：定时&#x2F;计数器T0溢出中断请求标志位<br>TF1：定时&#x2F;计数器T1…………<br>TR0：<br>TE0：<br>TR1：<br>TE1：</li>
 </ul>
-<h1 id="终于弄好了评论功能！！！"><a href="#终于弄好了评论功能！！！" class="headerlink" title="终于弄好了评论功能！！！"></a>终于弄好了评论功能！！！</h1><p>2022.9.18，zf4h放弃了总是配置不好的<code>gitalk</code>，改用了<code>valine</code>，终于！<br><img src="https://s2.loli.net/2022/09/18/bBEefIt72yguUkA.png" srcset="/img/loading.gif" lazyload alt="周瑜（划掉）终于！"><br>我博由我不由天！</p>
+<h1 id="SCON的中断"><a href="#SCON的中断" class="headerlink" title="SCON的中断"></a>SCON的中断</h1><p>RI：串口接收中断标志位，RI必须由软件清除<br>TI：串口发送中断标志位。TI必须由软件清除</p>
+<h1 id="计数-x2F-定时器"><a href="#计数-x2F-定时器" class="headerlink" title="计数&#x2F;定时器"></a>计数&#x2F;定时器</h1><p>有三种工作方式：<br>TMOD控制。</p>
+<p>TODO：下面这些改成表格<br>TMOD寄存器位意义<br>T1 T0<br>GATE C&#x2F;T M1 M0 GATE C&#x2F;T M1 M0<br>0 1 2 3 4 5 6 7</p>
+<ul>
+<li>GATE：门控位<br>GATE&#x3D;0：TR0&#x2F;TR1为1，可以启动定时&#x2F;计数器工作<br>GATE&#x3D;1：…………，且外部中断引脚也为高电平。可以用来对脉冲宽度进行计数。<br>由TCON衷的TR、TE控制运行。</li>
+</ul>
+<h2 id="计数方式"><a href="#计数方式" class="headerlink" title="计数方式"></a>计数方式</h2><p>TL、TH负责计数</p>
+<h2 id="定时方式"><a href="#定时方式" class="headerlink" title="定时方式"></a>定时方式</h2><p>当我们将晶振连到外部中断引脚时，我们就可以计时啦！<br>因为引入了晶振频率，我们原本普普通通的计数就有了时间意义。</p>
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p>下面我们将写一段设定一个定时器并使之运行。</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">TMOD</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>X01<span class="hljs-comment">;	// 开门！（GATE）</span><br><span class="hljs-attribute">TH0</span> <span class="hljs-operator">=</span> (<span class="hljs-number">0</span>XFFFF - <span class="hljs-number">50000</span>) &gt;&gt; <span class="hljs-number">8</span><span class="hljs-comment">;	// 定时——高位</span><br><span class="hljs-attribute">TL0</span> <span class="hljs-operator">=</span> (<span class="hljs-number">0</span>XFFFF - <span class="hljs-number">50000</span>) % <span class="hljs-number">256</span><span class="hljs-comment">;	// 定时——低位</span><br><span class="hljs-attribute">ET0</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span><span class="hljs-comment">;		// 甘雨批准</span><br><span class="hljs-attribute">EA</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span><span class="hljs-comment">;			// 凝光也批准</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="如何复制粘贴"><a href="#如何复制粘贴" class="headerlink" title="如何复制粘贴"></a>如何复制粘贴</h2><p>请出我们的好朋友<code>&lt;big&gt;STC-ISP&lt;/big&gt;</code>！<br><code>定时器计算器</code>-&gt;设定单片机型号-&gt;设定系统频率-&gt;设定定时长度-&gt;复制粘贴</p>
+<h2 id="控制器听部分"><a href="#控制器听部分" class="headerlink" title="控制器听部分"></a>控制器听部分</h2><h1 id="汇编环节"><a href="#汇编环节" class="headerlink" title="汇编环节"></a>汇编环节</h1><p>咕咕咕</p>
+<h1 id="杂记"><a href="#杂记" class="headerlink" title="杂记"></a>杂记</h1><h2 id="138译码器"><a href="#138译码器" class="headerlink" title="138译码器"></a>138译码器</h2><h2 id="573锁存器"><a href="#573锁存器" class="headerlink" title="573锁存器"></a>573锁存器</h2><p>低触发器<br>LE一直为高电平则“不上锁”。D与Q的状态保持一直。</p>
 
                 
               </div>
@@ -300,11 +320,32 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%BE%AE%E7%94%B5%E5%AD%90/" class="category-chain-item">微电子</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0/">#长期更新</a>
+        <a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>
       
     </div>
   
@@ -316,8 +357,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>小壶本纪</div>
-      <div>https://jensentsts.github.io/2021/07/20/小壶本纪/</div>
+      <div>stc51中断</div>
+      <div>https://jensentsts.github.io/2022/11/12/stc51中断/</div>
     </div>
     <div class="license-meta">
       
@@ -329,13 +370,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2021年7月20日</div>
+          <div>2022年11月12日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年9月16日</div>
+          <div>2022年11月27日</div>
         </div>
       
       
@@ -373,29 +414,6 @@
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2021/08/15/%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/" title="控制台俄罗斯方块">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">控制台俄罗斯方块</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2021/07/20/hexo%E5%8D%9A%E5%AE%A2%E6%9D%82%E8%B0%88/" title="hexo杂谈">
-                        <span class="hidden-mobile">hexo杂谈</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
               
             </div>
 
@@ -471,12 +489,6 @@
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -670,49 +682,6 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
