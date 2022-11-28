@@ -13,14 +13,14 @@
     
     <categories>
       
-      <category>微电子</category>
+      <category>回顾</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>笔记</tag>
+      <tag>微电子</tag>
       
     </tags>
     
@@ -177,11 +177,7 @@
       
       <tag>游戏</tag>
       
-      <tag>游戏攻略</tag>
-      
       <tag>人力资源机器</tag>
-      
-      <tag>HRM</tag>
       
     </tags>
     
@@ -258,8 +254,6 @@
       
       <tag>博客</tag>
       
-      <tag>看板娘</tag>
-      
     </tags>
     
   </entry>
@@ -332,7 +326,7 @@
     <link href="/2021/07/20/%E5%B0%8F%E5%A3%B6%E6%9C%AC%E7%BA%AA/"/>
     <url>/2021/07/20/%E5%B0%8F%E5%A3%B6%E6%9C%AC%E7%BA%AA/</url>
     
-    <content type="html"><![CDATA[<p>小壶里都发生了什么事？</p><span id="more"></span><p>↓看到这张图片的人都能抽到神里↓<br><img src="https://upload-bbs.mihoyo.com/upload/2021/07/20/245327134/32e8d379ecdc173773694240dc5b3ebb_3943520889641554237.jpg?x-oss-process=image//resize,s_500/quality,q_80/auto-orient,0/interlace,1/format,jpg" alt="凌华~~~"></p><h1 id="诞生"><a href="#诞生" class="headerlink" title="诞生"></a>诞生</h1><p>2021年7月19日日暮，zf4h突然会想起自己最早接触的和计算机相关的“语言”是html和css<br>并且自己一直都有一个建站梦，而且2019年还在github上做过博客<br>尽管那个博客因zf4h的学业，不幸夭折，但那份记忆仍然在心底闪耀着独属于自己的光芒<br>恰逢高考之后的风平浪静<br>我的博客，<code>海舟的小舱</code>，诞生了。  </p><h1 id="主题更换"><a href="#主题更换" class="headerlink" title="主题更换"></a>主题更换</h1><ul><li>原来使用的是 <a href="https://github.com/HeskeyBaozi/hexo-theme-lite">Lite</a> ，因为它不支持LaTeX公式，所以，2021年8月16日午换成了 <a href="https://github.com/bollnh/hexo-theme-material">Material</a> 。</li><li>2022.9.16，换成现在的 <a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a> 啦！</li></ul><h1 id="终于弄好了评论功能！！！"><a href="#终于弄好了评论功能！！！" class="headerlink" title="终于弄好了评论功能！！！"></a>终于弄好了评论功能！！！</h1><p>2022.9.18，zf4h放弃了总是配置不好的<code>gitalk</code>，改用了<code>valine</code>，终于！<br><img src="https://s2.loli.net/2022/09/18/bBEefIt72yguUkA.png" alt="周瑜（划掉）终于！"><br>我博由我不由天！</p>]]></content>
+    <content type="html"><![CDATA[<p>小壶里都发生了什么事？</p><span id="more"></span><p>↓看到这张图片的人都能抽到神里↓<br><img src="https://upload-bbs.mihoyo.com/upload/2021/07/20/245327134/32e8d379ecdc173773694240dc5b3ebb_3943520889641554237.jpg?x-oss-process=image//resize,s_500/quality,q_80/auto-orient,0/interlace,1/format,jpg" alt="凌华~~~"></p><h1 id="诞生"><a href="#诞生" class="headerlink" title="诞生"></a>诞生</h1><p>2021年7月19日日暮，zf4h突然会想起自己最早接触的和计算机相关的“语言”是html和css<br>并且自己一直都有一个建站梦，而且2019年还在github上做过博客<br>尽管那个博客因zf4h的学业，不幸夭折，但那份记忆仍然在心底闪耀着独属于自己的光芒<br>恰逢高考之后的风平浪静<br>我的博客，<code>海舟的小舱</code>，诞生了。  </p><h1 id="主题更换"><a href="#主题更换" class="headerlink" title="主题更换"></a>主题更换</h1><ul><li>原来使用的是 <a href="https://github.com/HeskeyBaozi/hexo-theme-lite">Lite</a> ，因为它不支持LaTeX公式，所以，2021年8月16日午换成了 <a href="https://github.com/bollnh/hexo-theme-material">Material</a> 。</li><li>2022.9.16，换成现在的 <a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a> 啦！</li></ul><h1 id="终于弄好了评论功能！！！"><a href="#终于弄好了评论功能！！！" class="headerlink" title="终于弄好了评论功能！！！"></a>终于弄好了评论功能！！！</h1><p>2022.9.18，zf4h放弃了总是配置不好的<code>gitalk</code>，改用了<code>valine</code>，终于！<br><img src="https://s2.loli.net/2022/09/18/bBEefIt72yguUkA.png" alt="周瑜（划掉）终于！"><br>我博由我不由天！</p><h1 id="友链开放！"><a href="#友链开放！" class="headerlink" title="友链开放！"></a>友链开放！</h1><ul><li>小壶里的第一个友链：<a href="https://joedong001.github.io/">JoeDong001的博客</a></li></ul>]]></content>
     
     
     
