@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.9k 字
+          3k 字
         
       </span>
     
@@ -324,7 +324,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo new draft 文章名称<br>hexo n draft 文章名称<br></code></pre></td></tr></table></figure>
 
 <h2 id="记录你的更新时间"><a href="#记录你的更新时间" class="headerlink" title="记录你的更新时间"></a>记录你的更新时间</h2><p>依旧是在.md文件顶头的<code>---</code>之间写<code>updated: 年年年年-月月-日日 时时:分分:秒秒</code></p>
-<h2 id="使用LaTeX"><a href="#使用LaTeX" class="headerlink" title="使用LaTeX"></a>使用LaTeX</h2><p><strong>首先要保证你的主题是支持LaTeX的！！！</strong>你得阅读主题的文档。如果支持，就去找用<code>kramed</code>或者是<code>pandoc</code>的使用<code>mathjax</code>的教程吧<br>我当时配置了两个小时都没成功，最后发现是Lite主题不支持LaTeX……<br>如果你的主题不支持LaTeX，但你又不想换，可以用知乎的开放API……也就是<code>https://www.zhihu.com/equation?tex=[你的LaTeX公式]</code>，效果：<img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7B2%7D" srcset="/img/loading.gif" lazyload alt="图片挂了QAQ……"><br>当然写进url的公式里的任何<code>\</code>都要转义成%5C<br>因为能支持，所以我才换了<a target="_blank" rel="noopener" href="https://github.com/viosey/hexo-theme-material">material</a> 这个主题……。现在让我们来欣赏一下欧拉恒等式吧：<br>$$ e^{i\pi}+1&#x3D;0 $$<br><strong>如果没有写·per_page: true·，记得在.md文件顶部写<code>mathjax: true</code></strong></p>
+<h2 id="使用LaTeX"><a href="#使用LaTeX" class="headerlink" title="使用LaTeX"></a>使用LaTeX</h2><p><strong>首先要保证你的主题是支持LaTeX的！！！</strong>你得阅读主题的文档。如果支持，就去找用<code>kramed</code>或者是<code>pandoc</code>的使用<code>mathjax</code>的教程吧<br>我当时配置了两个小时都没成功，最后发现是Lite主题不支持LaTeX……<br>如果你的主题不支持LaTeX，但你又不想换，可以用知乎的开放API……也就是<code>https://www.zhihu.com/equation?tex=[你的LaTeX公式]</code>，效果：<img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7B2%7D" srcset="/img/loading.gif" lazyload alt="图片挂了QAQ……"><br>当然写进url的公式里的任何<code>\</code>都要转义成%5C<br>因为能支持，所以我才换了<a target="_blank" rel="noopener" href="https://github.com/viosey/hexo-theme-material">material</a> 这个主题……。现在让我们来欣赏一下欧拉恒等式吧：<br>$$ e^{i\pi}+1&#x3D;0 $$<br><strong>如果没有写·per_page: true·，记得在.md文件顶部写<code>mathjax: true</code></strong><br>补充：有的主题会为mathjax等插件专门写了设置，请查看自己的主题的_config.yml以正常使用mathjax。</p>
 <h2 id="插件推荐"><a href="#插件推荐" class="headerlink" title="插件推荐"></a>插件推荐</h2><p>有的主题可能不支持一些插件<br>列出来的yaml代码， 请在根目录下的_config.yml文件里新增该配置<br>专门针对SEO的优化请看<a target="_blank" rel="noopener" href="https://www.zdynb.cn/2019/hexo-bi-bei-cha-jian.html#toc-heading-15">这篇文章</a>  </p>
 <h3 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h3><blockquote>
 <p>npm i hexo-prism-plugin -s</p>
@@ -565,6 +565,12 @@
   
 
 
+  
+  
+
+
+
+
 
 
 
@@ -756,6 +762,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

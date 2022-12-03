@@ -1,0 +1,853 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="舟泛四海">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="比起51，32的中断类型更为丰富和细腻。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="stm32中断">
+<meta property="og:url" content="https://jensentsts.github.io/2022/12/03/stm32%E4%B8%AD%E6%96%AD%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="四海泛舟，虚己游世">
+<meta property="og:description" content="比起51，32的中断类型更为丰富和细腻。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jensentsts.github.io/img/stm32%E4%B8%AD%E6%96%AD.png">
+<meta property="article:published_time" content="2022-12-03T07:48:09.000Z">
+<meta property="article:modified_time" content="2022-12-03T12:06:22.407Z">
+<meta property="article:author" content="舟泛四海">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="嵌入式">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jensentsts.github.io/img/stm32%E4%B8%AD%E6%96%AD.png">
+  
+  
+  
+  <title>stm32中断 - 四海泛舟，虚己游世</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jensentsts.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>舟适三山的尘歌壶</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/stm32%E4%B8%AD%E6%96%AD.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="stm32中断"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-12-03 15:48" pubdate>
+          2022年12月3日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          54 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">stm32中断</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年12月3日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>比起51，32的中断类型更为丰富和细腻。</p>
+<span id="more"></span>
+
+<h1 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h1><h2 id="STM32中断"><a href="#STM32中断" class="headerlink" title="STM32中断"></a>STM32中断</h2><p>STM32的中断有$16$个优先等级，可以设置抢占优先级和响应优先级。理论上有$68$种中段线路，具体取决于手册给出。<br>当中断来临时，由硬件自动调用相关函数。中断的类型既有内核的中断，例如复位、硬件失效等；也有外设的中断，如看门狗、PVD等等。<br>中断向量表由编译器给出。<br>当有多个外设同时触发中断时，<strong>中断机制</strong>会将这些触发<strong>排队</strong>或是<strong>嵌套</strong>。</p>
+<h2 id="NVIC"><a href="#NVIC" class="headerlink" title="NVIC"></a>NVIC</h2><p>管理32中断的系统：<strong>NVIC（嵌套中断向量控制器）</strong></p>
+<div class="note note-info">
+            <p>统一分配中断优先级和管理中断。是内核的外设。<br>NVIC按优先级处理中断，告诉CPU当前应该处理哪个中断。<br>CPU不知道中断优先级——除非谁告诉了它。</p>
+          </div>
+<p>NVIC既管理中断的“排队”，也负责中断的嵌套。<br>NVIC的中断优先级由优先级寄存器的$4$位$(0-15)$决定，这四位可以进行切分，分为高$n$位抢占优先级和低$4-n$位的响应优先级</p>
+<p><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E4%B8%AD%E6%96%AD%E7%AC%94%E8%AE%B0/NVIC%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.png" srcset="/img/loading.gif" lazyload alt="NVIC基本结构"></p>
+<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><p>抢占优先级和响应优先级相同的，按中断号进行排序</p>
+<h3 id="抢占优先级"><a href="#抢占优先级" class="headerlink" title="抢占优先级"></a>抢占优先级</h3><div class="note note-info">
+            <p>pre-emption priority</p>
+          </div>
+<p>抢占优先级高的可以中断嵌套</p>
+<h3 id="响应优先级"><a href="#响应优先级" class="headerlink" title="响应优先级"></a>响应优先级</h3><div class="note note-info">
+            <p>subpriority</p>
+          </div>
+<p>响应优先级高的可以优先排队</p>
+<h1 id="EXTI简介"><a href="#EXTI简介" class="headerlink" title="EXTI简介"></a>EXTI简介</h1><p><strong>EXTI（Extern Interrupt）外部中断</strong>可以监测制定GPIO口的电平信号，档期制定的GPIO口产生电平变化时，EXTI将立即向NVIC发出终端申请，经过NVIC裁决后即可中断CPU主程序，使CPU执行EXTI对应的中断程序。</p>
+<ul>
+<li>支持的触发方式：上升沿&#x2F;下降沿&#x2F;双边沿&#x2F;软件触发</li>
+<li>支持的GPIO口：所有的GPIO口，但相同的GPIO_Pin不能同时触发中断。例如PA0和PB0不能同时选为中断引脚。</li>
+<li>通道数：16个GPIO_Pin，PVD输出，RTC闹钟、USB唤醒、以太网唤醒<br>在省电模式的停止模式下，需要借助外部中断唤醒STM32<br><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E4%B8%AD%E6%96%AD%E7%AC%94%E8%AE%B0/EXTI.png" srcset="/img/loading.gif" lazyload alt="EXTI电路图"></li>
+</ul>
+<h2 id="触发响应方式"><a href="#触发响应方式" class="headerlink" title="触发响应方式"></a>触发响应方式</h2><p>中断响应&#x2F;事件响应<br>如果选择事件响应，那么当引脚电平变化时，将不会触发中断，而是触发别的外设操作（例如由PVC触发ADC），属于外设之间的联合工作。</p>
+<h2 id="EXTI基本结构"><a href="#EXTI基本结构" class="headerlink" title="EXTI基本结构"></a>EXTI基本结构</h2><p>GPIOn连接着<strong>AFIO（中断引脚选择）</strong>这个数据选择器，在各个Pin中选择一个连接到EXTI的通道上去。<br>再由EXTI边沿检测和控制电路上。<br>PVD、RTC、USB、ETH并接在EXTI边沿检测和控制电路上。<br>之后分为两种电路，一种连到NVIC上。外部中断的5<del>9和15</del>10会触发同一个中断函数<del>（ST偷工减料）</del>。<br>另有20条线路接到其它外设上，用来触发其它外设操作（事件响应）。<br>AFIO主要功能是引脚重映射、中断引脚选择等功能。<br>具体电路图如下：<br><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E4%B8%AD%E6%96%AD%E7%AC%94%E8%AE%B0/AFIO%E5%A4%8D%E7%94%A8IO%E5%8F%A3.png" srcset="/img/loading.gif" lazyload alt="AFIO"></p>
+<h2 id="AFIO相关的函数"><a href="#AFIO相关的函数" class="headerlink" title="AFIO相关的函数"></a>AFIO相关的函数</h2><p>在<code>stm32f10x.h</code>中</p>
+<ul>
+<li>GPIO_AFIODeInit()：清除AFIO有关的设置</li>
+<li>GPIO_PinLockConfig(GPIO_TypeDef*, uin16_t)：没啥大用</li>
+<li>GPIO_EventOutputConfig(uint8_t, uint8_t)：配置AFIO事件输出功能</li>
+<li>GPIO_EventOutputCmd(FunctionalState)：配置AFIO事件输出功能</li>
+<li>GPIO_PinRemapConfig(uint32_t, FunctionalState)：进行引脚重映射</li>
+<li>GPIO_EXTILineConfig(uint8_t, uint8_t)：配置AFIO的数据选择器，选择需要的中断引脚</li>
+<li>GPIO_ETH_MediaInterfaceConfig(uint32_t)：与以太网外设有关</li>
+</ul>
+<p>在<code>stm32f10x_exti.h</code>中</p>
+<ul>
+<li>EXTI_DeInit()</li>
+<li>EXTI_Init(EXTI_InitTypeDef*)</li>
+<li>EXTI_StructInit(EXTI_InitTypeDef*)：获得配置信息结构体</li>
+<li>EXTI_GenerateSWInterrupt(uint32_t)：软件触发外部中断，参数是一个指定的中断线</li>
+<li>EXTI_GetFlagStatus(uint32_t)：获取指定的标志位</li>
+<li>EXTI_ClearFlag(uin32_t)：清除标志位</li>
+<li>EXTI_GetITStatus(uint32_t)：（在中断函数中）获取与中断有关的标志位</li>
+<li>EXTI_ClearITPendingBit()：（在中断函数中）清除与中断有关的标志位<br>其中，<code>外设_Init()</code>、<code>外设_StructInit()</code>等在各种外设里都有类似的存在。</li>
+</ul>
+<h2 id="NVIC相关函数"><a href="#NVIC相关函数" class="headerlink" title="NVIC相关函数"></a>NVIC相关函数</h2><p>在<code>misc.h</code>中（<code>怎么被发配到杂项里去了</code>）</p>
+<ul>
+<li>NVIC_PriorityGroupConfig(uint32_t)：用于中断分组</li>
+<li>NVIC_Init(NVIC_InitTypeDef)</li>
+<li>NVIC_SetVectorTable(uint32_t, uin32_t)</li>
+<li>NVIC_SystemLPConfig(uint8_t, FunctionalState)</li>
+<li>SysTick_CLKSourceConfig()</li>
+</ul>
+<div class="note note-warning">
+            <p>中断分组方式整个芯片只能用一种，NVIC_PriorityGroupConfig()调用一次即可。<br>若多次调用，请保证所有的调用作出同样的分组。</p>
+          </div>
+
+<h1 id="一些实例"><a href="#一些实例" class="headerlink" title="一些实例"></a>一些实例</h1><p>这里使用了 <a target="_blank" rel="noopener" href="https://space.bilibili.com/383400717">江科大自化协</a> 的例子，通过OLED显示屏显示结果</p>
+<h2 id="对射式红外传感器计次"><a href="#对射式红外传感器计次" class="headerlink" title="对射式红外传感器计次"></a>对射式红外传感器计次</h2><p>电路连接图如下<br><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E4%B8%AD%E6%96%AD%E7%AC%94%E8%AE%B0/%E5%AF%B9%E5%B0%84%E5%BC%8F%E7%BA%A2%E5%A4%96%E4%BC%A0%E6%84%9F%E5%99%A8%E8%AE%A1%E6%AC%A1.jpg" srcset="/img/loading.gif" lazyload alt="面包板接线图"><br>上代码！</p>
+<blockquote>
+<p>main.c</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;stm32f10x.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;OLED.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;CountSensor.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;delay.h&quot;</span></span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>&#123;<br>	OLED_Init();<br>	CounterSensor_Init();<br>	<span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>)&#123;<br>		OLED_ShowNum(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, CountSensor_Get());<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>CounterSensor.c</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;stm32f10x.h&quot;</span></span><br><br><span class="hljs-type">uin16_t</span> CounterSensor_Count = <span class="hljs-number">0</span>;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">CounterSensor_Init</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>&#123;<br>	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);<br>	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);			<span class="hljs-comment">// AFIO属于APB2. 开启AFIO的时钟</span><br>	<span class="hljs-comment">// EXTI和NVIC的时钟一直开着</span><br>	<span class="hljs-comment">// RCC位于内核之外，管不到NVIC</span><br>	GPIO_InitTypeDef GPIO_InitStructure;<br>	GPIO_InitStructure.GPIO+Mode = GPIO_Mode_IPU;<br>	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_14;<br>	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;<br>	GPIO_Init(GPIOB, &amp;GPIO_InitStructure);<br>	<br>	GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource14);	<span class="hljs-comment">// PB14</span><br>	<br>	EXTI_InitTypeDef EXTI_InitStructure;<br>	EXTI_InitStructure.EXTI_Line = EXTI_Line14;<br>	EXTI_InitStructure.EXTI_LineCmd = ENABLE;<br>	EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;<br>	EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;			<span class="hljs-comment">// 下降沿触发</span><br>	EXTI_Init(&amp;EXTI_InitStructure);<br>	<br>	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);					<span class="hljs-comment">// 注意：分组方式整个芯片只能用一种。最好放在main那里</span><br>	NVIC_InitTypeDef NVIC_InitStructure;<br>	NVIC_InitStructure.NVIC_IRQChannel = EXTI15_10_IRQn;			<span class="hljs-comment">// 选择中断通道</span><br>	NVIC_InitStructure.NVIC_IRQChanneCmd = ENABLE;					<span class="hljs-comment">// 中断通道是使能还是失能</span><br>	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = <span class="hljs-number">1</span>;		<span class="hljs-comment">// 抢占优先级</span><br>	NVIC_InitStructure.NVIC_IRQChannelSubPriority = <span class="hljs-number">1</span>;				<span class="hljs-comment">// 响应优先级</span><br>	NVIC_Init(&amp;NVIC_InitStructure);<br>&#125;<br><br><span class="hljs-type">uin16_t</span> <span class="hljs-title function_">CountSensor_Get</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>&#123;<br>	<span class="hljs-keyword">return</span> CounterSensor_Count;<br>&#125;<br><br><span class="hljs-comment">// 中断函数名不能写错</span><br><span class="hljs-comment">// 建议去startup_stm32f10x_md.s启动文件里复制。</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">EXTI15_10_IRQHandler</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>&#123;<br>	<span class="hljs-comment">// 中断标志位判断，确保是想要的中断进入此函数</span><br>	<span class="hljs-keyword">if</span> (EXTI_GetITStatus(EXTI_Line14) == SET)&#123;<br>		CounterSensor_Count++;<br>		<span class="hljs-comment">// 中断程序结束后要手动清除标志位</span><br>		EXTI_ClearITPendingBit)EXTI_Line14);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="旋转编码器计次"><a href="#旋转编码器计次" class="headerlink" title="旋转编码器计次"></a>旋转编码器计次</h2><p>电路连接图如下<br><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E4%B8%AD%E6%96%AD%E7%AC%94%E8%AE%B0/%E6%97%8B%E8%BD%AC%E7%BC%96%E7%A0%81%E5%99%A8%E8%AE%A1%E6%AC%A1.jpg" srcset="/img/loading.gif" lazyload alt="面包板接线图"><br>与 <a target="_blank" rel="noopener" href="https://space.bilibili.com/383400717">江科大自化协</a> 的例子有所不同，我这里写的Encoder只写了个计数，并没有单位时间内计次功能。<br>上代码！</p>
+<blockquote>
+<p>main.c</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;stm32f10x.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;OLED.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;Encoder.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;delay.h&quot;</span></span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>&#123;<br>	OLED_Init();<br>	Encoder_Init();<br>	<span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>)&#123;<br>		OLED_ShowNum(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, Encoder_Get());<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Encoder.h</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;stm32f10x.h&quot;</span></span><br><br><span class="hljs-type">int16_t</span> Encoder_Count;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">Encoder_Init</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>&#123;<br>		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);<br>	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);			<span class="hljs-comment">// AFIO属于APB2. 开启AFIO的时钟</span><br>	<span class="hljs-comment">// EXTI和NVIC的时钟一直开着</span><br>	<span class="hljs-comment">// RCC位于内核之外，管不到NVIC</span><br>	GPIO_InitTypeDef GPIO_InitStructure;<br>	GPIO_InitStructure.GPIO+Mode = GPIO_Mode_IPU;<br>	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1;<br>	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;<br>	GPIO_Init(GPIOB, &amp;GPIO_InitStructure);<br>	<br>	GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource0);		<span class="hljs-comment">// PB0</span><br>	GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource1);		<span class="hljs-comment">// PB1</span><br>	<br>	EXTI_InitTypeDef EXTI_InitStructure;<br>	EXTI_InitStructure.EXTI_Line = EXTI_Line0 | EXTI_Line1;<br>	EXTI_InitStructure.EXTI_LineCmd = ENABLE;<br>	EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;<br>	EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;			<span class="hljs-comment">// 下降沿触发</span><br>	EXTI_Init(&amp;EXTI_InitStructure);<br>	<br>	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);					<span class="hljs-comment">// 注意：分组方式整个芯片只能用一种。最好放在main那里</span><br>	NVIC_InitTypeDef NVIC_InitStructure;<br>	NVIC_InitStructure.NVIC_IRQChannel = EXTI0_IRQn;				<span class="hljs-comment">// 选择中断通道</span><br>	NVIC_InitStructure.NVIC_IRQChanneCmd = ENABLE;					<span class="hljs-comment">// 中断通道是使能还是失能</span><br>	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = <span class="hljs-number">1</span>;		<span class="hljs-comment">// 抢占优先级</span><br>	NVIC_InitStructure.NVIC_IRQChannelSubPriority = <span class="hljs-number">1</span>;				<span class="hljs-comment">// 响应优先级</span><br>	NVIC_Init(&amp;NVIC_InitStructure);<br>	NVIC_InitStructure.NVIC_IRQChannel = EXTI1_IRQn;				<span class="hljs-comment">// 选择中断通道</span><br>	NVIC_InitStructure.NVIC_IRQChanneCmd = ENABLE;					<span class="hljs-comment">// 中断通道是使能还是失能</span><br>	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = <span class="hljs-number">1</span>;		<span class="hljs-comment">// 抢占优先级</span><br>	NVIC_InitStructure.NVIC_IRQChannelSubPriority = <span class="hljs-number">2</span>;				<span class="hljs-comment">// 响应优先级</span><br>	NVIC_Init(&amp;NVIC_InitStructure);<br>&#125;<br><br><span class="hljs-type">int16_t</span> <span class="hljs-title function_">Encoder_Get</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>&#123;<br>	<span class="hljs-keyword">return</span> Encoder_Count;<br>&#125;<br><br><span class="hljs-comment">// 中断函数</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">EXTI0_IREHandler</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>&#123;<br>	<span class="hljs-comment">// 只是让中断的模式固定所以判断一下</span><br>	<span class="hljs-keyword">if</span> (EXTI_GetITStatus(EXTI_Line0) == SET)&#123;<br>		<span class="hljs-keyword">if</span> (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_1) == <span class="hljs-number">0</span>)&#123;<br>			Encoder_Count--;<br>		&#125;<br>		EXTI_ClearITPendingBit(EXTI_Line0);<br>	&#125;<br>&#125;<br><span class="hljs-type">void</span> <span class="hljs-title function_">EXTI1_IREHandler</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>&#123;<br>	<span class="hljs-keyword">if</span> (EXTI_GetITStatus(EXTI_Line1) == SET)&#123;<br>		<span class="hljs-keyword">if</span> (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0) == <span class="hljs-number">0</span>)&#123;<br>			Encoder_Count++;<br>		&#125;<br>		EXTI_ClearITPendingBit(EXTI_Line1);<br>	&#125;<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+
+<h1 id="杂记"><a href="#杂记" class="headerlink" title="杂记"></a>杂记</h1><div class="note note-warning">
+            <p>中断里不要写耗时太长的代码</p>
+          </div>
+<div class="note note-warning">
+            <p>最好不要在中断函数和主函数调用相同的函数或者操作同一个硬件</p>
+          </div>
+<div class="note note-info">
+            <p>可以考虑：在终端中对变量进行操作，当中断返回时，对中断变量进行显示和操作</p>
+          </div>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="category-chain-item">嵌入式</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>
+      
+        <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">#嵌入式</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>stm32中断</div>
+      <div>https://jensentsts.github.io/2022/12/03/stm32中断的学习笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>舟泛四海</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年12月3日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2022年12月3日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/12/03/STM32%E5%B8%B8%E7%94%A8%E8%B5%84%E6%96%99/" title="STM32常用资料">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">STM32常用资料</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/11/27/%E4%B8%80%E4%B8%AA%E5%B0%8F%E6%80%BB%E7%BB%93%E5%91%80/" title="一个小总结呀">
+                        <span class="hidden-mobile">一个小总结呀</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"7UVT2Wn1SqeS4e8BL5kOHopx-gzGzoHsz","appKey":"dVH6ChWtZCsbOIW2v9PsTI3M","path":"window.location.pathname","placeholder":"φ(>ω<*) 评论发射！Biu~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
