@@ -1,0 +1,833 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="舟适三山">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="刘慈欣：“好的程序员不去造轮子。”刘慈欣：“我没说过这句话。”刘慈欣：“我说过这句话。”">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用Tweeny实现丝滑动效">
+<meta property="og:url" content="https://jensentsts.github.io/2022/12/21/%E7%94%A8Tweeny%E5%AE%9E%E7%8E%B0%E4%B8%9D%E6%BB%91%E5%8A%A8%E6%95%88/index.html">
+<meta property="og:site_name" content="(〃&#39;▽&#39;〃)">
+<meta property="og:description" content="刘慈欣：“好的程序员不去造轮子。”刘慈欣：“我没说过这句话。”刘慈欣：“我说过这句话。”">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jensentsts.github.io/img/%E7%94%A8Tweeny%E5%AE%9E%E7%8E%B0%E4%B8%9D%E6%BB%91%E5%8A%A8%E6%95%88.jpg">
+<meta property="article:published_time" content="2022-12-21T09:31:36.000Z">
+<meta property="article:modified_time" content="2022-12-21T12:12:30.366Z">
+<meta property="article:author" content="舟适三山">
+<meta property="article:tag" content="cpp">
+<meta property="article:tag" content="嵌入式">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jensentsts.github.io/img/%E7%94%A8Tweeny%E5%AE%9E%E7%8E%B0%E4%B8%9D%E6%BB%91%E5%8A%A8%E6%95%88.jpg">
+  
+  
+  
+  <title>用Tweeny实现丝滑动效 &gt; (〃&#39;▽&#39;〃)</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jensentsts.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>憨吃迷糊睡</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="用Tweeny实现丝滑动效"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-12-21 17:31" pubdate>
+          2022年12月21日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          40 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">用Tweeny实现丝滑动效</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年12月21日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>刘慈欣：“好的程序员不去造轮子。”<br>刘慈欣：“我没说过这句话。”<br>刘慈欣：“我说过这句话。”</p>
+<span id="more"></span>
+<p>说得简单一些……因为我不知道怎么说得专业些</p>
+<h1 id="Tweeny"><a href="#Tweeny" class="headerlink" title="Tweeny"></a>Tweeny</h1><p>简单来说，<code>Tweeny</code>可以用来存储对象<code>transition</code>属性的起始状态、末状态、过渡时间、过渡方式等。<br>我这里是为了单片机开发，在github上找了个<a target="_blank" rel="noopener" href="https://github.com/mobius3/tweeny">Tweeny的C++库</a>。</p>
+<h1 id="Download"><a href="#Download" class="headerlink" title="Download"></a>Download</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">git clone https://github.com/mobius3/tweeny.git<br></code></pre></td></tr></table></figure>
+
+<h1 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;tweeny/include/tweeny.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;windows.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">gotoxy</span><span class="hljs-params">(SHORT x, SHORT y)</span></span><br><span class="hljs-function"></span>&#123;<br>    COORD coord;<br>    coord.X = x;<br>    coord.Y = y;<br>    HANDLE h = <span class="hljs-built_in">GetStdHandle</span>(STD_OUTPUT_HANDLE);<br>    <span class="hljs-built_in">SetConsoleCursorPosition</span>(h, coord);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">// 从这里开始看，忽略 Sleep() 和 gotoxy()</span><br>    <span class="hljs-keyword">auto</span> twe = tweeny::<span class="hljs-built_in">from</span>(<span class="hljs-string">&#x27;H&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-string">&#x27;l&#x27;</span>, <span class="hljs-string">&#x27;l&#x27;</span>, <span class="hljs-string">&#x27;o&#x27;</span>).<span class="hljs-built_in">to</span>(<span class="hljs-string">&#x27;W&#x27;</span>, <span class="hljs-string">&#x27;o&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, <span class="hljs-string">&#x27;l&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>).<span class="hljs-built_in">during</span>(<span class="hljs-number">10</span>);<br>    cout &lt;&lt; <span class="hljs-string">&quot;Hello&quot;</span>;<br>    <span class="hljs-comment">/*for (char c : twe.step(0))</span><br><span class="hljs-comment">    &#123;</span><br><span class="hljs-comment">        cout &lt;&lt; c;</span><br><span class="hljs-comment">        Sleep(20);</span><br><span class="hljs-comment">    &#125;*/</span><br>    <span class="hljs-built_in">Sleep</span>(<span class="hljs-number">100</span>);         <span class="hljs-comment">// 花里胡哨</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; ++i)<br>    &#123;<br>        <span class="hljs-built_in">gotoxy</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>);   <span class="hljs-comment">// 花里胡哨</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">char</span> c : twe.<span class="hljs-built_in">step</span>(<span class="hljs-number">1</span>))<br>        &#123;<br>            cout &lt;&lt; c;<br>            <span class="hljs-built_in">Sleep</span>(<span class="hljs-number">20</span>);  <span class="hljs-comment">// 花里胡哨</span><br>        &#125;<br>        <span class="hljs-built_in">Sleep</span>(<span class="hljs-number">100</span>);     <span class="hljs-comment">// 花里胡哨</span><br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>在上面的代码中，我们实现了这样一个功能：</p>
+<ol>
+<li>输出<code>Hello</code></li>
+<li><code>Hello</code>中的每一个字母开始不停地变化</li>
+<li>最终，<code>Hello</code>变成了<code>World</code></li>
+</ol>
+<p>首先，我们创建了一个<code>tween</code>对象（它叫什么无所谓，auto就完事了_(:з」∠)_），并告诉他：这个过渡效果有5个元素，最开始分别是<code>&#39;H&#39; &#39;e&#39; &#39;l&#39; &#39;l&#39; &#39;o&#39;</code>，最终的值分别是<code>&#39;W&#39; &#39;o&#39; &#39;r&#39; &#39;l&#39; &#39;d&#39;</code>，整个过渡的过程使用<code>整数10</code>来度量。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">auto</span> twe = tweeny::<span class="hljs-built_in">from</span>(<span class="hljs-string">&#x27;H&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-string">&#x27;l&#x27;</span>, <span class="hljs-string">&#x27;l&#x27;</span>, <span class="hljs-string">&#x27;o&#x27;</span>).<span class="hljs-built_in">to</span>(<span class="hljs-string">&#x27;W&#x27;</span>, <span class="hljs-string">&#x27;o&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, <span class="hljs-string">&#x27;l&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>).<span class="hljs-built_in">during</span>(<span class="hljs-number">10</span>);<br></code></pre></td></tr></table></figure>
+<p>让我们跳过<code>cout&lt;&lt;</code>下面那段被注释掉的代码。<br><code>cout&lt;&lt;&quot;Hello&quot;</code>将<code>Hello</code>打印到了屏幕上。<br>接下来，我们希望通过<code>差值步进</code>的方式打印每一次步进后的结果。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span> (<span class="hljs-type">char</span> c : twe.<span class="hljs-built_in">step</span>(<span class="hljs-number">1</span>))<br>&#123;<br>    cout &lt;&lt; c;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这样的步进一共有10次，所以在外面加上一个循环</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; ++i)<br>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">char</span> c : twe.<span class="hljs-built_in">step</span>(<span class="hljs-number">1</span>))<br>    &#123;<br>        cout &lt;&lt; c;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>再搭配上<code>Sleep()</code>和<code>gotoxy()</code>，就能实现想要的效果啦。</p>
+<p>不过，通过<code>cout&lt;&lt;&quot;Hello&quot;</code>的方式实在是太奇怪了，所以我们可以选择每次步进为0，输出最开始的结果，也就是被注释掉的那段代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span> (<span class="hljs-type">char</span> c : twe.<span class="hljs-built_in">step</span>(<span class="hljs-number">0</span>))<br>&#123;<br>    cout &lt;&lt; c;<br>    <span class="hljs-built_in">Sleep</span>(<span class="hljs-number">20</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="Step-Further"><a href="#Step-Further" class="headerlink" title="Step Further"></a>Step Further</h1><h2 id="选择过渡函数"><a href="#选择过渡函数" class="headerlink" title="选择过渡函数"></a>选择过渡函数</h2><p>一个简单的线性函数可这样实现</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">linear</span><span class="hljs-params">(<span class="hljs-type">float</span> p, <span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> (b - a) * p + a;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>使用<code>via</code>将它添加到Tweeny对象</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">auto</span> twe = tweeny::<span class="hljs-built_in">from</span>(<span class="hljs-number">0</span>).<span class="hljs-built_in">to</span>(<span class="hljs-number">100</span>).<span class="hljs-built_in">during</span>(<span class="hljs-number">1000</span>).<span class="hljs-built_in">via</span>(linear);<br></code></pre></td></tr></table></figure>
+<p>Tweeny库提供了多种内置过渡函数，<del>但我也不知道从哪儿查看，应该是下面这个网站中的不少吧</del><br>好康的缓动曲线动画可在<a target="_blank" rel="noopener" href="http://easings.net/">http://easings.net</a>查看。</p>
+<h2 id="为每个元素单独设置属性"><a href="#为每个元素单独设置属性" class="headerlink" title="为每个元素单独设置属性"></a>为每个元素单独设置属性</h2><p>你只需要在函数里分别一一对应地给出。如果每个元素的属性值都相同，你可以只写一个值。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">auto</span> twe1 = tweeny::<span class="hljs-built_in">from</span>(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">100</span>).<span class="hljs-built_in">to</span>(<span class="hljs-number">10</span>, <span class="hljs-number">100</span>, <span class="hljs-number">1000</span>).<span class="hljs-built_in">during</span>(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>).<span class="hljs-built_in">via</span>(easing::exponentialIn, easing::exponentialInOut, easing::backOut);<br><span class="hljs-keyword">auto</span> twe2 = tweeny::<span class="hljs-built_in">from</span>(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">100</span>).<span class="hljs-built_in">to</span>(<span class="hljs-number">10</span>, <span class="hljs-number">100</span>, <span class="hljs-number">1000</span>).<span class="hljs-built_in">during</span>(<span class="hljs-number">100</span>).<span class="hljs-built_in">via</span>(easing::exponentialInOut);<br></code></pre></td></tr></table></figure>
+
+<h2 id="添加多段过渡"><a href="#添加多段过渡" class="headerlink" title="添加多段过渡"></a>添加多段过渡</h2><p>多段过度（multipoint）</p>
+<blockquote>
+<p>To allow for that, each call to tween::to adds a new tweening point. Calls to tween::during and tween::via always refer to the last added point:</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">auto</span> tween = tweeny::<span class="hljs-built_in">from</span>(<span class="hljs-number">0</span>)<br>              .<span class="hljs-built_in">to</span>(<span class="hljs-number">100</span>).<span class="hljs-built_in">during</span>(<span class="hljs-number">500</span>) <span class="hljs-comment">// 0 to 100 during 500</span><br>              .<span class="hljs-built_in">to</span>(<span class="hljs-number">200</span>).<span class="hljs-built_in">during</span>(<span class="hljs-number">100</span>).<span class="hljs-built_in">via</span>(easing::circularOut); <span class="hljs-comment">// 100 to 200 during 100 via circularOut</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="stepping-amp-seeking-amp-jumping"><a href="#stepping-amp-seeking-amp-jumping" class="headerlink" title="stepping &amp; seeking &amp; jumping"></a>stepping &amp; seeking &amp; jumping</h2><h3 id="step"><a href="#step" class="headerlink" title="step"></a>step</h3><p>就像刚才演示的那样。</p>
+<blockquote>
+<p> Passing a integral quantity (integers) to tween::step will step it in duration units. Passing a float value will step it by a percentage (ranging from 0.0f to 1.0f).</p>
+</blockquote>
+<h4 id="后撤步"><a href="#后撤步" class="headerlink" title="后撤步"></a>后撤步</h4><p><del>后撤步，7777</del><br>使用<code>tween::backward</code></p>
+<h4 id="前进步"><a href="#前进步" class="headerlink" title="前进步"></a>前进步</h4><p>使用<code>tween:forward</code></p>
+<h3 id="seek"><a href="#seek" class="headerlink" title="seek"></a>seek</h3><p>让你跳转到任意你想到达的插值处</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">auto</span> tween = tweeny::from(<span class="hljs-number">0</span>).to(<span class="hljs-number">100</span>).during(<span class="hljs-number">1000</span>);<br><span class="hljs-attribute">tween</span>.seek(<span class="hljs-number">0</span>.<span class="hljs-number">5</span>f);<br></code></pre></td></tr></table></figure>
+
+<h3 id="jump"><a href="#jump" class="headerlink" title="jump"></a>jump</h3><p>当你使用了多段过度（multipoint），jump可以让你跳转到任意关键点（specific tween point）上</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">auto</span> tween = tweeny::<span class="hljs-built_in">from</span>(<span class="hljs-number">0</span>).<span class="hljs-built_in">to</span>(<span class="hljs-number">100</span>).<span class="hljs-built_in">during</span>(<span class="hljs-number">100</span>).<span class="hljs-built_in">to</span>(<span class="hljs-number">200</span>).<span class="hljs-built_in">during</span>(<span class="hljs-number">100</span>);<br>tween.<span class="hljs-built_in">jump</span>(<span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
+
+<h2 id="返回值说明"><a href="#返回值说明" class="headerlink" title="返回值说明"></a>返回值说明</h2><p><code>tweeny::step()</code>、<code>tweeny::seek()</code>、<code>tweeny::jump()</code>都有返回值。</p>
+<ul>
+<li>如果你用的是单值（single value），那么它直接该返回什么就返回什么</li>
+<li>如果有多个同类型的值（multiple values of the same type），那么它会返回一个<code>std::array</code>，例如<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">auto</span> tween = tweeny::<span class="hljs-built_in">from</span>(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>).<span class="hljs-built_in">to</span>(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>).<span class="hljs-built_in">during</span>(<span class="hljs-number">100</span>);<br>std::array&lt;<span class="hljs-type">int</span>, 2&gt; v = tween.<span class="hljs-built_in">step</span>(<span class="hljs-number">10</span>);<br></code></pre></td></tr></table></figure></li>
+<li>如果是不同的类型（multiple types），那么它会安徽一个<code>std::tuple</code>，例如<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">auto</span> tween = tweeny::<span class="hljs-built_in">from</span>(<span class="hljs-number">0</span>, <span class="hljs-number">1.0f</span>).<span class="hljs-built_in">to</span>(<span class="hljs-number">2</span>, <span class="hljs-number">3.0f</span>).<span class="hljs-built_in">during</span>(<span class="hljs-number">100</span>);<br>std::tuple&lt;<span class="hljs-type">int</span>, <span class="hljs-type">float</span>&gt; v = tween.<span class="hljs-built_in">step</span>(<span class="hljs-number">10</span>);<br></code></pre></td></tr></table></figure></li>
+</ul>
+<p>总而言之，如果是多个元素，那么它的返回值一定可迭代。</p>
+<h1 id="Callbacks"><a href="#Callbacks" class="headerlink" title="Callbacks"></a>Callbacks</h1><p>Tweeny允许用户为<code>step</code>添加回调函数（Callbacks），为特殊点配置可运行的程序。比如，当你播放视频时想要自动跳过片头片尾。<br>回调函数有三种形式：</p>
+<ul>
+<li>如果既需要当前值，又需要操控tween对象<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">stepped</span><span class="hljs-params">(tween&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; &amp; t, <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span></span>;<br><span class="hljs-keyword">auto</span> tween = tweeny::<span class="hljs-built_in">from</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>).<span class="hljs-built_in">to</span>(<span class="hljs-number">100</span>, <span class="hljs-number">200</span>).<span class="hljs-built_in">during</span>(<span class="hljs-number">100</span>).<span class="hljs-built_in">onStep</span>(stepped);<br></code></pre></td></tr></table></figure></li>
+<li>如果只需要操控tween<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">stepped</span><span class="hljs-params">(tween&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; &amp; t)</span></span>;<br><span class="hljs-keyword">auto</span> tween = tweeny::<span class="hljs-built_in">from</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>).<span class="hljs-built_in">to</span>(<span class="hljs-number">100</span>, <span class="hljs-number">200</span>).<span class="hljs-built_in">during</span>(<span class="hljs-number">100</span>).<span class="hljs-built_in">onStep</span>(stepped);<br></code></pre></td></tr></table></figure></li>
+<li>如果只需要获取当前值<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">stepped</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span></span>;<br><span class="hljs-keyword">auto</span> tween = tweeny::<span class="hljs-built_in">from</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>).<span class="hljs-built_in">to</span>(<span class="hljs-number">100</span>, <span class="hljs-number">200</span>).<span class="hljs-built_in">during</span>(<span class="hljs-number">100</span>).<span class="hljs-built_in">onStep</span>(stepped);<br></code></pre></td></tr></table></figure>
+回调函数的返回类型通常是布尔型，若返回true，则该函数将从回调函数表中移除(callback list)；若返回false，则保留在队列(queue)中。（我也不知道为什么是队列(queue)，上边没提这事儿，估计和“回调函数列表”是一回事儿）<blockquote>
+<p> The return type of a callback is always boolean. If it returns true, it will be <strong>dismissed</strong> and removed from the callback list. Returning false keeps the callback in the queue.<br>例如：</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">stepped</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span></span><br><span class="hljs-function"></span>&#123;<br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;x: %d, y: %d\n&quot;</span>, x, y);<br>  <span class="hljs-keyword">if</span> (x == y)<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><span class="hljs-keyword">auto</span> tween = tweeny::<span class="hljs-built_in">from</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>).<span class="hljs-built_in">to</span>(<span class="hljs-number">100</span>, <span class="hljs-number">200</span>).<span class="hljs-built_in">during</span>(<span class="hljs-number">100</span>).<span class="hljs-built_in">onStep</span>(stepped);<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="Any-functions-usable"><a href="#Any-functions-usable" class="headerlink" title="Any functions usable"></a>Any functions usable</h1><p>只要与接口一致，哪里来的回调函数都能用。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">ftor</span><br>&#123;<br>  <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span></span><br><span class="hljs-function">  </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>  &#125;<br>&#125;;<br><span class="hljs-keyword">auto</span> tween = tweeny::<span class="hljs-built_in">from</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>).<span class="hljs-built_in">to</span>(<span class="hljs-number">100</span>, <span class="hljs-number">200</span>).<span class="hljs-built_in">during</span>(<span class="hljs-number">100</span>);<br>tween.<span class="hljs-built_in">onStep</span>([](<span class="hljs-type">int</span>, <span class="hljs-type">int</span>) &#123; <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; &#125;); <span class="hljs-comment">// lambdas</span><br>tween.<span class="hljs-built_in">onStep</span>(<span class="hljs-built_in">ftor</span>()); <span class="hljs-comment">// functors</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="Final"><a href="#Final" class="headerlink" title="Final"></a>Final</h1><blockquote>
+<p>I hope you have fun using Tweeny.</p>
+</blockquote>
+<p>附议。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="category-chain-item">嵌入式</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/cpp/">#cpp</a>
+      
+        <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">#嵌入式</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>用Tweeny实现丝滑动效</div>
+      <div>https://jensentsts.github.io/2022/12/21/用Tweeny实现丝滑动效/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>舟适三山</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年12月21日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2022年12月21日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/12/21/doxygen%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83/" title="doxygen注释规范">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">doxygen注释规范</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/12/04/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD2/" title="STM32定时中断2">
+                        <span class="hidden-mobile">STM32定时中断2</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"7UVT2Wn1SqeS4e8BL5kOHopx-gzGzoHsz","appKey":"dVH6ChWtZCsbOIW2v9PsTI3M","path":"window.location.pathname","placeholder":"φ(>ω<*)：雁过留声，雪泥鸿迹","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

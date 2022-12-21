@@ -16,25 +16,25 @@
   <meta name="author" content="舟适三山">
   <meta name="keywords" content="">
   
-    <meta name="description" content="这是一个控制台项目，一切设计都要从字符角度考虑。这次项目我终于敢放下顾虑，大胆解决问题了，其价值足以我写一篇博客来记录俄罗斯方块不是什么很难的东西，也没人教过我怎么去构建这个项目。说明这个项目是真的简单。">
+    <meta name="description" content="跟着 江科大自化协 走到了TIM输出比较">
 <meta property="og:type" content="article">
-<meta property="og:title" content="控制台俄罗斯方块">
-<meta property="og:url" content="https://jensentsts.github.io/2021/08/15/%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/index.html">
+<meta property="og:title" content="STM32时钟中断3">
+<meta property="og:url" content="https://jensentsts.github.io/2022/12/07/STM32%E6%97%B6%E9%92%9F%E4%B8%AD%E6%96%AD3/index.html">
 <meta property="og:site_name" content="(〃&#39;▽&#39;〃)">
-<meta property="og:description" content="这是一个控制台项目，一切设计都要从字符角度考虑。这次项目我终于敢放下顾虑，大胆解决问题了，其价值足以我写一篇博客来记录俄罗斯方块不是什么很难的东西，也没人教过我怎么去构建这个项目。说明这个项目是真的简单。">
+<meta property="og:description" content="跟着 江科大自化协 走到了TIM输出比较">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://jensentsts.github.io/img/%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97.jpg">
-<meta property="article:published_time" content="2021-08-15T14:15:48.000Z">
-<meta property="article:modified_time" content="2022-09-20T11:00:31.029Z">
+<meta property="og:image" content="https://jensentsts.github.io/img/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD3.png">
+<meta property="article:published_time" content="2022-12-07T11:00:12.000Z">
+<meta property="article:modified_time" content="2022-12-11T08:12:43.677Z">
 <meta property="article:author" content="舟适三山">
-<meta property="article:tag" content="cpp">
-<meta property="article:tag" content="开发">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="嵌入式">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://jensentsts.github.io/img/%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97.jpg">
+<meta name="twitter:image" content="https://jensentsts.github.io/img/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD3.png">
   
   
   
-  <title>控制台俄罗斯方块 &gt; (〃&#39;▽&#39;〃)</title>
+  <title>STM32时钟中断3 &gt; (〃&#39;▽&#39;〃)</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,13 +205,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/banner.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD3.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="控制台俄罗斯方块"></span>
+            <span id="subtitle" data-typed-text="STM32时钟中断3"></span>
           
         </div>
 
@@ -222,8 +222,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2021-08-15 22:15" pubdate>
-          2021年8月15日 晚上
+        <time datetime="2022-12-07 19:00" pubdate>
+          2022年12月7日 晚上
         </time>
       </span>
     
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k 字
+          522 字
         
       </span>
     
@@ -245,7 +245,7 @@
         
         
         
-          20 分钟
+          5 分钟
         
       </span>
     
@@ -283,12 +283,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">控制台俄罗斯方块</h1>
+            <h1 style="display: none">STM32时钟中断3</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年9月20日 晚上
+                    本文最后更新于：2022年12月11日 下午
                   
                 
               </p>
@@ -296,54 +296,26 @@
             
               <div class="markdown-body">
                 
-                <p>这是一个控制台项目，一切设计都要从字符角度考虑。<br>这次项目我终于敢放下顾虑，大胆解决问题了，其价值足以我写一篇博客来记录<br>俄罗斯方块不是什么很难的东西，也没人教过我怎么去构建这个项目。说明这个项目是真的简单。  </p>
+                <p>跟着 <a target="_blank" rel="noopener" href="https://space.bilibili.com/383400717">江科大自化协</a> 走到了<strong>TIM输出比较</strong></p>
 <span id="more"></span>
-<p>这个项目构思不是一瞬间完成的，是先有总的思路，然后考虑某个部分的内容，再接着去做其细节、写成代码，常常因为出现前面考虑不到而去修改前面的东西的情况。看来这种修改是稀松的，不用担心去修改前面的代码，<br>这种修改是一种进步，不用担心不用怕。<br>那咱就挑点重点写写吧<br><img src="https://img0.baidu.com/it/u=1233268571,2245711054&fm=26&fmt=auto&gp=0.jpg" srcset="/img/loading.gif" lazyload alt="Console Tetris.png"></p>
-<h2 id="阅前提示"><a href="#阅前提示" class="headerlink" title="阅前提示"></a>阅前提示</h2><p>建议先编译看看效果然后再来读博客。<a target="_blank" rel="noopener" href="https://github.com/jensentsts/-/blob/main/Console%20Tetris.cpp">代码链接</a><br>（还有很多需要优化的地方……）  </p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="总框架"><a href="#总框架" class="headerlink" title="总框架"></a>总框架</h3><blockquote>
-<p><code>void gameStart()</code></p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs Fake++">初始化<br>无脑死循环：<br>    处理键盘事件<br>	更新游戏内的各种数据<br>	unblockedSleep()<br>	写入渲染器的缓冲区<br>	渲染器渲染<br></code></pre></td></tr></table></figure>
 
-<p>然后想到这个死循环有停下俩的时候，那就是：游戏失败或者是玩家退出，所以又加上了<code>gameOver</code>和<code>gameExit</code>这俩控制变量，然后在循环之后加上了例如分数记录之类的东西</p>
-<h3 id="贴图实现"><a href="#贴图实现" class="headerlink" title="贴图实现"></a>贴图实现</h3><p>实际上我以前都觉得贴图应该存在一个二维数组里面，但这次我却明白贴图还有多种存储方式。比如我能把一个”山“样的下落物存储在一个一维数组里，把它的贴图当作一个矩形，记录他的宽度，然后一排一排地解析。  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Fake++">降维打击前：<br> # <br>###<br>降维打击之后：<br># ### width:3 height:2<br></code></pre></td></tr></table></figure>
-
-<p>大概是我第一次在显示这个问题上”活脑筋“，其价值足以我写一篇博客来记录  </p>
-<h3 id="双缓冲渲染"><a href="#双缓冲渲染" class="headerlink" title="双缓冲渲染"></a>双缓冲渲染</h3><p>我把双缓冲渲染改成了三个部分：绘制（输出画面）、写入Buffer、Buffer更新<br>以前我会顾虑：到底在哪里使用双缓冲？<br>我突然就敢放下这个顾虑：”只在游戏部分使用不就行了，其他地方根本就不需要双缓冲。“  </p>
-<h4 id="绘制（输出画面）"><a href="#绘制（输出画面）" class="headerlink" title="绘制（输出画面）"></a>绘制（输出画面）</h4><blockquote>
-<p><code>void render()</code></p>
-</blockquote>
-<p>比较用于绘制的Buffer（<code>renderBuffer[DRAWING]</code>）和显示在屏幕上的信息（<code>renderBuffer[SHOWING]</code>），然后到相应的位置去输出不同的部分。用<code>gotoxy()</code>可以解决调用<code>system(&#39;cls&#39;)</code>带来的闪屏问题。</p>
-<h4 id="写入Buffer"><a href="#写入Buffer" class="headerlink" title="写入Buffer"></a>写入Buffer</h4><blockquote>
-<p><code>void renderDraw()</code></p>
-</blockquote>
-<p>这次把所有的绘制都封装到了一个函数<code>renderDraw()</code>里，以前的时候我总是会顾虑”逻辑运算完成了，在哪里绘制啊？？？？？？“。现在我通过gameStart()函数里的总流程，实现了贴图绘制的一个封装，就不用担心”这里是一个绘制，那里是一个绘制“导致混乱的问题、避免在这个问题上继续纠结了。<br><code>renderDraw()</code>会在(dropX,dropY)解析下落物的贴图，并写入<code>renderBuffer[DRAWING]</code>，然后把那些已经固定下来的方块一一对应绘制进buffer</p>
-<h4 id="Buffer更新"><a href="#Buffer更新" class="headerlink" title="Buffer更新"></a>Buffer更新</h4><blockquote>
-<p><code>void renderFresh()</code></p>
-</blockquote>
-<p>比较两个buffer[]，然后把旧的推进新的里去。</p>
-<h3 id="选择选项"><a href="#选择选项" class="headerlink" title="选择选项"></a>选择选项</h3><blockquote>
-<p><code>int makeChoice(char**, int[, char*])</code>函数  </p>
-</blockquote>
-<p>如果直接把做选择这个事情封闭起来，那么其它部分代码就不好实现，所以需要让makeChoice()有一个返回值，便于信息传递，而不是简简单单的去显示个动画。<br>首先，肯定要有个变量<code>choice</code>来记录选择……<br>做选择时会有多个选项，每个选项前都要有其被选中的标志，按下回车键确定，因此采用了分行输出每个选项，每个选项前留出空白，在空白区域用<code>-&gt;</code>表示这是当前选中的选项，以<code>-&gt;</code>的左右移动为其动画效果美化纯文字的界面。<br>所以首先要显示每个选项并留出空白  </p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; _amo; ++i)<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;   %s\n&quot;</span>, _choice[i]);<br></code></pre></td></tr></table></figure>
-<p>然后就是考虑动效了。既然<code>-&gt;</code>要上下移动和左右移动——尽管不会同时进行——那么我们就得去确定它的移动坐标变化范围。显然该用WindowsAPI获取选项输出后的光标位置。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">HANDLE h = <span class="hljs-built_in">GetStdHandle</span>(STD_OUTPUT_HANDLE);<br>CONSOLE_SCREEN_BUFFER_INFO pos;<br><span class="hljs-built_in">GetConsoleScreenBufferInfo</span>(h, &amp;pos);<br></code></pre></td></tr></table></figure>
-<p>简单把<code>-&gt;</code>输出到相应位置十分简单，这里就不讲了。我们直接考虑动效的几个步骤：</p>
-<ol>
-<li>清空旧的绘制图案  </li>
-<li>绘制图案</li>
-</ol>
-<p>清空旧的绘制图案，有如下情况  </p>
+<h1 id="英语课"><a href="#英语课" class="headerlink" title="英语课"></a>英语课</h1><p>这些缩写很常见</p>
 <ul>
-<li>用户改变了选中，旧的<code>-&gt;</code>要清除  </li>
-<li><code>-&gt;</code>移动了，原来位置上的不能再显示了</li>
+<li><strong>OC</strong>：Output Compare，输出比较</li>
+<li><strong>IC</strong>：Input Compare，输入捕获</li>
+<li><strong>CC</strong>：Captuer&#x2F;Compare，输入捕获和输出比较的单元</li>
+<li><strong>R</strong>：Register，寄存器</li>
+<li><strong>PWM</strong>：Pluse Width Modulation，脉冲宽度调制</li>
 </ul>
-<p>考虑到控制台覆盖先前字符的特性，<code>-&gt;</code>自动移动可以由新的图案直接输出覆盖，而用户改变选中，则需要我们把光标放到相应位置并输出足够的空格。当前动画播放到哪一帧，也需要去记录，就用<code>ani</code>吧。<br>而且，不管用户是否按键，我们都要去更新<code>-&gt;</code>的动画。所以我们不能阻塞进程并获取按键信息，<code>conio.h</code>的<code>kbhit()</code>以及我写的伪非阻塞Sleep<code>unblockedSleep()</code>就派上用场了。  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs Fake++">if kbhit() == 1:<br>    光标移动<br>	覆盖旧-&gt;（无论按什么键什么都去覆盖一下，是为了代neng码tou简ge便lan<br>	判断按键<br>		按w：改变choice<br>		按s：改变choice<br>		按Enter：return choice<br>光标移动<br>在旧-&gt;上直接覆盖当前的帧的图案<br>unblockedSleep();	// 这样能保证延时时间或对用户按键”随叫随到“的相应<br>ani++	<br></code></pre></td></tr></table></figure>
-<p>后来在Esc暂停菜单里我用<code>makeChoice()</code>来实现菜单选项，就又在里面加了个选择后”隐藏“菜单的功能，于是又在按下Enter键后的代码里加上了，让<code>makeChoice</code>自己清除自己的的代码<br>一开始考虑的设计是如<code> &gt;Start!</code>的样式，但是测试之后发现不如<code> -&gt;Start!</code>好康，于是就改成了这个  </p>
-
+<p>它们还会形成一些组合，比如<code>CCR</code>，计时器里的输入输出比较计数寄存器</p>
+<h1 id="TIM输出比较"><a href="#TIM输出比较" class="headerlink" title="TIM输出比较"></a>TIM输出比较</h1><p>主要是用来输出PWM波形，从而驱动电机运行</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>通过比较CNT与CCR寄存器的值的关系，来对输出电平进行置1、置0或翻转的操作，用于输出一定频率和占空比的PWM波形<br>每个高级定时器和通用定时器都有4个输出比较通道<br>高级定时器的前3个通道拥有死区生成和互补输出的功能<br>基本定时器没有OC的功能<br>对于高级计时器和通用计时器，它们有多个CCR，但共用同一个CNT。</p>
+<h2 id="电路分析"><a href="#电路分析" class="headerlink" title="电路分析"></a>电路分析</h2><ul>
+<li>当使用输入捕获时，它就是捕获寄存器</li>
+<li>当使用输出比较时，它就是比较寄存器</li>
+</ul>
+<p>在输出比较时，它会比较CNT与CCR的值<br>CNT按设定的方式自增，CCR是我们给定的值。当CCR与CNT满足某种关系（设定）时，输出1或者0<br>给CC1P写0，输出信号就不翻转；给CC1P写1，输出信号就会翻转</p>
+<h1 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h1><h2 id="LED呼吸灯"><a href="#LED呼吸灯" class="headerlink" title="LED呼吸灯"></a>LED呼吸灯</h2><h2 id="驱动舵机"><a href="#驱动舵机" class="headerlink" title="驱动舵机"></a>驱动舵机</h2><h2 id="驱动直流电机"><a href="#驱动直流电机" class="headerlink" title="驱动直流电机"></a>驱动直流电机</h2>
                 
               </div>
             
@@ -351,13 +323,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="category-chain-item">嵌入式</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/cpp/">#cpp</a>
+        <a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>
       
-        <a href="/tags/%E5%BC%80%E5%8F%91/">#开发</a>
+        <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">#嵌入式</a>
       
     </div>
   
@@ -369,8 +362,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>控制台俄罗斯方块</div>
-      <div>https://jensentsts.github.io/2021/08/15/控制台俄罗斯方块/</div>
+      <div>STM32时钟中断3</div>
+      <div>https://jensentsts.github.io/2022/12/07/STM32时钟中断3/</div>
     </div>
     <div class="license-meta">
       
@@ -382,13 +375,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2021年8月15日</div>
+          <div>2022年12月7日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年9月20日</div>
+          <div>2022年12月11日</div>
         </div>
       
       
@@ -426,29 +419,6 @@
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2021/08/16/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="python学习笔记">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">python学习笔记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2021/07/20/%E5%B0%8F%E5%A3%B6%E6%9C%AC%E7%BA%AA/" title="小壶本纪">
-                        <span class="hidden-mobile">小壶本纪</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
               
             </div>
 
@@ -524,6 +494,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -717,6 +693,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
