@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>STM32USART</title>
+    <link href="/2022/12/28/STM32USART/"/>
+    <url>/2022/12/28/STM32USART/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>嵌入式</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>笔记</tag>
+      
+      <tag>嵌入式</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>STM32DMA</title>
     <link href="/2022/12/22/STM32DMA/"/>
     <url>/2022/12/22/STM32DMA/</url>
