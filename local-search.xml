@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>stm32硬件i2c</title>
+    <link href="/2022/12/28/stm32%E7%A1%AC%E4%BB%B6i2c/"/>
+    <url>/2022/12/28/stm32%E7%A1%AC%E4%BB%B6i2c/</url>
+    
+    <content type="html"><![CDATA[<p>I2C禁止输出强上拉的电平，采用外置弱上拉电阻加开漏输出的电路结构，外置上拉电阻阻值一般为4.7kΩ左右。<br>按引脚定义用相应的引脚就好。<br>OLED输出的一种优化方案：<br>原来的刷新屏幕：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">OLED_Refresh</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span></span>&#123;<br><span class="hljs-type">uint8_t</span> i, j;<br><span class="hljs-type">uint8_t</span> OLED_BufferUpdFlag = OLED_BufferUpdLagFlag | OLED_BufferLineUpdFlag;<br><span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">8</span>; ++j)&#123;<br><span class="hljs-keyword">if</span> (OLED_BufferUpdFlag &amp; <span class="hljs-number">1</span>)&#123;<br><span class="hljs-built_in">OLED_SetCursor</span>(<span class="hljs-number">0</span>, j);<br><span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">128</span>; ++i)&#123;<br><span class="hljs-built_in">OLED_WriteData</span>(OLED_Buffer[i][j]);<br>OLED_Buffer[i][j] = <span class="hljs-number">0</span>;<br>&#125;<br>&#125;<br>OLED_BufferUpdFlag &gt;&gt;= <span class="hljs-number">1</span>;<br>&#125;<br>OLED_BufferUpdLagFlag = OLED_BufferLineUpdFlag;<br>&#125;<br></code></pre></td></tr></table></figure><p>虽然有UpdFlag的优化，但是经过测试，它的最高帧率只能达到37fps左右。问题出在哪儿呢？问题就出在OLED_WriteData反复开始结束通讯消耗了大量无意义资源。<br>优化后，变成了</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">OLED_Refresh</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span></span>&#123;<br><span class="hljs-type">uint8_t</span> i, j;<br><span class="hljs-type">uint8_t</span> OLED_BufferUpdFlag = OLED_BufferUpdLagFlag | OLED_BufferLineUpdFlag;<br><span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">8</span>; ++j)&#123;<br><span class="hljs-keyword">if</span> (OLED_BufferUpdFlag &amp; <span class="hljs-number">1</span>)&#123;<br><span class="hljs-built_in">OLED_SetCursor</span>(<span class="hljs-number">0</span>, j);<br><span class="hljs-built_in">OLED_I2C_Start</span>();<br><span class="hljs-built_in">OLED_I2C_SendByte</span>(<span class="hljs-number">0x78</span>);<span class="hljs-comment">// 从机地址</span><br><span class="hljs-built_in">OLED_I2C_SendByte</span>(<span class="hljs-number">0x40</span>);<span class="hljs-comment">// 写数据</span><br><span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">128</span>; ++i)&#123;<br><span class="hljs-built_in">OLED_I2C_SendByte</span>(OLED_Buffer[i][j]);<br>OLED_Buffer[i][j] = <span class="hljs-number">0</span>;<br>&#125;<br>&#125;<br><span class="hljs-built_in">OLED_I2C_Stop</span>();<br>OLED_BufferUpdFlag &gt;&gt;= <span class="hljs-number">1</span>;<br>&#125;<br>OLED_BufferUpdLagFlag = OLED_BufferLineUpdFlag;<br>&#125;<br></code></pre></td></tr></table></figure><p>虽然看上去不如之前的好看，但是它效率极高——直接达到了110fps！<br>但是！当我改用硬件I2C，它的效率不增反降……我先找找原因</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>嵌入式</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>嵌入式</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>STM32USART</title>
     <link href="/2022/12/28/STM32USART/"/>
     <url>/2022/12/28/STM32USART/</url>
