@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://jensentsts.github.io/images/favicon.ico">
 <meta property="article:published_time" content="2022-12-03T11:55:11.000Z">
-<meta property="article:modified_time" content="2022-12-21T09:35:16.172Z">
+<meta property="article:modified_time" content="2022-12-30T14:21:33.970Z">
 <meta property="article:author" content="舟适三山">
 <meta property="article:tag" content="嵌入式">
 <meta property="article:tag" content="长期更新">
@@ -133,7 +133,7 @@
                                                 <a href="/about/">
                                             
                                                 
-                                                    <i class="fa fa-paw"></i>
+                                                    <i class="fa fa-paper-plane"></i>
                                                 
                                                 关于我
                                             </a>
@@ -160,16 +160,16 @@
                                                         </li>
                                                     
                                                         <li>
-                                                            <a target="_blank" rel="noopener" href="https://candinya.com">
+                                                            <a target="_blank" rel="noopener" href="https://kr-demo.candinya.com/posts/Kratos-Rebirth-Manual/">
                                                                 
-                                                                主题作者博客
+                                                                主题文档
                                                             </a>
                                                         </li>
                                                     
                                                         <li>
                                                             <a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth">
                                                                 
-                                                                主题项目链接
+                                                                主题项目
                                                             </a>
                                                         </li>
                                                     
@@ -235,7 +235,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        35
+                        676
                     
                     字
                 </li>
@@ -252,16 +252,103 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1671615316172"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1672410093970"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
             <hr />
-            <div itemprop="articleBody"><p>写一篇，方便查。</p>
-<span id="more"></span>
-<p>有的来自UP主 <a target="_blank" rel="noopener" href="https://space.bilibili.com/383400717">江科大自化协</a> 的课件。</p>
-<h1 id="GPIO"><a href="#GPIO" class="headerlink" title="GPIO"></a>GPIO</h1><p><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%B8%B8%E7%94%A8%E8%B5%84%E6%96%99/GPIO%E6%A8%A1%E5%BC%8F.png" alt="GPIO模式"><br><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%B8%B8%E7%94%A8%E8%B5%84%E6%96%99/%E6%B5%AE%E7%A9%BA%E3%80%81%E4%B8%8A%E6%8B%89%E3%80%81%E4%B8%8B%E6%8B%89%E8%BE%93%E5%85%A5.png" alt="浮空、上拉、下拉输入"><br><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%B8%B8%E7%94%A8%E8%B5%84%E6%96%99/%E5%A4%8D%E7%94%A8%E5%BC%80%E6%BC%8F%E3%80%81%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA.png" alt="复用开漏、推挽输出"><br><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%B8%B8%E7%94%A8%E8%B5%84%E6%96%99/%E5%BC%80%E6%BC%8F%E3%80%81%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA.png" alt="开漏、推挽输出"><br><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%B8%B8%E7%94%A8%E8%B5%84%E6%96%99/%E6%A8%A1%E6%8B%9F%E8%BE%93%E5%85%A5.png" alt="模拟输入"></p>
+            <div itemprop="articleBody"><p>写一篇，方便查。<br><span id="more"></span><br>有的来自UP主 <a target="_blank" rel="noopener" href="https://space.bilibili.com/383400717">江科大自化协</a> 的课件。</p>
+<h1 id="GPIO"><a href="#GPIO" class="headerlink" title="GPIO"></a>GPIO</h1><p><img src="/img/post/嵌入式/STM32常用资料/GPIO模式.png" alt="GPIO模式"><br><img src="/img/post/嵌入式/STM32常用资料/浮空、上拉、下拉输入.png" alt="浮空、上拉、下拉输入"><br><img src="/img/post/嵌入式/STM32常用资料/复用开漏、推挽输出.png" alt="复用开漏、推挽输出"><br><img src="/img/post/嵌入式/STM32常用资料/开漏、推挽输出.png" alt="开漏、推挽输出"><br><img src="/img/post/嵌入式/STM32常用资料/模拟输入.png" alt="模拟输入"></p>
+<h1 id="特殊引脚"><a href="#特殊引脚" class="headerlink" title="特殊引脚"></a>特殊引脚</h1><p>括号里的是重定义功能，括号外的是默认复用功能</p>
+<h2 id="USART"><a href="#USART" class="headerlink" title="USART"></a>USART</h2><p>USART1</p>
+<ul>
+<li>RTS: PA12</li>
+<li>CTS: RA11 </li>
+<li>TX: PA9  (PB6)</li>
+<li>RX: PA10 (PB7)</li>
+<li>CK: PA8</li>
+</ul>
+<p>USART2</p>
+<ul>
+<li>RTS: PA1</li>
+<li>CTS: PA0</li>
+<li>TX: PA2</li>
+<li>RX: PA3</li>
+<li>CK: PA4</li>
+</ul>
+<h2 id="SPI"><a href="#SPI" class="headerlink" title="SPI"></a>SPI</h2><p>SPI1</p>
+<ul>
+<li>NSS: PA4</li>
+<li>SCK: PA5</li>
+<li>MISO: PA6</li>
+<li>MOSI: PA7</li>
+</ul>
+<p>SPI2</p>
+<ul>
+<li>NSS: PB12</li>
+<li>SCK: PB13</li>
+<li>MISO: PB14</li>
+<li>MOSI: PB15</li>
+</ul>
+<h2 id="I2C"><a href="#I2C" class="headerlink" title="I2C"></a>I2C</h2><p>I2C1</p>
+<ul>
+<li>SCL: PB6 (PB8)</li>
+<li>SDA: PB7 (PB9)</li>
+</ul>
+<p>I2C2</p>
+<ul>
+<li>SCL: PB10</li>
+<li>SDA: PB11</li>
+</ul>
+<h2 id="CAN"><a href="#CAN" class="headerlink" title="CAN"></a>CAN</h2><ul>
+<li>RX: PA11 (PB8)</li>
+<li>TX: PA12 (PB9)</li>
+</ul>
+<h1 id="输出比较模式"><a href="#输出比较模式" class="headerlink" title="输出比较模式"></a>输出比较模式</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">模式</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">冻结</td>
+<td style="text-align:center">CNT=CCR时，REF保持为原状态</td>
+</tr>
+<tr>
+<td style="text-align:center">匹配时置有效电平</td>
+<td style="text-align:center">CNT=CCR时，REF置有效电平</td>
+</tr>
+<tr>
+<td style="text-align:center">匹配时置无效电平</td>
+<td style="text-align:center">CNT=CCR时，REF置无效电平</td>
+</tr>
+<tr>
+<td style="text-align:center">匹配时电平翻转</td>
+<td style="text-align:center">CNT=CCR时，REF电平翻转</td>
+</tr>
+<tr>
+<td style="text-align:center">强制为无效电平</td>
+<td style="text-align:center">CNT与CCR无效，REF强制为无效电平</td>
+</tr>
+<tr>
+<td style="text-align:center">强制为有效电平</td>
+<td style="text-align:center">CNT与CCR无效，REF强制为有效电平</td>
+</tr>
+<tr>
+<td style="text-align:center">PWM模式1</td>
+<td style="text-align:center">向上计数：CNT\<CCR时，REF置有效电平，CNT≥CCR时，REF置无效电平；向下计数：CNT\>CCR时，REF置无效电平，CNT≤CCR时，REF置有效电平</td>
+</tr>
+<tr>
+<td style="text-align:center">PWM模式2</td>
+<td style="text-align:center">向上计数：CNT\<CCR时，REF置无效电平，CNT≥CCR时，REF置有效电平；向下计数：CNT\>CCR时，REF置有效电平，CNT≤CCR时，REF置无效电平</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
         </div>
         
@@ -351,7 +438,7 @@
                     <a class="tag-none-link" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag">嵌入式</a>, <a class="tag-none-link" href="/tags/%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0/" rel="tag">长期更新</a>
                 </div>
                 <div class="pull-date">
-                    <time datetime="2022-12-21T09:35:16.172Z" itemprop="dateModified">最后编辑：2022-12-21</time>
+                    <time datetime="2022-12-30T14:21:33.970Z" itemprop="dateModified">最后编辑：2022-12-30</time>
                 </div>
             </div>
         </footer>
@@ -670,5 +757,20 @@
 <!-- Extra support for third-party plguins  -->
 
 
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>

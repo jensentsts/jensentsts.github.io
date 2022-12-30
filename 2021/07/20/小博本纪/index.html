@@ -132,7 +132,7 @@
                                                 <a href="/about/">
                                             
                                                 
-                                                    <i class="fa fa-paw"></i>
+                                                    <i class="fa fa-paper-plane"></i>
                                                 
                                                 关于我
                                             </a>
@@ -159,16 +159,16 @@
                                                         </li>
                                                     
                                                         <li>
-                                                            <a target="_blank" rel="noopener" href="https://candinya.com">
+                                                            <a target="_blank" rel="noopener" href="https://kr-demo.candinya.com/posts/Kratos-Rebirth-Manual/">
                                                                 
-                                                                主题作者博客
+                                                                主题文档
                                                             </a>
                                                         </li>
                                                     
                                                         <li>
                                                             <a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth">
                                                                 
-                                                                主题项目链接
+                                                                主题项目
                                                             </a>
                                                         </li>
                                                     
@@ -678,5 +678,20 @@
 <!-- Extra support for third-party plguins  -->
 
 
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>

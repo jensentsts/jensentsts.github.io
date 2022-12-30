@@ -16,16 +16,16 @@
   
     <meta name="keywords" content="" />
   
-  <meta name="description" content="水博客">
+  <meta name="description" content="浅写写代码注释规范">
 <meta property="og:type" content="article">
 <meta property="og:title" content="doxygen注释规范">
 <meta property="og:url" content="https://jensentsts.github.io/2022/12/21/doxygen%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83/index.html">
 <meta property="og:site_name" content="舟适三山">
-<meta property="og:description" content="水博客">
+<meta property="og:description" content="浅写写代码注释规范">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://jensentsts.github.io/images/favicon.ico">
 <meta property="article:published_time" content="2022-12-21T10:06:57.000Z">
-<meta property="article:modified_time" content="2022-12-21T11:02:18.830Z">
+<meta property="article:modified_time" content="2022-12-30T14:06:10.893Z">
 <meta property="article:author" content="舟适三山">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jensentsts.github.io/images/favicon.ico">
@@ -131,7 +131,7 @@
                                                 <a href="/about/">
                                             
                                                 
-                                                    <i class="fa fa-paw"></i>
+                                                    <i class="fa fa-paper-plane"></i>
                                                 
                                                 关于我
                                             </a>
@@ -158,16 +158,16 @@
                                                         </li>
                                                     
                                                         <li>
-                                                            <a target="_blank" rel="noopener" href="https://candinya.com">
+                                                            <a target="_blank" rel="noopener" href="https://kr-demo.candinya.com/posts/Kratos-Rebirth-Manual/">
                                                                 
-                                                                主题作者博客
+                                                                主题文档
                                                             </a>
                                                         </li>
                                                     
                                                         <li>
                                                             <a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth">
                                                                 
-                                                                主题项目链接
+                                                                主题项目
                                                             </a>
                                                         </li>
                                                     
@@ -233,7 +233,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        1031
+                        1029
                     
                     字
                 </li>
@@ -250,19 +250,16 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1671620538830"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1672409170893"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
             <hr />
-            <div itemprop="articleBody"><p>水博客</p>
-<span id="more"></span>
+            <div itemprop="articleBody"><p>浅写写代码注释规范<br><span id="more"></span></p>
 <h1 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h1><p>docxygen给定了一种对文档、函数等注释的基本格式，便于开发者和使用者更好地交代和理解模块、功能等的必要信息。<br>下面给出的模板中的关键字并不是固定的，需要哪个就写哪个。</p>
 <h2 id="头文件注释模板"><a href="#头文件注释模板" class="headerlink" title="头文件注释模板"></a>头文件注释模板</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief 摘要</span></span><br><span class="line"><span class="comment">  * @file 文件名</span></span><br><span class="line"><span class="comment">  * @author 作者</span></span><br><span class="line"><span class="comment">  * @version 版本</span></span><br><span class="line"><span class="comment">  * @date 文件日期</span></span><br><span class="line"><span class="comment">  * @note 注释</span></span><br><span class="line"><span class="comment">  * @since 从什么时候开始有这个东西的</span></span><br><span class="line"><span class="comment">  */</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="函数注释模板"><a href="#函数注释模板" class="headerlink" title="函数注释模板"></a>函数注释模板</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief 功能</span></span><br><span class="line"><span class="comment">  * @param args 解释参数</span></span><br><span class="line"><span class="comment">  * @param argv 解释参数</span></span><br><span class="line"><span class="comment">  * @return 返回值意义</span></span><br><span class="line"><span class="comment">  * @retval 1 成功</span></span><br><span class="line"><span class="comment">  * @retval 0 失败</span></span><br><span class="line"><span class="comment">  * @retval -1 异常</span></span><br><span class="line"><span class="comment">  * @warning 警告</span></span><br><span class="line"><span class="comment">  * @see 例如参考xxx函数</span></span><br><span class="line"><span class="comment">  * @note 注释</span></span><br><span class="line"><span class="comment">  */</span></span><br></pre></td></tr></table></figure>
-
 <h1 id="常见关键字"><a href="#常见关键字" class="headerlink" title="常见关键字"></a>常见关键字</h1><ul>
 <li>author 作者信息</li>
 <li>brief 对函数、模块等（其作用和功能的）简易说明</li>
@@ -278,7 +275,7 @@
 </ul>
 </li>
 <li>class 引用了某个类<ul>
-<li>@class Texture “inc&#x2F;texture.h”</li>
+<li>@class Texture “inc/texture.h”</li>
 </ul>
 </li>
 <li>return 返回值情况<ul>
@@ -374,7 +371,7 @@
             const twitterBase   = "https://twitter.com/intent/tweet?";
             const hostUrl       = "https://jensentsts.github.io/2022/12/21/doxygen%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83/";
             const title         = "「doxygen注释规范」";
-            const excerpt       = `水博客`;
+            const excerpt       = `浅写写代码注释规范`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -396,7 +393,7 @@
                     
                 </div>
                 <div class="pull-date">
-                    <time datetime="2022-12-21T11:02:18.830Z" itemprop="dateModified">最后编辑：2022-12-21</time>
+                    <time datetime="2022-12-30T14:06:10.893Z" itemprop="dateModified">最后编辑：2022-12-30</time>
                 </div>
             </div>
         </footer>
@@ -715,5 +712,20 @@
 <!-- Extra support for third-party plguins  -->
 
 
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
