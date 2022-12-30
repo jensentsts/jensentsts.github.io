@@ -1,780 +1,693 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+<html lang="zh-CN">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="/images/favicon.ico">
   
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="舟适三山">
-  <meta name="keywords" content="">
+  <title>浅谈微推，带你走进微推编辑的世界！ | 舟适三山</title>
+  <meta name="author" content="舟适三山" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
   
-    <meta name="description" content="在宣传部当了一年的打工人，记录一些经验以供参考。“道可道，非恒道”。知识与能力有限，恳请各位多多包涵。">
+    <meta name="keywords" content="杂谈" />
+  
+  <meta name="description" content="在宣传部当了一年的打工人，记录一些经验以供参考。“道可道，非恒道”。知识与能力有限，恳请各位多多包涵。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅谈微推，带你走进微推编辑的世界！">
 <meta property="og:url" content="https://jensentsts.github.io/2022/09/16/%E6%B5%85%E8%B0%88%E5%BE%AE%E6%8E%A8/index.html">
-<meta property="og:site_name" content="(〃&#39;▽&#39;〃)">
+<meta property="og:site_name" content="舟适三山">
 <meta property="og:description" content="在宣传部当了一年的打工人，记录一些经验以供参考。“道可道，非恒道”。知识与能力有限，恳请各位多多包涵。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://jensentsts.github.io/img/%E6%B5%85%E8%B0%88%E5%BE%AE%E6%8E%A8.jpg">
+<meta property="og:image" content="https://jensentsts.github.io/images/favicon.ico">
 <meta property="article:published_time" content="2022-09-16T07:34:36.000Z">
-<meta property="article:modified_time" content="2022-09-20T10:25:50.755Z">
+<meta property="article:modified_time" content="2022-12-30T11:31:37.675Z">
 <meta property="article:author" content="舟适三山">
 <meta property="article:tag" content="杂谈">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://jensentsts.github.io/img/%E6%B5%85%E8%B0%88%E5%BE%AE%E6%8E%A8.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jensentsts.github.io/images/favicon.ico">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
   
   
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
   
-  <title>浅谈微推，带你走进微推编辑的世界！ &gt; (〃&#39;▽&#39;〃)</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
   
-
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"jensentsts.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/search.xml"};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
   
-
-
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+      .kratos-cover.kratos-cover-2 {
+        background-image: url('/images/banner.webp');
+      }
+    
+    
+      @media(min-width:768px) {
+        body.custom-background {
+          background-image: url('/images/bg.webp');
+        }
+      }
+    
+  </style>
   
 <meta name="generator" content="Hexo 6.3.0"></head>
 
 
-<body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>憨吃迷糊睡</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/">
-                <i class="iconfont icon-link-fill"></i>
-                友链
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/banner.jpg') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="浅谈微推，带你走进微推编辑的世界！"></span>
-          
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li>
+                                            
+                                                <a href="/">
+                                            
+                                                
+                                                    <i class="fa fa-home"></i>
+                                                
+                                                首页
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a href="/archives/">
+                                            
+                                                
+                                                    <i class="fa fa-file"></i>
+                                                
+                                                档案馆
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a href="/friends/">
+                                            
+                                                
+                                                    <i class="fa fa-paw"></i>
+                                                
+                                                好伙伴
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a>
+                                            
+                                                
+                                                    <i class="fa fa-link"></i>
+                                                
+                                                链接
+                                            </a>
+                                            
+                                                <ul class="sub-menu">
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://www.bilibili.com/">
+                                                                
+                                                                bilibili
+                                                            </a>
+                                                        </li>
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://candinya.com">
+                                                                
+                                                                作者博客
+                                                            </a>
+                                                        </li>
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth">
+                                                                
+                                                                项目链接
+                                                            </a>
+                                                        </li>
+                                                    
+                                                </ul>
+                                            
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">舟适三山</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>舟适三山</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
         </div>
 
-        
-          
-  <div class="mt-3">
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-09-16 15:34" pubdate>
-          2022年9月16日 下午
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          1.7k 字
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          15 分钟
-        
-      </span>
-    
-
-    
-    
-  </div>
-
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
 
         
-      </div>
 
-      
-    </div>
-  </div>
-</div>
+            <section class="col-md-8">
 
-</div>
+        
 
-  </header>
-
-  <main>
+            <article itemscope itemtype="https://schema.org/Article">
     
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">浅谈微推，带你走进微推编辑的世界！</h1>
+    <link itemprop="mainEntityOfPage" href="https://jensentsts.github.io/2022/09/16/%E6%B5%85%E8%B0%88%E5%BE%AE%E6%8E%A8/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
             
-              <p class="note note-info">
-                
-                  
-                    本文最后更新于：2022年9月20日 晚上
-                  
-                
-              </p>
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">浅谈微推，带你走进微推编辑的世界！</h1>
             
             
-              <div class="markdown-body">
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2022-09-16T07:34:36.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2022-09-16</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">舟适三山</span>
+                </li>
+                <li>
+                    <i class="fa fa-edit"></i> 
+                    
+                    
+                        ~1.74K
+                    
+                    字
+                </li>
                 
-                <p>在宣传部当了一年的打工人，记录一些经验以供参考。“道可道，非恒道”。知识与能力有限，恳请各位多多包涵。</p>
+                    <li id="/2022/09/16/%E6%B5%85%E8%B0%88%E5%BE%AE%E6%8E%A8/" class="leancloud_visitors" data-flag-title="浅谈微推，带你走进微推编辑的世界！">
+                        <i class="fa fa-eye"></i>
+                        <span class="leancloud-visitors-count"> </span> 次阅读
+                    </li>
+                    
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1672399897675"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+            <hr />
+            <div itemprop="articleBody"><p>在宣传部当了一年的打工人，记录一些经验以供参考。“道可道，非恒道”。知识与能力有限，恳请各位多多包涵。</p>
 <span id="more"></span>
 <h1 id="基本格式要求"><a href="#基本格式要求" class="headerlink" title="基本格式要求"></a>基本格式要求</h1><p>这个是我们 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/XmCRal9bIryb0p0vEkh_zA">电光火时</a> 的基础格式要求：</p>
-<div class="note note-info">
-            <p><strong>基础字号：</strong>14<br><strong>字间距：</strong>2<br><strong>页边距：</strong>12<br><strong>加上固定的版头版尾</strong><br><strong>独立的图片，宽度要选90%</strong><br>大段段落两端对齐<br>标题与文字之间、图片上下、大段段落之间加一行空行<br>开头结尾居中，长短句错落有致，建议加分割线或者小图片与正文部分分割<br>设计颜色统一<br>图片多多</p>
-          </div>
+<div class="alert alert-info"><div class="icon"><i class="fa fa-info"></i></div><div class="text"><p><strong>基础字号：</strong>14<br><strong>字间距：</strong>2<br><strong>页边距：</strong>12<br><strong>加上固定的版头版尾</strong><br><strong>独立的图片，宽度要选90%</strong><br>大段段落两端对齐<br>标题与文字之间、图片上下、大段段落之间加一行空行<br>开头结尾居中，长短句错落有致，建议加分割线或者小图片与正文部分分割<br>设计颜色统一<br>图片多多</p>
+</div></div>
 
 <p>嘛，我们用的是 <a target="_blank" rel="noopener" href="https://xiumi.us/#/">秀米</a> ，不得不说秀米操作挺容易上手的，对于我一个稍微了解一些Web和Office的人来说，可以直接使用。<br>为什么我要提一句Web呢？这个我们后面会讲……</p>
 <h1 id="怎样高效率排版？"><a href="#怎样高效率排版？" class="headerlink" title="怎样高效率排版？"></a>怎样高效率排版？</h1><h2 id="一般做法"><a href="#一般做法" class="headerlink" title="一般做法"></a>一般做法</h2><p>一般来说，我收到的原稿都是这样的：<br>标题、开头结尾、正文以及图片已经准备好，现在你要做的是在秀米上把它们排出来，然后交给负责这个的副部去审核。副部审过了给部长，再给老师，最后往微信公众号上去发。<br>首先你要浏览一遍他们发给你的文档——毕竟你的副部应该也没有阅读过里面的内容——以便你熟悉你要排版的文章的基本结构。<br>通常，正文的格式是这样的……</p>
-<div class="note note-primary">
-            <p><strong>标题</strong><br>一堆字，还有一些图，图片偶尔不够多<br><em>可能会有的过渡段</em><br><strong>标题</strong><br>一堆字，还有一些图，图片偶尔不够多<br><em>可能会有的过渡段</em><br>（重复上述结构……）</p>
-          </div>
+<div class="alert alert-primary"><div class="icon"><i class="fa fa-refresh"></i></div><div class="text"><p><strong>标题</strong><br>一堆字，还有一些图，图片偶尔不够多<br><em>可能会有的过渡段</em><br><strong>标题</strong><br>一堆字，还有一些图，图片偶尔不够多<br><em>可能会有的过渡段</em><br>（重复上述结构……）</p>
+</div></div>
 
 <p>下面我们来看看那堆字里面，一些可能的情况</p>
-<h3 id="具体内容分类"><a href="#具体内容分类" class="headerlink" title="具体内容分类"></a>具体内容分类</h3><h4 id="人物介绍"><a href="#人物介绍" class="headerlink" title="人物介绍"></a>人物介绍</h4><p><img src="/img/post/%E5%BE%AE%E6%8E%A8%E5%85%A5%E9%97%A8/%E7%A7%80%E7%B1%B3%E4%BA%BA%E7%89%A9%E4%BB%8B%E7%BB%8D.jpg" srcset="/img/loading.gif" lazyload alt="以我最近做的某篇微推为例……"><br>通常是由人物照片、姓名、班级、简介组成，我们可以在秀米上找到人物介绍相关的卡片，然后修改模板中的内容。</p>
-<div class="note note-warning">
-            <p><strong>注意</strong><br>人物介绍时应该让图片和介绍交错，比如上面的人物图片在左介绍在右，那么下面一个人的人物图片就要在右而介绍在左。<br>防止排版呆板，不够生动灵活</p>
-          </div>
+<h3 id="具体内容分类"><a href="#具体内容分类" class="headerlink" title="具体内容分类"></a>具体内容分类</h3><h4 id="人物介绍"><a href="#人物介绍" class="headerlink" title="人物介绍"></a>人物介绍</h4><p><img src="/img/post/%E5%BE%AE%E6%8E%A8%E5%85%A5%E9%97%A8/%E7%A7%80%E7%B1%B3%E4%BA%BA%E7%89%A9%E4%BB%8B%E7%BB%8D.jpg" alt="以我最近做的某篇微推为例……"><br>通常是由人物照片、姓名、班级、简介组成，我们可以在秀米上找到人物介绍相关的卡片，然后修改模板中的内容。</p>
+<div class="alert alert-warning"><div class="icon"><i class="fa fa-warning"></i></div><div class="text"><p><strong>注意</strong><br>人物介绍时应该让图片和介绍交错，比如上面的人物图片在左介绍在右，那么下面一个人的人物图片就要在右而介绍在左。<br>防止排版呆板，不够生动灵活</p>
+</div></div>
 
-<p>当然，也可以是这样的：<br><img src="/img/post/%E5%BE%AE%E6%8E%A8%E5%85%A5%E9%97%A8/%E7%A7%80%E7%B1%B3%E4%BA%BA%E7%89%A9%E4%BB%8B%E7%BB%8D2.jpg" srcset="/img/loading.gif" lazyload alt="以别人最近做的某篇微推为例……"><br>这篇微推是向新人们介绍他们的下班党员，如此排版会让人觉得亲近可爱。</p>
-<div class="note note-warning">
-            <p><strong>注意</strong><br>本身就很生动灵活了，不需要再去交错。</p>
-          </div>
+<p>当然，也可以是这样的：<br><img src="/img/post/%E5%BE%AE%E6%8E%A8%E5%85%A5%E9%97%A8/%E7%A7%80%E7%B1%B3%E4%BA%BA%E7%89%A9%E4%BB%8B%E7%BB%8D2.jpg" alt="以别人最近做的某篇微推为例……"><br>这篇微推是向新人们介绍他们的下班党员，如此排版会让人觉得亲近可爱。</p>
+<div class="alert alert-warning"><div class="icon"><i class="fa fa-warning"></i></div><div class="text"><p><strong>注意</strong><br>本身就很生动灵活了，不需要再去交错。</p>
+</div></div>
 
-<h4 id="分段阐述"><a href="#分段阐述" class="headerlink" title="分段阐述"></a>分段阐述</h4><p><img src="/img/post/%E5%BE%AE%E6%8E%A8%E5%85%A5%E9%97%A8/%E5%88%86%E6%AE%B5%E9%98%90%E8%BF%B0.jpg" srcset="/img/loading.gif" lazyload alt="还是以我最近做的某篇微推为例……"><br>比较好的格式是这样的</p>
-<div class="note note-primary">
-            <p>1、标题<br>一张图片（或者两张图片并列、四张图片两两并列）<br>长段文字（标记重点）<br>一张图片（或者两张图片并列、四张图片两两并列）<br>长段文字（标记重点）</p>
-          </div>
+<h4 id="分段阐述"><a href="#分段阐述" class="headerlink" title="分段阐述"></a>分段阐述</h4><p><img src="/img/post/%E5%BE%AE%E6%8E%A8%E5%85%A5%E9%97%A8/%E5%88%86%E6%AE%B5%E9%98%90%E8%BF%B0.jpg" alt="还是以我最近做的某篇微推为例……"><br>比较好的格式是这样的</p>
+<div class="alert alert-primary"><div class="icon"><i class="fa fa-refresh"></i></div><div class="text"><p>1、标题<br>一张图片（或者两张图片并列、四张图片两两并列）<br>长段文字（标记重点）<br>一张图片（或者两张图片并列、四张图片两两并列）<br>长段文字（标记重点）</p>
+</div></div>
 
 <h4 id="感言"><a href="#感言" class="headerlink" title="感言"></a>感言</h4><p>这个比较灵活，可以根据你找到的合适的模板来，也可以魔改秀米给出的模板。<br>比较好的格式，像这样：</p>
-<h4 id="个人专门介绍"><a href="#个人专门介绍" class="headerlink" title="个人专门介绍"></a>个人专门介绍</h4><p><img src="/img/post/%E5%BE%AE%E6%8E%A8%E5%85%A5%E9%97%A8/%E4%B8%AA%E4%BA%BA%E4%B8%93%E9%97%A8%E4%BB%8B%E7%BB%8D.jpg" srcset="/img/loading.gif" lazyload alt="以一位朋友为例……"><br>可能涉及ta的任职经历、获奖经历等等，这些要注意左端对齐，一行一条，最好不要超行<br>由于设备不同，不同手机的阅读效果可能不尽相同，有的手机上难免会出现超行换行的情况</p>
+<h4 id="个人专门介绍"><a href="#个人专门介绍" class="headerlink" title="个人专门介绍"></a>个人专门介绍</h4><p><img src="/img/post/%E5%BE%AE%E6%8E%A8%E5%85%A5%E9%97%A8/%E4%B8%AA%E4%BA%BA%E4%B8%93%E9%97%A8%E4%BB%8B%E7%BB%8D.jpg" alt="以一位朋友为例……"><br>可能涉及ta的任职经历、获奖经历等等，这些要注意左端对齐，一行一条，最好不要超行<br>由于设备不同，不同手机的阅读效果可能不尽相同，有的手机上难免会出现超行换行的情况</p>
 <h3 id="处理两图并列"><a href="#处理两图并列" class="headerlink" title="处理两图并列"></a>处理两图并列</h3><p>在<code>布局-&gt;基础布局</code>里找到第二个布局（名为”二列布局“），把它拖到编辑器里去<br>然后双击其中一栏，在图库里点一下你想用的图片<br>记得调整一下图片的宽度，我的推荐是每个图片95%</p>
 <h2 id="排版秘诀"><a href="#排版秘诀" class="headerlink" title="排版秘诀"></a>排版秘诀</h2><p>先抛出一个问题：<strong>秀米给出的主题不好用，怎么办？</strong><br>自己调！<br>那要是不知道怎么调呢？<br>别急，我有一个简单朴素却又异常好用的方法！</p>
-<div class="note note-primary">
-            <p>图片圆角+卡片圆角+文字标重点+合理配色</p>
-          </div>
+<div class="alert alert-primary"><div class="icon"><i class="fa fa-refresh"></i></div><div class="text"><p>图片圆角+卡片圆角+文字标重点+合理配色</p>
+</div></div>
 
-<p>图片圆角和卡片圆角，仅我一家会用，现在他们都还以为是我用了某些特殊的主题:)<br>比如在Web里，我们就经常用到圆角，微信推送不就是网页么，顺藤摸瓜，我们会发现秀米在这里也为圆角做了设计。<br>其他人到是用过圆角图片，他的做法是：收藏我的排版里的圆角图片，放进自己的微推里，然后修改图片<br>但是他不会调整圆角半径:)<br>原理很简单：点击已经插入了的图片，在上方图片编辑栏里找到“边框”并点击，然后修改弧度的值。<br><img src="/img/post/%E5%BE%AE%E6%8E%A8%E5%85%A5%E9%97%A8/%E7%A7%80%E7%B1%B3%E5%9C%86%E8%A7%92%E5%9B%BE%E7%89%87.jpg" srcset="/img/loading.gif" lazyload alt="真的很简单"><br>独立大图片（如图所示的就是所谓“独立大图片”）我通常使用12~16px，两图并列通常用8~12px，卡片内部的独立大图用12px，并列良图用8px。<br>“大图片”的弧度 &gt; 两图并列的每一个图片自己的弧度<br>独立大图片宽度用90%，两图并列的每个图片宽度用95%</p>
-<div class="note note-warning">
-            <p><strong>注意</strong><br>通篇下来，圆角要保持一致，比如所有的独立大图片都应该是16px，不能有的是16px有的是12px，包括卡片等等，其它的同理。<br>如果你的卡片或者卡片里的图片用了圆角，或者是某些独立大图片用了圆角，那么其它的东西（卡片、卡片内图片、独立大图片等）最好也应该设置圆角。</p>
-          </div>
+<p>图片圆角和卡片圆角，仅我一家会用，现在他们都还以为是我用了某些特殊的主题:)<br>比如在Web里，我们就经常用到圆角，微信推送不就是网页么，顺藤摸瓜，我们会发现秀米在这里也为圆角做了设计。<br>其他人到是用过圆角图片，他的做法是：收藏我的排版里的圆角图片，放进自己的微推里，然后修改图片<br>但是他不会调整圆角半径:)<br>原理很简单：点击已经插入了的图片，在上方图片编辑栏里找到“边框”并点击，然后修改弧度的值。<br><img src="/img/post/%E5%BE%AE%E6%8E%A8%E5%85%A5%E9%97%A8/%E7%A7%80%E7%B1%B3%E5%9C%86%E8%A7%92%E5%9B%BE%E7%89%87.jpg" alt="真的很简单"><br>独立大图片（如图所示的就是所谓“独立大图片”）我通常使用12~16px，两图并列通常用8~12px，卡片内部的独立大图用12px，并列良图用8px。<br>“大图片”的弧度 &gt; 两图并列的每一个图片自己的弧度<br>独立大图片宽度用90%，两图并列的每个图片宽度用95%</p>
+<div class="alert alert-warning"><div class="icon"><i class="fa fa-warning"></i></div><div class="text"><p><strong>注意</strong><br>通篇下来，圆角要保持一致，比如所有的独立大图片都应该是16px，不能有的是16px有的是12px，包括卡片等等，其它的同理。<br>如果你的卡片或者卡片里的图片用了圆角，或者是某些独立大图片用了圆角，那么其它的东西（卡片、卡片内图片、独立大图片等）最好也应该设置圆角。</p>
+</div></div>
 
 <h1 id="写原创微推"><a href="#写原创微推" class="headerlink" title="写原创微推"></a>写原创微推</h1><p>咕咕咕……改天再写啦……<br>哈哈，开个玩笑别当真φ(&gt;ω&lt;*)<br>难在选题，这个我也不好说，看灵感，看素材<br>写出整篇来是第二个难题，不过，大不了你可以写一些“大白话”作为补充<br>开头结尾，我总是希望自己写的高端一些。普通的也没问题。</p>
+</div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://jensentsts.github.io/2022/09/16/%E6%B5%85%E8%B0%88%E5%BE%AE%E6%8E%A8/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://jensentsts.github.io/2022/09/16/%E6%B5%85%E8%B0%88%E5%BE%AE%E6%8E%A8/";
+            const title         = "「浅谈微推，带你走进微推编辑的世界！」";
+            const excerpt       = `在宣传部当了一年的打工人，记录一些经验以供参考。“道可道，非恒道”。知识与能力有限，恳请各位多多包涵。`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a>
+                </div>
+                <div class="pull-date">
+                    <time datetime="2022-12-30T11:31:37.675Z" itemprop="dateModified">最后编辑：2022-12-30</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" dosbox下使用debug" href="/2022/04/03/dosbox下使用debug/">&lt; 上一篇</a>
+            </div>
+            
+            
+            <div class="nav-next clearfix">
+                <a title=" 说说CC4.0协议" href="/2022/09/17/说说CC4.0协议/">下一篇 &gt;</a>
+            </div>
+            
+        </nav>
+    
+    
+        <div id="v-comments" class="post-comments bg-image"></div>
+<script>
+    var load_comm = () => {
+        const init = () => {
+            new Valine({
+                el: '#v-comments',
+                appId: '7UVT2Wn1SqeS4e8BL5kOHopx-gzGzoHsz',
+                appKey: 'dVH6ChWtZCsbOIW2v9PsTI3M',
+                visitor: true,
+                enableQQ: false,
+                path: '/2022/09/16/%E6%B5%85%E8%B0%88%E5%BE%AE%E6%8E%A8/'
+            });
+        }
+        if (typeof Valine === 'undefined') {
+            const src = '/vendors/valine@1.4.18/dist/Valine.min.js';
+            $.getScript(src, init);
+        } else {
+            init();
+        }
+    };
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://valine.js.org/">comments powered by Valine.</a></noscript>
+
+    
+</article>
+
+        
+
+            </section>
+
+        
 
                 
-              </div>
             
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E6%9D%82%E8%B0%88/">#杂谈</a>
-      
-    </div>
-  
-</div>
 
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>浅谈微推，带你走进微推编辑的世界！</div>
-      <div>https://jensentsts.github.io/2022/09/16/浅谈微推/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>舟适三山</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年9月16日</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>更新于</div>
-          <div>2022年9月20日</div>
-        </div>
-      
-      
-        <div class="license-meta-item">
-          <div>许可协议</div>
-          <div>
-            
-              
-              
-                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
-                  </span>
-                </a>
-              
-                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
-                    <i class="iconfont icon-nc"></i>
-                  </span>
-                </a>
-              
-                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
-                    <i class="iconfont icon-sa"></i>
-                  </span>
-                </a>
-              
-            
-          </div>
-        </div>
-      
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/09/17/%E8%AF%B4%E8%AF%B4CC4.0%E5%8D%8F%E8%AE%AE/" title="说说CC4.0协议">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">说说CC4.0协议</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/04/03/dosbox%E4%B8%8B%E4%BD%BF%E7%94%A8debug/" title="dosbox下使用debug">
-                        <span class="hidden-mobile">dosbox下使用debug</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-  <article id="comments" lazyload>
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
     
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"7UVT2Wn1SqeS4e8BL5kOHopx-gzGzoHsz","appKey":"dVH6ChWtZCsbOIW2v9PsTI3M","path":"window.location.pathname","placeholder":"φ(>ω<*)：雁过留声，雪泥鸿迹","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-  </article>
-
-
-          </article>
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" loading="lazy" decoding="auto" />
         </div>
-      </div>
     </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
+    <div class="textwidget">
+        <p class="text-center">一尺深冬雪，万里长街红</p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                29
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                3
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                13
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E7%AC%94%E8%AE%B0/">Android笔记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a><span class="category-list-count">10</span></li></ul>
   </aside>
 
 
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/Android/" style="font-size: 0.64em;">Android</a> <a href="/tags/STM32/" style="font-size: 0.6em;">STM32</a> <a href="/tags/cpp/" style="font-size: 0.68em;">cpp</a> <a href="/tags/hexo/" style="font-size: 0.72em;">hexo</a> <a href="/tags/python/" style="font-size: 0.6em;">python</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 0.76em;">博客</a> <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" style="font-size: 0.8em;">嵌入式</a> <a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 0.6em;">开发</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 0.76em;">杂谈</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 0.6em;">汇编</a> <a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 0.6em;">游戏</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.8em;">笔记</a> <a href="/tags/%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0/" style="font-size: 0.72em;">长期更新</a>
       </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/28/stm32%E7%A1%AC%E4%BB%B6i2c/"><i class="fa  fa-book"></i> stm32硬件i2c</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/28/STM32USART/"><i class="fa  fa-book"></i> STM32USART</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/22/STM32DMA/"><i class="fa  fa-book"></i> STM32DMA</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/21/doxygen%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83/"><i class="fa  fa-book"></i> doxygen注释规范</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/21/%E7%94%A8Tweeny%E5%AE%9E%E7%8E%B0%E4%B8%9D%E6%BB%91%E5%8A%A8%E6%95%88/"><i class="fa  fa-book"></i> 用Tweeny实现丝滑动效</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
         </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
     </div>
-  </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        <li><a href="mailto:jensentsts@163.com"><i class="fa fa-envelope"></i></a></li>
+                        
+                        
+                        
+                        
+                        <li><a target="_blank" rel="me" href="https://nya.one/@Candinya"><i class="fa fa fa-share-alt-square"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/Candinya"><i class="fa fa-github"></i></a></li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2022 舟适三山 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by 舟适三山.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
 </div>
 
-    
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
 
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    <div>
+        <canvas id="snow"></canvas>
+        <script async src="/js/snow.min.js"></script>
     </div>
-  
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
 
 
-<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
+    <script async src="/js/candy.min.js"></script>
 
 
 
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
     
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
 
 
-  
 
-  <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
-  </noscript>
-</body>
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/vendors/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
 </html>

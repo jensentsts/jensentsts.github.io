@@ -1,808 +1,700 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+<html lang="zh-CN">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="/images/favicon.ico">
   
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="舟适三山">
-  <meta name="keywords" content="">
+  <title>STM32定时中断1 | 舟适三山</title>
+  <meta name="author" content="舟适三山" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
   
-    <meta name="description" content="继续跟着 江科大自化协 学习STM32。多图杀猫警告。">
+    <meta name="keywords" content="嵌入式, 笔记" />
+  
+  <meta name="description" content="继续跟着 江科大自化协 学习STM32。多图杀猫警告。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="STM32定时中断1">
 <meta property="og:url" content="https://jensentsts.github.io/2022/12/03/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/index.html">
-<meta property="og:site_name" content="(〃&#39;▽&#39;〃)">
+<meta property="og:site_name" content="舟适三山">
 <meta property="og:description" content="继续跟着 江科大自化协 学习STM32。多图杀猫警告。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://jensentsts.github.io/img/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1.png">
+<meta property="og:image" content="https://jensentsts.github.io/images/favicon.ico">
 <meta property="article:published_time" content="2022-12-03T12:36:26.000Z">
-<meta property="article:modified_time" content="2022-12-21T09:35:09.959Z">
+<meta property="article:modified_time" content="2022-12-30T11:30:09.389Z">
 <meta property="article:author" content="舟适三山">
-<meta property="article:tag" content="笔记">
 <meta property="article:tag" content="嵌入式">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://jensentsts.github.io/img/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1.png">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jensentsts.github.io/images/favicon.ico">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
   
   
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
   
-  <title>STM32定时中断1 &gt; (〃&#39;▽&#39;〃)</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
   
-
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"jensentsts.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/search.xml"};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
   
-
-
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+      .kratos-cover.kratos-cover-2 {
+        background-image: url('/images/banner.webp');
+      }
+    
+    
+      @media(min-width:768px) {
+        body.custom-background {
+          background-image: url('/images/bg.webp');
+        }
+      }
+    
+  </style>
   
 <meta name="generator" content="Hexo 6.3.0"></head>
 
 
-<body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>憨吃迷糊睡</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/">
-                <i class="iconfont icon-link-fill"></i>
-                友链
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/banner.jpg') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="STM32定时中断1"></span>
-          
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li>
+                                            
+                                                <a href="/">
+                                            
+                                                
+                                                    <i class="fa fa-home"></i>
+                                                
+                                                首页
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a href="/archives/">
+                                            
+                                                
+                                                    <i class="fa fa-file"></i>
+                                                
+                                                档案馆
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a href="/friends/">
+                                            
+                                                
+                                                    <i class="fa fa-paw"></i>
+                                                
+                                                好伙伴
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a>
+                                            
+                                                
+                                                    <i class="fa fa-link"></i>
+                                                
+                                                链接
+                                            </a>
+                                            
+                                                <ul class="sub-menu">
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://www.bilibili.com/">
+                                                                
+                                                                bilibili
+                                                            </a>
+                                                        </li>
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://candinya.com">
+                                                                
+                                                                作者博客
+                                                            </a>
+                                                        </li>
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth">
+                                                                
+                                                                项目链接
+                                                            </a>
+                                                        </li>
+                                                    
+                                                </ul>
+                                            
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">舟适三山</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>舟适三山</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
         </div>
 
-        
-          
-  <div class="mt-3">
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-12-03 20:36" pubdate>
-          2022年12月3日 晚上
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          2.4k 字
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          20 分钟
-        
-      </span>
-    
-
-    
-    
-  </div>
-
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
 
         
-      </div>
 
-      
-    </div>
-  </div>
-</div>
+            <section class="col-md-8">
 
-</div>
+        
 
-  </header>
-
-  <main>
+            <article itemscope itemtype="https://schema.org/Article">
     
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">STM32定时中断1</h1>
+    <link itemprop="mainEntityOfPage" href="https://jensentsts.github.io/2022/12/03/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
             
-              <p class="note note-info">
-                
-                  
-                    本文最后更新于：2022年12月21日 下午
-                  
-                
-              </p>
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">STM32定时中断1</h1>
             
             
-              <div class="markdown-body">
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2022-12-03T12:36:26.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2022-12-03</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">舟适三山</span>
+                </li>
+                <li>
+                    <i class="fa fa-edit"></i> 
+                    
+                    
+                        ~2.43K
+                    
+                    字
+                </li>
                 
-                <p>继续跟着 <a target="_blank" rel="noopener" href="https://space.bilibili.com/383400717">江科大自化协</a> 学习STM32。多图杀猫警告。</p>
+                    <li id="/2022/12/03/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/" class="leancloud_visitors" data-flag-title="STM32定时中断1">
+                        <i class="fa fa-eye"></i>
+                        <span class="leancloud-visitors-count"> </span> 次阅读
+                    </li>
+                    
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1672399809389"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+            <hr />
+            <div itemprop="articleBody"><p>继续跟着 <a target="_blank" rel="noopener" href="https://space.bilibili.com/383400717">江科大自化协</a> 学习STM32。多图杀猫警告。</p>
 <span id="more"></span>
 
-<div class="note note-warning">
-            <p><strong>注意</strong>：<br>有的定时器使用APB1，有的定时器使用APB2</p>
-          </div>
+<div class="alert alert-warning"><div class="icon"><i class="fa fa-warning"></i></div><div class="text"><p><strong>注意</strong>：<br>有的定时器使用APB1，有的定时器使用APB2</p>
+</div></div>
 
 <h1 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h1><p>TIM（Timer）定时器<br>16位计数器、预分频器（Pre-Scaler）、自动重装寄存器的时基单元，在72MHz计数时钟下可以实现最大59.65s的定时<br>如果觉得定时器时间不够，可以用定时器级联，最大定时时间将会变为$59.65*65536^2$<br>还不够？还可以再级联一个……最大定时时常变为<strong>几亿年</strong>……</p>
-<p>定时器分为高级定时器、通用定时器、基本定时器三中类型：<br><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/%E5%AE%9A%E6%97%B6%E5%99%A8%E7%B1%BB%E5%9E%8B.png" srcset="/img/loading.gif" lazyload alt="定时器类型"><br>对于<code>STM32F103C8T6</code>而言，它拥有TIM1、TIM2、TIM3、TIM4<br><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.png" srcset="/img/loading.gif" lazyload alt="定时中断的基本结构"></p>
+<p>定时器分为高级定时器、通用定时器、基本定时器三中类型：<br><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/%E5%AE%9A%E6%97%B6%E5%99%A8%E7%B1%BB%E5%9E%8B.png" alt="定时器类型"><br>对于<code>STM32F103C8T6</code>而言，它拥有TIM1、TIM2、TIM3、TIM4<br><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.png" alt="定时中断的基本结构"></p>
 <h1 id="细谈定时器"><a href="#细谈定时器" class="headerlink" title="细谈定时器"></a>细谈定时器</h1><h2 id="如何看图"><a href="#如何看图" class="headerlink" title="如何看图"></a>如何看图</h2><p>带有“影子”的寄存器，都是带有缓冲寄存器的寄存器。</p>
 <h3 id="缓冲寄存器？"><a href="#缓冲寄存器？" class="headerlink" title="缓冲寄存器？"></a>缓冲寄存器？</h3><p><code>缓冲寄存器</code>又名<code>影子寄存器</code><br>有了缓冲寄存器，只有当更新事件发生时，寄存器本体才会将自己的值更新为缓冲寄存器中写入的值。<br>用不用缓冲寄存器可以设置。<br>通过设置ARPE位，可以选择是否使用预装功能。</p>
-<h2 id="基本定时器"><a href="#基本定时器" class="headerlink" title="基本定时器"></a>基本定时器</h2><p><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/%E5%9F%BA%E6%9C%AC%E5%AE%9A%E6%97%B6%E5%99%A8.png" srcset="/img/loading.gif" lazyload alt="基本定时器"><br>PSC、CNT、自动重装载寄存器构成了<strong>时基单元</strong>。时基单元由内部时钟（单片机上的晶振）提供信号，通过分频器不断输出高电平信号使得CNT自增加一。</p>
-<div class="note note-warning">
-            <p>实际分频系数&#x3D;预分频器系数+1</p>
-          </div>
+<h2 id="基本定时器"><a href="#基本定时器" class="headerlink" title="基本定时器"></a>基本定时器</h2><p><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/%E5%9F%BA%E6%9C%AC%E5%AE%9A%E6%97%B6%E5%99%A8.png" alt="基本定时器"><br>PSC、CNT、自动重装载寄存器构成了<strong>时基单元</strong>。时基单元由内部时钟（单片机上的晶振）提供信号，通过分频器不断输出高电平信号使得CNT自增加一。</p>
+<div class="alert alert-warning"><div class="icon"><i class="fa fa-warning"></i></div><div class="text"><p>实际分频系数&#x3D;预分频器系数+1</p>
+</div></div>
 <p>CNT是16位的。<br>自动重装寄存器（ARR，Auto Reload Register）：写入的计数目标。<br>当CNT&#x3D;自动重装值时，CNT清零，并会产生一个中断，这个中断成为更新中断，发往NVIC。用带折线箭头的UI来表示这一中断信号。同时还会产生一个更新事件，可以触发内部其他电路的工作。<br>基本定时器的主从模式触发，能在不受程序的控制下运行。</p>
 <p>例如，主模式触发DAC，可以利用更新事件，让更新信号传输到<strong>TRGO（Trigger Out）</strong>的位置，TRGO接到DAC的触发引脚上，进行转换。不需要软件参与，不干扰正常程序的运行，也不会影响到其它中断。</p>
-<h2 id="通用定时器"><a href="#通用定时器" class="headerlink" title="通用定时器"></a>通用定时器</h2><p><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/%E9%80%9A%E7%94%A8%E5%AE%9A%E6%97%B6%E5%99%A8.png" srcset="/img/loading.gif" lazyload alt="通用定时器"><br>通用定时器的时基单元与基本定时器相同。<br>计数器的技术模式不止<strong>向上计数</strong>这一种。还有<strong>向下计数</strong>、<strong>中央对齐模式</strong>。</p>
+<h2 id="通用定时器"><a href="#通用定时器" class="headerlink" title="通用定时器"></a>通用定时器</h2><p><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/%E9%80%9A%E7%94%A8%E5%AE%9A%E6%97%B6%E5%99%A8.png" alt="通用定时器"><br>通用定时器的时基单元与基本定时器相同。<br>计数器的技术模式不止<strong>向上计数</strong>这一种。还有<strong>向下计数</strong>、<strong>中央对齐模式</strong>。</p>
 <ul>
 <li>向下计数：从自动重装寄存器的值开始，当高电平计数信号（时钟信号）输入时，计数器减一</li>
 <li>中央对齐模式：（计数信号&#x2F;时钟信号不断输入时）CNT从0开始增加，到自动重装寄存器的值时触发中断和事件，然后开始减少，回到0时又会触发一次中断和事件，然后再开启下一轮循环。</li>
 </ul>
 <h3 id="定时中断、内外时钟源、触发输入"><a href="#定时中断、内外时钟源、触发输入" class="headerlink" title="定时中断、内外时钟源、触发输入"></a>定时中断、内外时钟源、触发输入</h3><p>如果选择外部时钟，那么时钟信号需要通过ETR引脚输入。也可以通过CH1引脚的边沿（Edge）获得时钟。<br>如果需要触发输入，那么应该用TRGI。当然，时钟级联也可以走这条通道。<br>如果要时钟级联：<br>初始化TIM3为主模式，将它的更新事件映射到TRGO上；然后初始化TIM2，选择ITR2，选择外部时钟模式1，并让对应TIM3的TRGO。<br>始终还可以通过TI1FPn获得（如TI1FP1）。TI1FP1（2）可以读取正交编码器的输出波形。</p>
-<div class="note note-info">
-            <p>复杂的电路主要是为了扩展和方便一些特殊的使用场景<br>外部时钟通过ETR引脚输出即可</p>
-          </div>
+<div class="alert alert-info"><div class="icon"><i class="fa fa-info"></i></div><div class="text"><p>复杂的电路主要是为了扩展和方便一些特殊的使用场景<br>外部时钟通过ETR引脚输出即可</p>
+</div></div>
 
 <h3 id="输入捕获和输出比较寄存器"><a href="#输入捕获和输出比较寄存器" class="headerlink" title="输入捕获和输出比较寄存器"></a>输入捕获和输出比较寄存器</h3><p><code>捕获/比较n寄存器</code>左侧是输入捕获电路，右侧是输出比较电路。<br>有四个接口：CH1~CH4<br>输入捕获和输出比较不能同时使用，所以输出接口共用。</p>
-<h2 id="高级定时器"><a href="#高级定时器" class="headerlink" title="高级定时器"></a>高级定时器</h2><p><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/%E9%AB%98%E7%BA%A7%E5%AE%9A%E6%97%B6%E5%99%A8.png" srcset="/img/loading.gif" lazyload alt="高级定时器"><br>和通用寄存器大部分相似。<br>加了个重复次数计数器，可以实现每隔几个计数周期去发生一次更新或中断。相当于对计数器的输出分了一次频。<br>右侧添加了几个互补的输出接口，能输出相反的PWM波。三相无刷电机狂喜。</p>
+<h2 id="高级定时器"><a href="#高级定时器" class="headerlink" title="高级定时器"></a>高级定时器</h2><p><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/%E9%AB%98%E7%BA%A7%E5%AE%9A%E6%97%B6%E5%99%A8.png" alt="高级定时器"><br>和通用寄存器大部分相似。<br>加了个重复次数计数器，可以实现每隔几个计数周期去发生一次更新或中断。相当于对计数器的输出分了一次频。<br>右侧添加了几个互补的输出接口，能输出相反的PWM波。三相无刷电机狂喜。</p>
 <p><strong>DTG（Dead Time Generate，死区生成器）</strong>：为了防止直通现象，在CHn开关的一瞬间，产生一定时长的死区，使得这对互补的引脚都关闭，防止直通现象。<br>刹车输入：给电机驱动提供安全保障，若BKIN输入，或内部时钟失效，则会自动切断输出，保护电机驱动。</p>
-<h1 id="时序"><a href="#时序" class="headerlink" title="时序"></a>时序</h1><h2 id="预分频器时序"><a href="#预分频器时序" class="headerlink" title="预分频器时序"></a>预分频器时序</h2><p>即使预分频制寄存器从0变成了1，STM32的分频器也要等到触发更新事件后才会改变分频系数。<br>也就是说，当触发更新事件后，改变后的分频值才会起作用。<br><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/%E9%A2%84%E5%88%86%E9%A2%91%E5%99%A8%E6%97%B6%E5%BA%8F.png" srcset="/img/loading.gif" lazyload alt="预分频器时序"></p>
+<h1 id="时序"><a href="#时序" class="headerlink" title="时序"></a>时序</h1><h2 id="预分频器时序"><a href="#预分频器时序" class="headerlink" title="预分频器时序"></a>预分频器时序</h2><p>即使预分频制寄存器从0变成了1，STM32的分频器也要等到触发更新事件后才会改变分频系数。<br>也就是说，当触发更新事件后，改变后的分频值才会起作用。<br><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/%E9%A2%84%E5%88%86%E9%A2%91%E5%99%A8%E6%97%B6%E5%BA%8F.png" alt="预分频器时序"></p>
 <p>计数器技术频率：<br>$$CK_{CNT} &#x3D; \frac{CK_{PSC}}{PSC+1}$$<br>就是前面的那条Warning</p>
-<h2 id="计时器时序"><a href="#计时器时序" class="headerlink" title="计时器时序"></a>计时器时序</h2><div class="note note-warning">
-            <p>更新中断会带带有更新中断标志（UIF），记得Clear一下</p>
-          </div>
-<p><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/%E8%AE%A1%E6%97%B6%E5%99%A8%E6%97%B6%E5%BA%8F.png" srcset="/img/loading.gif" lazyload alt="计时器时序"><br>计数器溢出频率：<br>$$CK_{CNT-OV} &#x3D; \frac{CK_{CNT}}{ARR+1} &#x3D; \frac{CK_{PSC}}{PSC+1} \div (ARR+1)$$<br>这就不得不要提一下计数器无预装时序和有预装时序了</p>
-<h3 id="无预装时序"><a href="#无预装时序" class="headerlink" title="无预装时序"></a>无预装时序</h3><p>咕咕咕，我就放个图片<br><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/%E6%97%A0%E9%A2%84%E8%A3%85%E6%97%B6%E5%BA%8F.png" srcset="/img/loading.gif" lazyload alt="无预装时序"></p>
-<h3 id="有预装时序"><a href="#有预装时序" class="headerlink" title="有预装时序"></a>有预装时序</h3><p>咕咕咕，我再放个图片<br><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/%E6%9C%89%E9%A2%84%E8%A3%85%E6%97%B6%E5%BA%8F.png" srcset="/img/loading.gif" lazyload alt="有预装时序"></p>
-<h1 id="RCC时钟树"><a href="#RCC时钟树" class="headerlink" title="RCC时钟树"></a>RCC时钟树</h1><p>来看看RCC时……我滴妈耶！<br><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/RCC%E6%97%B6%E9%92%9F%E6%A0%91.png" srcset="/img/loading.gif" lazyload alt="RCC时钟树"><br>但是感谢ST，他们封装了函数<code>SystemInit()</code>！</p>
+<h2 id="计时器时序"><a href="#计时器时序" class="headerlink" title="计时器时序"></a>计时器时序</h2><div class="alert alert-warning"><div class="icon"><i class="fa fa-warning"></i></div><div class="text"><p>更新中断会带带有更新中断标志（UIF），记得Clear一下</p>
+</div></div>
+<p><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/%E8%AE%A1%E6%97%B6%E5%99%A8%E6%97%B6%E5%BA%8F.png" alt="计时器时序"><br>计数器溢出频率：<br>$$CK_{CNT-OV} &#x3D; \frac{CK_{CNT}}{ARR+1} &#x3D; \frac{CK_{PSC}}{PSC+1} \div (ARR+1)$$<br>这就不得不要提一下计数器无预装时序和有预装时序了</p>
+<h3 id="无预装时序"><a href="#无预装时序" class="headerlink" title="无预装时序"></a>无预装时序</h3><p>咕咕咕，我就放个图片<br><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/%E6%97%A0%E9%A2%84%E8%A3%85%E6%97%B6%E5%BA%8F.png" alt="无预装时序"></p>
+<h3 id="有预装时序"><a href="#有预装时序" class="headerlink" title="有预装时序"></a>有预装时序</h3><p>咕咕咕，我再放个图片<br><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/%E6%9C%89%E9%A2%84%E8%A3%85%E6%97%B6%E5%BA%8F.png" alt="有预装时序"></p>
+<h1 id="RCC时钟树"><a href="#RCC时钟树" class="headerlink" title="RCC时钟树"></a>RCC时钟树</h1><p>来看看RCC时……我滴妈耶！<br><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/RCC%E6%97%B6%E9%92%9F%E6%A0%91.png" alt="RCC时钟树"><br>但是感谢ST，他们封装了函数<code>SystemInit()</code>！</p>
 <h2 id="时钟安全系统"><a href="#时钟安全系统" class="headerlink" title="时钟安全系统"></a>时钟安全系统</h2><p>简称CSS（Clock Security System），负责切换时钟，监测外部时钟的运行状态，如果外部的失效，自动切换成内部的。<br>在刹车输入时，也有CSS的身影。</p>
-<div class="note note-warning">
-            <p>如果你发现自己的计时器满了大概十倍左右，那么可能是外部72MHz晶振失效了，系统自动启用了内部的8MHz晶振</p>
-          </div>
+<div class="alert alert-warning"><div class="icon"><i class="fa fa-warning"></i></div><div class="text"><p>如果你发现自己的计时器满了大概十倍左右，那么可能是外部72MHz晶振失效了，系统自动启用了内部的8MHz晶振</p>
+</div></div>
 
 <h2 id="时钟分频电路"><a href="#时钟分频电路" class="headerlink" title="时钟分频电路"></a>时钟分频电路</h2><p>72MHz进入AHB总线，AHB有个预分频器，在SystemInit里配置的分配系数为1，则AHB的时钟就是72MHz，然后进入RPB1总线，这里配置的分频系数是2，则这里的频率是72&#x2F;2&#x3D;36MHz。<br>但是！下面有个支路——若干APB与分频系数&#x3D;1，则频率不变，否则频率×2。这条支路单独为TIM2~7开通<br>因此，无论是何种计时器，频率都是72MHz（如果SystemInit中的默认配置没有改的话……）</p>
 <h2 id="RCC-APBxxxPeriphClockCmd"><a href="#RCC-APBxxxPeriphClockCmd" class="headerlink" title="RCC_APBxxxPeriphClockCmd"></a>RCC_APBxxxPeriphClockCmd</h2><p>代码中的RCC_APB1&#x2F;2PeriphClockCmd作用的地方就是图中的<code>外设时钟使能</code>。</p>
 <h2 id="其他部分"><a href="#其他部分" class="headerlink" title="其他部分"></a>其他部分</h2><p>还有给ADC、SDIO提供时钟的电路，在AHB后边那一堆的上部。</p>
+</div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://jensentsts.github.io/2022/12/03/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://jensentsts.github.io/2022/12/03/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/";
+            const title         = "「STM32定时中断1」";
+            const excerpt       = `继续跟着 江科大自化协 学习STM32。多图杀猫警告。`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag">嵌入式</a>, <a class="tag-none-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a>
+                </div>
+                <div class="pull-date">
+                    <time datetime="2022-12-30T11:30:09.389Z" itemprop="dateModified">最后编辑：2022-12-30</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" STM32常用资料" href="/2022/12/03/STM32常用资料/">&lt; 上一篇</a>
+            </div>
+            
+            
+            <div class="nav-next clearfix">
+                <a title=" STM32定时中断2" href="/2022/12/04/STM32定时中断2/">下一篇 &gt;</a>
+            </div>
+            
+        </nav>
+    
+    
+        <div id="v-comments" class="post-comments bg-image"></div>
+<script>
+    var load_comm = () => {
+        const init = () => {
+            new Valine({
+                el: '#v-comments',
+                appId: '7UVT2Wn1SqeS4e8BL5kOHopx-gzGzoHsz',
+                appKey: 'dVH6ChWtZCsbOIW2v9PsTI3M',
+                visitor: true,
+                enableQQ: false,
+                path: '/2022/12/03/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/'
+            });
+        }
+        if (typeof Valine === 'undefined') {
+            const src = '/vendors/valine@1.4.18/dist/Valine.min.js';
+            $.getScript(src, init);
+        } else {
+            init();
+        }
+    };
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://valine.js.org/">comments powered by Valine.</a></noscript>
+
+    
+</article>
+
+        
+
+            </section>
+
+        
 
                 
-              </div>
             
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
 
-<span class="category-chains">
-  
-  
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
     
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="category-chain-item">嵌入式</a>
-  
-  
-
-      </span>
     
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>
-      
-        <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">#嵌入式</a>
-      
-    </div>
-  
-</div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>STM32定时中断1</div>
-      <div>https://jensentsts.github.io/2022/12/03/STM32定时中断1/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>舟适三山</div>
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" loading="lazy" decoding="auto" />
         </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年12月3日</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>更新于</div>
-          <div>2022年12月21日</div>
-        </div>
-      
-      
-        <div class="license-meta-item">
-          <div>许可协议</div>
-          <div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center">一尺深冬雪，万里长街红</p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                29
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                3
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                13
+            </span>
+        </a>
+    </div>
+</aside>
             
-              
-              
-                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
-                  </span>
-                </a>
-              
-                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
-                    <i class="iconfont icon-nc"></i>
-                  </span>
-                </a>
-              
-                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
-                    <i class="iconfont icon-sa"></i>
-                  </span>
-                </a>
-              
-            
-          </div>
-        </div>
-      
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/12/04/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD2/" title="STM32定时中断2">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">STM32定时中断2</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/12/03/STM32%E5%B8%B8%E7%94%A8%E8%B5%84%E6%96%99/" title="STM32常用资料">
-                        <span class="hidden-mobile">STM32常用资料</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-  <article id="comments" lazyload>
-    
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"7UVT2Wn1SqeS4e8BL5kOHopx-gzGzoHsz","appKey":"dVH6ChWtZCsbOIW2v9PsTI3M","path":"window.location.pathname","placeholder":"φ(>ω<*)：雁过留声，雪泥鸿迹","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-  </article>
-
-
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
+                    <div class="sticky-area">
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E7%AC%94%E8%AE%B0/">Android笔记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a><span class="category-list-count">10</span></li></ul>
   </aside>
 
 
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/Android/" style="font-size: 0.64em;">Android</a> <a href="/tags/STM32/" style="font-size: 0.6em;">STM32</a> <a href="/tags/cpp/" style="font-size: 0.68em;">cpp</a> <a href="/tags/hexo/" style="font-size: 0.72em;">hexo</a> <a href="/tags/python/" style="font-size: 0.6em;">python</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 0.76em;">博客</a> <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" style="font-size: 0.8em;">嵌入式</a> <a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 0.6em;">开发</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 0.76em;">杂谈</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 0.6em;">汇编</a> <a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 0.6em;">游戏</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.8em;">笔记</a> <a href="/tags/%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0/" style="font-size: 0.72em;">长期更新</a>
       </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/28/stm32%E7%A1%AC%E4%BB%B6i2c/"><i class="fa  fa-book"></i> stm32硬件i2c</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/28/STM32USART/"><i class="fa  fa-book"></i> STM32USART</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/22/STM32DMA/"><i class="fa  fa-book"></i> STM32DMA</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/21/doxygen%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83/"><i class="fa  fa-book"></i> doxygen注释规范</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/21/%E7%94%A8Tweeny%E5%AE%9E%E7%8E%B0%E4%B8%9D%E6%BB%91%E5%8A%A8%E6%95%88/"><i class="fa  fa-book"></i> 用Tweeny实现丝滑动效</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
         </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
     </div>
-  </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        <li><a href="mailto:jensentsts@163.com"><i class="fa fa-envelope"></i></a></li>
+                        
+                        
+                        
+                        
+                        <li><a target="_blank" rel="me" href="https://nya.one/@Candinya"><i class="fa fa fa-share-alt-square"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/Candinya"><i class="fa fa-github"></i></a></li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2022 舟适三山 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by 舟适三山.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
 </div>
 
-    
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
 
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    <div>
+        <canvas id="snow"></canvas>
+        <script async src="/js/snow.min.js"></script>
     </div>
-  
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
 
 
-<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
+    <script async src="/js/candy.min.js"></script>
 
 
 
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
     
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
 
 
-  
 
-  <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
-  </noscript>
-</body>
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/vendors/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
 </html>

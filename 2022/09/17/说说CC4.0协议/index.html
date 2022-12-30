@@ -1,322 +1,270 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+<html lang="zh-CN">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="/images/favicon.ico">
   
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="舟适三山">
-  <meta name="keywords" content="">
+  <title>说说CC4.0协议 | 舟适三山</title>
+  <meta name="author" content="舟适三山" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
   
-    <meta name="description" content="什么是CC协议呢？">
+    <meta name="keywords" content="博客, 杂谈" />
+  
+  <meta name="description" content="什么是CC协议呢？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="说说CC4.0协议">
 <meta property="og:url" content="https://jensentsts.github.io/2022/09/17/%E8%AF%B4%E8%AF%B4CC4.0%E5%8D%8F%E8%AE%AE/index.html">
-<meta property="og:site_name" content="(〃&#39;▽&#39;〃)">
+<meta property="og:site_name" content="舟适三山">
 <meta property="og:description" content="什么是CC协议呢？">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://jensentsts.github.io/img/%E4%B8%80%E4%BA%9B%E7%BD%B2%E5%90%8D%E6%96%B9%E5%BC%8F.jpg">
+<meta property="og:image" content="https://jensentsts.github.io/images/favicon.ico">
 <meta property="article:published_time" content="2022-09-17T11:28:31.000Z">
-<meta property="article:modified_time" content="2022-09-18T03:57:37.060Z">
+<meta property="article:modified_time" content="2022-12-30T11:32:29.249Z">
 <meta property="article:author" content="舟适三山">
 <meta property="article:tag" content="杂谈">
 <meta property="article:tag" content="博客">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://jensentsts.github.io/img/%E4%B8%80%E4%BA%9B%E7%BD%B2%E5%90%8D%E6%96%B9%E5%BC%8F.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jensentsts.github.io/images/favicon.ico">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
   
   
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
   
-  <title>说说CC4.0协议 &gt; (〃&#39;▽&#39;〃)</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
   
-
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"jensentsts.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/search.xml"};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
   
-
-
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+      .kratos-cover.kratos-cover-2 {
+        background-image: url('/images/banner.webp');
+      }
+    
+    
+      @media(min-width:768px) {
+        body.custom-background {
+          background-image: url('/images/bg.webp');
+        }
+      }
+    
+  </style>
   
 <meta name="generator" content="Hexo 6.3.0"></head>
 
 
-<body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>憨吃迷糊睡</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/">
-                <i class="iconfont icon-link-fill"></i>
-                友链
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/banner.jpg') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="说说CC4.0协议"></span>
-          
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li>
+                                            
+                                                <a href="/">
+                                            
+                                                
+                                                    <i class="fa fa-home"></i>
+                                                
+                                                首页
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a href="/archives/">
+                                            
+                                                
+                                                    <i class="fa fa-file"></i>
+                                                
+                                                档案馆
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a href="/friends/">
+                                            
+                                                
+                                                    <i class="fa fa-paw"></i>
+                                                
+                                                好伙伴
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a>
+                                            
+                                                
+                                                    <i class="fa fa-link"></i>
+                                                
+                                                链接
+                                            </a>
+                                            
+                                                <ul class="sub-menu">
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://www.bilibili.com/">
+                                                                
+                                                                bilibili
+                                                            </a>
+                                                        </li>
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://candinya.com">
+                                                                
+                                                                作者博客
+                                                            </a>
+                                                        </li>
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth">
+                                                                
+                                                                项目链接
+                                                            </a>
+                                                        </li>
+                                                    
+                                                </ul>
+                                            
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">舟适三山</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>舟适三山</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
         </div>
 
-        
-          
-  <div class="mt-3">
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-09-17 19:28" pubdate>
-          2022年9月17日 晚上
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          2.3k 字
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          20 分钟
-        
-      </span>
-    
-
-    
-    
-  </div>
-
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
 
         
-      </div>
 
-      
-    </div>
-  </div>
-</div>
+            <section class="col-md-8">
 
-</div>
+        
 
-  </header>
-
-  <main>
+            <article itemscope itemtype="https://schema.org/Article">
     
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">说说CC4.0协议</h1>
+    <link itemprop="mainEntityOfPage" href="https://jensentsts.github.io/2022/09/17/%E8%AF%B4%E8%AF%B4CC4.0%E5%8D%8F%E8%AE%AE/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
             
-              <p class="note note-info">
-                
-                  
-                    本文最后更新于：2022年9月18日 中午
-                  
-                
-              </p>
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">说说CC4.0协议</h1>
             
             
-              <div class="markdown-body">
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2022-09-17T11:28:31.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2022-09-17</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">舟适三山</span>
+                </li>
+                <li>
+                    <i class="fa fa-edit"></i> 
+                    
+                    
+                        ~2.42K
+                    
+                    字
+                </li>
                 
-                <p>什么是CC协议呢？</p>
+                    <li id="/2022/09/17/%E8%AF%B4%E8%AF%B4CC4.0%E5%8D%8F%E8%AE%AE/" class="leancloud_visitors" data-flag-title="说说CC4.0协议">
+                        <i class="fa fa-eye"></i>
+                        <span class="leancloud-visitors-count"> </span> 次阅读
+                    </li>
+                    
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1672399949249"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+            <hr />
+            <div itemprop="articleBody"><p>什么是CC协议呢？</p>
 <span id="more"></span>
-<p>CC协议是<code>A Creative Commons License</code>的缩写，中文名称<code>知识共享许可协议</code>由美国非营利性组织Creative Commons发布。4.0版本于2013年11月25日发布。<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="[知识共享许可协议_百度百科](https://baike.baidu.com/item/%E7%9F%A5%E8%AF%86%E5%85%B1%E4%BA%AB%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE/23190065?fr=aladdin#3)">[4]</span></a></sup></p>
+<p>CC协议是<code>A Creative Commons License</code>的缩写，中文名称<code>知识共享许可协议</code>由美国非营利性组织Creative Commons发布。4.0版本于2013年11月25日发布。[^4]</p>
 <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p>只要你遵守后面介绍的具体协议，许可人就无权收回你的这些权利</p>
-<div class="note note-primary">
-            <p><strong>共享</strong>：在任何媒介以任何形式复制、发行本作品<br><strong>演绎</strong>：修改、转换或以本作品为基础进行创作</p>
-          </div>
+<div class="alert alert-primary"><div class="icon"><i class="fa fa-refresh"></i></div><div class="text"><p><strong>共享</strong>：在任何媒介以任何形式复制、发行本作品<br><strong>演绎</strong>：修改、转换或以本作品为基础进行创作</p>
+</div></div>
 
 <h1 id="协议内容"><a href="#协议内容" class="headerlink" title="协议内容"></a>协议内容</h1><p>CC4.0许可协议含有4中条例，协议的具体版本由这些条例组合而成。<br>此部分内容取自Wikipedia中关于“知识共享许可协议”的说明，有所修改，具体链接为 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/">https://zh.wikipedia.org/wiki/</a> 知识共享许可协议。其采用CC-BY-SA授权。</p>
-<h2 id="BY：署名"><a href="#BY：署名" class="headerlink" title="BY：署名"></a>BY：署名</h2><p><img src="https://creativecommons.org/images/deed/attribution_icon_blue_x2.png" srcset="/img/loading.gif" lazyload alt="BY：署名"><br><strong>署名</strong>（Attribution, by）您（用户）可以复制、发行、展览、表演、放映、广播或通过信息网络传播本作品。您必须按照作者或者许可人指定的方式对作品进行署名。</p>
+<h2 id="BY：署名"><a href="#BY：署名" class="headerlink" title="BY：署名"></a>BY：署名</h2><p><img src="https://creativecommons.org/images/deed/attribution_icon_blue_x2.png" alt="BY：署名"><br><strong>署名</strong>（Attribution, by）您（用户）可以复制、发行、展览、表演、放映、广播或通过信息网络传播本作品。您必须按照作者或者许可人指定的方式对作品进行署名。</p>
 <p><strong>官网解释</strong>：您（用户）必须给出适当的署名，并提供指向本许可协议（指你使用的CC协议）的链接，同时标明是否（对原始作品）作了修改。您可以用任何合理的方式来署名，但是不得以任何方式暗示许可人为您或您的使用背书。<br>这里的“背书”来源于银行的票据业务，是指使用人不能明示或暗示观众：“我使用了许可人的作品，许可人支持我的创作，并且可以用许可人的声誉确保我的使用行为可信可靠”。</p>
 <p>具体来说，署名需要包括以下内容：</p>
-<div class="note note-primary">
-            <p><strong>包含任何版权声明（如适用）</strong>。如果作品自身带有作者的版权声明，版权声明必须保持不变，或在一种合理的方式下重新分发给媒介。<br><strong>引用作者的名字，网名或用户ID等</strong>。如果作品发布在互联网上，如果存在作者的个人档案页面，应附上页面的链接。<br><strong>引用作品的标题或名称（如适用）</strong>，前提是存在标题或名称。如果作品发布在互联网上，应在重新分发时应附上原作品的标题或者名称。<br><strong>引用作品的CC许可协议</strong>。如果作品发布在互联网上，应引用作者的CC许可协议，且应附有到CC网站的链接。（网址和跳转链接均可）<br>如果<strong>作品是一个派生作品或改编作品</strong>，除了以上几点外，<strong>还应该说明这是一个派生作品</strong>，如“这是 <em>作者</em> 的 <em>作品</em> 的芬兰语翻译版本”或“剧本在 <em>作者</em> 的 <em>原作品</em> 基础上改编”。</p>
-          </div>
+<div class="alert alert-primary"><div class="icon"><i class="fa fa-refresh"></i></div><div class="text"><p><strong>包含任何版权声明（如适用）</strong>。如果作品自身带有作者的版权声明，版权声明必须保持不变，或在一种合理的方式下重新分发给媒介。<br><strong>引用作者的名字，网名或用户ID等</strong>。如果作品发布在互联网上，如果存在作者的个人档案页面，应附上页面的链接。<br><strong>引用作品的标题或名称（如适用）</strong>，前提是存在标题或名称。如果作品发布在互联网上，应在重新分发时应附上原作品的标题或者名称。<br><strong>引用作品的CC许可协议</strong>。如果作品发布在互联网上，应引用作者的CC许可协议，且应附有到CC网站的链接。（网址和跳转链接均可）<br>如果<strong>作品是一个派生作品或改编作品</strong>，除了以上几点外，<strong>还应该说明这是一个派生作品</strong>，如“这是 <em>作者</em> 的 <em>作品</em> 的芬兰语翻译版本”或“剧本在 <em>作者</em> 的 <em>原作品</em> 基础上改编”。</p>
+</div></div>
 
-<h2 id="NC：非商业性使用"><a href="#NC：非商业性使用" class="headerlink" title="NC：非商业性使用"></a>NC：非商业性使用</h2><p><img src="https://creativecommons.org/images/deed/nc_blue_x2.png" srcset="/img/loading.gif" lazyload alt="NC：非商业性使用"><br><strong>非商业性使用</strong>（Noncommercial，nc）您可以自由复制、散布、展示及演出本作品；您不得为商业目的而使用本作品。</p>
+<h2 id="NC：非商业性使用"><a href="#NC：非商业性使用" class="headerlink" title="NC：非商业性使用"></a>NC：非商业性使用</h2><p><img src="https://creativecommons.org/images/deed/nc_blue_x2.png" alt="NC：非商业性使用"><br><strong>非商业性使用</strong>（Noncommercial，nc）您可以自由复制、散布、展示及演出本作品；您不得为商业目的而使用本作品。</p>
 <p>带有NC的均不能用于商业目的。但在原作者允许的情况下，仍可以用于商业目的。</p>
-<h2 id="SA：相同方式共享"><a href="#SA：相同方式共享" class="headerlink" title="SA：相同方式共享"></a>SA：相同方式共享</h2><p><img src="https://creativecommons.org/images/deed/sa_blue_x2.png" srcset="/img/loading.gif" lazyload alt="SA：相同方式共享"><br><strong>相同方式共享</strong>（ShareAlike，sa）您可以自由复制、散布、展示及演出本作品；若您改变、转变或更改本作品，仅在遵守与本作品相同的许可条款下，您才能散布由本作品产生的派生作品。</p>
+<h2 id="SA：相同方式共享"><a href="#SA：相同方式共享" class="headerlink" title="SA：相同方式共享"></a>SA：相同方式共享</h2><p><img src="https://creativecommons.org/images/deed/sa_blue_x2.png" alt="SA：相同方式共享"><br><strong>相同方式共享</strong>（ShareAlike，sa）您可以自由复制、散布、展示及演出本作品；若您改变、转变或更改本作品，仅在遵守与本作品相同的许可条款下，您才能散布由本作品产生的派生作品。</p>
 <p>带有SA的协议要求传播时也要遵循同样的CC协议，比如原作者注明了NC非商业性，则你在使用其作品进行内容创作时也当注明请其他人遵循CC协议中的NC规定，并且要带有SA标记以告诉其他人也应当遵循此CC协议。</p>
-<h2 id="ND：禁止演绎"><a href="#ND：禁止演绎" class="headerlink" title="ND：禁止演绎"></a>ND：禁止演绎</h2><p><img src="https://creativecommons.org/images/deed/nd_blue_x2.png" srcset="/img/loading.gif" lazyload alt="ND：禁止演绎"><br>禁止演绎（英语：No Derivative Works，nd)您可以自由复制、散布、展示及演出本作品；您不得改变、转变或更改本作品。</p>
+<h2 id="ND：禁止演绎"><a href="#ND：禁止演绎" class="headerlink" title="ND：禁止演绎"></a>ND：禁止演绎</h2><p><img src="https://creativecommons.org/images/deed/nd_blue_x2.png" alt="ND：禁止演绎"><br>禁止演绎（英语：No Derivative Works，nd)您可以自由复制、散布、展示及演出本作品；您不得改变、转变或更改本作品。</p>
 <p>只能原原本本地传播本作品，不得对内容进行任何修改。（除非构成合理运用，否则要经过作者允许）</p>
 <h1 id="可选的组合"><a href="#可选的组合" class="headerlink" title="可选的组合"></a>可选的组合</h1><p>总共有11种有效组合，其中包含了不包括任何条款的一种组合。缺乏BY的条款“没人使用”，总共有6种常用的版权规定组合：</p>
 <ul>
@@ -327,21 +275,18 @@
 <li>CC BY-ND</li>
 <li>CC BY-NC-ND</li>
 </ul>
-<div class="note note-warning">
-            <p><strong>注意</strong><br>ND与SA互斥，不能同时出现</p>
-          </div>
-<p>这些组合的权利与要求都写在上面的具体组成条例之中，将不同条例的权利与要求组合起来即为对应的协议权利与要求。如果组合中没有该条例，则表明组合的权利与要求内容与该条例相反。例如没有表明NC即为可商用，没有表明ND即为可二次创作。<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="[bilibili 靈雲Reign 科普：知识共享许可协议(CC) 4.0协议](https://www.bilibili.com/read/cv6986215/)">[2]</span></a></sup><br>你可以根据自己的需求，合理地选择自己需要的协议。不少的Hexo主题都具备在文末自动添加CC协议提示的功能，你可以在主题文档里查找相关帮助。</p>
+<div class="alert alert-warning"><div class="icon"><i class="fa fa-warning"></i></div><div class="text"><p><strong>注意</strong><br>ND与SA互斥，不能同时出现</p>
+</div></div>
+<p>这些组合的权利与要求都写在上面的具体组成条例之中，将不同条例的权利与要求组合起来即为对应的协议权利与要求。如果组合中没有该条例，则表明组合的权利与要求内容与该条例相反。例如没有表明NC即为可商用，没有表明ND即为可二次创作。[^2]<br>你可以根据自己的需求，合理地选择自己需要的协议。不少的Hexo主题都具备在文末自动添加CC协议提示的功能，你可以在主题文档里查找相关帮助。</p>
 <p>除了上述六种之外，还有一种CC协议，其名<strong>CC0</strong>。</p>
 <h2 id="CC0？那是什么？"><a href="#CC0？那是什么？" class="headerlink" title="CC0？那是什么？"></a>CC0？那是什么？</h2><p><strong>CC0</strong>是CC协议以外的一种版权声明协议。采用该协议即宣布作者<strong>放弃该创作的一切版权</strong>，该创作<strong>进入公有领域</strong>。<br>采用此协议后，该创作则可以被不加限制的引用、转载、二次改编、再发表、运用于商业用途，使用者可以不标示该创作的来源和作者。</p>
-<div class="note note-warning">
-            <p><strong>注意</strong><br>中国大陆地区并不允许著作者放弃自己的版权，任何情况下引用版权作品的最低限度是标明作者。因此CC0并没有中国大陆的版本。<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="[为什么你没授权就能用大大的作品？？—“知识共享”（CC协议）简单介绍](https://www.bilibili.com/read/cv2536622)">[3]</span></a></sup></p>
-          </div>
+<div class="alert alert-warning"><div class="icon"><i class="fa fa-warning"></i></div><div class="text"><p><strong>注意</strong><br>中国大陆地区并不允许著作者放弃自己的版权，任何情况下引用版权作品的最低限度是标明作者。因此CC0并没有中国大陆的版本。[^3]</p>
+</div></div>
 <p>采用这份协议更像是一种“宇宙安全声明”，即“我不会追究任何人的使用，无论使用于何种用途”，然而这并不具备法律效益。</p>
 <h1 id="适用范围"><a href="#适用范围" class="headerlink" title="适用范围"></a>适用范围</h1><p>在创作共享许可下的作品在著作权法中生效。包括：书籍，戏剧，电影，音乐，文章，图片，博客和网站。不建议软件在CC许可下发布。</p>
 <p>该协议在规定使用者的义务的同时，也赋予了使用者应有的权利。创作共享许可非独占或不可撤销，任何作品或在共享许可下获得的作品副本可根据该许可继续使用。</p>
-<div class="note note-warning">
-            <p><strong>CC协议并不剥夺创作者的版权或获得报酬的权利。</strong><br>即使你使用了CC BY协议或者其他不含有NC的协议对你的作品进行授权，使用者同样也可以联系你并向你支付报酬。<br>当你采用CC BY协议在网上发布了自己的作品后，也不代表你没有索取或获得因商业使用而支付的报酬的权利。<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="[为什么你没授权就能用大大的作品？？—“知识共享”（CC协议）简单介绍](https://www.bilibili.com/read/cv2536622)">[3]</span></a></sup></p>
-          </div>
+<div class="alert alert-warning"><div class="icon"><i class="fa fa-warning"></i></div><div class="text"><p><strong>CC协议并不剥夺创作者的版权或获得报酬的权利。</strong><br>即使你使用了CC BY协议或者其他不含有NC的协议对你的作品进行授权，使用者同样也可以联系你并向你支付报酬。<br>当你采用CC BY协议在网上发布了自己的作品后，也不代表你没有索取或获得因商业使用而支付的报酬的权利。[^3]</p>
+</div></div>
 
 <h1 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h1><p>还挺广泛的</p>
 <ul>
@@ -349,400 +294,414 @@
 <li>本篇博客</li>
 <li>国内网站善用佳软采用了CC0协议</li>
 </ul>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://creativecommons.org/">Creative Commons官网</a>
-<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv6986215/">bilibili 靈雲Reign 科普：知识共享许可协议(CC) 4.0协议</a>
-<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv2536622">为什么你没授权就能用大大的作品？？—“知识共享”（CC协议）简单介绍</a>
-<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:4" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%9F%A5%E8%AF%86%E5%85%B1%E4%BA%AB%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE/23190065?fr=aladdin#3">知识共享许可协议_百度百科</a>
-<a href="#fnref:4" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E6%9D%82%E8%B0%88/">#杂谈</a>
-      
-        <a href="/tags/%E5%8D%9A%E5%AE%A2/">#博客</a>
-      
-    </div>
-  
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[^1]: <a target="_blank" rel="noopener" href="https://creativecommons.org/">Creative Commons官网</a><br>[^2]: <a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv6986215/">bilibili 靈雲Reign 科普：知识共享许可协议(CC) 4.0协议</a><br>[^3]: <a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv2536622">为什么你没授权就能用大大的作品？？—“知识共享”（CC协议）简单介绍</a><br>[^4]: <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%9F%A5%E8%AF%86%E5%85%B1%E4%BA%AB%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE/23190065?fr=aladdin#3">知识共享许可协议_百度百科</a></p>
 </div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>说说CC4.0协议</div>
-      <div>https://jensentsts.github.io/2022/09/17/说说CC4.0协议/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>舟适三山</div>
         </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年9月17日</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>更新于</div>
-          <div>2022年9月18日</div>
-        </div>
-      
-      
-        <div class="license-meta-item">
-          <div>许可协议</div>
-          <div>
-            
-              
-              
-                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
-                  </span>
-                </a>
-              
-                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
-                    <i class="iconfont icon-nc"></i>
-                  </span>
-                </a>
-              
-                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
-                    <i class="iconfont icon-sa"></i>
-                  </span>
-                </a>
-              
-            
-          </div>
-        </div>
-      
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/09/20/Android%E8%90%8C%E6%96%B0%E5%85%A5%E5%9D%91Day1/" title="Android萌新入坑Day1">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Android萌新入坑Day1</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/09/16/%E6%B5%85%E8%B0%88%E5%BE%AE%E6%8E%A8/" title="浅谈微推，带你走进微推编辑的世界！">
-                        <span class="hidden-mobile">浅谈微推，带你走进微推编辑的世界！</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
             </div>
-
+        
+        <footer class="kratos-entry-footer clearfix">
             
-  <article id="comments" lazyload>
-    
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"7UVT2Wn1SqeS4e8BL5kOHopx-gzGzoHsz","appKey":"dVH6ChWtZCsbOIW2v9PsTI3M","path":"window.location.pathname","placeholder":"φ(>ω<*)：雁过留声，雪泥鸿迹","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-  </article>
-
-
-          </article>
-        </div>
-      </div>
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
     </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://jensentsts.github.io/2022/09/17/%E8%AF%B4%E8%AF%B4CC4.0%E5%8D%8F%E8%AE%AE/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://jensentsts.github.io/2022/09/17/%E8%AF%B4%E8%AF%B4CC4.0%E5%8D%8F%E8%AE%AE/";
+            const title         = "「说说CC4.0协议」";
+            const excerpt       = `什么是CC协议呢？`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
 </div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a>, <a class="tag-none-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a>
+                </div>
+                <div class="pull-date">
+                    <time datetime="2022-12-30T11:32:29.249Z" itemprop="dateModified">最后编辑：2022-12-30</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" 浅谈微推，带你走进微推编辑的世界！" href="/2022/09/16/浅谈微推/">&lt; 上一篇</a>
+            </div>
+            
+            
+            <div class="nav-next clearfix">
+                <a title=" Android萌新入坑Day1" href="/2022/09/20/Android萌新入坑Day1/">下一篇 &gt;</a>
+            </div>
+            
+        </nav>
+    
+    
+        <div id="v-comments" class="post-comments bg-image"></div>
+<script>
+    var load_comm = () => {
+        const init = () => {
+            new Valine({
+                el: '#v-comments',
+                appId: '7UVT2Wn1SqeS4e8BL5kOHopx-gzGzoHsz',
+                appKey: 'dVH6ChWtZCsbOIW2v9PsTI3M',
+                visitor: true,
+                enableQQ: false,
+                path: '/2022/09/17/%E8%AF%B4%E8%AF%B4CC4.0%E5%8D%8F%E8%AE%AE/'
+            });
+        }
+        if (typeof Valine === 'undefined') {
+            const src = '/vendors/valine@1.4.18/dist/Valine.min.js';
+            $.getScript(src, init);
+        } else {
+            init();
+        }
+    };
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://valine.js.org/">comments powered by Valine.</a></noscript>
 
+    
+</article>
 
+        
 
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center">一尺深冬雪，万里长街红</p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                29
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                3
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                13
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E7%AC%94%E8%AE%B0/">Android笔记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a><span class="category-list-count">10</span></li></ul>
   </aside>
 
 
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/Android/" style="font-size: 0.64em;">Android</a> <a href="/tags/STM32/" style="font-size: 0.6em;">STM32</a> <a href="/tags/cpp/" style="font-size: 0.68em;">cpp</a> <a href="/tags/hexo/" style="font-size: 0.72em;">hexo</a> <a href="/tags/python/" style="font-size: 0.6em;">python</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 0.76em;">博客</a> <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" style="font-size: 0.8em;">嵌入式</a> <a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 0.6em;">开发</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 0.76em;">杂谈</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 0.6em;">汇编</a> <a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 0.6em;">游戏</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.8em;">笔记</a> <a href="/tags/%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0/" style="font-size: 0.72em;">长期更新</a>
       </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/28/stm32%E7%A1%AC%E4%BB%B6i2c/"><i class="fa  fa-book"></i> stm32硬件i2c</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/28/STM32USART/"><i class="fa  fa-book"></i> STM32USART</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/22/STM32DMA/"><i class="fa  fa-book"></i> STM32DMA</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/21/doxygen%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83/"><i class="fa  fa-book"></i> doxygen注释规范</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/21/%E7%94%A8Tweeny%E5%AE%9E%E7%8E%B0%E4%B8%9D%E6%BB%91%E5%8A%A8%E6%95%88/"><i class="fa  fa-book"></i> 用Tweeny实现丝滑动效</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
         </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
     </div>
-  </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        <li><a href="mailto:jensentsts@163.com"><i class="fa fa-envelope"></i></a></li>
+                        
+                        
+                        
+                        
+                        <li><a target="_blank" rel="me" href="https://nya.one/@Candinya"><i class="fa fa fa-share-alt-square"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/Candinya"><i class="fa fa-github"></i></a></li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2022 舟适三山 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by 舟适三山.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
 </div>
 
-    
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
 
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    <div>
+        <canvas id="snow"></canvas>
+        <script async src="/js/snow.min.js"></script>
     </div>
-  
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
 
 
-<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
+    <script async src="/js/candy.min.js"></script>
 
 
 
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
 
 
 
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/vendors/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
 
 
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
+
+<!-- Extra support for third-party plguins  -->
 
 
-  
-
-  <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
-  </noscript>
-</body>
+    </body>
 </html>
