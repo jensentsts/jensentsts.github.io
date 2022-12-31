@@ -14,7 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="format-detection" content="telphone=no, email=no" />
   
-    <meta name="keywords" content="cpp, 嵌入式" />
+    <meta name="keywords" content="cpp, 嵌入式, 开发" />
   
   <meta name="description" content="刘慈欣：“好的程序员不去造轮子。”刘慈欣：“我没说过这句话。”刘慈欣：“我说过这句话。”">
 <meta property="og:type" content="article">
@@ -25,10 +25,11 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://jensentsts.github.io/images/favicon.ico">
 <meta property="article:published_time" content="2022-12-21T09:31:36.000Z">
-<meta property="article:modified_time" content="2022-12-30T11:20:37.558Z">
+<meta property="article:modified_time" content="2022-12-31T03:19:10.158Z">
 <meta property="article:author" content="舟适三山">
 <meta property="article:tag" content="嵌入式">
 <meta property="article:tag" content="cpp">
+<meta property="article:tag" content="开发">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jensentsts.github.io/images/favicon.ico">
   
@@ -235,7 +236,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        ~5.46K
+                        ~5.44K
                     
                     字
                 </li>
@@ -252,18 +253,15 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1672399237558"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1672456750158"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
             <hr />
-            <div itemprop="articleBody"><p>刘慈欣：“好的程序员不去造轮子。”<br>刘慈欣：“我没说过这句话。”<br>刘慈欣：“我说过这句话。”</p>
-<span id="more"></span>
-<p>说得简单一些……因为我不知道怎么说得专业些</p>
+            <div itemprop="articleBody"><p>刘慈欣：“好的程序员不去造轮子。”<br>刘慈欣：“我没说过这句话。”<br>刘慈欣：“我说过这句话。”<br><span id="more"></span><br>说得简单一些……因为我不知道怎么说得专业些</p>
 <h1 id="Tweeny"><a href="#Tweeny" class="headerlink" title="Tweeny"></a>Tweeny</h1><p>简单来说，<code>Tweeny</code>可以用来存储对象<code>transition</code>属性的起始状态、末状态、过渡时间、过渡方式等。<br>我这里是为了单片机开发，在github上找了个<a target="_blank" rel="noopener" href="https://github.com/mobius3/tweeny">Tweeny的C++库</a>。</p>
 <h1 id="Download"><a href="#Download" class="headerlink" title="Download"></a>Download</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/mobius3/tweeny.git</span><br></pre></td></tr></table></figure>
-
 <h1 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;tweeny/include/tweeny.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">gotoxy</span><span class="params">(SHORT x, SHORT y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    COORD coord;</span><br><span class="line">    coord.X = x;</span><br><span class="line">    coord.Y = y;</span><br><span class="line">    HANDLE h = <span class="built_in">GetStdHandle</span>(STD_OUTPUT_HANDLE);</span><br><span class="line">    <span class="built_in">SetConsoleCursorPosition</span>(h, coord);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 从这里开始看，忽略 Sleep() 和 gotoxy()</span></span><br><span class="line">    <span class="keyword">auto</span> twe = tweeny::<span class="built_in">from</span>(<span class="string">&#x27;H&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;o&#x27;</span>).<span class="built_in">to</span>(<span class="string">&#x27;W&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;d&#x27;</span>).<span class="built_in">during</span>(<span class="number">10</span>);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">    <span class="comment">/*for (char c : twe.step(0))</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        cout &lt;&lt; c;</span></span><br><span class="line"><span class="comment">        Sleep(20);</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">    <span class="built_in">Sleep</span>(<span class="number">100</span>);         <span class="comment">// 花里胡哨</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">gotoxy</span>(<span class="number">0</span>, <span class="number">0</span>);   <span class="comment">// 花里胡哨</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : twe.<span class="built_in">step</span>(<span class="number">1</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            cout &lt;&lt; c;</span><br><span class="line">            <span class="built_in">Sleep</span>(<span class="number">20</span>);  <span class="comment">// 花里胡哨</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">Sleep</span>(<span class="number">100</span>);     <span class="comment">// 花里胡哨</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>在上面的代码中，我们实现了这样一个功能：</p>
 <ol>
@@ -271,46 +269,29 @@
 <li><code>Hello</code>中的每一个字母开始不停地变化</li>
 <li>最终，<code>Hello</code>变成了<code>World</code></li>
 </ol>
-<p>首先，我们创建了一个<code>tween</code>对象（它叫什么无所谓，auto就完事了_(:з」∠)_），并告诉他：这个过渡效果有5个元素，最开始分别是<code>&#39;H&#39; &#39;e&#39; &#39;l&#39; &#39;l&#39; &#39;o&#39;</code>，最终的值分别是<code>&#39;W&#39; &#39;o&#39; &#39;r&#39; &#39;l&#39; &#39;d&#39;</code>，整个过渡的过程使用<code>整数10</code>来度量。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> twe = tweeny::<span class="built_in">from</span>(<span class="string">&#x27;H&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;o&#x27;</span>).<span class="built_in">to</span>(<span class="string">&#x27;W&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;d&#x27;</span>).<span class="built_in">during</span>(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
-<p>让我们跳过<code>cout&lt;&lt;</code>下面那段被注释掉的代码。<br><code>cout&lt;&lt;&quot;Hello&quot;</code>将<code>Hello</code>打印到了屏幕上。<br>接下来，我们希望通过<code>差值步进</code>的方式打印每一次步进后的结果。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">char</span> c : twe.<span class="built_in">step</span>(<span class="number">1</span>))</span><br><span class="line">&#123;</span><br><span class="line">    cout &lt;&lt; c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样的步进一共有10次，所以在外面加上一个循环</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ++i)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">char</span> c : twe.<span class="built_in">step</span>(<span class="number">1</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; c;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>再搭配上<code>Sleep()</code>和<code>gotoxy()</code>，就能实现想要的效果啦。</p>
-<p>不过，通过<code>cout&lt;&lt;&quot;Hello&quot;</code>的方式实在是太奇怪了，所以我们可以选择每次步进为0，输出最开始的结果，也就是被注释掉的那段代码</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">char</span> c : twe.<span class="built_in">step</span>(<span class="number">0</span>))</span><br><span class="line">&#123;</span><br><span class="line">    cout &lt;&lt; c;</span><br><span class="line">    <span class="built_in">Sleep</span>(<span class="number">20</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="Step-Further"><a href="#Step-Further" class="headerlink" title="Step Further"></a>Step Further</h1><h2 id="选择过渡函数"><a href="#选择过渡函数" class="headerlink" title="选择过渡函数"></a>选择过渡函数</h2><p>一个简单的线性函数可这样实现</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">linear</span><span class="params">(<span class="type">float</span> p, <span class="type">int</span> a, <span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (b - a) * p + a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用<code>via</code>将它添加到Tweeny对象</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> twe = tweeny::<span class="built_in">from</span>(<span class="number">0</span>).<span class="built_in">to</span>(<span class="number">100</span>).<span class="built_in">during</span>(<span class="number">1000</span>).<span class="built_in">via</span>(linear);</span><br></pre></td></tr></table></figure>
-<p>Tweeny库提供了多种内置过渡函数，<del>但我也不知道从哪儿查看，应该是下面这个网站中的不少吧</del><br>好康的缓动曲线动画可在<a target="_blank" rel="noopener" href="http://easings.net/">http://easings.net</a>查看。</p>
-<h2 id="为每个元素单独设置属性"><a href="#为每个元素单独设置属性" class="headerlink" title="为每个元素单独设置属性"></a>为每个元素单独设置属性</h2><p>你只需要在函数里分别一一对应地给出。如果每个元素的属性值都相同，你可以只写一个值。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> twe1 = tweeny::<span class="built_in">from</span>(<span class="number">0</span>, <span class="number">10</span>, <span class="number">100</span>).<span class="built_in">to</span>(<span class="number">10</span>, <span class="number">100</span>, <span class="number">1000</span>).<span class="built_in">during</span>(<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>).<span class="built_in">via</span>(easing::exponentialIn, easing::exponentialInOut, easing::backOut);</span><br><span class="line"><span class="keyword">auto</span> twe2 = tweeny::<span class="built_in">from</span>(<span class="number">0</span>, <span class="number">10</span>, <span class="number">100</span>).<span class="built_in">to</span>(<span class="number">10</span>, <span class="number">100</span>, <span class="number">1000</span>).<span class="built_in">during</span>(<span class="number">100</span>).<span class="built_in">via</span>(easing::exponentialInOut);</span><br></pre></td></tr></table></figure>
-
+<p>首先，我们创建了一个<code>tween</code>对象（它叫什么无所谓，auto就完事了_(:з」∠)_），并告诉他：这个过渡效果有5个元素，最开始分别是<code>&#39;H&#39; &#39;e&#39; &#39;l&#39; &#39;l&#39; &#39;o&#39;</code>，最终的值分别是<code>&#39;W&#39; &#39;o&#39; &#39;r&#39; &#39;l&#39; &#39;d&#39;</code>，整个过渡的过程使用<code>整数10</code>来度量。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> twe = tweeny::<span class="built_in">from</span>(<span class="string">&#x27;H&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;o&#x27;</span>).<span class="built_in">to</span>(<span class="string">&#x27;W&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;d&#x27;</span>).<span class="built_in">during</span>(<span class="number">10</span>);</span><br></pre></td></tr></table></figure><br>让我们跳过<code>cout&lt;&lt;</code>下面那段被注释掉的代码。<br><code>cout&lt;&lt;&quot;Hello&quot;</code>将<code>Hello</code>打印到了屏幕上。<br>接下来，我们希望通过<code>差值步进</code>的方式打印每一次步进后的结果。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">char</span> c : twe.<span class="built_in">step</span>(<span class="number">1</span>))</span><br><span class="line">&#123;</span><br><span class="line">    cout &lt;&lt; c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>这样的步进一共有10次，所以在外面加上一个循环<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ++i)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">char</span> c : twe.<span class="built_in">step</span>(<span class="number">1</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; c;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>再搭配上<code>Sleep()</code>和<code>gotoxy()</code>，就能实现想要的效果啦。</p>
+<p>不过，通过<code>cout&lt;&lt;&quot;Hello&quot;</code>的方式实在是太奇怪了，所以我们可以选择每次步进为0，输出最开始的结果，也就是被注释掉的那段代码<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">char</span> c : twe.<span class="built_in">step</span>(<span class="number">0</span>))</span><br><span class="line">&#123;</span><br><span class="line">    cout &lt;&lt; c;</span><br><span class="line">    <span class="built_in">Sleep</span>(<span class="number">20</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Step-Further"><a href="#Step-Further" class="headerlink" title="Step Further"></a>Step Further</h1><h2 id="选择过渡函数"><a href="#选择过渡函数" class="headerlink" title="选择过渡函数"></a>选择过渡函数</h2><p>一个简单的线性函数可这样实现<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">linear</span><span class="params">(<span class="type">float</span> p, <span class="type">int</span> a, <span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (b - a) * p + a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>使用<code>via</code>将它添加到Tweeny对象<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> twe = tweeny::<span class="built_in">from</span>(<span class="number">0</span>).<span class="built_in">to</span>(<span class="number">100</span>).<span class="built_in">during</span>(<span class="number">1000</span>).<span class="built_in">via</span>(linear);</span><br></pre></td></tr></table></figure><br>Tweeny库提供了多种内置过渡函数，<del>但我也不知道从哪儿查看，应该是下面这个网站中的不少吧</del><br>好康的缓动曲线动画可在<a target="_blank" rel="noopener" href="http://easings.net">http://easings.net</a>查看。</p>
+<h2 id="为每个元素单独设置属性"><a href="#为每个元素单独设置属性" class="headerlink" title="为每个元素单独设置属性"></a>为每个元素单独设置属性</h2><p>你只需要在函数里分别一一对应地给出。如果每个元素的属性值都相同，你可以只写一个值。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> twe1 = tweeny::<span class="built_in">from</span>(<span class="number">0</span>, <span class="number">10</span>, <span class="number">100</span>).<span class="built_in">to</span>(<span class="number">10</span>, <span class="number">100</span>, <span class="number">1000</span>).<span class="built_in">during</span>(<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>).<span class="built_in">via</span>(easing::exponentialIn, easing::exponentialInOut, easing::backOut);</span><br><span class="line"><span class="keyword">auto</span> twe2 = tweeny::<span class="built_in">from</span>(<span class="number">0</span>, <span class="number">10</span>, <span class="number">100</span>).<span class="built_in">to</span>(<span class="number">10</span>, <span class="number">100</span>, <span class="number">1000</span>).<span class="built_in">during</span>(<span class="number">100</span>).<span class="built_in">via</span>(easing::exponentialInOut);</span><br></pre></td></tr></table></figure></p>
 <h2 id="添加多段过渡"><a href="#添加多段过渡" class="headerlink" title="添加多段过渡"></a>添加多段过渡</h2><p>多段过度（multipoint）</p>
 <blockquote>
 <p>To allow for that, each call to tween::to adds a new tweening point. Calls to tween::during and tween::via always refer to the last added point:</p>
 </blockquote>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> tween = tweeny::<span class="built_in">from</span>(<span class="number">0</span>)</span><br><span class="line">              .<span class="built_in">to</span>(<span class="number">100</span>).<span class="built_in">during</span>(<span class="number">500</span>) <span class="comment">// 0 to 100 during 500</span></span><br><span class="line">              .<span class="built_in">to</span>(<span class="number">200</span>).<span class="built_in">during</span>(<span class="number">100</span>).<span class="built_in">via</span>(easing::circularOut); <span class="comment">// 100 to 200 during 100 via circularOut</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="stepping-amp-seeking-amp-jumping"><a href="#stepping-amp-seeking-amp-jumping" class="headerlink" title="stepping &amp; seeking &amp; jumping"></a>stepping &amp; seeking &amp; jumping</h2><h3 id="step"><a href="#step" class="headerlink" title="step"></a>step</h3><p>就像刚才演示的那样。</p>
 <blockquote>
 <p> Passing a integral quantity (integers) to tween::step will step it in duration units. Passing a float value will step it by a percentage (ranging from 0.0f to 1.0f).</p>
 </blockquote>
 <h4 id="后撤步"><a href="#后撤步" class="headerlink" title="后撤步"></a>后撤步</h4><p><del>后撤步，7777</del><br>使用<code>tween::backward</code></p>
 <h4 id="前进步"><a href="#前进步" class="headerlink" title="前进步"></a>前进步</h4><p>使用<code>tween:forward</code></p>
-<h3 id="seek"><a href="#seek" class="headerlink" title="seek"></a>seek</h3><p>让你跳转到任意你想到达的插值处</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">auto</span> tween = tweeny::from(<span class="number">0</span>).to(<span class="number">100</span>).during(<span class="number">1000</span>);</span><br><span class="line"><span class="attribute">tween</span>.seek(<span class="number">0</span>.<span class="number">5</span>f);</span><br></pre></td></tr></table></figure>
-
-<h3 id="jump"><a href="#jump" class="headerlink" title="jump"></a>jump</h3><p>当你使用了多段过度（multipoint），jump可以让你跳转到任意关键点（specific tween point）上</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> tween = tweeny::<span class="built_in">from</span>(<span class="number">0</span>).<span class="built_in">to</span>(<span class="number">100</span>).<span class="built_in">during</span>(<span class="number">100</span>).<span class="built_in">to</span>(<span class="number">200</span>).<span class="built_in">during</span>(<span class="number">100</span>);</span><br><span class="line">tween.<span class="built_in">jump</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-
+<h3 id="seek"><a href="#seek" class="headerlink" title="seek"></a>seek</h3><p>让你跳转到任意你想到达的插值处<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">auto</span> tween = tweeny::from(<span class="number">0</span>).to(<span class="number">100</span>).during(<span class="number">1000</span>);</span><br><span class="line"><span class="attribute">tween</span>.seek(<span class="number">0</span>.<span class="number">5</span>f);</span><br></pre></td></tr></table></figure></p>
+<h3 id="jump"><a href="#jump" class="headerlink" title="jump"></a>jump</h3><p>当你使用了多段过度（multipoint），jump可以让你跳转到任意关键点（specific tween point）上<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> tween = tweeny::<span class="built_in">from</span>(<span class="number">0</span>).<span class="built_in">to</span>(<span class="number">100</span>).<span class="built_in">during</span>(<span class="number">100</span>).<span class="built_in">to</span>(<span class="number">200</span>).<span class="built_in">during</span>(<span class="number">100</span>);</span><br><span class="line">tween.<span class="built_in">jump</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure></p>
 <h2 id="返回值说明"><a href="#返回值说明" class="headerlink" title="返回值说明"></a>返回值说明</h2><p><code>tweeny::step()</code>、<code>tweeny::seek()</code>、<code>tweeny::jump()</code>都有返回值。</p>
 <ul>
 <li>如果你用的是单值（single value），那么它直接该返回什么就返回什么</li>
 <li>如果有多个同类型的值（multiple values of the same type），那么它会返回一个<code>std::array</code>，例如<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> tween = tweeny::<span class="built_in">from</span>(<span class="number">0</span>, <span class="number">1</span>).<span class="built_in">to</span>(<span class="number">2</span>, <span class="number">3</span>).<span class="built_in">during</span>(<span class="number">100</span>);</span><br><span class="line">std::array&lt;<span class="type">int</span>, 2&gt; v = tween.<span class="built_in">step</span>(<span class="number">10</span>);</span><br></pre></td></tr></table></figure></li>
-<li>如果是不同的类型（multiple types），那么它会安徽一个<code>std::tuple</code>，例如<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> tween = tweeny::<span class="built_in">from</span>(<span class="number">0</span>, <span class="number">1.0f</span>).<span class="built_in">to</span>(<span class="number">2</span>, <span class="number">3.0f</span>).<span class="built_in">during</span>(<span class="number">100</span>);</span><br><span class="line">std::tuple&lt;<span class="type">int</span>, <span class="type">float</span>&gt; v = tween.<span class="built_in">step</span>(<span class="number">10</span>);</span><br></pre></td></tr></table></figure></li>
+<li>如果是不同的类型（multiple types），那么它会安徽一个<code>std::tuple</code>，例如<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> tween = tweeny::<span class="built_in">from</span>(<span class="number">0</span>, <span class="number">1.0f</span>).<span class="built_in">to</span>(<span class="number">2</span>, <span class="number">3.0f</span>).<span class="built_in">during</span>(<span class="number">100</span>);</span><br><span class="line">std::tuple&lt;<span class="type">int</span>, <span class="type">float</span>&gt; v = tween.<span class="built_in">step</span>(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <p>总而言之，如果是多个元素，那么它的返回值一定可迭代。</p>
 <h1 id="Callbacks"><a href="#Callbacks" class="headerlink" title="Callbacks"></a>Callbacks</h1><p>Tweeny允许用户为<code>step</code>添加回调函数（Callbacks），为特殊点配置可运行的程序。比如，当你播放视频时想要自动跳过片头片尾。<br>回调函数有三种形式：</p>
@@ -320,12 +301,11 @@
 <li>如果只需要获取当前值<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">stepped</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span></span>;</span><br><span class="line"><span class="keyword">auto</span> tween = tweeny::<span class="built_in">from</span>(<span class="number">0</span>, <span class="number">0</span>).<span class="built_in">to</span>(<span class="number">100</span>, <span class="number">200</span>).<span class="built_in">during</span>(<span class="number">100</span>).<span class="built_in">onStep</span>(stepped);</span><br></pre></td></tr></table></figure>
 回调函数的返回类型通常是布尔型，若返回true，则该函数将从回调函数表中移除(callback list)；若返回false，则保留在队列(queue)中。（我也不知道为什么是队列(queue)，上边没提这事儿，估计和“回调函数列表”是一回事儿）<blockquote>
 <p> The return type of a callback is always boolean. If it returns true, it will be <strong>dismissed</strong> and removed from the callback list. Returning false keeps the callback in the queue.<br>例如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">stepped</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;x: %d, y: %d\n&quot;</span>, x, y);</span><br><span class="line">  <span class="keyword">if</span> (x == y)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">auto</span> tween = tweeny::<span class="built_in">from</span>(<span class="number">0</span>, <span class="number">0</span>).<span class="built_in">to</span>(<span class="number">100</span>, <span class="number">200</span>).<span class="built_in">during</span>(<span class="number">100</span>).<span class="built_in">onStep</span>(stepped);</span><br></pre></td></tr></table></figure>
 </blockquote>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">stepped</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;x: %d, y: %d\n&quot;</span>, x, y);</span><br><span class="line">  <span class="keyword">if</span> (x == y)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">auto</span> tween = tweeny::<span class="built_in">from</span>(<span class="number">0</span>, <span class="number">0</span>).<span class="built_in">to</span>(<span class="number">100</span>, <span class="number">200</span>).<span class="built_in">during</span>(<span class="number">100</span>).<span class="built_in">onStep</span>(stepped);</span><br></pre></td></tr></table></figure></li>
+</li>
 </ul>
-<h1 id="Any-functions-usable"><a href="#Any-functions-usable" class="headerlink" title="Any functions usable"></a>Any functions usable</h1><p>只要与接口一致，哪里来的回调函数都能用。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">ftor</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="type">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">auto</span> tween = tweeny::<span class="built_in">from</span>(<span class="number">0</span>, <span class="number">0</span>).<span class="built_in">to</span>(<span class="number">100</span>, <span class="number">200</span>).<span class="built_in">during</span>(<span class="number">100</span>);</span><br><span class="line">tween.<span class="built_in">onStep</span>([](<span class="type">int</span>, <span class="type">int</span>) &#123; <span class="keyword">return</span> <span class="literal">false</span>; &#125;); <span class="comment">// lambdas</span></span><br><span class="line">tween.<span class="built_in">onStep</span>(<span class="built_in">ftor</span>()); <span class="comment">// functors</span></span><br></pre></td></tr></table></figure>
-
+<h1 id="Any-functions-usable"><a href="#Any-functions-usable" class="headerlink" title="Any functions usable"></a>Any functions usable</h1><p>只要与接口一致，哪里来的回调函数都能用。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">ftor</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="type">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">auto</span> tween = tweeny::<span class="built_in">from</span>(<span class="number">0</span>, <span class="number">0</span>).<span class="built_in">to</span>(<span class="number">100</span>, <span class="number">200</span>).<span class="built_in">during</span>(<span class="number">100</span>);</span><br><span class="line">tween.<span class="built_in">onStep</span>([](<span class="type">int</span>, <span class="type">int</span>) &#123; <span class="keyword">return</span> <span class="literal">false</span>; &#125;); <span class="comment">// lambdas</span></span><br><span class="line">tween.<span class="built_in">onStep</span>(<span class="built_in">ftor</span>()); <span class="comment">// functors</span></span><br></pre></td></tr></table></figure></p>
 <h1 id="Final"><a href="#Final" class="headerlink" title="Final"></a>Final</h1><blockquote>
 <p>I hope you have fun using Tweeny.</p>
 </blockquote>
@@ -416,10 +396,10 @@
             <div class="footer-tag clearfix">
                 <div class="pull-left">
                 <i class="fa fa-tags"></i>
-                    <a class="tag-none-link" href="/tags/cpp/" rel="tag">cpp</a>, <a class="tag-none-link" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag">嵌入式</a>
+                    <a class="tag-none-link" href="/tags/cpp/" rel="tag">cpp</a>, <a class="tag-none-link" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag">嵌入式</a>, <a class="tag-none-link" href="/tags/%E5%BC%80%E5%8F%91/" rel="tag">开发</a>
                 </div>
                 <div class="pull-date">
-                    <time datetime="2022-12-30T11:20:37.558Z" itemprop="dateModified">最后编辑：2022-12-30</time>
+                    <time datetime="2022-12-31T03:19:10.158Z" itemprop="dateModified">最后编辑：2022-12-31</time>
                 </div>
             </div>
         </footer>
@@ -494,7 +474,7 @@
                 文章
             </span>
             <span class="count">
-                29
+                33
             </span>
         </a>
         <a class="meta-item" href="/categories/">
@@ -530,7 +510,7 @@
   <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
     <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
       <div class="tag-clouds">
-        <a href="/tags/Android/" style="font-size: 0.64em;">Android</a> <a href="/tags/STM32/" style="font-size: 0.6em;">STM32</a> <a href="/tags/cpp/" style="font-size: 0.68em;">cpp</a> <a href="/tags/hexo/" style="font-size: 0.72em;">hexo</a> <a href="/tags/python/" style="font-size: 0.6em;">python</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 0.76em;">博客</a> <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" style="font-size: 0.8em;">嵌入式</a> <a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 0.6em;">开发</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 0.76em;">杂谈</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 0.6em;">汇编</a> <a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 0.6em;">游戏</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.8em;">笔记</a> <a href="/tags/%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0/" style="font-size: 0.72em;">长期更新</a>
+        <a href="/tags/Android/" style="font-size: 0.64em;">Android</a> <a href="/tags/STM32/" style="font-size: 0.6em;">STM32</a> <a href="/tags/cpp/" style="font-size: 0.68em;">cpp</a> <a href="/tags/hexo/" style="font-size: 0.72em;">hexo</a> <a href="/tags/python/" style="font-size: 0.6em;">python</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 0.76em;">博客</a> <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" style="font-size: 0.8em;">嵌入式</a> <a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 0.64em;">开发</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 0.76em;">杂谈</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 0.6em;">汇编</a> <a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 0.72em;">游戏</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.8em;">笔记</a> <a href="/tags/%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0/" style="font-size: 0.72em;">长期更新</a>
       </div>
   </aside>
 
@@ -544,34 +524,42 @@
         
           
           
+            <a class="list-group-item" href="/2022/12/31/%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90%E6%9C%BA%E5%99%A819-24%E6%BB%A1%E6%98%9F%E6%94%BB%E7%95%A5/"><i class="fa  fa-book"></i> 人力资源机器19-24满星攻略</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/31/%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90%E6%9C%BA%E5%99%A813-18%E6%BB%A1%E6%98%9F%E6%94%BB%E7%95%A5/"><i class="fa  fa-book"></i> 人力资源机器13-18满星攻略</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/31/%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90%E6%9C%BA%E5%99%A87-12%E6%BB%A1%E6%98%9F%E6%94%BB%E7%95%A5/"><i class="fa  fa-book"></i> 人力资源机器7-12满星攻略</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/31/STM32SPI/"><i class="fa  fa-book"></i> STM32SPI</a>
+            
+          
+        
+          
+          
             <a class="list-group-item" href="/2022/12/28/stm32%E7%A1%AC%E4%BB%B6i2c/"><i class="fa  fa-book"></i> stm32硬件i2c</a>
             
           
         
           
-          
-            <a class="list-group-item" href="/2022/12/28/STM32USART/"><i class="fa  fa-book"></i> STM32USART</a>
             
           
-        
-          
-          
-            <a class="list-group-item" href="/2022/12/22/STM32DMA/"><i class="fa  fa-book"></i> STM32DMA</a>
             
           
-        
-          
-          
-            <a class="list-group-item" href="/2022/12/21/doxygen%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83/"><i class="fa  fa-book"></i> doxygen注释规范</a>
             
           
-        
-          
-          
-            <a class="list-group-item" href="/2022/12/21/%E7%94%A8Tweeny%E5%AE%9E%E7%8E%B0%E4%B8%9D%E6%BB%91%E5%8A%A8%E6%95%88/"><i class="fa  fa-book"></i> 用Tweeny实现丝滑动效</a>
             
-          
-        
           
             
           
@@ -738,5 +726,20 @@
 <!-- Extra support for third-party plguins  -->
 
 
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>

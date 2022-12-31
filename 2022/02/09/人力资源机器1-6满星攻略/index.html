@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://jensentsts.github.io/images/favicon.ico">
 <meta property="article:published_time" content="2022-02-09T07:10:22.000Z">
-<meta property="article:modified_time" content="2022-12-30T11:08:00.464Z">
+<meta property="article:modified_time" content="2022-12-31T01:54:16.655Z">
 <meta property="article:author" content="舟适三山">
 <meta property="article:tag" content="游戏">
 <meta name="twitter:card" content="summary">
@@ -234,7 +234,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        ~3.59K
+                        ~3.58K
                     
                     字
                 </li>
@@ -251,7 +251,7 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1672398480464"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1672451656655"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
@@ -259,10 +259,9 @@
             <hr />
             <div itemprop="articleBody"><p>《人力资源机器》（原名：<em>Human Resource Machine</em>，又译：<em>程序员升职记</em>）这款游戏，所使用的游戏规则接近于计算机的汇编，可视化了底层代码，去其繁，益其乐。无论是入坑编程还是初试算法思想都是非常好的选择。当然，仅仅是作为一款益智游戏也是蛮不错的。从一名基层员工，一步一步从基层爬上巅峰，是不是特别地有意思？</p>
 <span id="more"></span>
-
 <h1 id="简单地介绍一下"><a href="#简单地介绍一下" class="headerlink" title="简单地介绍一下"></a>简单地介绍一下</h1><p>在HRM里，你将会扮演<span title="实际上，我也不太清楚是不是叫这个名字">Human Resource Machine公司</span>的一名职员，从基层开始锻炼，一步一步走上职场巅峰（然后被解雇？）。将命令合理地组合，处理上司给你的数据然后输出正确的结果，从而通关，让电梯上升一层。在通关的同时也会有一些剧情（对，HRM这小游戏有一点剧情）。</p>
 <h2 id="玩法"><a href="#玩法" class="headerlink" title="玩法"></a>玩法</h2><p><img src="https://s2.loli.net/2022/02/09/3crykzHmIqLCPeV.png" alt="HRM，操作界面.png"></p>
-<p>游戏的场景在一间办公室里，最左侧是输入（INBOX），右边是输出（OUTBOX），中间是地砖（相当于寄存器&#x2F;RAM），你需要在界面最右侧的指令栏里，通过点击+拖拽组合你的指令，然后点击界面下方的“运行”（上司打断道：听清楚，这叫播放！），你所扮演的员工将会按照程序完成任务。随着剧情的推进，办公室里的场景也有一些细节上的变化，它们正等待着你的仔细观察。</p>
+<p>游戏的场景在一间办公室里，最左侧是输入（INBOX），右边是输出（OUTBOX），中间是地砖（相当于寄存器/RAM），你需要在界面最右侧的指令栏里，通过点击+拖拽组合你的指令，然后点击界面下方的“运行”（上司打断道：听清楚，这叫播放！），你所扮演的员工将会按照程序完成任务。随着剧情的推进，办公室里的场景也有一些细节上的变化，它们正等待着你的仔细观察。</p>
 <p><strong>通关方法：</strong>只需要输出结果正确即可通关。当然了，你需要编写合适的程序从而保障任务得以顺利完成，并且上司会暗中拿同样类型但是不同的输入数据去监测你的程序，一旦不能通过某组测试数据，我们也是无法通关的。</p>
 <p><strong>强迫症诊断标准：</strong>游戏里还有挑战内容，通过较少的步数，使用更少的指令完成任务，可以分别获得一星的奖励。当然，有些任务可能无法一箭双雕，需要通过不同代码分别获得两颗星的奖励。</p>
 <p><strong>便捷操作：</strong>游戏提供了撤销、复制、粘贴、清除等功能，并且你还能在你的代码和地砖上写注释！真的是非常贴心。</p>
@@ -292,33 +291,27 @@
 <h3 id="思路是……"><a href="#思路是……" class="headerlink" title="思路是……"></a>思路是……</h3><p>解：略，请读者自证（手动滑稽）</p>
 <p><strong>AK代码：</strong></p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- HUMAN RESOURCE MACHINE PROGRAM --</span></span><br><span class="line"></span><br><span class="line">    INBOX   </span><br><span class="line">    OUTBOX  </span><br><span class="line">    INBOX   </span><br><span class="line">    OUTBOX  </span><br><span class="line">    INBOX   </span><br><span class="line">    OUTBOX  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <h2 id="电梯2层-繁忙的收发室"><a href="#电梯2层-繁忙的收发室" class="headerlink" title="电梯2层-繁忙的收发室"></a>电梯2层-繁忙的收发室</h2><h3 id="新指令！-1"><a href="#新指令！-1" class="headerlink" title="新指令！"></a>新指令！</h3><p><code>jump</code>：当程序运行遇到到<code>jump</code>时，程序就会跳转到箭头所指位置，然后继续执行后面的命令。运用<code>jump</code>，我们可以实现跳转，也可以实现复读机一样的循环。</p>
 <h3 id="思路是……-1"><a href="#思路是……-1" class="headerlink" title="思路是……"></a>思路是……</h3><p>这关告诉了我们如何使用<code>jump</code>创建一个循环，就是跑到前边去，把自己以前执行过的命令再执行一遍。这关有两种思路，一种是直接反复使用INBOX和OUTBOX打暴力；另一种，也是最一般的思路，就是把一对<code>inbox</code>和<code>outbox</code>放在循环里</p>
 <p><strong>TLE代码：</strong></p>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- HUMAN RESOURCE MACHINE PROGRAM --</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">a</span>:</span><br><span class="line">    INBOX   </span><br><span class="line">    OUTBOX  </span><br><span class="line">    JUMP     <span class="keyword">a</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>MLE代码是想告诉我们，在这个游戏机制之下，想要获得满星，有可能要写非常复杂的代码。这个思想在后面会发挥很大的作用。<strong>MLE代码：</strong></p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- HUMAN RESOURCE MACHINE PROGRAM --</span></span><br><span class="line"></span><br><span class="line">    INBOX   </span><br><span class="line">    OUTBOX  </span><br><span class="line">    INBOX   </span><br><span class="line">    OUTBOX  </span><br><span class="line">    INBOX   </span><br><span class="line">    OUTBOX  </span><br><span class="line">    INBOX   </span><br><span class="line">    OUTBOX  </span><br><span class="line">    INBOX   </span><br><span class="line">    OUTBOX  </span><br><span class="line">    INBOX   </span><br><span class="line">    OUTBOX  </span><br><span class="line">    INBOX   </span><br><span class="line">    OUTBOX  </span><br><span class="line">    INBOX   </span><br><span class="line">    OUTBOX  </span><br><span class="line">    INBOX   </span><br><span class="line">    OUTBOX  </span><br><span class="line">    INBOX   </span><br><span class="line">    OUTBOX  </span><br><span class="line">    INBOX   </span><br><span class="line">    OUTBOX  </span><br><span class="line">    INBOX   </span><br><span class="line">    OUTBOX  </span><br><span class="line">    INBOX   </span><br><span class="line">    OUTBOX  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <h2 id="电梯3层-复印楼层"><a href="#电梯3层-复印楼层" class="headerlink" title="电梯3层-复印楼层"></a>电梯3层-复印楼层</h2><h3 id="新指令！-2"><a href="#新指令！-2" class="headerlink" title="新指令！"></a>新指令！</h3><p><code>copyfrom</code>：将地砖上的物品复制到你的手上。使用它会替换你手上原有的内容。</p>
 <h3 id="思路是……-2"><a href="#思路是……-2" class="headerlink" title="思路是……"></a>思路是……</h3><p>这层就是要教给我们怎么使用<code>copyfrom</code>。而且要我们直接输出”BUG“，非常好玩儿。</p>
 <p>思路：分别直接复制B、U、G，复制完成后就直接输出就好。</p>
 <p><strong>AK代码：</strong></p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- HUMAN RESOURCE MACHINE PROGRAM --</span></span><br><span class="line"></span><br><span class="line">    COPYFROM <span class="number">4</span></span><br><span class="line">    OUTBOX  </span><br><span class="line">    COPYFROM <span class="number">0</span></span><br><span class="line">    OUTBOX  </span><br><span class="line">    COPYFROM <span class="number">3</span></span><br><span class="line">    OUTBOX  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <h2 id="电梯4层-解扰码器"><a href="#电梯4层-解扰码器" class="headerlink" title="电梯4层-解扰码器"></a>电梯4层-解扰码器</h2><h3 id="新指令！-3"><a href="#新指令！-3" class="headerlink" title="新指令！"></a>新指令！</h3><p><code>copyto</code>：既然能<code>copyfrom</code>，那么反过来就能<code>copyto</code>。顾名思义，把手上的内容复制到地砖上。使用它会替换地砖原有的内容。</p>
 <h3 id="思路是……-3"><a href="#思路是……-3" class="headerlink" title="思路是……"></a>思路是……</h3><p>告诉我们如何使用<code>copyto</code>。</p>
 <p>AK代码的思路是，如果输入的两个东西分别是甲、乙，那么输出的时候就是乙、甲。先取一个输出，然后记录一下（<code>copyto</code>到地砖上），再取第二个输入，直接把第二个输出出去，然后再把第一个拿起来（<code>copyfrom</code>），输出出去。</p>
 <p><strong>AK代码：</strong></p>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- HUMAN RESOURCE MACHINE PROGRAM --</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">a</span>:</span><br><span class="line">    INBOX   </span><br><span class="line">    COPYTO   <span class="number">0</span></span><br><span class="line">    INBOX   </span><br><span class="line">    OUTBOX  </span><br><span class="line">    COPYFROM <span class="number">0</span></span><br><span class="line">    OUTBOX  </span><br><span class="line">    JUMP     <span class="keyword">a</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <h2 id="电梯5层-咖啡时间"><a href="#电梯5层-咖啡时间" class="headerlink" title="电梯5层-咖啡时间"></a>电梯5层-咖啡时间</h2><p>剧情关，没有任务，以后会把剧情放在一块儿写。</p>
 <h2 id="电梯6层-多雨之夏"><a href="#电梯6层-多雨之夏" class="headerlink" title="电梯6层-多雨之夏"></a>电梯6层-多雨之夏</h2><h3 id="新指令！-4"><a href="#新指令！-4" class="headerlink" title="新指令！"></a>新指令！</h3><p><code>add</code>：无论你拿着什么值，都会讲地砖上制定地砖的内容加上你手中的值，结果再返回到你的手中。</p>
 <h3 id="思路是……-4"><a href="#思路是……-4" class="headerlink" title="思路是……"></a>思路是……</h3><p>幼儿园级别的题</p>
 <p><strong>AK代码：</strong></p>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- HUMAN RESOURCE MACHINE PROGRAM --</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">a</span>:</span><br><span class="line">    INBOX   </span><br><span class="line">    COPYTO   <span class="number">0</span></span><br><span class="line">    INBOX   </span><br><span class="line">    ADD      <span class="number">0</span></span><br><span class="line">    OUTBOX  </span><br><span class="line">    JUMP     <span class="keyword">a</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <h1 id="勘误"><a href="#勘误" class="headerlink" title="勘误"></a>勘误</h1><p>等我把Github Commits弄好就好了</p>
 </div>
         </div>
@@ -409,7 +402,7 @@
                     <a class="tag-none-link" href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a>
                 </div>
                 <div class="pull-date">
-                    <time datetime="2022-12-30T11:08:00.464Z" itemprop="dateModified">最后编辑：2022-12-30</time>
+                    <time datetime="2022-12-31T01:54:16.655Z" itemprop="dateModified">最后编辑：2022-12-31</time>
                 </div>
             </div>
         </footer>
@@ -484,7 +477,7 @@
                 文章
             </span>
             <span class="count">
-                29
+                33
             </span>
         </a>
         <a class="meta-item" href="/categories/">
@@ -520,7 +513,7 @@
   <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
     <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
       <div class="tag-clouds">
-        <a href="/tags/Android/" style="font-size: 0.64em;">Android</a> <a href="/tags/STM32/" style="font-size: 0.6em;">STM32</a> <a href="/tags/cpp/" style="font-size: 0.68em;">cpp</a> <a href="/tags/hexo/" style="font-size: 0.72em;">hexo</a> <a href="/tags/python/" style="font-size: 0.6em;">python</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 0.76em;">博客</a> <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" style="font-size: 0.8em;">嵌入式</a> <a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 0.6em;">开发</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 0.76em;">杂谈</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 0.6em;">汇编</a> <a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 0.6em;">游戏</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.8em;">笔记</a> <a href="/tags/%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0/" style="font-size: 0.72em;">长期更新</a>
+        <a href="/tags/Android/" style="font-size: 0.64em;">Android</a> <a href="/tags/STM32/" style="font-size: 0.6em;">STM32</a> <a href="/tags/cpp/" style="font-size: 0.68em;">cpp</a> <a href="/tags/hexo/" style="font-size: 0.72em;">hexo</a> <a href="/tags/python/" style="font-size: 0.6em;">python</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 0.76em;">博客</a> <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" style="font-size: 0.8em;">嵌入式</a> <a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 0.64em;">开发</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 0.76em;">杂谈</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 0.6em;">汇编</a> <a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 0.72em;">游戏</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.8em;">笔记</a> <a href="/tags/%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0/" style="font-size: 0.72em;">长期更新</a>
       </div>
   </aside>
 
@@ -534,34 +527,42 @@
         
           
           
+            <a class="list-group-item" href="/2022/12/31/%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90%E6%9C%BA%E5%99%A819-24%E6%BB%A1%E6%98%9F%E6%94%BB%E7%95%A5/"><i class="fa  fa-book"></i> 人力资源机器19-24满星攻略</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/31/%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90%E6%9C%BA%E5%99%A813-18%E6%BB%A1%E6%98%9F%E6%94%BB%E7%95%A5/"><i class="fa  fa-book"></i> 人力资源机器13-18满星攻略</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/31/%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90%E6%9C%BA%E5%99%A87-12%E6%BB%A1%E6%98%9F%E6%94%BB%E7%95%A5/"><i class="fa  fa-book"></i> 人力资源机器7-12满星攻略</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/31/STM32SPI/"><i class="fa  fa-book"></i> STM32SPI</a>
+            
+          
+        
+          
+          
             <a class="list-group-item" href="/2022/12/28/stm32%E7%A1%AC%E4%BB%B6i2c/"><i class="fa  fa-book"></i> stm32硬件i2c</a>
             
           
         
           
-          
-            <a class="list-group-item" href="/2022/12/28/STM32USART/"><i class="fa  fa-book"></i> STM32USART</a>
             
           
-        
-          
-          
-            <a class="list-group-item" href="/2022/12/22/STM32DMA/"><i class="fa  fa-book"></i> STM32DMA</a>
             
           
-        
-          
-          
-            <a class="list-group-item" href="/2022/12/21/doxygen%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83/"><i class="fa  fa-book"></i> doxygen注释规范</a>
             
           
-        
-          
-          
-            <a class="list-group-item" href="/2022/12/21/%E7%94%A8Tweeny%E5%AE%9E%E7%8E%B0%E4%B8%9D%E6%BB%91%E5%8A%A8%E6%95%88/"><i class="fa  fa-book"></i> 用Tweeny实现丝滑动效</a>
             
-          
-        
           
             
           
@@ -728,5 +729,20 @@
 <!-- Extra support for third-party plguins  -->
 
 
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
