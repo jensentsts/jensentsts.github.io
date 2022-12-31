@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://jensentsts.github.io/images/favicon.ico">
 <meta property="article:published_time" content="2022-09-20T08:36:04.000Z">
-<meta property="article:modified_time" content="2022-12-30T11:26:08.695Z">
+<meta property="article:modified_time" content="2022-12-31T11:42:39.997Z">
 <meta property="article:author" content="舟适三山">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
@@ -234,7 +234,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        ~1.97K
+                        ~2.29K
                     
                     字
                 </li>
@@ -251,48 +251,48 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1672399568695"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1672486959997"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
             <hr />
-            <div itemprop="articleBody"><p>买了个小米5pad，在作为生产力的同时感觉很多方面不尽人意，特别是那它当一个数位板的时候。所以打算入坑Android，期望自己有朝一日能用上自己开发的安卓软件。</p>
-<span id="more"></span>
-<p>我跟的是 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV19U4y1R7zV">2022 最新 Android 基础教程，从开发入门到项目实战，看它就够了，更新中</a> 。<br><img src="/img/post/Android%E5%85%A5%E9%97%A8/Day1/%E7%94%98%E9%9B%A8.jpg" alt="甘雨镇博"></p>
+            <div itemprop="articleBody"><p>买了个小米5pad，在作为生产力的同时感觉很多方面不尽人意，特别是那它当一个数位板的时候。所以打算入坑Android，期望自己有朝一日能用上自己开发的安卓软件。<br><span id="more"></span><br>我跟的是 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV19U4y1R7zV">2022 最新 Android 基础教程，从开发入门到项目实战，看它就够了，更新中</a> 。<br><img src="img/post/Android入门/Day1/甘雨.jpg" alt="甘雨镇博"></p>
 <h1 id="About-Android"><a href="#About-Android" class="headerlink" title="About Android"></a>About Android</h1><p>列几个关键词即可：</p>
 <ul>
 <li>基于Linux内核</li>
 <li>Google</li>
 <li>Java</li>
 </ul>
-<h1 id="安装Android-Studio"><a href="#安装Android-Studio" class="headerlink" title="安装Android Studio"></a>安装Android Studio</h1><p>访问 <a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio/index.html">Google Android Studio</a> 下载Android Studio，设置一下安装路径等。<br>并且安装SDK（Software Development Kits，软件开发工具），需要科学上网。<br>以及proxy，暂且不知道干什么用。<br><img src="/img/post/Android%E5%85%A5%E9%97%A8/Day1/AndroidStudio.png" alt="Android Studio启动中……"></p>
+<h1 id="安装Android-Studio"><a href="#安装Android-Studio" class="headerlink" title="安装Android Studio"></a>安装Android Studio</h1><p>访问 <a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio/index.html">Google Android Studio</a> 下载Android Studio，设置一下安装路径等。<br>并且安装SDK（Software Development Kits，软件开发工具），需要科学上网。<br>以及proxy，暂且不知道干什么用。<br><img src="img/post/Android入门/Day1/AndroidStudio.png" alt="Android Studio启动中……"></p>
 <h1 id="第一个项目"><a href="#第一个项目" class="headerlink" title="第一个项目"></a>第一个项目</h1><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><p>选择<code>Empty Activity</code><br>进去之后，Android Studio会自动打开<code>MainActivity.kit</code>和<code>activity_main.xml</code>两个文件。</p>
 <h2 id="创建虚拟设备"><a href="#创建虚拟设备" class="headerlink" title="创建虚拟设备"></a>创建虚拟设备</h2><h3 id="开启CPU虚拟化支持"><a href="#开启CPU虚拟化支持" class="headerlink" title="开启CPU虚拟化支持"></a>开启CPU虚拟化支持</h3><p>想在一个操作系统上运行另一个操作系统，比如内置模拟器，需要开启虚拟化支持<br>进BIOS操作，具体方法自行百度（咕咕咕</p>
 <h3 id="创建内置模拟器"><a href="#创建内置模拟器" class="headerlink" title="创建内置模拟器"></a>创建内置模拟器</h3><p>我们的代码需要在设备上运行，有两种<br>一种是物理机，直接上你的实体设备即可<br>另一种是虚拟机，你可以在Android Studio中直接添加虚拟设备（Virtual device），它能很方便地让你在电脑上直接运行你的项目<br>并且能够摆脱实体的限制——你可以创建各种型号、各种运行环境的虚拟设备<br>——直接在原生Android系统上运行程序！<br>在Android Studio右边的<code>Device Manager</code>中，点击<code>Virtual</code>，接着点<code>Create device</code>来创建我们的虚拟设备。</p>
-<p>左侧是设备类型，右侧是你的设备设置以及它的详细信息。跟随教程点击<code>Next</code>，<br><img src="/img/post/Android%E5%85%A5%E9%97%A8/Day1/%E8%AE%BE%E5%A4%87%E5%9E%8B%E5%8F%B7.png" alt="选择设备类型"></p>
-<p>接着我们要选择系统镜像。教程上用了Android 11，就先跟着他走吧，以后在考虑平板上的Android 12与11有多大的差别。<br>如果你的电脑上还没有安装相关的镜像，就先点击发行名称旁边的下载按钮安装吧。<br><img src="/img/post/Android%E5%85%A5%E9%97%A8/Day1/%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F.png" alt="选择设系统镜像"></p>
-<p>最后一步是确认你的虚拟设备的配置。貌似可以选择初始的朝向，横屏或者竖屏。这个还用不上，直接Finish。<br><img src="/img/post/Android%E5%85%A5%E9%97%A8/Day1/%E9%85%8D%E7%BD%AE%E7%A1%AE%E8%AE%A4.png" alt="虚拟设备设置确认"></p>
-<p>现在，在<code>Device Manager</code>里，我们可以看到刚刚创建好的虚拟设备啦！<br><img src="/img/post/Android%E5%85%A5%E9%97%A8/Day1/%E5%90%AF%E5%8A%A8%E6%A8%A1%E6%8B%9F%E5%99%A8.png" alt="虚拟设备创建完成！"></p>
+<p>左侧是设备类型，右侧是你的设备设置以及它的详细信息。跟随教程点击<code>Next</code>，<br><img src="img/post/Android入门/Day1/设备型号.png" alt="选择设备类型"></p>
+<p>接着我们要选择系统镜像。教程上用了Android 11，就先跟着他走吧，以后在考虑平板上的Android 12与11有多大的差别。<br>如果你的电脑上还没有安装相关的镜像，就先点击发行名称旁边的下载按钮安装吧。<br><img src="img/post/Android入门/Day1/系统镜像.png" alt="选择设系统镜像"></p>
+<p>最后一步是确认你的虚拟设备的配置。貌似可以选择初始的朝向，横屏或者竖屏。这个还用不上，直接Finish。<br><img src="img/post/Android入门/Day1/配置确认.png" alt="虚拟设备设置确认"></p>
+<p>现在，在<code>Device Manager</code>里，我们可以看到刚刚创建好的虚拟设备啦！<br><img src="img/post/Android入门/Day1/启动模拟器.png" alt="虚拟设备创建完成！"></p>
 <h2 id="解决AVD启动报错问题"><a href="#解决AVD启动报错问题" class="headerlink" title="解决AVD启动报错问题"></a>解决AVD启动报错问题</h2><div class="alert alert-warning"><div class="icon"><i class="fa fa-warning"></i></div><div class="text"><p><strong>报错提示</strong><br>The emulator process for AVD Pixel_5_API_30 has terminated.</p>
 </div></div>
-说来离谱，百度上出来的解决方案没有一个解决掉我的问题。
-后来，我换了一个SDK路径，然后删掉了`users/local/appdata/android`中的全部文件，再重新`Create device`，并且重新安装了Android 11虚拟环境，我的虚拟设备就能启动了……
+<p>说来离谱，百度上出来的解决方案没有一个解决掉我的问题。<br>后来，我换了一个SDK路径，然后删掉了<code>users/local/appdata/android</code>中的全部文件，再重新<code>Create device</code>，并且重新安装了Android 11虚拟环境，我的虚拟设备就能启动了……</p>
+<h2 id="运行第一个项目"><a href="#运行第一个项目" class="headerlink" title="运行第一个项目"></a>运行第一个项目</h2><p>点击~播放按钮~运行按钮<br><img src="img/post/Android入门/Day1/Run.png" alt="Run"></p>
+<p>将程序发布、运行到虚拟的手机上面，就可以查看运行效果啦！<br><img src="img/post/Android入门/Day1/运行效果.png" alt="My First Android Project"></p>
+<h2 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h2><p>Android采用Log工具打印日志，它将各类日志分为五个等级：<br><div class="panel panel-info">
+    <div class="panel-title">日志的等级</div>
+    <div class="panel-body">
+        <p><strong>Log.e</strong>：表示错误信息，比如可能导致程序崩溃的异常<br><strong>Log.w</strong>：表示警告信息<br><strong>Log.i</strong>：表示一般消息<br><strong>Log.d</strong>：表示调试信息，可把程序运行时的变量值打印出来，方便跟踪调试<br><strong>Log.v</strong>：表示冗余信息</p>
 
-## 运行第一个项目
-点击~播放按钮~运行按钮
-![Run](img/post/Android入门/Day1/Run.png)
-
-将程序发布、运行到虚拟的手机上面，就可以查看运行效果啦！
-![My First Android Project](img/post/Android入门/Day1/运行效果.png)
-
-## Debug
-Android采用Log工具打印日志，它将各类日志分为五个等级：
-<div class="alert alert-primary"><div class="icon"><i class="fa fa-refresh"></i></div><div class="text"><p><strong>Log.e</strong>：表示错误信息，比如可能导致程序崩溃的异常<br><strong>Log.w</strong>：表示警告信息<br><strong>Log.i</strong>：表示一般消息<br><strong>Log.d</strong>：表示调试信息，可把程序运行时的变量值打印出来，方便跟踪调试<br><strong>Log.v</strong>：表示冗余信息<br>{% endalertbox%}</p>
-<p>示例</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.myapplication;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        Log.e(<span class="string">&quot;Hello&quot;</span>, <span class="string">&quot;World&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在<code>Logcat</code>（Log猫？）中可以查看输出日志。上方的搜索了里搜索标签<code>Hello</code>，<br><img src=/img/post/Android%E5%85%A5%E9%97%A8/Day1/%E6%90%9C%E7%B4%A2%E6%A0%8F.png"</div></div></div>
+    </div>
+    </div></p>
+<p>示例<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.myapplication;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        Log.e(<span class="string">&quot;Hello&quot;</span>, <span class="string">&quot;World&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在<code>Logcat</code>（Log猫？）中可以查看输出日志。上方的搜索了里搜索标签<code>Hello</code>，<br><img src="img/post/Android入门/Day1/搜索栏.png" alt="搜索栏"><br>就能看到对应的输出<code>Hello: World</code><br>你也可以通过Logcat Filter查看输出<br><img src="img/post/Android入门/Day1/LogcatFilter.png" alt="Logcat Filter"></p>
+<h2 id="更进一步"><a href="#更进一步" class="headerlink" title="更进一步"></a>更进一步</h2><h3 id="配置硬件加速"><a href="#配置硬件加速" class="headerlink" title="配置硬件加速"></a>配置硬件加速</h3><p>见官方文档：<a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio/run/emulator-acceleration">为 Android 模拟器配置硬件加速</a></p>
+<h3 id="使用真机调试运行"><a href="#使用真机调试运行" class="headerlink" title="使用真机调试运行"></a>使用真机调试运行</h3><p>在开发者模式里开启USB调试，然后数据线连~真姬~，电脑会自动安装驱动（不成功的话就安装手机助手），手机选“文件传输模式”（“传输文件”、“管理文件”……）<br>最好允许通过USB安装文件，并且“始终允许使用这台计算机进行调试”。在~播放键~运行按钮旁边的菜单里选择你的手机，然后点击运行。可能会出现安装页面，安装！这样，你的App就能发布到手机上并且运行啦！</p>
+<p>在真机上运行，程序运行起来会更快一些。并且例如重力感应、加速度等功能只能在真机上面测试。</p>
+<h3 id="电脑与手机连接过程的一点点细节"><a href="#电脑与手机连接过程的一点点细节" class="headerlink" title="电脑与手机连接过程的一点点细节"></a>电脑与手机连接过程的一点点细节</h3><p>PC与Android OS通过什么连接起来呢？<br><strong>ADB</strong>（Android Debug Bridge）！<br><div class="alert alert-warning"><div class="icon"><i class="fa fa-warning"></i></div><div class="text"><p>如果使用了手机助手，那么Adb的通道（？）就会被占用，因此手机电脑成功连接之后就应该卸载手机助手。</p>
+</div></div></p>
+<h1 id="勘误"><a href="#勘误" class="headerlink" title="勘误"></a>勘误</h1><p>暂无</p>
+</div>
         </div>
         
             <div class="kratos-copyright text-center clearfix">
@@ -381,7 +381,7 @@ Android采用Log工具打印日志，它将各类日志分为五个等级：
                     <a class="tag-none-link" href="/tags/Android/" rel="tag">Android</a>
                 </div>
                 <div class="pull-date">
-                    <time datetime="2022-12-30T11:26:08.695Z" itemprop="dateModified">最后编辑：2022-12-30</time>
+                    <time datetime="2022-12-31T11:42:39.997Z" itemprop="dateModified">最后编辑：2022-12-31</time>
                 </div>
             </div>
         </footer>
@@ -456,7 +456,7 @@ Android采用Log工具打印日志，它将各类日志分为五个等级：
                 文章
             </span>
             <span class="count">
-                34
+                35
             </span>
         </a>
         <a class="meta-item" href="/categories/">
@@ -503,6 +503,9 @@ Android采用Log工具打印日志，它将各类日志分为五个等级：
   <div class="tab-content">
       <ul class="list-group">
         
+        
+          
+          
         
           
           

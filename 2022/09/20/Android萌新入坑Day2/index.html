@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://jensentsts.github.io/images/favicon.ico">
 <meta property="article:published_time" content="2022-09-20T10:59:13.000Z">
-<meta property="article:modified_time" content="2022-12-30T11:27:25.109Z">
+<meta property="article:modified_time" content="2022-12-31T11:43:41.083Z">
 <meta property="article:author" content="舟适三山">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
@@ -234,7 +234,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        ~4.24K
+                        ~4.22K
                     
                     字
                 </li>
@@ -251,17 +251,16 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1672399645109"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1672487021083"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
             <hr />
-            <div itemprop="articleBody"><p>Android萌新入坑第二天！虽然说是第二天，但是第一天和第二天是重叠在一起。</p>
-<span id="more"></span>
-<h1 id="App开发语言"><a href="#App开发语言" class="headerlink" title="App开发语言"></a>App开发语言</h1><p>App开发主要有两大技术路线：<strong>原生开发</strong>和<strong>混合开发</strong>。<br>Android官方编程语言包括<strong>Java</strong>和<strong>Kotlin</strong>。<br>各有各的优势。最好还是用Java学习开发。kotlin与Java可以互相调用。<br>有时候会用到C&#x2F;C++，利用JNI可以实现很多高效率运行的代码。<br>也会用到XML，标签内部属性以<code>android:</code>开头。<br>现在都是命令式ui→声明式ui<br>数据库：SQLite</p>
+            <div itemprop="articleBody"><p>Android萌新入坑第二天！虽然说是第二天，但是第一天和第二天是重叠在一起。<br><span id="more"></span></p>
+<h1 id="App开发语言"><a href="#App开发语言" class="headerlink" title="App开发语言"></a>App开发语言</h1><p>App开发主要有两大技术路线：<strong>原生开发</strong>和<strong>混合开发</strong>。<br>Android官方编程语言包括<strong>Java</strong>和<strong>Kotlin</strong>。<br>各有各的优势。最好还是用Java学习开发。kotlin与Java可以互相调用。<br>有时候会用到C/C++，利用JNI可以实现很多高效率运行的代码。<br>也会用到XML，标签内部属性以<code>android:</code>开头。<br>现在都是命令式ui→声明式ui<br>数据库：SQLite</p>
 <h1 id="工程"><a href="#工程" class="headerlink" title="工程"></a>工程</h1><p>先做了解，后面会慢慢熟悉这些</p>
-<h2 id="目录介绍"><a href="#目录介绍" class="headerlink" title="目录介绍"></a>目录介绍</h2><p><img src="/img/post/Android%E5%85%A5%E9%97%A8/Day2/%E5%B7%A5%E7%A8%8B%E7%9B%AE%E5%BD%95%E4%BB%8B%E7%BB%8D.png" alt="工程目录一览"><br>该目录下面有两个分类：一个是app，代表app模块；另一个是Gradle Scripts。其中，app下面又有3个子目录，其功能说明如下：</p>
+<h2 id="目录介绍"><a href="#目录介绍" class="headerlink" title="目录介绍"></a>目录介绍</h2><p><img src="img/post/Android入门/Day2/工程目录介绍.png" alt="工程目录一览"><br>该目录下面有两个分类：一个是app，代表app模块；另一个是Gradle Scripts。其中，app下面又有3个子目录，其功能说明如下：</p>
 <ul>
 <li>drawable目录存放描述文件与图片文件；</li>
 <li>layout目录存放App页面的布局文件；</li>
@@ -277,11 +276,7 @@
 <li>local.properties，项目的本地配置文件，在工程编译时自动生成，用于描述开发者电脑的环境配置，包括SDK的本地路径，NDK的本地路径等。</li>
 </ul>
 <p>Gradle是一个项目自动化构建工具，帮助开发者实现依赖、打包、步数、法宝、各种渠道的差异管理等工作。类似于java里的maven</p>
-<h2 id="配置编译文件"><a href="#配置编译文件" class="headerlink" title="配置编译文件"></a>配置编译文件</h2><p><code>groovy</code>-&gt;gradle的语言<br>在build.gradle中，我们可以找到如下代码：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id <span class="string">&#x27;com.android.application&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这段代码里写了app需要那些包</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">namespace <span class="string">&#x27;com.example.myapplication&#x27;</span></span><br><span class="line">compileSdk <span class="number">32</span></span><br><span class="line"></span><br><span class="line">defaultConfig &#123;</span><br><span class="line">    applicationId <span class="string">&quot;com.example.myapplication&quot;</span></span><br><span class="line">    minSdk <span class="number">28</span></span><br><span class="line">    targetSdk <span class="number">32</span></span><br><span class="line">    versionCode <span class="number">1</span></span><br><span class="line">    versionName <span class="string">&quot;1.0&quot;</span></span><br><span class="line"></span><br><span class="line">    testInstrumentationRunner <span class="string">&quot;androidx.test.runner.AndroidJUnitRunner&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在这段代码中：</p>
+<h2 id="配置编译文件"><a href="#配置编译文件" class="headerlink" title="配置编译文件"></a>配置编译文件</h2><p><code>groovy</code>-&gt;gradle的语言<br>在build.gradle中，我们可以找到如下代码：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id <span class="string">&#x27;com.android.application&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>这段代码里写了app需要那些包<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">namespace <span class="string">&#x27;com.example.myapplication&#x27;</span></span><br><span class="line">compileSdk <span class="number">32</span></span><br><span class="line"></span><br><span class="line">defaultConfig &#123;</span><br><span class="line">    applicationId <span class="string">&quot;com.example.myapplication&quot;</span></span><br><span class="line">    minSdk <span class="number">28</span></span><br><span class="line">    targetSdk <span class="number">32</span></span><br><span class="line">    versionCode <span class="number">1</span></span><br><span class="line">    versionName <span class="string">&quot;1.0&quot;</span></span><br><span class="line"></span><br><span class="line">    testInstrumentationRunner <span class="string">&quot;androidx.test.runner.AndroidJUnitRunner&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>在这段代码中：</p>
 <ul>
 <li><code>complieSdk</code>是指定编译用的版本号</li>
 <li><code>applicationId</code>是App的包名</li>
@@ -304,14 +299,13 @@
 <h2 id="什么是Activity"><a href="#什么是Activity" class="headerlink" title="什么是Activity"></a>什么是Activity</h2><p>Activity是一个应用程序组件（“屏幕组件”），提供一个屏幕，用户可以用来交互以完成某项任务。<br>我的理解就是，它是一个“容器”，类似于一个body，一个App内能由好多个body，由程序控制谁在显示</p>
 <h2 id="界面显示与处理逻辑"><a href="#界面显示与处理逻辑" class="headerlink" title="界面显示与处理逻辑"></a>界面显示与处理逻辑</h2><p>XML标记描绘应用界面，Java代码书写程序逻辑<br>提升代码的复用性<br><code>xmlns</code>：xml namespace</p>
 <h2 id="获取TextView对象并修改内容"><a href="#获取TextView对象并修改内容" class="headerlink" title="获取TextView对象并修改内容"></a>获取TextView对象并修改内容</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">TextView</span> <span class="variable">tv</span> <span class="operator">=</span> findViewById(R.id.tv);	<span class="comment">// R.id.[你的TextView对象的id]</span></span><br><span class="line">tv.setText(<span class="string">&quot;Good morning&quot;</span>);</span><br></pre></td></tr></table></figure>
-
 <h2 id="Activity创建与跳转"><a href="#Activity创建与跳转" class="headerlink" title="Activity创建与跳转"></a>Activity创建与跳转</h2><ol>
 <li>在<code>layout目录</code>下创建XML文件</li>
 <li>创建与XML文件对应的Java代码</li>
 <li>在<code>AndroidManifest.xml</code>中注册页面配置</li>
 </ol>
-<h3 id="创建布局文件"><a href="#创建布局文件" class="headerlink" title="创建布局文件"></a>创建布局文件</h3><h4 id="新建文件"><a href="#新建文件" class="headerlink" title="新建文件"></a>新建文件</h4><p>右键-&gt;New-&gt;XML-&gt;Layout XML File<br><img src="/img/post/Android%E5%85%A5%E9%97%A8/Day2/%E5%88%9B%E5%BB%BA%E5%B8%83%E5%B1%80%E6%96%87%E4%BB%B6.png" alt="创建布局文件"><br><img src="/img/post/Android%E5%85%A5%E9%97%A8/Day2/%E5%B8%83%E5%B1%80%E6%96%87%E4%BB%B6%E5%88%9B%E5%BB%BA1.png" alt="新布局文件设置"></p>
-<h4 id="代码环节"><a href="#代码环节" class="headerlink" title="代码环节"></a>代码环节</h4><p>然后选择编辑模式为代码。这个小单元在编辑页面右上角的部分<br><img src="/img/post/Android%E5%85%A5%E9%97%A8/Day2/%E9%80%89%E6%8B%A9%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F.png" alt="Code/Split/Design"></p>
+<h3 id="创建布局文件"><a href="#创建布局文件" class="headerlink" title="创建布局文件"></a>创建布局文件</h3><h4 id="新建文件"><a href="#新建文件" class="headerlink" title="新建文件"></a>新建文件</h4><p>右键-&gt;New-&gt;XML-&gt;Layout XML File<br><img src="img/post/Android入门/Day2/创建布局文件.png" alt="创建布局文件"><br><img src="img/post/Android入门/Day2/布局文件创建1.png" alt="新布局文件设置"></p>
+<h4 id="代码环节"><a href="#代码环节" class="headerlink" title="代码环节"></a>代码环节</h4><p>然后选择编辑模式为代码。这个小单元在编辑页面右上角的部分<br><img src="img/post/Android入门/Day2/选择编辑模式.png" alt="Code/Split/Design"></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;@string/text2&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>这段代码中，我们写了一个线性布局：</p>
 <ul>
@@ -322,51 +316,12 @@
 <li>它的文本是string中的text2的值<br>在<code>strings.xml</code>里添加<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">&quot;text2&quot;</span>&gt;</span>嗨嗨嗨<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br></pre></td></tr></table></figure>
 虽然可以直接在<code>android:text=&quot;xxx&quot;</code>中写内容，但是为了便于开发，还是写在<code>strings.xml</code>里比较好啦……</li>
 </ul>
-<p>在<code>AndroidManifest.xml</code>中加入如下代码：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">&quot;.MainActivity2&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-<div class="alert alert-warning"><div class="icon"><i class="fa fa-warning"></i></div><div class="text"><p><strong>注意</strong><br>笔者忘记加入这行代码，以致于后面点击Button时程序总是崩溃。</p>
-</div></div>
-
-<h3 id="新的Activity"><a href="#新的Activity" class="headerlink" title="新的Activity"></a>新的Activity</h3><h4 id="新建文件-1"><a href="#新建文件-1" class="headerlink" title="新建文件"></a>新建文件</h4><p><img src="/img/post/Android%E5%85%A5%E9%97%A8/Day2/%E6%96%B0%E5%BB%BAactivity.png" alt="新建Activity"><br>Later…</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity2</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(<span class="meta">@Nullable</span> Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>直接打oncreate让Android Studio自动补全剩下的东西就好了。</p>
+<p>在<code>AndroidManifest.xml</code>中加入如下代码：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">&quot;.MainActivity2&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure><br><div class="alert alert-warning"><div class="icon"><i class="fa fa-warning"></i></div><div class="text"><p><strong>注意</strong><br>笔者忘记加入这行代码，以致于后面点击Button时程序总是崩溃。</p>
+</div></div></p>
+<h3 id="新的Activity"><a href="#新的Activity" class="headerlink" title="新的Activity"></a>新的Activity</h3><h4 id="新建文件-1"><a href="#新建文件-1" class="headerlink" title="新建文件"></a>新建文件</h4><p><img src="img/post/Android入门/Day2/新建activity.png" alt="新建Activity"><br>Later…<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity2</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(<span class="meta">@Nullable</span> Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>直接打oncreate让Android Studio自动补全剩下的东西就好了。</p>
 <h4 id="能不能再方便一些？"><a href="#能不能再方便一些？" class="headerlink" title="能不能再方便一些？"></a>能不能再方便一些？</h4><p>当然可以！<br>New-&gt;Activity-&gt;Empty Activity即可新建一个空的Activity.</p>
-<h3 id="Activity跳转"><a href="#Activity跳转" class="headerlink" title="Activity跳转"></a>Activity跳转</h3><p>接下来，我们将要实现的是两个Activity之间的跳转。回到前面的<code>activity_main.xml</code>，用类似添加TextView的方法添加一个button</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:text</span>=<span class="string">&quot;收款码&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-<p>在MainActivity.java的OnCreate()函数中添加如下代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> <span class="variable">button</span> <span class="operator">=</span> findViewById(R.id.button);</span><br><span class="line">button.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener()&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">			<span class="type">Intent</span> <span class="variable">intent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>();</span><br><span class="line">			intent.setClass(MainActivity.<span class="built_in">this</span>, MainActivity2.class);</span><br><span class="line">			startactivity(intent);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure>
-<p>intent里设置了一个“上下文”（估计后面会讲）</p>
+<h3 id="Activity跳转"><a href="#Activity跳转" class="headerlink" title="Activity跳转"></a>Activity跳转</h3><p>接下来，我们将要实现的是两个Activity之间的跳转。回到前面的<code>activity_main.xml</code>，用类似添加TextView的方法添加一个button<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:text</span>=<span class="string">&quot;收款码&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure><br>在MainActivity.java的OnCreate()函数中添加如下代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> <span class="variable">button</span> <span class="operator">=</span> findViewById(R.id.button);</span><br><span class="line">button.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener()&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">			<span class="type">Intent</span> <span class="variable">intent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>();</span><br><span class="line">			intent.setClass(MainActivity.<span class="built_in">this</span>, MainActivity2.class);</span><br><span class="line">			startactivity(intent);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure><br>intent里设置了一个“上下文”（估计后面会讲）</p>
 <h1 id="杂记"><a href="#杂记" class="headerlink" title="杂记"></a>杂记</h1><p><code>ctrl+alt+l</code>：格式化代码<br><code>ctrl+shift+o</code>：自动导入包<br><code>ctrl+shift+空格</code>：自动补全代码</p>
-<!--
-# 想对自己说的话
-我写的博客肯定没人看，哈哈，那就写给自己看！
-我曾有七天掌握C语言基础的“辉煌”
-也有成绩总是上不去的堕落
-（轻吹茶氤，品茗而叹）
-上古本来没有绿色植被，直到数亿年前才有了丝丝绿意
-上古本来没有花朵，直到千万年前地球上才有了第一朵花。
-上古本来没有文明，直到数万数千年前，才有了矛与盾。
-如果不能持久，便难以造物。人因为父母而能降生，苦也罢，乐也罢，这一路是他们赐予的。
-或许其他的家庭，他们当中有他们口中“缺德的父母”。
-反正，我的父母绝对不是。
-要回报他们。
-想来，对我来说，各种方法都不足为报，只剩一条路，那就是学习。
-学习要有紧迫感，不过不是时时刻刻都要犯神经似的“紧绷着”，你可以放松，可以娱乐，可以睡觉。
-Android对于我来说，就像魔法一般。因为这算是我第一次接触成体系的“可视化界面”。
-七年前的我能羡慕死现在的条件，不要辜负了他的目光，不要忘记每一刻的真诚。
-我爱编程，虽然她不爱我，但她不是人。
-正如如今很多DD在追皮套人一样，我追的，是编程，是那个最虚拟的世界。
-**曾先生、南先生、倪先生**，无比勤勉，应当铭记他们的勤奋和无畏，同时也要注意到无畏与勤奋的同时也能保持智慧。
-生活并不总会应允我的梦想与需求。
-那就随遇而安吧。
-——而我却还要努力生长，向阳而旺。
-Android学习或许对自己的未来帮助不大，不过希望你已经坚持下来了。
-风光霁月，水木蕃然。有人立渚
-<div class="alert alert-warning"><div class="icon"><i class="fa fa-warning"></i></div><div class="text"><p><strong>敬告诸位</strong>：</p>
-<p>我调用自己脑内的API，可以省略很多要向其他人交代的信息，某些有点偏执的话语只是想和自己强调事物的需要注意的一些侧面。<br>省略的信息，包括但不限于：皮套人的中之人是值得尊敬的人（其余略）<br><strong>我写给我自己的话，完全由我自己做主</strong>。</p>
-<p>——舟泛四海敬上，于2022.9.20晚</p>
-</div></div>
-<p>–&gt;</p>
 <h1 id="勘误"><a href="#勘误" class="headerlink" title="勘误"></a>勘误</h1><p>暂无……</p>
 </div>
         </div>
@@ -457,7 +412,7 @@ Android学习或许对自己的未来帮助不大，不过希望你已经坚持�
                     <a class="tag-none-link" href="/tags/Android/" rel="tag">Android</a>
                 </div>
                 <div class="pull-date">
-                    <time datetime="2022-12-30T11:27:25.109Z" itemprop="dateModified">最后编辑：2022-12-30</time>
+                    <time datetime="2022-12-31T11:43:41.083Z" itemprop="dateModified">最后编辑：2022-12-31</time>
                 </div>
             </div>
         </footer>
@@ -532,7 +487,7 @@ Android学习或许对自己的未来帮助不大，不过希望你已经坚持�
                 文章
             </span>
             <span class="count">
-                34
+                35
             </span>
         </a>
         <a class="meta-item" href="/categories/">
@@ -579,6 +534,9 @@ Android学习或许对自己的未来帮助不大，不过希望你已经坚持�
   <div class="tab-content">
       <ul class="list-group">
         
+        
+          
+          
         
           
           

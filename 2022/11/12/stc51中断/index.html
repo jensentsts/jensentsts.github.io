@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://jensentsts.github.io/images/favicon.ico">
 <meta property="article:published_time" content="2022-11-12T06:38:06.000Z">
-<meta property="article:modified_time" content="2022-12-30T11:37:09.528Z">
+<meta property="article:modified_time" content="2022-12-31T10:18:56.023Z">
 <meta property="article:author" content="舟适三山">
 <meta property="article:tag" content="嵌入式">
 <meta property="article:tag" content="笔记">
@@ -235,7 +235,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        1345
+                        1275
                     
                     字
                 </li>
@@ -252,38 +252,33 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1672400229528"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1672481936023"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
             <hr />
-            <div itemprop="articleBody"><p>基本原理这里不写了，这里就记一下各种寄存器位的作用。<br>以及一点点汇编:)</p>
-<span id="more"></span>
-<p><img src="/./img/post/%E7%AC%94%E8%AE%B0/EA%E5%AF%84%E5%AD%98%E5%99%A8%E4%BD%8D.png" alt="EA镇文"></p>
+            <div itemprop="articleBody"><p>基本原理这里不写了，这里就记一下各种寄存器位的作用。<br>以及一点点汇编:)<br><span id="more"></span><br><img src="./img/post/笔记/EA寄存器位.png" alt="EA镇文"></p>
 <h1 id="基本逻辑"><a href="#基本逻辑" class="headerlink" title="基本逻辑"></a>基本逻辑</h1><p>总的来讲，外中断由外部电路电平输入触发，内中断由内部触发。<br><strong>但是！</strong>是否要因为这个触发去做什么事情，由两种寄存器位来控制（TODO：在这里插入一个页内跳转链接）。<br>这两种寄存器，其一是专门记录某种中断是否要触发的设置，多个寄存器位在这个部门任职；另一个则是总管是否要出发中断这件事的寄存器位，由EA单独任职<br>在得到这两种寄存器不可缺一的同意之后，CPU才会触发中断去忙中断的任务（执行中断函数）。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">func</span><span class="params">()</span> interrup n using m &#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="interrupt-n"><a href="#interrupt-n" class="headerlink" title="interrupt n"></a>interrupt n</h1><p>0：INT0（P3.2上升沿&#x2F;高电平）<br>1：T0<br>2：INT1(P3.3下降沿&#x2F;低电平)<br>3：T1<br>4：串口中断——RI、TI</p>
+<h1 id="interrupt-n"><a href="#interrupt-n" class="headerlink" title="interrupt n"></a>interrupt n</h1><p>0：INT0（P3.2上升沿/高电平）<br>1：T0<br>2：INT1(P3.3下降沿/低电平)<br>3：T1<br>4：串口中断——RI、TI</p>
 <h1 id="using-m"><a href="#using-m" class="headerlink" title="using m"></a>using m</h1><h1 id="中断的开关"><a href="#中断的开关" class="headerlink" title="中断的开关"></a>中断的开关</h1><p>EA：总开关</p>
 <h1 id="中断的种类"><a href="#中断的种类" class="headerlink" title="中断的种类"></a>中断的种类</h1><h2 id="2个外部中断"><a href="#2个外部中断" class="headerlink" title="2个外部中断"></a>2个外部中断</h2><p>INT0（P3.2）：外部中断1<br>INT1（P3.3）：外部中断2</p>
 <h2 id="3个内部中断"><a href="#3个内部中断" class="headerlink" title="3个内部中断"></a>3个内部中断</h2><p>TF0：定时器T0溢出中断<br>TF1：定时器T1溢出中断<br>RI或TI：串口中断。</p>
 <h1 id="TCON的中断"><a href="#TCON的中断" class="headerlink" title="TCON的中断"></a>TCON的中断</h1><p>TODO：写完这一部分。<br>IT0：外部中断0触发方式控制位</p>
 <ul>
-<li>当IT0&#x3D;0时，为电平触发方式</li>
-<li>当IT0&#x3D;1时，为边沿触发方式（下降沿有效）<br>IE0：外部中断0中断请求标志位<br>IT1：外部中断1…………<br>IE1：外部中断1…………<br>TF0：定时&#x2F;计数器T0溢出中断请求标志位<br>TF1：定时&#x2F;计数器T1…………<br>TR0：<br>TE0：<br>TR1：<br>TE1：</li>
+<li>当IT0=0时，为电平触发方式</li>
+<li>当IT0=1时，为边沿触发方式（下降沿有效）<br>IE0：外部中断0中断请求标志位<br>IT1：外部中断1…………<br>IE1：外部中断1…………<br>TF0：定时/计数器T0溢出中断请求标志位<br>TF1：定时/计数器T1…………<br>TR0：<br>TE0：<br>TR1：<br>TE1：</li>
 </ul>
 <h1 id="SCON的中断"><a href="#SCON的中断" class="headerlink" title="SCON的中断"></a>SCON的中断</h1><p>RI：串口接收中断标志位，RI必须由软件清除<br>TI：串口发送中断标志位。TI必须由软件清除</p>
-<h1 id="计数-x2F-定时器"><a href="#计数-x2F-定时器" class="headerlink" title="计数&#x2F;定时器"></a>计数&#x2F;定时器</h1><p>有三种工作方式：<br>TMOD控制。</p>
-<p>TODO：下面这些改成表格<br>TMOD寄存器位意义<br>T1 T0<br>GATE C&#x2F;T M1 M0 GATE C&#x2F;T M1 M0<br>0 1 2 3 4 5 6 7</p>
+<h1 id="计数-定时器"><a href="#计数-定时器" class="headerlink" title="计数/定时器"></a>计数/定时器</h1><p>有三种工作方式：<br>TMOD控制。</p>
+<p>TODO：下面这些改成表格<br>TMOD寄存器位意义<br>T1 T0<br>GATE C/T M1 M0 GATE C/T M1 M0<br>0 1 2 3 4 5 6 7</p>
 <ul>
-<li>GATE：门控位<br>GATE&#x3D;0：TR0&#x2F;TR1为1，可以启动定时&#x2F;计数器工作<br>GATE&#x3D;1：…………，且外部中断引脚也为高电平。可以用来对脉冲宽度进行计数。<br>由TCON衷的TR、TE控制运行。</li>
+<li>GATE：门控位<br>GATE=0：TR0/TR1为1，可以启动定时/计数器工作<br>GATE=1：…………，且外部中断引脚也为高电平。可以用来对脉冲宽度进行计数。<br>由TCON衷的TR、TE控制运行。</li>
 </ul>
 <h2 id="计数方式"><a href="#计数方式" class="headerlink" title="计数方式"></a>计数方式</h2><p>TL、TH负责计数</p>
 <h2 id="定时方式"><a href="#定时方式" class="headerlink" title="定时方式"></a>定时方式</h2><p>当我们将晶振连到外部中断引脚时，我们就可以计时啦！<br>因为引入了晶振频率，我们原本普普通通的计数就有了时间意义。</p>
-<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p>下面我们将写一段设定一个定时器并使之运行。</p>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">TMOD</span> <span class="operator">=</span> <span class="number">0</span>X01<span class="comment">;	// 开门！（GATE）</span></span><br><span class="line"><span class="attribute">TH0</span> <span class="operator">=</span> (<span class="number">0</span>XFFFF - <span class="number">50000</span>) &gt;&gt; <span class="number">8</span><span class="comment">;	// 定时——高位</span></span><br><span class="line"><span class="attribute">TL0</span> <span class="operator">=</span> (<span class="number">0</span>XFFFF - <span class="number">50000</span>) % <span class="number">256</span><span class="comment">;	// 定时——低位</span></span><br><span class="line"><span class="attribute">ET0</span> <span class="operator">=</span> <span class="number">1</span><span class="comment">;		// 甘雨批准</span></span><br><span class="line"><span class="attribute">EA</span> <span class="operator">=</span> <span class="number">1</span><span class="comment">;			// 凝光也批准</span></span><br></pre></td></tr></table></figure>
-
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p>下面我们将写一段设定一个定时器并使之运行。<br><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">TMOD</span> <span class="operator">=</span> <span class="number">0</span>X01<span class="comment">;	// 开门！（GATE）</span></span><br><span class="line"><span class="attribute">TH0</span> <span class="operator">=</span> (<span class="number">0</span>XFFFF - <span class="number">50000</span>) &gt;&gt; <span class="number">8</span><span class="comment">;	// 定时——高位</span></span><br><span class="line"><span class="attribute">TL0</span> <span class="operator">=</span> (<span class="number">0</span>XFFFF - <span class="number">50000</span>) % <span class="number">256</span><span class="comment">;	// 定时——低位</span></span><br><span class="line"><span class="attribute">ET0</span> <span class="operator">=</span> <span class="number">1</span><span class="comment">;		// 甘雨批准</span></span><br><span class="line"><span class="attribute">EA</span> <span class="operator">=</span> <span class="number">1</span><span class="comment">;			// 凝光也批准</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="如何复制粘贴"><a href="#如何复制粘贴" class="headerlink" title="如何复制粘贴"></a>如何复制粘贴</h2><p>请出我们的好朋友<code>&lt;big&gt;STC-ISP&lt;/big&gt;</code>！<br><code>定时器计算器</code>-&gt;设定单片机型号-&gt;设定系统频率-&gt;设定定时长度-&gt;复制粘贴</p>
 <h2 id="控制器听部分"><a href="#控制器听部分" class="headerlink" title="控制器听部分"></a>控制器听部分</h2><h1 id="杂记"><a href="#杂记" class="headerlink" title="杂记"></a>杂记</h1><h2 id="138译码器"><a href="#138译码器" class="headerlink" title="138译码器"></a>138译码器</h2><h2 id="573锁存器"><a href="#573锁存器" class="headerlink" title="573锁存器"></a>573锁存器</h2><p>低触发器<br>LE一直为高电平则“不上锁”。D与Q的状态保持一直。</p>
 </div>
@@ -375,7 +370,7 @@
                     <a class="tag-none-link" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag">嵌入式</a>, <a class="tag-none-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a>
                 </div>
                 <div class="pull-date">
-                    <time datetime="2022-12-30T11:37:09.528Z" itemprop="dateModified">最后编辑：2022-12-30</time>
+                    <time datetime="2022-12-31T10:18:56.023Z" itemprop="dateModified">最后编辑：2022-12-31</time>
                 </div>
             </div>
         </footer>
@@ -450,7 +445,7 @@
                 文章
             </span>
             <span class="count">
-                34
+                35
             </span>
         </a>
         <a class="meta-item" href="/categories/">
@@ -497,6 +492,9 @@
   <div class="tab-content">
       <ul class="list-group">
         
+        
+          
+          
         
           
           
