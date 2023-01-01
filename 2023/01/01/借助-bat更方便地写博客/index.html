@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <link rel="icon" href="/images/favicon.ico">
   
-  <title>STM32定时中断2 | 山中阁</title>
+  <title>借助.bat更方便地写博客 | 山中阁</title>
   <meta name="author" content="舟适三山" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -14,21 +14,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="format-detection" content="telphone=no, email=no" />
   
-    <meta name="keywords" content="嵌入式, 笔记" />
+    <meta name="keywords" content="hexo, 博客" />
   
-  <meta name="description" content="继续跟着 江科大自化协 学32">
+  <meta name="description" content="起来开机，总是要手动进入博客目录，为什么不能像使用hexo那样操作博客呢？">
 <meta property="og:type" content="article">
-<meta property="og:title" content="STM32定时中断2">
-<meta property="og:url" content="https://jensentsts.github.io/2022/12/04/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD2/index.html">
+<meta property="og:title" content="借助.bat更方便地写博客">
+<meta property="og:url" content="https://jensentsts.github.io/2023/01/01/%E5%80%9F%E5%8A%A9-bat%E6%9B%B4%E6%96%B9%E4%BE%BF%E5%9C%B0%E5%86%99%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="山中阁">
-<meta property="og:description" content="继续跟着 江科大自化协 学32">
+<meta property="og:description" content="起来开机，总是要手动进入博客目录，为什么不能像使用hexo那样操作博客呢？">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://jensentsts.github.io/images/favicon.ico">
-<meta property="article:published_time" content="2022-12-04T07:16:52.000Z">
-<meta property="article:modified_time" content="2022-12-30T11:30:38.401Z">
+<meta property="article:published_time" content="2023-01-01T00:13:48.000Z">
+<meta property="article:modified_time" content="2022-12-31T12:22:37.276Z">
 <meta property="article:author" content="舟适三山">
-<meta property="article:tag" content="嵌入式">
-<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="博客">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jensentsts.github.io/images/favicon.ico">
   
@@ -219,15 +219,15 @@
 
             <article itemscope itemtype="https://schema.org/Article">
     
-    <link itemprop="mainEntityOfPage" href="https://jensentsts.github.io/2022/12/04/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD2/">
+    <link itemprop="mainEntityOfPage" href="https://jensentsts.github.io/2023/01/01/%E5%80%9F%E5%8A%A9-bat%E6%9B%B4%E6%96%B9%E4%BE%BF%E5%9C%B0%E5%86%99%E5%8D%9A%E5%AE%A2/">
     <div class="kratos-hentry kratos-post-inner clearfix">
         <header class="kratos-entry-header">
             
-                <h1 class="kratos-entry-title text-center" itemprop="name headline">STM32定时中断2</h1>
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">借助.bat更方便地写博客</h1>
             
             
             <ul class="kratos-post-meta text-center">
-                <li><time datetime="2022-12-04T07:16:52.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2022-12-04</time></li>
+                <li><time datetime="2023-01-01T00:13:48.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2023-01-01</time></li>
                 <li itemprop="author" itemscope itemtype="https://schema.org/Person">
                     <i class="fa fa-user"></i> 作者 <span itemprop="name">舟适三山</span>
                 </li>
@@ -235,12 +235,12 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        ~4.89K
+                        816
                     
                     字
                 </li>
                 
-                    <li id="/2022/12/04/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD2/" class="leancloud_visitors" data-flag-title="STM32定时中断2">
+                    <li id="/2023/01/01/%E5%80%9F%E5%8A%A9-bat%E6%9B%B4%E6%96%B9%E4%BE%BF%E5%9C%B0%E5%86%99%E5%8D%9A%E5%AE%A2/" class="leancloud_visitors" data-flag-title="借助.bat更方便地写博客">
                         <i class="fa fa-eye"></i>
                         <span class="leancloud-visitors-count"> </span> 次阅读
                     </li>
@@ -252,53 +252,20 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1672399838401"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1672489357276"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
             <hr />
-            <div itemprop="articleBody"><p>继续跟着 <a target="_blank" rel="noopener" href="https://space.bilibili.com/383400717">江科大自化协</a> 学32</p>
-<span id="more"></span>
-
-<p><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.png" alt="定时中断的基本结构"></p>
-<h1 id="stm32f10x-tim-h"><a href="#stm32f10x-tim-h" class="headerlink" title="stm32f10x_tim.h"></a>stm32f10x_tim.h</h1><ul>
-<li>TIM_DeInit(TIM_TypeDef*)</li>
-<li>TIM_TimeBaseStructInit(TIM_TimeBaseInitTypeDef*)</li>
-<li>TIM_TimeBaseInit(TIM_TypeDef*, TIM_TimeBaseInitTypeDef*)：配置时基单元</li>
-<li>TIM_Cmd(TIM_TypeDef*, FunctionalState)：使能&#x2F;失能计数器</li>
-<li>TIM_ITConfig(TIM_TypeDef*, uint16_t, FunctionalState)：中断输出控制</li>
-<li>TIM_InternalClockConfig(TIM_ TypeDef*)：选择内部时钟，</li>
-<li>TIM_ITRXExternalClockConfig(TIM_ TypeDef* ,uint16_t)：选择ITRx其他定时器</li>
-<li>TIM_TIXExternalClockConfig(TIM_ TypeDef* ,uint16_t ,uint16_t ,uint16_t)：选择TIx捕获通道的时钟</li>
-<li>TIM_ETRClockMode1Config(TIM_ TypeDef* , uint16_t ,uint16_t, uint16_ t)：选择外部时钟模式1输入</li>
-<li>TIM_ETRC1ockMode2Config(TIM_ TypeDef* ， uint16_t, uint16_t , uint16_t)：选择外部时钟模式2输入</li>
-<li>一些用于清除中断标志位的函数</li>
-</ul>
-<p>其它的一些函数都是用来单独修改某些设置的，例如<code>TIM_PrescalerConfig()</code>写预分频值。</p>
-<h1 id="示例一"><a href="#示例一" class="headerlink" title="示例一"></a>示例一</h1><p>我们首先来做一个简单的中断程序。<br>配置内部时钟-&gt;设置内部时钟模式-&gt;配置时基单元-&gt;中断输出控制-&gt;配置NVIC<br><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD2/%E5%AE%9A%E6%97%B6%E5%99%A8%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD.jpg" alt="定时器定时中断"></p>
-<blockquote>
-<p>main.c</p>
-</blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// #includes</span></span><br><span class="line"></span><br><span class="line"><span class="type">uint16_t</span> num;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	OLED_Init();</span><br><span class="line">	Timer_Init();</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">		OLED_ShowNum(<span class="number">1</span>, <span class="number">1</span>, num, <span class="number">5</span>);</span><br><span class="line">		OLED_ShowNum(<span class="number">2</span>, <span class="number">2</span>, TIM_GetCounter(TIM2), <span class="number">5</span>);				<span class="comment">// 获取计数器的值</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 中断函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">TIM2_IRQHandler</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (TIM_GetItStatus(TIM2, TIM_IT_Update) == SET)&#123;</span><br><span class="line">		num++;</span><br><span class="line">		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>timer.c</p>
-</blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stm32f10x.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Timer_Init</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);</span><br><span class="line">	<span class="comment">// 定时器初始化</span></span><br><span class="line">	TIM_InternalClockConfig(TIM2);									<span class="comment">// 选择内部时钟（定时器上电后默认用内部时钟,可省略）</span></span><br><span class="line">	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;</span><br><span class="line">	TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;		<span class="comment">// 指定时钟分频 - 滤波器的参数 &amp;&amp; 信号延迟 &amp;&amp; 极性</span></span><br><span class="line">	TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;	<span class="comment">// 计数器模式（向上计数）</span></span><br><span class="line">	TIM_TimeBaseInitStructure.TIM_Period = <span class="number">10000</span> - <span class="number">1</span>;				<span class="comment">// 自动重装器的值（“周期”），-1由公式得来</span></span><br><span class="line">	TIM_TimeBaseInitStructure.TIM_Prescaler = <span class="number">7200</span> - <span class="number">1</span>;				<span class="comment">// 预分频器，-1由公式得来（在10KHz下记1w个数）</span></span><br><span class="line">	TIM_TimeBaseInitStructure.TIM_RepetitionCounter = <span class="number">0</span>;			<span class="comment">// 重复计数器</span></span><br><span class="line">	TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseInitStructure);</span><br><span class="line"></span><br><span class="line">	TIM_ClearFlag(TIM2, TIM_FLAG_Update);							<span class="comment">// 手动清除更新中断标志位</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 使能中断</span></span><br><span class="line">	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);						<span class="comment">// 开启更新中断到NVIC的通路</span></span><br><span class="line">	<span class="comment">// NVIC</span></span><br><span class="line">	NVIC_PeriorityGroupConfig(NVIC_PriorityGroup_2);</span><br><span class="line">	NVIC_InitTypeDef NVIC_InitStructure;</span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;					<span class="comment">// 选择中断通道</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChanneCmd = ENABLE;					<span class="comment">// 中断通道是使能还是失能</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = <span class="number">2</span>;		<span class="comment">// 抢占优先级</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelSubPriority = <span class="number">1</span>;				<span class="comment">// 响应优先级</span></span><br><span class="line">	NVIC_Init(&amp;NVIC_InitStructure);</span><br><span class="line">	<span class="comment">// 启动定时器</span></span><br><span class="line">	TIM_Cmd(TIM2, ENABLE);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">// 中断函数</span></span><br><span class="line"><span class="comment">void TIM2_IRQHandler(void)&#123;</span></span><br><span class="line"><span class="comment">	if (TIM_GetItStatus(TIM2, TIM_IT_Update) == SET)&#123;</span></span><br><span class="line"><span class="comment">		</span></span><br><span class="line"><span class="comment">		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<p>这里有一些需要注意的问题</p>
-<div class="alert alert-warning"><div class="icon"><i class="fa fa-warning"></i></div><div class="text"><p>TIM_TimeBaseInit()在调用的最后会生成一个更新事件，目的是更新我们初始化的值，但这样会导致上电后直接就进一次中断。<br>调用TIM_ClearFlag(TIMx, TIM_FLAG_Update);即可解决此问题</p>
-</div></div>
-
-<h1 id="示例二"><a href="#示例二" class="headerlink" title="示例二"></a>示例二</h1><p><img src="/./img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD2/%E5%AE%9A%E6%97%B6%E5%99%A8%E5%A4%96%E9%83%A8%E6%97%B6%E9%92%9F.jpg" alt="定时器外部时钟"></p>
-<blockquote>
-<p>main.c</p>
-</blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// #includes</span></span><br><span class="line"></span><br><span class="line"><span class="type">uint16_t</span> num;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	OLED_Init();</span><br><span class="line">	Timer_Init();</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">		OLED_ShowNum(<span class="number">1</span>, <span class="number">1</span>, Timer_GetCounter(), <span class="number">5</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>timer.c</p>
-</blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stm32f10x.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Timer_Init</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);</span><br><span class="line">	</span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;</span><br><span class="line">	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;</span><br><span class="line">	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span><br><span class="line">	GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 定时器初始化</span></span><br><span class="line">	TIM_ETRClockMode2Config(TIM2, TIM_ExtTRGPSC_OFF, TIM_ExtTRGPolarity_NonInverted, <span class="number">0x00</span>);	<span class="comment">// 上升沿/高电平，不用滤波器</span></span><br><span class="line">	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;</span><br><span class="line">	TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;		<span class="comment">// 指定时钟分频 - 滤波器的参数 &amp;&amp; 信号延迟 &amp;&amp; 极性</span></span><br><span class="line">	TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;	<span class="comment">// 计数器模式（向上计数）</span></span><br><span class="line">	TIM_TimeBaseInitStructure.TIM_Period = <span class="number">10</span> - <span class="number">1</span>;					<span class="comment">// 自动重装器的值（“周期”），-1由公式得来</span></span><br><span class="line">	TIM_TimeBaseInitStructure.TIM_Prescaler = <span class="number">1</span> - <span class="number">1</span>;				<span class="comment">// 预分频器，-1由公式得来（在10KHz下记1w个数）</span></span><br><span class="line">	TIM_TimeBaseInitStructure.TIM_RepetitionCounter = <span class="number">0</span>;			<span class="comment">// 重复计数器</span></span><br><span class="line">	TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseInitStructure);</span><br><span class="line"></span><br><span class="line">	TIM_ClearFlag(TIM2, TIM_FLAG_Update);							<span class="comment">// 手动清除更新中断标志位</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 使能中断</span></span><br><span class="line">	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);						<span class="comment">// 开启更新中断到NVIC的通路</span></span><br><span class="line">	<span class="comment">// NVIC</span></span><br><span class="line">	NVIC_PeriorityGroupConfig(NVIC_PriorityGroup_2);</span><br><span class="line">	NVIC_InitTypeDef NVIC_InitStructure;</span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;					<span class="comment">// 选择中断通道</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChanneCmd = ENABLE;					<span class="comment">// 中断通道是使能还是失能</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = <span class="number">2</span>;		<span class="comment">// 抢占优先级</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelSubPriority = <span class="number">1</span>;				<span class="comment">// 响应优先级</span></span><br><span class="line">	NVIC_Init(&amp;NVIC_InitStructure);</span><br><span class="line">	<span class="comment">// 启动定时器</span></span><br><span class="line">	TIM_Cmd(TIM2, ENABLE);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">uint16_t</span> <span class="title function_">Timer_GetCounter</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> TIM_GetCounter(TIM2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">// 中断函数</span></span><br><span class="line"><span class="comment">void TIM2_IRQHandler(void)&#123;</span></span><br><span class="line"><span class="comment">	if (TIM_GetItStatus(TIM2, TIM_IT_Update) == SET)&#123;</span></span><br><span class="line"><span class="comment">		</span></span><br><span class="line"><span class="comment">		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
+            <div itemprop="articleBody"><p>起来开机，总是要手动进入博客目录，为什么不能像使用hexo那样操作博客呢？<br><span id="more"></span></p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>首先我们把博客目录写入到环境变量<code>path</code>里，这样做可以让我们在powershell里直接使用我们写好的.bat文件。</p>
+<h1 id="定位和打开hexo"><a href="#定位和打开hexo" class="headerlink" title="定位和打开hexo"></a>定位和打开hexo</h1><p>文件名：blog.bat<br><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">title</span> Blog Terminal</span><br><span class="line">git-bash --<span class="built_in">cd</span>=<span class="variable">%BlogPath%</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="打开hexo服务端"><a href="#打开hexo服务端" class="headerlink" title="打开hexo服务端"></a>打开hexo服务端</h1><p>文件名：blogS.bat<br><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">title</span> Local Server Running...</span><br><span class="line">git-bash --<span class="built_in">cd</span>=<span class="variable">%BlogPath%</span> hexo s</span><br></pre></td></tr></table></figure></p>
+<h1 id="一键部署"><a href="#一键部署" class="headerlink" title="一键部署"></a>一键部署</h1><p>文件名：blogD.bat<br><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">title</span> Deploy to server...</span><br><span class="line"><span class="built_in">echo</span> 请使用Powershell运行脚本。</span><br><span class="line"><span class="built_in">set</span> /P judge=&quot;确定要部署到服务器吗？(Y/N)&quot;</span><br><span class="line"><span class="keyword">if</span> <span class="variable">%judge%</span>==Y (</span><br><span class="line">	git-bash --<span class="built_in">cd</span>=<span class="variable">%BlogPath%</span> hexo g</span><br><span class="line">	git-bash --<span class="built_in">cd</span>=<span class="variable">%BlogPath%</span> hexo d</span><br><span class="line">) <span class="keyword">else</span> (</span><br><span class="line">	<span class="keyword">if</span> <span class="variable">%judge%</span>==y (</span><br><span class="line">	git-bash --<span class="built_in">cd</span>=<span class="variable">%BlogPath%</span> hexo g</span><br><span class="line">	git-bash --<span class="built_in">cd</span>=<span class="variable">%BlogPath%</span> hexo d</span><br><span class="line">	) <span class="keyword">else</span> (</span><br><span class="line">	<span class="built_in">echo</span> 已取消部署。</span><br><span class="line">	)</span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h1 id="一键打开博客目录"><a href="#一键打开博客目录" class="headerlink" title="一键打开博客目录"></a>一键打开博客目录</h1><p>文件名：blogE.bat<br><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> Blog <span class="keyword">in</span> explorer</span><br><span class="line">explorer D:\gitblog\source\_posts</span><br></pre></td></tr></table></figure></p>
+<h1 id="在VSCode中打开博客"><a href="#在VSCode中打开博客" class="headerlink" title="在VSCode中打开博客"></a>在VSCode中打开博客</h1><p>文件名：blogC.bat<br><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">title</span> VSCode</span><br><span class="line">code <span class="variable">%BlogPath%</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="生成博客"><a href="#生成博客" class="headerlink" title="生成博客"></a>生成博客</h1><p>文件名：blogG.bat<br><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">title</span> Summon Blog Posts</span><br><span class="line">git-bash --<span class="built_in">cd</span>=<span class="variable">%BlogPath%</span> hexo g</span><br><span class="line"><span class="built_in">pause</span></span><br></pre></td></tr></table></figure></p>
 </div>
         </div>
         
@@ -352,7 +319,7 @@
     <script type="text/javascript">
         $(()=>{
             new QRCode("wechat-qr", {
-                text: "https://jensentsts.github.io/2022/12/04/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD2/",
+                text: "https://jensentsts.github.io/2023/01/01/%E5%80%9F%E5%8A%A9-bat%E6%9B%B4%E6%96%B9%E4%BE%BF%E5%9C%B0%E5%86%99%E5%8D%9A%E5%AE%A2/",
                 width: 150,
                 height: 150,
                 correctLevel : QRCode.CorrectLevel.H
@@ -364,9 +331,9 @@
             const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
             const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
             const twitterBase   = "https://twitter.com/intent/tweet?";
-            const hostUrl       = "https://jensentsts.github.io/2022/12/04/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD2/";
-            const title         = "「STM32定时中断2」";
-            const excerpt       = `继续跟着 江科大自化协 学32`;
+            const hostUrl       = "https://jensentsts.github.io/2023/01/01/%E5%80%9F%E5%8A%A9-bat%E6%9B%B4%E6%96%B9%E4%BE%BF%E5%9C%B0%E5%86%99%E5%8D%9A%E5%AE%A2/";
+            const title         = "「借助.bat更方便地写博客」";
+            const excerpt       = `起来开机，总是要手动进入博客目录，为什么不能像使用hexo那样操作博客呢？`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -385,10 +352,10 @@
             <div class="footer-tag clearfix">
                 <div class="pull-left">
                 <i class="fa fa-tags"></i>
-                    <a class="tag-none-link" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag">嵌入式</a>, <a class="tag-none-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a>
+                    <a class="tag-none-link" href="/tags/hexo/" rel="tag">hexo</a>, <a class="tag-none-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a>
                 </div>
                 <div class="pull-date">
-                    <time datetime="2022-12-30T11:30:38.401Z" itemprop="dateModified">最后编辑：2022-12-30</time>
+                    <time datetime="2022-12-31T12:22:37.276Z" itemprop="dateModified">最后编辑：2022-12-31</time>
                 </div>
             </div>
         </footer>
@@ -397,13 +364,9 @@
         <nav class="navigation post-navigation clearfix" role="navigation">
             
             <div class="nav-previous clearfix">
-                <a title=" STM32定时中断1" href="/2022/12/03/STM32定时中断1/">&lt; 上一篇</a>
+                <a title=" (无标题)" href="/2022/12/31/动态测试/">&lt; 上一篇</a>
             </div>
             
-            
-            <div class="nav-next clearfix">
-                <a title=" STM32时钟中断3" href="/2022/12/07/STM32时钟中断3/">下一篇 &gt;</a>
-            </div>
             
         </nav>
     
@@ -418,7 +381,7 @@
                 appKey: 'dVH6ChWtZCsbOIW2v9PsTI3M',
                 visitor: true,
                 enableQQ: false,
-                path: '/2022/12/04/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD2/'
+                path: '/2023/01/01/%E5%80%9F%E5%8A%A9-bat%E6%9B%B4%E6%96%B9%E4%BE%BF%E5%9C%B0%E5%86%99%E5%8D%9A%E5%AE%A2/'
             });
         }
         if (typeof Valine === 'undefined') {
