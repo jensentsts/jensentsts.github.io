@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://jensentsts.github.io/images/favicon.ico">
 <meta property="article:published_time" content="2023-01-01T00:13:48.000Z">
-<meta property="article:modified_time" content="2023-01-01T02:25:17.154Z">
+<meta property="article:modified_time" content="2023-01-01T02:30:28.882Z">
 <meta property="article:author" content="舟适三山">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="博客">
@@ -235,7 +235,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        795
+                        781
                     
                     字
                 </li>
@@ -252,7 +252,7 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1672539917154"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1672540228882"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
@@ -263,7 +263,7 @@
 <h1 id="定位和打开hexo"><a href="#定位和打开hexo" class="headerlink" title="定位和打开hexo"></a>定位和打开hexo</h1><p>文件名：blog.bat<br><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">title</span> Blog Terminal</span><br><span class="line">git-bash --<span class="built_in">cd</span>=<span class="variable">%BlogPath%</span></span><br></pre></td></tr></table></figure></p>
 <h1 id="打开hexo服务端"><a href="#打开hexo服务端" class="headerlink" title="打开hexo服务端"></a>打开hexo服务端</h1><p>文件名：blogS.bat<br><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">title</span> Local Server Running...</span><br><span class="line">git-bash --<span class="built_in">cd</span>=<span class="variable">%BlogPath%</span> hexo s</span><br></pre></td></tr></table></figure></p>
 <h1 id="一键部署"><a href="#一键部署" class="headerlink" title="一键部署"></a>一键部署</h1><p>文件名：blogD.bat<br><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">title</span> Deploy to server...</span><br><span class="line"><span class="built_in">echo</span> 请使用Powershell运行脚本。</span><br><span class="line"><span class="built_in">set</span> /P judge=&quot;确定要部署到服务器吗？(Y/N)&quot;</span><br><span class="line"><span class="keyword">if</span> <span class="variable">%judge%</span>==Y (</span><br><span class="line">	git-bash --<span class="built_in">cd</span>=<span class="variable">%BlogPath%</span> hexo g</span><br><span class="line">	git-bash --<span class="built_in">cd</span>=<span class="variable">%BlogPath%</span> hexo d</span><br><span class="line">) <span class="keyword">else</span> (</span><br><span class="line">	<span class="keyword">if</span> <span class="variable">%judge%</span>==y (</span><br><span class="line">	git-bash --<span class="built_in">cd</span>=<span class="variable">%BlogPath%</span> hexo g</span><br><span class="line">	git-bash --<span class="built_in">cd</span>=<span class="variable">%BlogPath%</span> hexo d</span><br><span class="line">	) <span class="keyword">else</span> (</span><br><span class="line">	<span class="built_in">echo</span> 已取消部署。</span><br><span class="line">	)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
-<h1 id="一键打开博客目录"><a href="#一键打开博客目录" class="headerlink" title="一键打开博客目录"></a>一键打开博客目录</h1><p>文件名：blogE.bat<br><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">title</span> Blog <span class="keyword">in</span> explorer</span><br><span class="line">explorer D:\gitblog\source\_posts</span><br></pre></td></tr></table></figure></p>
+<h1 id="一键打开博客目录"><a href="#一键打开博客目录" class="headerlink" title="一键打开博客目录"></a>一键打开博客目录</h1><p>文件名：blogE.bat<br><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">title</span> Blog <span class="keyword">in</span> explorer</span><br><span class="line">explorer <span class="variable">%BlogPath%</span></span><br></pre></td></tr></table></figure></p>
 <h1 id="在VSCode中打开博客"><a href="#在VSCode中打开博客" class="headerlink" title="在VSCode中打开博客"></a>在VSCode中打开博客</h1><p>文件名：blogC.bat<br><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">title</span> VSCode</span><br><span class="line">code <span class="variable">%BlogPath%</span></span><br></pre></td></tr></table></figure></p>
 <h1 id="生成博客"><a href="#生成博客" class="headerlink" title="生成博客"></a>生成博客</h1><p>文件名：blogG.bat<br><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">title</span> Summon Blog Posts</span><br><span class="line">git-bash --<span class="built_in">cd</span>=<span class="variable">%BlogPath%</span> hexo g</span><br><span class="line"><span class="built_in">pause</span></span><br></pre></td></tr></table></figure></p>
 </div>
@@ -355,7 +355,7 @@
                     <a class="tag-none-link" href="/tags/hexo/" rel="tag">hexo</a>, <a class="tag-none-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a>
                 </div>
                 <div class="pull-date">
-                    <time datetime="2023-01-01T02:25:17.154Z" itemprop="dateModified">最后编辑：2023-01-01</time>
+                    <time datetime="2023-01-01T02:30:28.882Z" itemprop="dateModified">最后编辑：2023-01-01</time>
                 </div>
             </div>
         </footer>
