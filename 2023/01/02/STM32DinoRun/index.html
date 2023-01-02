@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="/images/favicon.ico">
+  
+  <title>STM32DinoRun | 山中阁</title>
+  <meta name="author" content="舟适三山" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="嵌入式, 开发" />
+  
+  <meta name="description" content="浅写了一个，项目地址在这里">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STM32DinoRun">
+<meta property="og:url" content="https://jensentsts.github.io/2023/01/02/STM32DinoRun/index.html">
+<meta property="og:site_name" content="山中阁">
+<meta property="og:description" content="浅写了一个，项目地址在这里">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jensentsts.github.io/images/favicon.ico">
+<meta property="article:published_time" content="2023-01-02T10:59:34.000Z">
+<meta property="article:modified_time" content="2023-01-02T11:46:48.014Z">
+<meta property="article:author" content="舟适三山">
+<meta property="article:tag" content="嵌入式">
+<meta property="article:tag" content="开发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jensentsts.github.io/images/favicon.ico">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+      .kratos-cover.kratos-cover-2 {
+        background-image: url('/images/banner.webp');
+      }
+    
+    
+      @media(min-width:768px) {
+        body.custom-background {
+          background-image: url('/images/bg.webp');
+        }
+      }
+    
+  </style>
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li>
+                                            
+                                                <a href="/">
+                                            
+                                                
+                                                    <i class="fa fa-home"></i>
+                                                
+                                                首页
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a href="/archives/">
+                                            
+                                                
+                                                    <i class="fa fa-file"></i>
+                                                
+                                                档案馆
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a href="/friends/">
+                                            
+                                                
+                                                    <i class="fa fa-paw"></i>
+                                                
+                                                好伙伴
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a href="/about/">
+                                            
+                                                
+                                                    <i class="fa fa-paper-plane"></i>
+                                                
+                                                关于我
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a>
+                                            
+                                                
+                                                    <i class="fa fa-link"></i>
+                                                
+                                                链接
+                                            </a>
+                                            
+                                                <ul class="sub-menu">
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://www.bilibili.com/">
+                                                                
+                                                                bilibili
+                                                            </a>
+                                                        </li>
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://kr-demo.candinya.com/posts/Kratos-Rebirth-Manual/">
+                                                                
+                                                                主题文档
+                                                            </a>
+                                                        </li>
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth">
+                                                                
+                                                                主题项目
+                                                            </a>
+                                                        </li>
+                                                    
+                                                </ul>
+                                            
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">山中阁</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>山中阁</h2> <br />
+                        <span>环阁皆山也，林壑尤美，蔚然而深秀</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="https://jensentsts.github.io/2023/01/02/STM32DinoRun/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">STM32DinoRun</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2023-01-02T10:59:34.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2023-01-02</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">舟适三山</span>
+                </li>
+                <li>
+                    <i class="fa fa-edit"></i> 
+                    
+                    
+                        ~10.11K
+                    
+                    字
+                </li>
+                
+                    <li id="/2023/01/02/STM32DinoRun/" class="leancloud_visitors" data-flag-title="STM32DinoRun">
+                        <i class="fa fa-eye"></i>
+                        <span class="leancloud-visitors-count"> </span> 次阅读
+                    </li>
+                    
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1672660008014"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+            <hr />
+            <div itemprop="articleBody"><p>浅写了一个，项目地址在<a target="_blank" rel="noopener" href="https://github.com/jensentsts/STM32DinoRun">这里</a><br><span id="more"></span></p>
+<h1 id="基本框架"><a href="#基本框架" class="headerlink" title="基本框架"></a>基本框架</h1><p>采用了类似于<code>Arduino</code>的框架<del>Arduiduidui</del>。“主进程”负责绘制，另外有时钟负责“多线程”式的状态机更新、外部中断响应按键。</p>
+<h2 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h2><p><code>user/main.c</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    setup();</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        loop();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然了，实际的main()里还有串口通信计算fps的代码、NVIC Group初始化。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);</span><br><span class="line">	Serial_Init();</span><br><span class="line">	Timer_Init();</span><br><span class="line">	setup();</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">		loop();</span><br><span class="line">		++fps;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="setup-与-loop"><a href="#setup-与-loop" class="headerlink" title="setup() 与 loop()"></a>setup() 与 loop()</h2><p><code>setup()</code>和<code>loop()</code>都在<code>user/arduiduidui.c</code>里。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">setup</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    srand(<span class="number">2333</span>);    <span class="comment">// 随便设个种子</span></span><br><span class="line">    <span class="comment">// 各种初始化</span></span><br><span class="line">    OLED_Init();</span><br><span class="line">    Key_Init();</span><br><span class="line">    timer_init();   <span class="comment">// 时钟负责状态机更新</span></span><br><span class="line">    <span class="comment">// 游戏开始</span></span><br><span class="line">    game_start();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="loop"><a href="#loop" class="headerlink" title="loop()"></a>loop()</h2><p><code>loop()</code>只负责绘制，这样可以保证显示稳定且流畅。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">loop</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    draw();</span><br><span class="line">    OLED_Refresh();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="游戏机制"><a href="#游戏机制" class="headerlink" title="游戏机制"></a>游戏机制</h1><h2 id="绘制机制"><a href="#绘制机制" class="headerlink" title="绘制机制"></a>绘制机制</h2><p><code>draw()</code>函数的实现非常简单，只需要依次调用需要绘制的对象的绘制函数即可</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">draw</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    ground_draw();</span><br><span class="line">    cloud_draw();</span><br><span class="line">    blocks_draw();</span><br><span class="line">    dino_draw();</span><br><span class="line">    score_draw();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以前我会纠结于“哎呀呀，更细节的东西应该怎样写，才能保证我写出来的东西能保证我的框架比较合理”，现在我终于是懂得了：有啥画啥。</p>
+<h3 id="绘制地面"><a href="#绘制地面" class="headerlink" title="绘制地面"></a>绘制地面</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">ground_draw</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">uint8_t</span> i;</span><br><span class="line">    OLED_Line(<span class="number">0</span>, ground_y, <span class="number">127</span>, ground_y, WHITE);</span><br><span class="line">    <span class="comment">// 显示生命值</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt;= dino_alive; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        OLED_Square(<span class="number">12</span> * i - <span class="number">8</span>, ground_y + <span class="number">4</span>, <span class="number">12</span> * i, ground_y + <span class="number">4</span> + <span class="number">8</span>, <span class="number">1</span>, WHITE);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="绘制云"><a href="#绘制云" class="headerlink" title="绘制云"></a>绘制云</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">cloud_draw</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">uint8_t</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; cloud_amo; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        OLED_FilletMatrix(clouds[i].x, clouds[i].y, clouds[i].x + clouds[i].w, clouds[i].y + clouds[i].h, clouds[i].r, <span class="number">0</span>, WHITE);</span><br><span class="line">    &#125;</span><br><span class="line">    OLED_Circle(<span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">0</span>, WHITE);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="绘制石"><a href="#绘制石" class="headerlink" title="绘制石"></a>绘制石</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">blocks_draw</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">uint8_t</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; block_amo; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        OLED_Square(blocks[i].x - block_w / <span class="number">2</span>, ground_y - blocks[i].y - block_h, blocks[i].x + block_w / <span class="number">2</span>, ground_y - blocks[i].y, <span class="number">0</span>, WHITE);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="绘制鸟"><a href="#绘制鸟" class="headerlink" title="绘制鸟"></a>绘制鸟</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">bird_draw</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>皇帝的新bird</p>
+<h3 id="绘制小恐龙"><a href="#绘制小恐龙" class="headerlink" title="绘制小恐龙"></a>绘制小恐龙</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">dino_draw</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    OLED_Square(dino_left, ground_y - dino_y - dino_h / (dino_lie + <span class="number">1</span>), dino_left + dino_w, ground_y - dino_y, <span class="number">1</span>, WHITE);</span><br><span class="line">    <span class="comment">// 实际上，把 Game Over 的绘制代码写在这里不太合理，不过它能用。</span></span><br><span class="line">    <span class="keyword">if</span> (!dino_alive)</span><br><span class="line">    &#123;</span><br><span class="line">        OLED_ShowString(<span class="number">0</span>, <span class="number">24</span>, <span class="string">&quot; -- Game Over -- &quot;</span>, BLACK);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="绘制分数"><a href="#绘制分数" class="headerlink" title="绘制分数"></a>绘制分数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">score_draw</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    OLED_ShowNum(<span class="number">87</span>, <span class="number">0</span>, score, <span class="number">5</span>, BLACK);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="状态更新机制"><a href="#状态更新机制" class="headerlink" title="状态更新机制"></a>状态更新机制</h2><h3 id="小恐龙状态更新"><a href="#小恐龙状态更新" class="headerlink" title="小恐龙状态更新"></a>小恐龙状态更新</h3><p>借助很好用的<a href=""><code>CTweeny库</code></a>，实现小恐龙平滑的跳跃效果并不是一件困难的事。<br>小恐龙采用相对坐标，当<code>dino_y</code>为0时，dino的底部与地面接触。</p>
+<ul>
+<li>如果不在跳跃状态，dino_y保持为0.</li>
+<li>如果在跳跃状态，通过ctweeny库计算当前小恐龙的高度</li>
+</ul>
+<p>小恐龙的横坐标是写死的，我的设定是<code>dino_left</code>为24<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">dino_update</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">uint8_t</span> i;</span><br><span class="line">    <span class="keyword">if</span> (dino_jump)</span><br><span class="line">    &#123;</span><br><span class="line">        dino_y = ctweeny_step(&amp;dino_jump_ctw, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span> (dino_y == dino_jump_max_height)     <span class="comment">// 这一步用ctweeny_onstep()实现更好……但是能用就行。</span></span><br><span class="line">        &#123;</span><br><span class="line">            ctweeny_backward(&amp;dino_jump_ctw);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (dino_y == <span class="number">0</span> &amp;&amp; ctweeny_direction(&amp;dino_jump_ctw) == backward)     <span class="comment">// 这一步用ctweeny_onstep()实现更好……但是能用就行。</span></span><br><span class="line">        &#123;</span><br><span class="line">            dino_jump = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 碰撞判断</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; block_amo; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (blocks[i].x &lt; dino_left + dino_w &amp;&amp;</span><br><span class="line">            blocks[i].x &gt; dino_left &amp;&amp;</span><br><span class="line">            dino_y &lt; blocks[i].y + block_h)</span><br><span class="line">        &#123;</span><br><span class="line">            dino_alive--;           <span class="comment">// 减少一条命</span></span><br><span class="line">            block_ease_front();     <span class="comment">// 与dino相碰撞的一定是blocks[]里最前面的那一个，如果不是，那就是我懒得优化的bug</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>关于<code>block_ease_front()</code>，参考<a href="#石の状态更新">石の状态更新</a></p>
+<h3 id="云の状态更新"><a href="#云の状态更新" class="headerlink" title="云の状态更新"></a>云の状态更新</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">cloud_update</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">uint8_t</span> i, j;</span><br><span class="line">    <span class="comment">// 所有云想左移动</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; cloud_amo; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        clouds[i].x--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 清除移动到屏幕外边的云</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; cloud_amo; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (clouds[i].x + clouds[i].w &lt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (j = i + <span class="number">1</span>; j &lt; cloud_amo; ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                clouds[j - <span class="number">1</span>] = clouds[j];</span><br><span class="line">            &#125;</span><br><span class="line">            cloud_amo--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 生成云，保证数量不超过 cloud_max_amount</span></span><br><span class="line">    <span class="keyword">if</span> (rand() % <span class="number">16</span> == <span class="number">2</span> &amp;&amp; cloud_amo &lt; cloud_max_amount)</span><br><span class="line">    &#123;</span><br><span class="line">        clouds[cloud_amo].x = <span class="number">127</span>;</span><br><span class="line">        clouds[cloud_amo].y = rand() % <span class="number">6</span>;</span><br><span class="line">        clouds[cloud_amo].w = <span class="number">16</span> + (rand() % <span class="number">16</span>);</span><br><span class="line">        clouds[cloud_amo].h = <span class="number">4</span> + (rand() % <span class="number">12</span>);</span><br><span class="line">        clouds[cloud_amo].r = <span class="number">2</span> + (rand() % <span class="number">4</span>);</span><br><span class="line">        cloud_amo++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="石の状态更新"><a href="#石の状态更新" class="headerlink" title="石の状态更新"></a>石の状态更新</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">block_update</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">uint8_t</span> i, j;</span><br><span class="line">    <span class="comment">// 石头位置向左移动</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; block_amo; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        blocks[i].x--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 清除移动到屏幕外的石头</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; block_amo; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (blocks[i].x + block_w &lt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 移动到屏幕外的一定是blocks[]里最前面的石头</span></span><br><span class="line">            block_ease_front();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 生成石头</span></span><br><span class="line">    <span class="keyword">if</span> (rand() % <span class="number">128</span> &lt;= <span class="number">2</span> &amp;&amp; block_amo &lt; block_max_amount)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (block_amo &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 优化体验，防止石块生成过密</span></span><br><span class="line">            <span class="keyword">if</span> (blocks[<span class="number">0</span>].x &gt;= <span class="number">128</span> - block_w)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        blocks[block_amo].x = <span class="number">127</span>;</span><br><span class="line">        block_amo++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于清除最前面的石头的代码……</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">block_ease_front</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">uint8_t</span> j;</span><br><span class="line">    <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt; block_amo; ++j)</span><br><span class="line">    &#123;</span><br><span class="line">        blocks[j - <span class="number">1</span>] = blocks[j];</span><br><span class="line">    &#125;</span><br><span class="line">    block_amo--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="状态机更新时钟"><a href="#状态机更新时钟" class="headerlink" title="状态机更新时钟"></a>状态机更新时钟</h1><p>代码都在<code>user/arduiduidui.c</code>里。</p>
+<h2 id="初始化代码"><a href="#初始化代码" class="headerlink" title="初始化代码"></a>初始化代码</h2><p>时钟每隔10ms更新一次状态机</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">timer_init</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);</span><br><span class="line">    <span class="comment">// 定时器初始化</span></span><br><span class="line">    TIM_InternalClockConfig(TIM3); <span class="comment">// 选择内部时钟（定时器上电后默认用内部时钟,可省略）</span></span><br><span class="line">    TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;</span><br><span class="line">    TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;     <span class="comment">// 指定时钟分频 - 滤波器的参数 &amp;&amp; 信号延迟 &amp;&amp; 极性</span></span><br><span class="line">    TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up; <span class="comment">// 计数器模式（向上计数）</span></span><br><span class="line">    TIM_TimeBaseInitStructure.TIM_Period = <span class="number">100</span> - <span class="number">1</span>;                 <span class="comment">// 自动重装器的值（“周期”），-1由公式得来</span></span><br><span class="line">    TIM_TimeBaseInitStructure.TIM_Prescaler = <span class="number">7200</span> - <span class="number">1</span>;             <span class="comment">// 预分频器，-1由公式得来（在 10KHz下记1w个数）</span></span><br><span class="line">    TIM_TimeBaseInitStructure.TIM_RepetitionCounter = <span class="number">0</span>;            <span class="comment">// 重复计数器</span></span><br><span class="line">    TIM_TimeBaseInit(TIM3, &amp;TIM_TimeBaseInitStructure);</span><br><span class="line"></span><br><span class="line">    TIM_ClearFlag(TIM3, TIM_FLAG_Update); <span class="comment">// 手动清除更新中断标志位</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使能中断</span></span><br><span class="line">    TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE); <span class="comment">// 开启更新中断到NVIC的通路</span></span><br><span class="line">    <span class="comment">// NVIC</span></span><br><span class="line">    NVIC_InitTypeDef NVIC_InitStructure;</span><br><span class="line">    NVIC_InitStructure.NVIC_IRQChannel = TIM3_IRQn;           <span class="comment">// 选择中断通道</span></span><br><span class="line">    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;           <span class="comment">// 中断通道是使能还是失能</span></span><br><span class="line">    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = <span class="number">1</span>; <span class="comment">// 抢占优先级</span></span><br><span class="line">    NVIC_InitStructure.NVIC_IRQChannelSubPriority = <span class="number">1</span>;        <span class="comment">// 响应优先级</span></span><br><span class="line">    NVIC_Init(&amp;NVIC_InitStructure);</span><br><span class="line">    <span class="comment">// 启动定时器</span></span><br><span class="line">    TIM_Cmd(TIM3, ENABLE);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>至于为什么使用TIM3：因为TIM2被串口通信拿去计算fps了。</p>
+<h2 id="时钟中断"><a href="#时钟中断" class="headerlink" title="时钟中断"></a>时钟中断</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">TIM3_IRQHandler</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (TIM_GetITStatus(TIM3, TIM_IT_Update) == SET)</span><br><span class="line">    &#123;</span><br><span class="line">        game_update();</span><br><span class="line">        TIM_ClearITPendingBit(TIM3, TIM_IT_Update);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="外部中断"><a href="#外部中断" class="headerlink" title="外部中断"></a>外部中断</h1><h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Key_Init</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);</span><br><span class="line">    RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);</span><br><span class="line"></span><br><span class="line">    GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;</span><br><span class="line">    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1;</span><br><span class="line">    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span><br><span class="line">    GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</span><br><span class="line"></span><br><span class="line">    GPIO_EXTILineConfig(GPIO_PortSourceGPIOA, GPIO_PinSource0);</span><br><span class="line">    GPIO_EXTILineConfig(GPIO_PortSourceGPIOA, GPIO_PinSource1);</span><br><span class="line"></span><br><span class="line">    EXTI_InitTypeDef EXTI_InitStructure;</span><br><span class="line">    EXTI_InitStructure.EXTI_Line = EXTI_Line0;</span><br><span class="line">    EXTI_InitStructure.EXTI_LineCmd = ENABLE;</span><br><span class="line">    EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;</span><br><span class="line">    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;</span><br><span class="line">    EXTI_Init(&amp;EXTI_InitStructure);</span><br><span class="line">    EXTI_InitStructure.EXTI_Line = EXTI_Line1;</span><br><span class="line">    EXTI_InitStructure.EXTI_LineCmd = ENABLE;</span><br><span class="line">    EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;</span><br><span class="line">    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising_Falling;</span><br><span class="line">    EXTI_Init(&amp;EXTI_InitStructure);</span><br><span class="line"></span><br><span class="line">    NVIC_InitTypeDef NVIC_InitStructure;</span><br><span class="line">    NVIC_InitStructure.NVIC_IRQChannel = EXTI0_IRQn;          <span class="comment">// 选择中断通道</span></span><br><span class="line">    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;           <span class="comment">// 中断通道是使能还是失能</span></span><br><span class="line">    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = <span class="number">2</span>; <span class="comment">// 抢占优先级</span></span><br><span class="line">    NVIC_InitStructure.NVIC_IRQChannelSubPriority = <span class="number">2</span>;        <span class="comment">// 响应优先级</span></span><br><span class="line">    NVIC_Init(&amp;NVIC_InitStructure);</span><br><span class="line">    NVIC_InitStructure.NVIC_IRQChannel = EXTI1_IRQn;          <span class="comment">// 选择中断通道</span></span><br><span class="line">    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;           <span class="comment">// 中断通道是使能还是失能</span></span><br><span class="line">    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = <span class="number">3</span>; <span class="comment">// 抢占优先级</span></span><br><span class="line">    NVIC_InitStructure.NVIC_IRQChannelSubPriority = <span class="number">3</span>;        <span class="comment">// 响应优先级</span></span><br><span class="line">    NVIC_Init(&amp;NVIC_InitStructure);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="外部中断-1"><a href="#外部中断-1" class="headerlink" title="外部中断"></a>外部中断</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">EXTI0_IRQHandler</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (EXTI_GetITStatus(EXTI_Line0) == SET)</span><br><span class="line">    &#123;</span><br><span class="line">        key1_onPress();</span><br><span class="line">        EXTI_ClearITPendingBit(EXTI_Line0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">EXTI1_IRQHandler</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (EXTI_GetITStatus(EXTI_Line1) == SET)</span><br><span class="line">    &#123;</span><br><span class="line">        key2_onPress();</span><br><span class="line">        EXTI_ClearITPendingBit(EXTI_Line1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="状态机更新"><a href="#状态机更新" class="headerlink" title="状态机更新"></a>状态机更新</h1><h1 id="处理按键"><a href="#处理按键" class="headerlink" title="处理按键"></a>处理按键</h1><p>两个按键<code>key1</code>和<code>key2</code>有不同的任务。key1负责跳跃，而key2负责加速下落和低头。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">key1_onPress</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (!dino_jump &amp;&amp; dino_alive)</span><br><span class="line">    &#123;</span><br><span class="line">        dino_jump = <span class="number">1</span>;</span><br><span class="line">        dino_lie = <span class="number">0</span>;</span><br><span class="line">        ctweeny_foreward(&amp;dino_jump_ctw);</span><br><span class="line">        ctweeny_from(&amp;dino_jump_ctw, dino_y);</span><br><span class="line">        ctweeny_to(&amp;dino_jump_ctw, dino_jump_max_height);</span><br><span class="line">        ctweeny_during(&amp;dino_jump_ctw, dino_jump_during);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!dino_alive)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (game_pause_counter &gt;= game_pause_counter_continue)</span><br><span class="line">        &#123;</span><br><span class="line">            game_restart();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">key2_onPress</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (dino_jump)</span><br><span class="line">    &#123;</span><br><span class="line">        ctweeny_during(&amp;dino_jump_ctw, dino_jump_during / <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        dino_lie = !dino_lie;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!dino_alive)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (game_pause_counter &gt;= game_pause_counter_continue)</span><br><span class="line">        &#123;</span><br><span class="line">            game_restart();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h1><h2 id="关于调试"><a href="#关于调试" class="headerlink" title="关于调试"></a>关于调试</h2><p>对外部中断不太熟悉，调试的时候用了一些时间。比如不熟悉 GPIO 的输出方式……<br>其它还算顺利，花了一个半小时随便敲的东西，有很多细节没有打磨，比如dino可能会落到第二个石块上（但没有碰到第一个石头），但我代码里写的是block_ease_front()，这样会导致碰一个头扣两滴血。</p>
+<h2 id="关于OLED屏幕刷新率……"><a href="#关于OLED屏幕刷新率……" class="headerlink" title="关于OLED屏幕刷新率……"></a>关于OLED屏幕刷新率……</h2><p>它达到了惊人的116fps！它竟然是块高刷屏！！！(doge)</p>
+<h2 id="关于如此抽象的画风"><a href="#关于如此抽象的画风" class="headerlink" title="关于如此抽象的画风"></a>关于如此抽象的画风</h2><p>因为我懒得提取图片然后转换……</p>
+</div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://jensentsts.github.io/2023/01/02/STM32DinoRun/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://jensentsts.github.io/2023/01/02/STM32DinoRun/";
+            const title         = "「STM32DinoRun」";
+            const excerpt       = `浅写了一个，项目地址在这里`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag">嵌入式</a>, <a class="tag-none-link" href="/tags/%E5%BC%80%E5%8F%91/" rel="tag">开发</a>
+                </div>
+                <div class="pull-date">
+                    <time datetime="2023-01-02T11:46:48.014Z" itemprop="dateModified">最后编辑：2023-01-02</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" 借助.bat更方便地写博客" href="/2023/01/01/借助-bat更方便地写博客/">&lt; 上一篇</a>
+            </div>
+            
+            
+        </nav>
+    
+    
+        <div id="v-comments" class="post-comments bg-image"></div>
+<script>
+    var load_comm = () => {
+        const init = () => {
+            new Valine({
+                el: '#v-comments',
+                appId: '7UVT2Wn1SqeS4e8BL5kOHopx-gzGzoHsz',
+                appKey: 'dVH6ChWtZCsbOIW2v9PsTI3M',
+                visitor: true,
+                enableQQ: false,
+                path: '/2023/01/02/STM32DinoRun/'
+            });
+        }
+        if (typeof Valine === 'undefined') {
+            const src = '/vendors/valine@1.4.18/dist/Valine.min.js';
+            $.getScript(src, init);
+        } else {
+            init();
+        }
+    };
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://valine.js.org/">comments powered by Valine.</a></noscript>
+
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center">一尺深冬雪，万里长街红</p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                37
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                3
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                13
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E7%AC%94%E8%AE%B0/">Android笔记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a><span class="category-list-count">10</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/Android/" style="font-size: 0.63em;">Android</a> <a href="/tags/STM32/" style="font-size: 0.6em;">STM32</a> <a href="/tags/cpp/" style="font-size: 0.66em;">cpp</a> <a href="/tags/hexo/" style="font-size: 0.71em;">hexo</a> <a href="/tags/python/" style="font-size: 0.6em;">python</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 0.74em;">博客</a> <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" style="font-size: 0.8em;">嵌入式</a> <a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 0.66em;">开发</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 0.71em;">杂谈</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 0.6em;">汇编</a> <a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 0.71em;">游戏</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.77em;">笔记</a> <a href="/tags/%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0/" style="font-size: 0.69em;">长期更新</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2023/01/02/STM32DinoRun/"><i class="fa  fa-book"></i> STM32DinoRun</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/01/01/%E5%80%9F%E5%8A%A9-bat%E6%9B%B4%E6%96%B9%E4%BE%BF%E5%9C%B0%E5%86%99%E5%8D%9A%E5%AE%A2/"><i class="fa  fa-book"></i> 借助.bat更方便地写博客</a>
+            
+          
+        
+          
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/31/%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90%E6%9C%BA%E5%99%A825-32%E6%BB%A1%E6%98%9F%E6%94%BB%E7%95%A5/"><i class="fa  fa-book"></i> 人力资源机器25-32满星攻略</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/31/%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90%E6%9C%BA%E5%99%A819-24%E6%BB%A1%E6%98%9F%E6%94%BB%E7%95%A5/"><i class="fa  fa-book"></i> 人力资源机器19-24满星攻略</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2022/12/31/%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90%E6%9C%BA%E5%99%A813-18%E6%BB%A1%E6%98%9F%E6%94%BB%E7%95%A5/"><i class="fa  fa-book"></i> 人力资源机器13-18满星攻略</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        <li><a href="mailto:jensentsts@163.com"><i class="fa fa-envelope"></i></a></li>
+                        
+                        
+                        
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/jensentsts"><i class="fa fa-github"></i></a></li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2023 山中阁 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by 舟适三山.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+    <div>
+        <canvas id="snow"></canvas>
+        <script async src="/js/snow.min.js"></script>
+    </div>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/vendors/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
