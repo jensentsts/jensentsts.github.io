@@ -374,7 +374,7 @@
                     <div class="kratos-entry-content-new">
                         <p itemProp="description">
                             
-                                这是一个控制台项目，一切设计都要从字符角度考虑。这次项目我终于敢放下顾虑，大胆解决问题了，其价值足以我写一篇博客来记录俄罗斯方块不是什么很难的东西，也没人教过我怎么去构建这个项目。说明这个项目是真的简单。  
+                                这是一个控制台项目，一切设计都要从字符角度考虑。这次项目我终于敢放下顾虑，大胆解决问题了，其价值足以我写一篇博客来记录俄罗斯方块不是什么很难的东西，也没人教过我怎么去构建这个项目。说明这个项目是真的简单。
                             
                         </p>
                     </div>
@@ -741,5 +741,20 @@
 <!-- Extra support for third-party plguins  -->
 
 
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
