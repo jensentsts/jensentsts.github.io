@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="/images/favicon.ico">
+  
+  <title>stc15笔记 | 山中阁</title>
+  <meta name="author" content="舟适三山" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="嵌入式, 笔记" />
+  
+  <meta name="description" content="为了蓝桥杯单片机开发赛道">
+<meta property="og:type" content="article">
+<meta property="og:title" content="stc15笔记">
+<meta property="og:url" content="https://jensentsts.github.io/2023/03/19/STC15%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="山中阁">
+<meta property="og:description" content="为了蓝桥杯单片机开发赛道">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jensentsts.github.io/images/favicon.ico">
+<meta property="article:published_time" content="2023-03-19T06:09:03.000Z">
+<meta property="article:modified_time" content="2023-03-19T07:34:09.541Z">
+<meta property="article:author" content="舟适三山">
+<meta property="article:tag" content="嵌入式">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jensentsts.github.io/images/favicon.ico">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+      .kratos-cover.kratos-cover-2 {
+        background-image: url('/images/banner.webp');
+      }
+    
+    
+      @media(min-width:768px) {
+        body.custom-background {
+          background-image: url('/images/bg.webp');
+        }
+      }
+    
+  </style>
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li>
+                                            
+                                                <a href="/">
+                                            
+                                                
+                                                    <i class="fa fa-home"></i>
+                                                
+                                                首页
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a href="/archives/">
+                                            
+                                                
+                                                    <i class="fa fa-file"></i>
+                                                
+                                                档案馆
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a href="/friends/">
+                                            
+                                                
+                                                    <i class="fa fa-paw"></i>
+                                                
+                                                好伙伴
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a href="/about/">
+                                            
+                                                
+                                                    <i class="fa fa-paper-plane"></i>
+                                                
+                                                关于我
+                                            </a>
+                                            
+                                        </li>
+                                    
+                                        <li>
+                                            
+                                                <a>
+                                            
+                                                
+                                                    <i class="fa fa-link"></i>
+                                                
+                                                链接
+                                            </a>
+                                            
+                                                <ul class="sub-menu">
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://www.bilibili.com/">
+                                                                
+                                                                bilibili
+                                                            </a>
+                                                        </li>
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://kr-demo.candinya.com/posts/Kratos-Rebirth-Manual/">
+                                                                
+                                                                主题文档
+                                                            </a>
+                                                        </li>
+                                                    
+                                                        <li>
+                                                            <a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth">
+                                                                
+                                                                主题项目
+                                                            </a>
+                                                        </li>
+                                                    
+                                                </ul>
+                                            
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">山中阁</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>山中阁</h2> <br />
+                        <span>环阁皆山也，林壑尤美，蔚然而深秀</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="https://jensentsts.github.io/2023/03/19/STC15%E7%AC%94%E8%AE%B0/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">stc15笔记</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2023-03-19T06:09:03.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2023-03-19</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">舟适三山</span>
+                </li>
+                <li>
+                    <i class="fa fa-edit"></i> 
+                    
+                    
+                        ~5.23K
+                    
+                    字
+                </li>
+                
+                    <li id="/2023/03/19/STC15%E7%AC%94%E8%AE%B0/" class="leancloud_visitors" data-flag-title="stc15笔记">
+                        <i class="fa fa-eye"></i>
+                        <span class="leancloud-visitors-count"> </span> 次阅读
+                    </li>
+                    
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1679211249541"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+            <hr />
+            <div itemprop="articleBody"><p>为了蓝桥杯单片机开发赛道<br><span id="more"></span></p>
+<h1 id="竞赛板配置要求"><a href="#竞赛板配置要求" class="headerlink" title="竞赛板配置要求"></a>竞赛板配置要求</h1><ol>
+<li>将 IAP15F2K61S2 单片机内部振荡器频率设定为 12MHz。</li>
+<li>键盘工作模式跳线 J5 配置为 KBD 键盘模式。</li>
+<li>扩展方式跳线 J13 配置为 IO 模式。</li>
+<li>请注意：选手需严格按照以上要求配置竞赛板，编写和调试程序，不符合以上配置要求的作品将被评为零分或者被酌情扣分。</li>
+</ol>
+<h1 id="赛题"><a href="#赛题" class="headerlink" title="赛题"></a>赛题</h1><h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="功能概述"><a href="#功能概述" class="headerlink" title="功能概述"></a>功能概述</h3><ol>
+<li>通过获取 DS18B20 温度传感器的温度数据，完成温度测量功能。</li>
+<li>通过 PCF8591 AD/DA 芯片完成 DAC 输出功能。</li>
+<li>通过数码管完成题目要求的数据显示功能。</li>
+<li>通过按键完成题目要求的显示界面切换和设置功能。</li>
+<li>通过 LED 指示灯完成题目要求的指示功能。</li>
+</ol>
+<h3 id="性能要求"><a href="#性能要求" class="headerlink" title="性能要求"></a>性能要求</h3><ol>
+<li>温度数据刷新时间：≤1 秒。</li>
+<li>DAC 输出电压刷新时间：≤0.5 秒。</li>
+<li>按键动作响应时间：≤0.2 秒。</li>
+</ol>
+<h3 id="显示功能"><a href="#显示功能" class="headerlink" title="显示功能"></a>显示功能</h3><ol>
+<li>温度显示界面<br>温度数据界面如图 2 所示，显示内容包括标识符 C 和温度数据，温度数据保留小数点后 2 位有效数字，单位为摄氏度。</li>
+</ol>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">C</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">4.</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">标识</td>
+<td style="text-align:center">熄灭</td>
+<td style="text-align:center">熄灭</td>
+<td style="text-align:center">熄灭</td>
+<td style="text-align:center">温度：24.25℃</td>
+<td style="text-align:center">温度：24.25℃</td>
+<td style="text-align:center">温度：24.25℃</td>
+<td style="text-align:center">温度：24.25℃</td>
+</tr>
+</tbody>
+</table>
+</div>
+<center>图 2 温度显示界面</center>
+
+<ol>
+<li>参数设置界面<br>参数设置界面如图 3 所示，显示内容包括标识符 P 和温度参数，温度参数为整数，单位为摄氏度。</li>
+</ol>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">C</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">标识</td>
+<td style="text-align:center">熄灭</td>
+<td style="text-align:center">熄灭</td>
+<td style="text-align:center">熄灭</td>
+<td style="text-align:center">熄灭</td>
+<td style="text-align:center">熄灭</td>
+<td style="text-align:center">参数:25℃</td>
+<td style="text-align:center">参数:25℃</td>
+</tr>
+</tbody>
+</table>
+</div>
+<center>图 3 参数设置界面</center>
+
+<ol>
+<li>DAC 输出界面<br>DAC 输出界面如图 4 所示，显示内容包括标识符 A 和当前 DAC 输出的电压值，电压数据保留小数点后 2 位有效数字。</li>
+</ol>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">C</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">3.</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">标识</td>
+<td style="text-align:center">熄灭</td>
+<td style="text-align:center">熄灭</td>
+<td style="text-align:center">熄灭</td>
+<td style="text-align:center">熄灭</td>
+<td style="text-align:center">VDAC = 3.25V</td>
+<td style="text-align:center">VDAC = 3.25V</td>
+<td style="text-align:center">温VDAC = 3.25V</td>
+</tr>
+</tbody>
+</table>
+</div>
+<center>图 4 DAC 输出界面</center>
+
+<h3 id="按键功能"><a href="#按键功能" class="headerlink" title="按键功能"></a>按键功能</h3><h4 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h4><ul>
+<li>S4：定义为“界面”按键，按下 S4 按键，切换温度显示界面、参数设置界面和 DAC 输出界面，按键 S4 切换模式如图 5 所示：<br>S4</li>
+</ul>
+<p><img src="/img/post/STC15/STC15笔记/通过S4按键切换界面.png" alt="图 5 通过 S4 按键切换界面"></p>
+<ul>
+<li>S8：定义为“减”按键<br>在参数界面下按下 S8 按键，温度参数减 1。</li>
+<li>S9：定义为“加”按键<br>在参数界面下按下 S9 按键，温度参数加 1。</li>
+<li>S5：定义为“模式”切换按键。</li>
+</ul>
+<p><img src="/img/post/STC15/STC15笔记/通过S5切换模式.png" alt="图 6 通过 S5 切换模式"></p>
+<p><strong>模式 1：</strong>DAC 输出电压与温度相关。<br>通过 DS18B20 采集到的实时温度小于温度参数时，DAC 输出 0V，否则，DAC 输出 5V。<br><strong>模式 2：</strong>DAC 按照图 7 给出的关系输出电压。</p>
+<p><img src="/img/post/STC15/STC15笔记/模式2下DAC输出电压.png" alt="图 7 模式 2 下 DAC 输出电压"></p>
+<h4 id="其它要求"><a href="#其它要求" class="headerlink" title="其它要求"></a>其它要求</h4><ul>
+<li>按键应做好消抖处理，避免出现一次按键动作导致功能多次触发等问题。</li>
+<li>按键动作不影响数码管显示和数据采集过程。</li>
+<li>S8、S9 按键仅在参数设置界面有效。</li>
+<li>设定的温度参数在退出参数设置界面时生效。</li>
+</ul>
+<h4 id="LED-指示灯功能"><a href="#LED-指示灯功能" class="headerlink" title="LED 指示灯功能"></a>LED 指示灯功能</h4><ol>
+<li>当前处于 模式 1 状态，指示灯 L1 点亮，否则熄灭。</li>
+<li>当前处于温度显示界面，指示灯 L2 点亮，否则熄灭。</li>
+<li>当前处于参数设置界面，指示灯 L3 点亮，否则熄灭。</li>
+<li>当前处于 DAC 输出界面，指示灯 L4 点亮，否则熄灭。</li>
+</ol>
+<h4 id="初始状态说明"><a href="#初始状态说明" class="headerlink" title="初始状态说明"></a>初始状态说明</h4><p>请严格按照以下要求设计作品的上电初始状态。</p>
+<ol>
+<li>处于温度显示界面。</li>
+<li>处于模式 1。</li>
+<li>温度参数为 25℃。</li>
+</ol>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// includes</span></span><br><span class="line"><span class="comment">// 时钟分配宏列表（为不同的功能设置不同的时钟，专门集成岛一个文件里去）</span></span><br><span class="line"><span class="comment">// DS18B20</span></span><br><span class="line"><span class="comment">// PCF8591 AD/DA</span></span><br><span class="line"><span class="comment">// DigitalTubes 数码管</span></span><br><span class="line"><span class="comment">// LED</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span> <span class="title">INTERFACE_MODE</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    TEMPERATURE,</span><br><span class="line">    ARG_SET,</span><br><span class="line">    DAC_OUTPUT</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span> <span class="title">DAC_MODE</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    MODE1,</span><br><span class="line">    MODE2</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">INTERFACE_MODE interface_mode;</span><br><span class="line">DAC_MODE dac_mode;</span><br><span class="line"></span><br><span class="line"><span class="type">float</span> temperature_arg = <span class="number">25.00f</span>;</span><br><span class="line"><span class="type">float</span> temperature_arg_in_set = <span class="number">25.00f</span>;</span><br><span class="line"><span class="type">float</span> dac_arg = <span class="number">1.00f</span>;</span><br><span class="line"><span class="type">float</span> dac_output = <span class="number">1.00f</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">init</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    LED_Init();</span><br><span class="line">    DigitalTubes_Init();</span><br><span class="line">    DS18B20_Init();</span><br><span class="line">    PCF8591_Init();</span><br><span class="line">    Keys_Init();</span><br><span class="line">    interface_mode = TEMPERATURE;</span><br><span class="line">    dac_mode = MODE1;</span><br><span class="line">    temperature_arg = <span class="number">25.00f</span>;</span><br><span class="line">    temperature_arg_in_set = temperature_arg;</span><br><span class="line">    dac_output = <span class="number">1.00f</span>;</span><br><span class="line">    dac_arg = <span class="number">1.00f</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">LED_Update</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// L1</span></span><br><span class="line">    <span class="keyword">if</span> (dac_mode == MODE1)</span><br><span class="line">    &#123;</span><br><span class="line">        LED_On(L1);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        LED_Off(L1);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// L2</span></span><br><span class="line">    <span class="keyword">if</span> (interface_mode == TEMPERATURE)</span><br><span class="line">    &#123;</span><br><span class="line">        LED_On(L2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        LED_Off(L2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// L3</span></span><br><span class="line">    <span class="keyword">if</span> (interface_mode == ARG_SET)</span><br><span class="line">    &#123;</span><br><span class="line">        LED_On(L3);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        LED_Off(L3);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// L4</span></span><br><span class="line">    <span class="keyword">if</span> (interface_mode == DAC_OUTPUT)</span><br><span class="line">    &#123;</span><br><span class="line">        LED_On(L4);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        LED_Off(L4);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">S4_interrupt</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    interface_mode++;</span><br><span class="line">    interface_mode %= DAC_OUTPUT + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (interface_mode == ARG_SET) <span class="comment">// <span class="doctag">TODO:</span> 这里有点儿暴力，可以优化，但是我懒</span></span><br><span class="line">    &#123;</span><br><span class="line">        temperature_arg_in_set = temperature_arg;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        temperature_arg = temperature_arg_in_set;</span><br><span class="line">    &#125;</span><br><span class="line">    LED_Update();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">S8_Interrupt</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (interface_mode == ARG_SET)</span><br><span class="line">    &#123;</span><br><span class="line">        temperature_arg_in_set -= <span class="number">1.00f</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    LED_Update();<span class="comment">// <span class="doctag">TODO:</span> 这里有点儿暴力，可以优化，但是我懒</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">S9_Interrupt</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (interface_mode == ARG_SET)</span><br><span class="line">    &#123;</span><br><span class="line">        temperature_arg_in_set += <span class="number">1.00f</span>;   </span><br><span class="line">    &#125;</span><br><span class="line">    LED_Update();<span class="comment">// <span class="doctag">TODO:</span> 这里有点儿暴力，可以优化，但是我懒</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">S5_Interrupt</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (dac_mode == MODE1)</span><br><span class="line">    &#123;</span><br><span class="line">        dac_mode = MODE2;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (dac_mode == MODE2)</span><br><span class="line">    &#123;</span><br><span class="line">        dac_mode = MODE1;</span><br><span class="line">    &#125;</span><br><span class="line">    LED_Update();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 电压输出更新</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">OutputUpdate</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">float</span> temperature = DS18B20_Get();</span><br><span class="line">    <span class="keyword">if</span> (dac_mode == MODE1)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (temperature &gt;= temperature_arg)</span><br><span class="line">        &#123;</span><br><span class="line">            DAC_Set(<span class="number">5.00</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            DAC_Set(<span class="number">0.00</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (dac_mode == MODE2)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (temperature &lt;= <span class="number">20</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            DAC_Set(<span class="number">1.00f</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (temperature &gt;= <span class="number">40</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            DAC_Set(<span class="number">4.00f</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            DAC_Set(temperature * <span class="number">0.15f</span> - <span class="number">2.00f</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数码管输出更新</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">DisplayUpdate</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (interface_mode == TEMPERATURE)</span><br><span class="line">    &#123;</span><br><span class="line">        DigitalTubes_ShowDouble(temperature_output, <span class="number">-1</span>, <span class="number">2</span>);</span><br><span class="line">        DigitalTubes_ShowChar(<span class="string">&#x27;C&#x27;</span>, <span class="number">0</span>, <span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (interface_mode == ARG_SET)</span><br><span class="line">    &#123;</span><br><span class="line">        DigitalTubes_ShowDouble(temperature_arg, <span class="number">-1</span>, <span class="number">0</span>);</span><br><span class="line">        DigitalTubes_ShowChar(<span class="string">&#x27;P&#x27;</span>, <span class="number">0</span>, <span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (interface_mode == DAC_OUTPUT)</span><br><span class="line">    &#123;</span><br><span class="line">        DigitalTubes_ShowDouble(dac_output, <span class="number">-1</span>, <span class="number">2</span>);</span><br><span class="line">        DigitalTubes_ShowChar(<span class="string">&#x27;A&#x27;</span>, <span class="number">0</span>, <span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    init();</span><br><span class="line">    <span class="keyword">for</span> (;;)</span><br><span class="line">    &#123;</span><br><span class="line">        OutputUpdate();</span><br><span class="line">        OutpuDisplayUpdatetUpdate();</span><br><span class="line">        delay_ms(<span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://jensentsts.github.io/2023/03/19/STC15%E7%AC%94%E8%AE%B0/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://jensentsts.github.io/2023/03/19/STC15%E7%AC%94%E8%AE%B0/";
+            const title         = "「stc15笔记」";
+            const excerpt       = `为了蓝桥杯单片机开发赛道`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag">嵌入式</a>, <a class="tag-none-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a>
+                </div>
+                <div class="pull-date">
+                    <time datetime="2023-03-19T07:34:09.541Z" itemprop="dateModified">最后编辑：2023-03-19</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" stm32时钟树" href="/2023/03/19/STM32时钟树/">&lt; 上一篇</a>
+            </div>
+            
+            
+        </nav>
+    
+    
+        <div id="v-comments" class="post-comments bg-image"></div>
+<script>
+    var load_comm = () => {
+        const init = () => {
+            new Valine({
+                el: '#v-comments',
+                appId: '7UVT2Wn1SqeS4e8BL5kOHopx-gzGzoHsz',
+                appKey: 'dVH6ChWtZCsbOIW2v9PsTI3M',
+                visitor: true,
+                enableQQ: false,
+                path: '/2023/03/19/STC15%E7%AC%94%E8%AE%B0/'
+            });
+        }
+        if (typeof Valine === 'undefined') {
+            const src = '/vendors/valine@1.4.18/dist/Valine.min.js';
+            $.getScript(src, init);
+        } else {
+            init();
+        }
+    };
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://valine.js.org/">comments powered by Valine.</a></noscript>
+
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.webp" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center">一尺深冬雪，万里长街红</p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                49
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                4
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                14
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E7%AC%94%E8%AE%B0/">Android笔记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blender/">blender</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a><span class="category-list-count">13</span></li></ul>
+  </aside>
+
+
+            
+                
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/Android/" style="font-size: 0.63em;">Android</a> <a href="/tags/STM32/" style="font-size: 0.6em;">STM32</a> <a href="/tags/blender/" style="font-size: 0.6em;">blender</a> <a href="/tags/cpp/" style="font-size: 0.67em;">cpp</a> <a href="/tags/hexo/" style="font-size: 0.7em;">hexo</a> <a href="/tags/python/" style="font-size: 0.6em;">python</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 0.73em;">博客</a> <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" style="font-size: 0.8em;">嵌入式</a> <a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 0.73em;">开发</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 0.7em;">杂谈</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 0.6em;">汇编</a> <a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 0.7em;">游戏</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.77em;">笔记</a> <a href="/tags/%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0/" style="font-size: 0.7em;">长期更新</a>
+      </div>
+  </aside>
+
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2023/03/19/STC15%E7%AC%94%E8%AE%B0/"><i class="fa  fa-book"></i> stc15笔记</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/03/19/STM32%E6%97%B6%E9%92%9F%E6%A0%91/"><i class="fa  fa-book"></i> stm32时钟树</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/02/03/Flutter%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"><i class="fa  fa-book"></i> Flutter问题解决</a>
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/01/07/Blender%E5%BF%AB%E6%8D%B7%E9%94%AE/"><i class="fa  fa-book"></i> blender快捷键</a>
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/01/02/Arduino%E5%AD%A6%E4%B9%A0day1/"><i class="fa  fa-book"></i> Arduino学习day1</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        <li><a href="mailto:jensentsts@163.com"><i class="fa fa-envelope"></i></a></li>
+                        
+                        
+                        
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/jensentsts"><i class="fa fa-github"></i></a></li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2023 山中阁 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by 舟适三山.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+    <div>
+        <canvas id="snow"></canvas>
+        <script async src="/js/snow.min.js"></script>
+    </div>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/vendors/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
