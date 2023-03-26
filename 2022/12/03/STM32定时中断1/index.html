@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <link rel="icon" href="/images/favicon.ico">
   
-  <title>STM32定时中断1 | 天雨森淼</title>
+  <title>STM32定时中断 | 天雨森淼</title>
   <meta name="author" content="天雨森淼（舟泛四海）" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -16,16 +16,16 @@
   
     <meta name="keywords" content="嵌入式, 笔记" />
   
-  <meta name="description" content="继续跟着 江科大自化协 学习STM32。多图杀猫警告。">
+  <meta name="description" content="继续跟着 江科大自化协 学习STM32。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="STM32定时中断1">
+<meta property="og:title" content="STM32定时中断">
 <meta property="og:url" content="https://jensentsts.github.io/2022/12/03/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/index.html">
 <meta property="og:site_name" content="天雨森淼">
-<meta property="og:description" content="继续跟着 江科大自化协 学习STM32。多图杀猫警告。">
+<meta property="og:description" content="继续跟着 江科大自化协 学习STM32。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://jensentsts.github.io/images/favicon.ico">
 <meta property="article:published_time" content="2022-12-03T12:36:26.000Z">
-<meta property="article:modified_time" content="2022-12-31T11:46:07.515Z">
+<meta property="article:modified_time" content="2023-03-26T05:47:29.502Z">
 <meta property="article:author" content="天雨森淼（舟泛四海）">
 <meta property="article:tag" content="嵌入式">
 <meta property="article:tag" content="笔记">
@@ -222,7 +222,7 @@
     <div class="kratos-hentry kratos-post-inner clearfix">
         <header class="kratos-entry-header">
             
-                <h1 class="kratos-entry-title text-center" itemprop="name headline">STM32定时中断1</h1>
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">STM32定时中断</h1>
             
             
             <ul class="kratos-post-meta text-center">
@@ -234,12 +234,12 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        ~2.37K
+                        ~7.25K
                     
                     字
                 </li>
                 
-                    <li id="/2022/12/03/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/" class="leancloud_visitors" data-flag-title="STM32定时中断1">
+                    <li id="/2022/12/03/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/" class="leancloud_visitors" data-flag-title="STM32定时中断">
                         <i class="fa fa-eye"></i>
                         <span class="leancloud-visitors-count"> </span> 次阅读
                     </li>
@@ -250,13 +250,13 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1672487167515"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1679809649502"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
             <hr />
-            <div itemprop="articleBody"><p>继续跟着 <a target="_blank" rel="noopener" href="https://space.bilibili.com/383400717">江科大自化协</a> 学习STM32。多图杀猫警告。<br><span id="more"></span></p>
+            <div itemprop="articleBody"><p>继续跟着 <a target="_blank" rel="noopener" href="https://space.bilibili.com/383400717">江科大自化协</a> 学习STM32。<br><span id="more"></span></p>
 <div class="alert alert-warning"><div class="icon"><i class="fa fa-warning"></i></div><div class="text"><p><strong>注意</strong>：<br>有的定时器使用APB1，有的定时器使用APB2</p>
 </div></div>
 <h1 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h1><p>TIM（Timer）定时器<br>16位计数器、预分频器（Pre-Scaler）、自动重装寄存器的时基单元，在72MHz计数时钟下可以实现最大59.65s的定时<br>如果觉得定时器时间不够，可以用定时器级联，最大定时时间将会变为$59.65*65536^2$<br>还不够？还可以再级联一个……最大定时时常变为<strong>几亿年</strong>……</p>
@@ -292,6 +292,31 @@
 <h2 id="时钟分频电路"><a href="#时钟分频电路" class="headerlink" title="时钟分频电路"></a>时钟分频电路</h2><p>72MHz进入AHB总线，AHB有个预分频器，在SystemInit里配置的分配系数为1，则AHB的时钟就是72MHz，然后进入RPB1总线，这里配置的分频系数是2，则这里的频率是72/2=36MHz。<br>但是！下面有个支路——若干APB与分频系数=1，则频率不变，否则频率×2。这条支路单独为TIM2~7开通<br>因此，无论是何种计时器，频率都是72MHz（如果SystemInit中的默认配置没有改的话……）</p>
 <h2 id="RCC-APBxxxPeriphClockCmd"><a href="#RCC-APBxxxPeriphClockCmd" class="headerlink" title="RCC_APBxxxPeriphClockCmd"></a>RCC_APBxxxPeriphClockCmd</h2><p>代码中的RCC_APB1/2PeriphClockCmd作用的地方就是图中的<code>外设时钟使能</code>。</p>
 <h2 id="其他部分"><a href="#其他部分" class="headerlink" title="其他部分"></a>其他部分</h2><p>还有给ADC、SDIO提供时钟的电路，在AHB后边那一堆的上部。</p>
+<div class="alert alert-info"><div class="icon"><i class="fa fa-info"></i></div><div class="text"><p>以下内容由原来的“STM32定时中断2”合并而来。</p>
+</div></div>
+<h1 id="stm32f10x-tim-h"><a href="#stm32f10x-tim-h" class="headerlink" title="stm32f10x_tim.h"></a>stm32f10x_tim.h</h1><ul>
+<li>TIM_DeInit(TIM_TypeDef*)</li>
+<li>TIM_TimeBaseStructInit(TIM_TimeBaseInitTypeDef*)</li>
+<li>TIM_TimeBaseInit(TIM_TypeDef*, TIM_TimeBaseInitTypeDef*)：配置时基单元</li>
+<li>TIM_Cmd(TIM_TypeDef*, FunctionalState)：使能/失能计数器</li>
+<li>TIM_ITConfig(TIM_TypeDef*, uint16_t, FunctionalState)：中断输出控制</li>
+<li>TIM_InternalClockConfig(TIM_ TypeDef*)：选择内部时钟，</li>
+<li>TIM_ITRXExternalClockConfig(TIM_ TypeDef* ,uint16_t)：选择ITRx其他定时器</li>
+<li>TIM_TIXExternalClockConfig(TIM_ TypeDef* ,uint16_t ,uint16_t ,uint16_t)：选择TIx捕获通道的时钟</li>
+<li>TIM_ETRClockMode1Config(TIM_ TypeDef* , uint16_t ,uint16_t, uint16_ t)：选择外部时钟模式1输入</li>
+<li>TIM_ETRC1ockMode2Config(TIM_ TypeDef* ， uint16_t, uint16_t , uint16_t)：选择外部时钟模式2输入</li>
+<li>一些用于清除中断标志位的函数</li>
+</ul>
+<p>其它的一些函数都是用来单独修改某些设置的，例如<code>TIM_PrescalerConfig()</code>写预分频值。</p>
+<h1 id="示例一"><a href="#示例一" class="headerlink" title="示例一"></a>示例一</h1><p>我们首先来做一个简单的中断程序。<br>配置内部时钟-&gt;设置内部时钟模式-&gt;配置时基单元-&gt;中断输出控制-&gt;配置NVIC<br><img src="./img/post/嵌入式/STM32定时中断2/定时器定时中断.jpg" alt="定时器定时中断"></p>
+<blockquote>
+<p>main.c<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// #includes</span></span><br><span class="line"></span><br><span class="line"><span class="type">uint16_t</span> num;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	OLED_Init();</span><br><span class="line">	Timer_Init();</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">		OLED_ShowNum(<span class="number">1</span>, <span class="number">1</span>, num, <span class="number">5</span>);</span><br><span class="line">		OLED_ShowNum(<span class="number">2</span>, <span class="number">2</span>, TIM_GetCounter(TIM2), <span class="number">5</span>);				<span class="comment">// 获取计数器的值</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 中断函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">TIM2_IRQHandler</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (TIM_GetItStatus(TIM2, TIM_IT_Update) == SET)&#123;</span><br><span class="line">		num++;</span><br><span class="line">		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>timer.c<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stm32f10x.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Timer_Init</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);</span><br><span class="line">	<span class="comment">// 定时器初始化</span></span><br><span class="line">	TIM_InternalClockConfig(TIM2);									<span class="comment">// 选择内部时钟（定时器上电后默认用内部时钟,可省略）</span></span><br><span class="line">	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;</span><br><span class="line">	TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;		<span class="comment">// 指定时钟分频 - 滤波器的参数 &amp;&amp; 信号延迟 &amp;&amp; 极性</span></span><br><span class="line">	TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;	<span class="comment">// 计数器模式（向上计数）</span></span><br><span class="line">	TIM_TimeBaseInitStructure.TIM_Period = <span class="number">10000</span> - <span class="number">1</span>;				<span class="comment">// 自动重装器的值（“周期”），-1由公式得来</span></span><br><span class="line">	TIM_TimeBaseInitStructure.TIM_Prescaler = <span class="number">7200</span> - <span class="number">1</span>;				<span class="comment">// 预分频器，-1由公式得来（在10KHz下记1w个数）</span></span><br><span class="line">	TIM_TimeBaseInitStructure.TIM_RepetitionCounter = <span class="number">0</span>;			<span class="comment">// 重复计数器</span></span><br><span class="line">	TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseInitStructure);</span><br><span class="line"></span><br><span class="line">	TIM_ClearFlag(TIM2, TIM_FLAG_Update);							<span class="comment">// 手动清除更新中断标志位</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 使能中断</span></span><br><span class="line">	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);						<span class="comment">// 开启更新中断到NVIC的通路</span></span><br><span class="line">	<span class="comment">// NVIC</span></span><br><span class="line">	NVIC_PeriorityGroupConfig(NVIC_PriorityGroup_2);</span><br><span class="line">	NVIC_InitTypeDef NVIC_InitStructure;</span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;					<span class="comment">// 选择中断通道</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChanneCmd = ENABLE;					<span class="comment">// 中断通道是使能还是失能</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = <span class="number">2</span>;		<span class="comment">// 抢占优先级</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelSubPriority = <span class="number">1</span>;				<span class="comment">// 响应优先级</span></span><br><span class="line">	NVIC_Init(&amp;NVIC_InitStructure);</span><br><span class="line">	<span class="comment">// 启动定时器</span></span><br><span class="line">	TIM_Cmd(TIM2, ENABLE);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">// 中断函数</span></span><br><span class="line"><span class="comment">void TIM2_IRQHandler(void)&#123;</span></span><br><span class="line"><span class="comment">	if (TIM_GetItStatus(TIM2, TIM_IT_Update) == SET)&#123;</span></span><br><span class="line"><span class="comment">		</span></span><br><span class="line"><span class="comment">		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure><br>这里有一些需要注意的问题<br><div class="alert alert-warning"><div class="icon"><i class="fa fa-warning"></i></div><div class="text"><p>TIM_TimeBaseInit()在调用的最后会生成一个更新事件，目的是更新我们初始化的值，但这样会导致上电后直接就进一次中断。<br>调用TIM_ClearFlag(TIMx, TIM_FLAG_Update);即可解决此问题</p>
+</div></div></p>
+</blockquote>
+<h1 id="示例二"><a href="#示例二" class="headerlink" title="示例二"></a>示例二</h1><p><img src="./img/post/嵌入式/STM32定时中断2/定时器外部时钟.jpg" alt="定时器外部时钟"></p>
+<blockquote>
+<p>main.c<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// #includes</span></span><br><span class="line"></span><br><span class="line"><span class="type">uint16_t</span> num;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	OLED_Init();</span><br><span class="line">	Timer_Init();</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">		OLED_ShowNum(<span class="number">1</span>, <span class="number">1</span>, Timer_GetCounter(), <span class="number">5</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>timer.c<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stm32f10x.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Timer_Init</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);</span><br><span class="line">	</span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;</span><br><span class="line">	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;</span><br><span class="line">	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span><br><span class="line">	GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 定时器初始化</span></span><br><span class="line">	TIM_ETRClockMode2Config(TIM2, TIM_ExtTRGPSC_OFF, TIM_ExtTRGPolarity_NonInverted, <span class="number">0x00</span>);	<span class="comment">// 上升沿/高电平，不用滤波器</span></span><br><span class="line">	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;</span><br><span class="line">	TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;		<span class="comment">// 指定时钟分频 - 滤波器的参数 &amp;&amp; 信号延迟 &amp;&amp; 极性</span></span><br><span class="line">	TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;	<span class="comment">// 计数器模式（向上计数）</span></span><br><span class="line">	TIM_TimeBaseInitStructure.TIM_Period = <span class="number">10</span> - <span class="number">1</span>;					<span class="comment">// 自动重装器的值（“周期”），-1由公式得来</span></span><br><span class="line">	TIM_TimeBaseInitStructure.TIM_Prescaler = <span class="number">1</span> - <span class="number">1</span>;				<span class="comment">// 预分频器，-1由公式得来（在10KHz下记1w个数）</span></span><br><span class="line">	TIM_TimeBaseInitStructure.TIM_RepetitionCounter = <span class="number">0</span>;			<span class="comment">// 重复计数器</span></span><br><span class="line">	TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseInitStructure);</span><br><span class="line"></span><br><span class="line">	TIM_ClearFlag(TIM2, TIM_FLAG_Update);							<span class="comment">// 手动清除更新中断标志位</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 使能中断</span></span><br><span class="line">	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);						<span class="comment">// 开启更新中断到NVIC的通路</span></span><br><span class="line">	<span class="comment">// NVIC</span></span><br><span class="line">	NVIC_PeriorityGroupConfig(NVIC_PriorityGroup_2);</span><br><span class="line">	NVIC_InitTypeDef NVIC_InitStructure;</span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;					<span class="comment">// 选择中断通道</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChanneCmd = ENABLE;					<span class="comment">// 中断通道是使能还是失能</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = <span class="number">2</span>;		<span class="comment">// 抢占优先级</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelSubPriority = <span class="number">1</span>;				<span class="comment">// 响应优先级</span></span><br><span class="line">	NVIC_Init(&amp;NVIC_InitStructure);</span><br><span class="line">	<span class="comment">// 启动定时器</span></span><br><span class="line">	TIM_Cmd(TIM2, ENABLE);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">uint16_t</span> <span class="title function_">Timer_GetCounter</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> TIM_GetCounter(TIM2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">// 中断函数</span></span><br><span class="line"><span class="comment">void TIM2_IRQHandler(void)&#123;</span></span><br><span class="line"><span class="comment">	if (TIM_GetItStatus(TIM2, TIM_IT_Update) == SET)&#123;</span></span><br><span class="line"><span class="comment">		</span></span><br><span class="line"><span class="comment">		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
 </div>
         </div>
         
@@ -358,8 +383,8 @@
             const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
             const twitterBase   = "https://twitter.com/intent/tweet?";
             const hostUrl       = "https://jensentsts.github.io/2022/12/03/STM32%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD1/";
-            const title         = "「STM32定时中断1」";
-            const excerpt       = `继续跟着 江科大自化协 学习STM32。多图杀猫警告。`;
+            const title         = "「STM32定时中断」";
+            const excerpt       = `继续跟着 江科大自化协 学习STM32。`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -381,7 +406,7 @@
                     <a class="tag-none-link" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag">嵌入式</a>, <a class="tag-none-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a>
                 </div>
                 <div class="pull-date">
-                    <time datetime="2022-12-31T11:46:07.515Z" itemprop="dateModified">最后编辑：2022-12-31</time>
+                    <time datetime="2023-03-26T05:47:29.502Z" itemprop="dateModified">最后编辑：2023-03-26</time>
                 </div>
             </div>
         </footer>
@@ -395,7 +420,7 @@
             
             
             <div class="nav-next clearfix">
-                <a title=" STM32定时中断2" href="/2022/12/04/STM32定时中断2/">下一篇 &gt;</a>
+                <a title=" STM32时钟中断3" href="/2022/12/07/STM32时钟中断3/">下一篇 &gt;</a>
             </div>
             
         </nav>
@@ -456,7 +481,7 @@
                 文章
             </span>
             <span class="count">
-                48
+                44
             </span>
         </a>
         <a class="meta-item" href="/categories/">
@@ -483,7 +508,7 @@
                 
   <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
     <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E7%AC%94%E8%AE%B0/">Android笔记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blender/">blender</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a><span class="category-list-count">13</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E7%AC%94%E8%AE%B0/">Android笔记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blender/">blender</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a><span class="category-list-count">11</span></li></ul>
   </aside>
 
 
@@ -492,7 +517,7 @@
   <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
     <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
       <div class="tag-clouds">
-        <a href="/tags/Android/" style="font-size: 0.63em;">Android</a> <a href="/tags/STM32/" style="font-size: 0.6em;">STM32</a> <a href="/tags/blender/" style="font-size: 0.6em;">blender</a> <a href="/tags/cpp/" style="font-size: 0.67em;">cpp</a> <a href="/tags/hexo/" style="font-size: 0.7em;">hexo</a> <a href="/tags/python/" style="font-size: 0.6em;">python</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 0.73em;">博客</a> <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" style="font-size: 0.77em;">嵌入式</a> <a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 0.7em;">开发</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.63em;">数学</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 0.7em;">杂谈</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 0.6em;">汇编</a> <a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 0.7em;">游戏</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.8em;">笔记</a> <a href="/tags/%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0/" style="font-size: 0.7em;">长期更新</a>
+        <a href="/tags/Android/" style="font-size: 0.63em;">Android</a> <a href="/tags/STM32/" style="font-size: 0.6em;">STM32</a> <a href="/tags/blender/" style="font-size: 0.6em;">blender</a> <a href="/tags/cpp/" style="font-size: 0.66em;">cpp</a> <a href="/tags/hexo/" style="font-size: 0.71em;">hexo</a> <a href="/tags/python/" style="font-size: 0.6em;">python</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 0.74em;">博客</a> <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" style="font-size: 0.77em;">嵌入式</a> <a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 0.69em;">开发</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 0.63em;">数学</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 0.71em;">杂谈</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 0.6em;">汇编</a> <a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 0.71em;">游戏</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.8em;">笔记</a> <a href="/tags/%E9%95%BF%E6%9C%9F%E6%9B%B4%E6%96%B0/" style="font-size: 0.69em;">长期更新</a>
       </div>
   </aside>
 
@@ -524,12 +549,6 @@
         
           
           
-            <a class="list-group-item" href="/2023/03/19/STM32%E6%97%B6%E9%92%9F%E6%A0%91/"><i class="fa  fa-book"></i> stm32时钟树</a>
-            
-          
-        
-          
-          
         
           
           
@@ -544,13 +563,11 @@
           
         
           
+          
+            <a class="list-group-item" href="/2023/01/02/Arduino%E5%AD%A6%E4%B9%A0day1/"><i class="fa  fa-book"></i> Arduino学习day1</a>
             
           
-            
-          
-            
-          
-            
+        
           
             
           
