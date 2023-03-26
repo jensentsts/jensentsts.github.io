@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://jensentsts.github.io/images/favicon.ico">
 <meta property="article:published_time" content="2023-03-19T06:09:03.000Z">
-<meta property="article:modified_time" content="2023-03-26T07:02:26.966Z">
+<meta property="article:modified_time" content="2023-03-26T08:17:04.686Z">
 <meta property="article:author" content="天雨森淼（舟泛四海）">
 <meta property="article:tag" content="嵌入式">
 <meta property="article:tag" content="笔记">
@@ -234,7 +234,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        ~13.63K
+                        ~13.65K
                     
                     字
                 </li>
@@ -250,7 +250,7 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1679814146966"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1679818624686"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
@@ -261,9 +261,14 @@
             
             <hr />
             <div itemprop="articleBody"><p>为了蓝桥杯单片机开发赛道。由于各种原因，一直没赶上培训，所以就自学。自学也不错，一两个小时下来的效率比听讲要高很多，还能集百家之长，还能随便写点东西出来。<br><span id="more"></span><br>实话说，我现在手上这些的芯片，其速度大都超越了上个世纪八十年代的所有芯片——而且存储空间很大，体积很小。<br>感慨啊。</p>
-<div class="alert alert-warning"><div class="icon"><i class="fa fa-warning"></i></div><div class="text"><p><strong>注意</strong>：蓝桥杯比赛全程不能联网，不过会提供芯片资料，比赛时间为5个小时。我们应该对stc15开发板的各种性质足够熟悉——不需要记下来每个芯片的具体数据，但要熟悉流程，学会高效查阅数据手册，能够在合理的时间安排内把对应的数据填到对应的位置上去并实现功能。</p>
-</div></div>
-<div class="alert alert-info"><div class="icon"><i class="fa fa-info"></i></div><div class="text"><p>据说官方会提供一些驱动代码，例如温度传感器的，不过需要我们去补全部分缺失的代码。</p>
+<div class="panel panel-warning">
+    <div class="panel-title">注意！</div>
+    <div class="panel-body">
+        <p>蓝桥杯比赛全程不能联网，不过会提供芯片资料，比赛时间为5个小时。我们应该对stc15开发板的各种性质足够熟悉——不需要记下来每个芯片的具体数据，但要熟悉流程，学会高效查阅数据手册，能够在合理的时间安排内把对应的数据填到对应的位置上去并实现功能。</p>
+
+    </div>
+    </div>
+<div class="alert alert-info"><div class="icon"><i class="fa fa-info"></i></div><div class="text"><p>官方会提供一些驱动代码，例如PCF的，不过有时候可能需要我们去补全部分缺失的代码。</p>
 </div></div>
 <h1 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h1><ul>
 <li>STC15F2K60S2.h</li>
@@ -589,7 +594,7 @@
                     <a class="tag-none-link" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag">嵌入式</a>, <a class="tag-none-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a>
                 </div>
                 <div class="pull-date">
-                    <time datetime="2023-03-26T07:02:26.966Z" itemprop="dateModified">最后编辑：2023-03-26</time>
+                    <time datetime="2023-03-26T08:17:04.686Z" itemprop="dateModified">最后编辑：2023-03-26</time>
                 </div>
             </div>
         </footer>
@@ -960,5 +965,20 @@
 <!-- Extra support for third-party plguins  -->
 
 
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
