@@ -3,9 +3,10 @@
     <head>
   <!-- 元数据 -->
   <meta charset="utf-8">
-  <link rel="icon" href="/images/favicon.ico">
+  
   
   <title>Android萌新入坑Day1 | 天雨森淼</title>
+  
   <meta name="author" content="天雨森淼（舟泛四海）" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -23,13 +24,22 @@
 <meta property="og:site_name" content="天雨森淼">
 <meta property="og:description" content="买了个小米5pad，在作为生产力的同时感觉很多方面不尽人意，特别是那它当一个数位板的时候。所以打算入坑Android，期望自己有朝一日能用上自己开发的安卓软件。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://jensentsts.github.io/images/favicon.ico">
+<meta property="og:image" content="https://jensentsts.github.io/2022/09/20/Android%E8%90%8C%E6%96%B0%E5%85%A5%E5%9D%91Day1/img/post/Android%E5%85%A5%E9%97%A8/Day1/%E7%94%98%E9%9B%A8.jpg">
+<meta property="og:image" content="https://jensentsts.github.io/2022/09/20/Android%E8%90%8C%E6%96%B0%E5%85%A5%E5%9D%91Day1/img/post/Android%E5%85%A5%E9%97%A8/Day1/AndroidStudio.png">
+<meta property="og:image" content="https://jensentsts.github.io/2022/09/20/Android%E8%90%8C%E6%96%B0%E5%85%A5%E5%9D%91Day1/img/post/Android%E5%85%A5%E9%97%A8/Day1/%E8%AE%BE%E5%A4%87%E5%9E%8B%E5%8F%B7.png">
+<meta property="og:image" content="https://jensentsts.github.io/2022/09/20/Android%E8%90%8C%E6%96%B0%E5%85%A5%E5%9D%91Day1/img/post/Android%E5%85%A5%E9%97%A8/Day1/%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F.png">
+<meta property="og:image" content="https://jensentsts.github.io/2022/09/20/Android%E8%90%8C%E6%96%B0%E5%85%A5%E5%9D%91Day1/img/post/Android%E5%85%A5%E9%97%A8/Day1/%E9%85%8D%E7%BD%AE%E7%A1%AE%E8%AE%A4.png">
+<meta property="og:image" content="https://jensentsts.github.io/2022/09/20/Android%E8%90%8C%E6%96%B0%E5%85%A5%E5%9D%91Day1/img/post/Android%E5%85%A5%E9%97%A8/Day1/%E5%90%AF%E5%8A%A8%E6%A8%A1%E6%8B%9F%E5%99%A8.png">
+<meta property="og:image" content="https://jensentsts.github.io/2022/09/20/Android%E8%90%8C%E6%96%B0%E5%85%A5%E5%9D%91Day1/img/post/Android%E5%85%A5%E9%97%A8/Day1/Run.png">
+<meta property="og:image" content="https://jensentsts.github.io/2022/09/20/Android%E8%90%8C%E6%96%B0%E5%85%A5%E5%9D%91Day1/img/post/Android%E5%85%A5%E9%97%A8/Day1/%E8%BF%90%E8%A1%8C%E6%95%88%E6%9E%9C.png">
+<meta property="og:image" content="https://jensentsts.github.io/2022/09/20/Android%E8%90%8C%E6%96%B0%E5%85%A5%E5%9D%91Day1/img/post/Android%E5%85%A5%E9%97%A8/Day1/%E6%90%9C%E7%B4%A2%E6%A0%8F.png">
+<meta property="og:image" content="https://jensentsts.github.io/2022/09/20/Android%E8%90%8C%E6%96%B0%E5%85%A5%E5%9D%91Day1/img/post/Android%E5%85%A5%E9%97%A8/Day1/LogcatFilter.png">
 <meta property="article:published_time" content="2022-09-20T08:36:04.000Z">
 <meta property="article:modified_time" content="2023-03-26T05:49:31.954Z">
 <meta property="article:author" content="天雨森淼（舟泛四海）">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://jensentsts.github.io/images/favicon.ico">
+<meta name="twitter:image" content="https://jensentsts.github.io/2022/09/20/Android%E8%90%8C%E6%96%B0%E5%85%A5%E5%9D%91Day1/img/post/Android%E5%85%A5%E9%97%A8/Day1/%E7%94%98%E9%9B%A8.jpg">
   
   <!-- 站点验证相关 -->
   
@@ -63,16 +73,6 @@
   
   <style>
     
-      .kratos-cover.kratos-cover-2 {
-        background-image: url('/images/banner.webp');
-      }
-    
-    
-      @media(min-width:768px) {
-        body.custom-background {
-          background-image: url('/images/bg.webp');
-        }
-      }
     
   </style>
   
@@ -90,90 +90,6 @@
                             <ul id="kratos-primary-menu" class="sf-menu">
                                 
                                     
-                                        <li>
-                                            
-                                                <a href="/">
-                                            
-                                                
-                                                    <i class="fa fa-home"></i>
-                                                
-                                                首页
-                                            </a>
-                                            
-                                        </li>
-                                    
-                                        <li>
-                                            
-                                                <a href="/archives/">
-                                            
-                                                
-                                                    <i class="fa fa-file"></i>
-                                                
-                                                档案馆
-                                            </a>
-                                            
-                                        </li>
-                                    
-                                        <li>
-                                            
-                                                <a href="/friends/">
-                                            
-                                                
-                                                    <i class="fa fa-paw"></i>
-                                                
-                                                好伙伴
-                                            </a>
-                                            
-                                        </li>
-                                    
-                                        <li>
-                                            
-                                                <a href="/about/">
-                                            
-                                                
-                                                    <i class="fa fa-paper-plane"></i>
-                                                
-                                                关于我
-                                            </a>
-                                            
-                                        </li>
-                                    
-                                        <li>
-                                            
-                                                <a>
-                                            
-                                                
-                                                    <i class="fa fa-link"></i>
-                                                
-                                                链接
-                                            </a>
-                                            
-                                                <ul class="sub-menu">
-                                                    
-                                                        <li>
-                                                            <a target="_blank" rel="noopener" href="https://www.bilibili.com/">
-                                                                
-                                                                bilibili
-                                                            </a>
-                                                        </li>
-                                                    
-                                                        <li>
-                                                            <a target="_blank" rel="noopener" href="https://kr-demo.candinya.com/posts/Kratos-Rebirth-Manual/">
-                                                                
-                                                                主题文档
-                                                            </a>
-                                                        </li>
-                                                    
-                                                        <li>
-                                                            <a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth">
-                                                                
-                                                                主题项目
-                                                            </a>
-                                                        </li>
-                                                    
-                                                </ul>
-                                            
-                                        </li>
                                     
                                 
                             </ul>
@@ -229,19 +145,7 @@
                 <li itemprop="author" itemscope itemtype="https://schema.org/Person">
                     <i class="fa fa-user"></i> 作者 <span itemprop="name">天雨森淼（舟泛四海）</span>
                 </li>
-                <li>
-                    <i class="fa fa-edit"></i> 
-                    
-                    
-                        ~2.31K
-                    
-                    字
-                </li>
                 
-                    <li id="/2022/09/20/Android%E8%90%8C%E6%96%B0%E5%85%A5%E5%9D%91Day1/" class="leancloud_visitors" data-flag-title="Android萌新入坑Day1">
-                        <i class="fa fa-eye"></i>
-                        <span class="leancloud-visitors-count"> </span> 次阅读
-                    </li>
                 
             </ul>
         </header>
@@ -400,30 +304,6 @@
         </nav>
     
     
-        <div id="v-comments" class="post-comments bg-image"></div>
-<script>
-    var load_comm = () => {
-        const init = () => {
-            new Valine({
-                el: '#v-comments',
-                appId: '7UVT2Wn1SqeS4e8BL5kOHopx-gzGzoHsz',
-                appKey: 'dVH6ChWtZCsbOIW2v9PsTI3M',
-                visitor: true,
-                enableQQ: false,
-                path: '/2022/09/20/Android%E8%90%8C%E6%96%B0%E5%85%A5%E5%9D%91Day1/'
-            });
-        }
-        if (typeof Valine === 'undefined') {
-            const src = '/vendors/valine@1.4.18/dist/Valine.min.js';
-            $.getScript(src, init);
-        } else {
-            init();
-        }
-    };
-</script>
-<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://valine.js.org/">comments powered by Valine.</a></noscript>
-
-    
 </article>
 
         
@@ -455,7 +335,7 @@
                 文章
             </span>
             <span class="count">
-                46
+                47
             </span>
         </a>
         <a class="meta-item" href="/categories/">
@@ -482,7 +362,7 @@
                 
   <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
     <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E7%AC%94%E8%AE%B0/">Android笔记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blender/">blender</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a><span class="category-list-count">11</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E7%AC%94%E8%AE%B0/">Android笔记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blender/">blender</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a><span class="category-list-count">12</span></li></ul>
   </aside>
 
 
@@ -502,6 +382,12 @@
   <div class="tab-content">
       <ul class="list-group">
         
+        
+          
+          
+            <a class="list-group-item" href="/2023/05/29/STM32PWM/"><i class="fa  fa-book"></i> STM32PWM</a>
+            
+          
         
           
           
@@ -528,11 +414,7 @@
           
         
           
-          
-            <a class="list-group-item" href="/2023/03/19/STC15%E7%AC%94%E8%AE%B0/"><i class="fa  fa-book"></i> stc15笔记</a>
             
-          
-        
           
             
           
@@ -634,13 +516,13 @@
                     <ul class="kratos-social-icons">
                         <!-- Keep for compatibility -->
                         
-                        <li><a href="mailto:jensentsts@163.com"><i class="fa fa-envelope"></i></a></li>
                         
                         
                         
                         
                         
-                        <li><a target="_blank" rel="nofollow" href="https://github.com/jensentsts"><i class="fa fa-github"></i></a></li>
+                        
+                        
                         
                         <!-- New links -->
                         
@@ -681,10 +563,6 @@
                     </div>
                 
                 
-                    <div class="box theme-box" id="snow-switch">
-                        <span class="fa fa-snowflake-o"></span>
-                    </div>
-                
                 
             </div>
             <div class="box gotop-box">
@@ -705,11 +583,6 @@
     window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
     window.kr.siteRoot = "/";
 </script>
-
-    <div>
-        <canvas id="snow"></canvas>
-        <script async src="/js/snow.min.js"></script>
-    </div>
 
 
     <script async src="/js/candy.min.js"></script>

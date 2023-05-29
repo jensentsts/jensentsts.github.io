@@ -3,9 +3,10 @@
     <head>
   <!-- 元数据 -->
   <meta charset="utf-8">
-  <link rel="icon" href="/images/favicon.ico">
+  
   
   <title>stm32中断 | 天雨森淼</title>
+  
   <meta name="author" content="天雨森淼（舟泛四海）" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -23,14 +24,18 @@
 <meta property="og:site_name" content="天雨森淼">
 <meta property="og:description" content="比起51，32的中断类型更为丰富和细腻。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://jensentsts.github.io/images/favicon.ico">
+<meta property="og:image" content="https://jensentsts.github.io/2022/12/03/stm32%E4%B8%AD%E6%96%AD%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E4%B8%AD%E6%96%AD%E7%AC%94%E8%AE%B0/NVIC%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="https://jensentsts.github.io/2022/12/03/stm32%E4%B8%AD%E6%96%AD%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E4%B8%AD%E6%96%AD%E7%AC%94%E8%AE%B0/EXTI.png">
+<meta property="og:image" content="https://jensentsts.github.io/2022/12/03/stm32%E4%B8%AD%E6%96%AD%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E4%B8%AD%E6%96%AD%E7%AC%94%E8%AE%B0/AFIO%E5%A4%8D%E7%94%A8IO%E5%8F%A3.png">
+<meta property="og:image" content="https://jensentsts.github.io/2022/12/03/stm32%E4%B8%AD%E6%96%AD%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E4%B8%AD%E6%96%AD%E7%AC%94%E8%AE%B0/%E5%AF%B9%E5%B0%84%E5%BC%8F%E7%BA%A2%E5%A4%96%E4%BC%A0%E6%84%9F%E5%99%A8%E8%AE%A1%E6%AC%A1.jpg">
+<meta property="og:image" content="https://jensentsts.github.io/2022/12/03/stm32%E4%B8%AD%E6%96%AD%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E4%B8%AD%E6%96%AD%E7%AC%94%E8%AE%B0/%E6%97%8B%E8%BD%AC%E7%BC%96%E7%A0%81%E5%99%A8%E8%AE%A1%E6%AC%A1.jpg">
 <meta property="article:published_time" content="2022-12-03T07:48:09.000Z">
-<meta property="article:modified_time" content="2023-01-04T05:03:59.575Z">
+<meta property="article:modified_time" content="2023-05-29T12:00:03.794Z">
 <meta property="article:author" content="天雨森淼（舟泛四海）">
 <meta property="article:tag" content="嵌入式">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://jensentsts.github.io/images/favicon.ico">
+<meta name="twitter:image" content="https://jensentsts.github.io/2022/12/03/stm32%E4%B8%AD%E6%96%AD%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/img/post/%E5%B5%8C%E5%85%A5%E5%BC%8F/STM32%E4%B8%AD%E6%96%AD%E7%AC%94%E8%AE%B0/NVIC%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.png">
   
   <!-- 站点验证相关 -->
   
@@ -64,16 +69,6 @@
   
   <style>
     
-      .kratos-cover.kratos-cover-2 {
-        background-image: url('/images/banner.webp');
-      }
-    
-    
-      @media(min-width:768px) {
-        body.custom-background {
-          background-image: url('/images/bg.webp');
-        }
-      }
     
   </style>
   
@@ -91,90 +86,6 @@
                             <ul id="kratos-primary-menu" class="sf-menu">
                                 
                                     
-                                        <li>
-                                            
-                                                <a href="/">
-                                            
-                                                
-                                                    <i class="fa fa-home"></i>
-                                                
-                                                首页
-                                            </a>
-                                            
-                                        </li>
-                                    
-                                        <li>
-                                            
-                                                <a href="/archives/">
-                                            
-                                                
-                                                    <i class="fa fa-file"></i>
-                                                
-                                                档案馆
-                                            </a>
-                                            
-                                        </li>
-                                    
-                                        <li>
-                                            
-                                                <a href="/friends/">
-                                            
-                                                
-                                                    <i class="fa fa-paw"></i>
-                                                
-                                                好伙伴
-                                            </a>
-                                            
-                                        </li>
-                                    
-                                        <li>
-                                            
-                                                <a href="/about/">
-                                            
-                                                
-                                                    <i class="fa fa-paper-plane"></i>
-                                                
-                                                关于我
-                                            </a>
-                                            
-                                        </li>
-                                    
-                                        <li>
-                                            
-                                                <a>
-                                            
-                                                
-                                                    <i class="fa fa-link"></i>
-                                                
-                                                链接
-                                            </a>
-                                            
-                                                <ul class="sub-menu">
-                                                    
-                                                        <li>
-                                                            <a target="_blank" rel="noopener" href="https://www.bilibili.com/">
-                                                                
-                                                                bilibili
-                                                            </a>
-                                                        </li>
-                                                    
-                                                        <li>
-                                                            <a target="_blank" rel="noopener" href="https://kr-demo.candinya.com/posts/Kratos-Rebirth-Manual/">
-                                                                
-                                                                主题文档
-                                                            </a>
-                                                        </li>
-                                                    
-                                                        <li>
-                                                            <a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth">
-                                                                
-                                                                主题项目
-                                                            </a>
-                                                        </li>
-                                                    
-                                                </ul>
-                                            
-                                        </li>
                                     
                                 
                             </ul>
@@ -230,19 +141,7 @@
                 <li itemprop="author" itemscope itemtype="https://schema.org/Person">
                     <i class="fa fa-user"></i> 作者 <span itemprop="name">天雨森淼（舟泛四海）</span>
                 </li>
-                <li>
-                    <i class="fa fa-edit"></i> 
-                    
-                    
-                        ~6.82K
-                    
-                    字
-                </li>
                 
-                    <li id="/2022/12/03/stm32%E4%B8%AD%E6%96%AD%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="leancloud_visitors" data-flag-title="stm32中断">
-                        <i class="fa fa-eye"></i>
-                        <span class="leancloud-visitors-count"> </span> 次阅读
-                    </li>
                 
             </ul>
         </header>
@@ -250,7 +149,7 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1672808639575"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1685361603794"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
@@ -315,14 +214,22 @@
 <h1 id="一些实例"><a href="#一些实例" class="headerlink" title="一些实例"></a>一些实例</h1><p>这里使用了 <a target="_blank" rel="noopener" href="https://space.bilibili.com/383400717">江科大自化协</a> 的例子，通过OLED显示屏显示结果</p>
 <h2 id="对射式红外传感器计次"><a href="#对射式红外传感器计次" class="headerlink" title="对射式红外传感器计次"></a>对射式红外传感器计次</h2><p>电路连接图如下<br><img src="./img/post/嵌入式/STM32中断笔记/对射式红外传感器计次.jpg" alt="面包板接线图"><br>上代码！</p>
 <blockquote>
-<p>main.c<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;OLED.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;CountSensor.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;delay.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	OLED_Init();</span><br><span class="line">	CounterSensor_Init();</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">		OLED_ShowNum(<span class="number">1</span>, <span class="number">1</span>, CountSensor_Get());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<p>CounterSensor.c<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">uin16_t</span> CounterSensor_Count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">CounterSensor_Init</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);			<span class="comment">// AFIO属于APB2. 开启AFIO的时钟</span></span><br><span class="line">	<span class="comment">// EXTI和NVIC的时钟一直开着</span></span><br><span class="line">	<span class="comment">// RCC位于内核之外，管不到NVIC</span></span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">	GPIO_InitStructure.GPIO+Mode = GPIO_Mode_IPU;</span><br><span class="line">	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_14;</span><br><span class="line">	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span><br><span class="line">	GPIO_Init(GPIOB, &amp;GPIO_InitStructure);</span><br><span class="line">	</span><br><span class="line">	GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource14);	<span class="comment">// PB14</span></span><br><span class="line">	</span><br><span class="line">	EXTI_InitTypeDef EXTI_InitStructure;</span><br><span class="line">	EXTI_InitStructure.EXTI_Line = EXTI_Line14;</span><br><span class="line">	EXTI_InitStructure.EXTI_LineCmd = ENABLE;</span><br><span class="line">	EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;</span><br><span class="line">	EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;			<span class="comment">// 下降沿触发</span></span><br><span class="line">	EXTI_Init(&amp;EXTI_InitStructure);</span><br><span class="line">	</span><br><span class="line">	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);					<span class="comment">// 注意：分组方式整个芯片只能用一种。最好放在main那里</span></span><br><span class="line">	NVIC_InitTypeDef NVIC_InitStructure;</span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannel = EXTI15_10_IRQn;			<span class="comment">// 选择中断通道</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChanneCmd = ENABLE;					<span class="comment">// 中断通道是使能还是失能</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = <span class="number">1</span>;		<span class="comment">// 抢占优先级</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelSubPriority = <span class="number">1</span>;				<span class="comment">// 响应优先级</span></span><br><span class="line">	NVIC_Init(&amp;NVIC_InitStructure);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">uin16_t</span> <span class="title function_">CountSensor_Get</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> CounterSensor_Count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 中断函数名不能写错</span></span><br><span class="line"><span class="comment">// 建议去startup_stm32f10x_md.s启动文件里复制。</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">EXTI15_10_IRQHandler</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="comment">// 中断标志位判断，确保是想要的中断进入此函数</span></span><br><span class="line">	<span class="keyword">if</span> (EXTI_GetITStatus(EXTI_Line14) == SET)&#123;</span><br><span class="line">		CounterSensor_Count++;</span><br><span class="line">		<span class="comment">// 中断程序结束后要手动清除标志位</span></span><br><span class="line">		EXTI_ClearITPendingBit)EXTI_Line14);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>main.c</p>
 </blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;OLED.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;CountSensor.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;delay.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	OLED_Init();</span><br><span class="line">	CounterSensor_Init();</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">		OLED_ShowNum(<span class="number">1</span>, <span class="number">1</span>, CountSensor_Get());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>CounterSensor.c</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">uin16_t</span> CounterSensor_Count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">CounterSensor_Init</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);			<span class="comment">// AFIO属于APB2. 开启AFIO的时钟</span></span><br><span class="line">	<span class="comment">// EXTI和NVIC的时钟一直开着</span></span><br><span class="line">	<span class="comment">// RCC位于内核之外，管不到NVIC</span></span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">	GPIO_InitStructure.GPIO+Mode = GPIO_Mode_IPU;</span><br><span class="line">	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_14;</span><br><span class="line">	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span><br><span class="line">	GPIO_Init(GPIOB, &amp;GPIO_InitStructure);</span><br><span class="line">	</span><br><span class="line">	GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource14);	<span class="comment">// PB14</span></span><br><span class="line">	</span><br><span class="line">	EXTI_InitTypeDef EXTI_InitStructure;</span><br><span class="line">	EXTI_InitStructure.EXTI_Line = EXTI_Line14;</span><br><span class="line">	EXTI_InitStructure.EXTI_LineCmd = ENABLE;</span><br><span class="line">	EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;</span><br><span class="line">	EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;			<span class="comment">// 下降沿触发</span></span><br><span class="line">	EXTI_Init(&amp;EXTI_InitStructure);</span><br><span class="line">	</span><br><span class="line">	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);					<span class="comment">// 注意：分组方式整个芯片只能用一种。最好放在main那里</span></span><br><span class="line">	NVIC_InitTypeDef NVIC_InitStructure;</span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannel = EXTI15_10_IRQn;			<span class="comment">// 选择中断通道</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChanneCmd = ENABLE;					<span class="comment">// 中断通道是使能还是失能</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = <span class="number">1</span>;		<span class="comment">// 抢占优先级</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelSubPriority = <span class="number">1</span>;				<span class="comment">// 响应优先级</span></span><br><span class="line">	NVIC_Init(&amp;NVIC_InitStructure);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">uin16_t</span> <span class="title function_">CountSensor_Get</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> CounterSensor_Count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 中断函数名不能写错</span></span><br><span class="line"><span class="comment">// 建议去startup_stm32f10x_md.s启动文件里复制。</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">EXTI15_10_IRQHandler</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="comment">// 中断标志位判断，确保是想要的中断进入此函数</span></span><br><span class="line">	<span class="keyword">if</span> (EXTI_GetITStatus(EXTI_Line14) == SET)&#123;</span><br><span class="line">		CounterSensor_Count++;</span><br><span class="line">		<span class="comment">// 中断程序结束后要手动清除标志位</span></span><br><span class="line">		EXTI_ClearITPendingBit)EXTI_Line14);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="旋转编码器计次"><a href="#旋转编码器计次" class="headerlink" title="旋转编码器计次"></a>旋转编码器计次</h2><p>电路连接图如下<br><img src="./img/post/嵌入式/STM32中断笔记/旋转编码器计次.jpg" alt="面包板接线图"><br>与 <a target="_blank" rel="noopener" href="https://space.bilibili.com/383400717">江科大自化协</a> 的例子有所不同，我这里写的Encoder只写了个计数，并没有单位时间内计次功能。<br>上代码！</p>
 <blockquote>
-<p>main.c<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;OLED.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Encoder.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;delay.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	OLED_Init();</span><br><span class="line">	Encoder_Init();</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">		OLED_ShowNum(<span class="number">1</span>, <span class="number">1</span>, Encoder_Get());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<p>Encoder.h<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int16_t</span> Encoder_Count;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Encoder_Init</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);			<span class="comment">// AFIO属于APB2. 开启AFIO的时钟</span></span><br><span class="line">	<span class="comment">// EXTI和NVIC的时钟一直开着</span></span><br><span class="line">	<span class="comment">// RCC位于内核之外，管不到NVIC</span></span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">	GPIO_InitStructure.GPIO+Mode = GPIO_Mode_IPU;</span><br><span class="line">	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1;</span><br><span class="line">	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span><br><span class="line">	GPIO_Init(GPIOB, &amp;GPIO_InitStructure);</span><br><span class="line">	</span><br><span class="line">	GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource0);		<span class="comment">// PB0</span></span><br><span class="line">	GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource1);		<span class="comment">// PB1</span></span><br><span class="line">	</span><br><span class="line">	EXTI_InitTypeDef EXTI_InitStructure;</span><br><span class="line">	EXTI_InitStructure.EXTI_Line = EXTI_Line0 | EXTI_Line1;</span><br><span class="line">	EXTI_InitStructure.EXTI_LineCmd = ENABLE;</span><br><span class="line">	EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;</span><br><span class="line">	EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;			<span class="comment">// 下降沿触发</span></span><br><span class="line">	EXTI_Init(&amp;EXTI_InitStructure);</span><br><span class="line">	</span><br><span class="line">	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);					<span class="comment">// 注意：分组方式整个芯片只能用一种。最好放在main那里</span></span><br><span class="line">	NVIC_InitTypeDef NVIC_InitStructure;</span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannel = EXTI0_IRQn;				<span class="comment">// 选择中断通道</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChanneCmd = ENABLE;					<span class="comment">// 中断通道是使能还是失能</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = <span class="number">1</span>;		<span class="comment">// 抢占优先级</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelSubPriority = <span class="number">1</span>;				<span class="comment">// 响应优先级</span></span><br><span class="line">	NVIC_Init(&amp;NVIC_InitStructure);</span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannel = EXTI1_IRQn;				<span class="comment">// 选择中断通道</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChanneCmd = ENABLE;					<span class="comment">// 中断通道是使能还是失能</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = <span class="number">1</span>;		<span class="comment">// 抢占优先级</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelSubPriority = <span class="number">2</span>;				<span class="comment">// 响应优先级</span></span><br><span class="line">	NVIC_Init(&amp;NVIC_InitStructure);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int16_t</span> <span class="title function_">Encoder_Get</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> Encoder_Count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 中断函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">EXTI0_IREHandler</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="comment">// 只是让中断的模式固定所以判断一下</span></span><br><span class="line">	<span class="keyword">if</span> (EXTI_GetITStatus(EXTI_Line0) == SET)&#123;</span><br><span class="line">		<span class="keyword">if</span> (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_1) == <span class="number">0</span>)&#123;</span><br><span class="line">			Encoder_Count--;</span><br><span class="line">		&#125;</span><br><span class="line">		EXTI_ClearITPendingBit(EXTI_Line0);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">EXTI1_IREHandler</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (EXTI_GetITStatus(EXTI_Line1) == SET)&#123;</span><br><span class="line">		<span class="keyword">if</span> (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0) == <span class="number">0</span>)&#123;</span><br><span class="line">			Encoder_Count++;</span><br><span class="line">		&#125;</span><br><span class="line">		EXTI_ClearITPendingBit(EXTI_Line1);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>main.c</p>
 </blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;OLED.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Encoder.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;delay.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	OLED_Init();</span><br><span class="line">	Encoder_Init();</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">		OLED_ShowNum(<span class="number">1</span>, <span class="number">1</span>, Encoder_Get());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Encoder.h</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int16_t</span> Encoder_Count;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Encoder_Init</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);			<span class="comment">// AFIO属于APB2. 开启AFIO的时钟</span></span><br><span class="line">	<span class="comment">// EXTI和NVIC的时钟一直开着</span></span><br><span class="line">	<span class="comment">// RCC位于内核之外，管不到NVIC</span></span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line">	GPIO_InitStructure.GPIO+Mode = GPIO_Mode_IPU;</span><br><span class="line">	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1;</span><br><span class="line">	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span><br><span class="line">	GPIO_Init(GPIOB, &amp;GPIO_InitStructure);</span><br><span class="line">	</span><br><span class="line">	GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource0);		<span class="comment">// PB0</span></span><br><span class="line">	GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource1);		<span class="comment">// PB1</span></span><br><span class="line">	</span><br><span class="line">	EXTI_InitTypeDef EXTI_InitStructure;</span><br><span class="line">	EXTI_InitStructure.EXTI_Line = EXTI_Line0 | EXTI_Line1;</span><br><span class="line">	EXTI_InitStructure.EXTI_LineCmd = ENABLE;</span><br><span class="line">	EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;</span><br><span class="line">	EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;			<span class="comment">// 下降沿触发</span></span><br><span class="line">	EXTI_Init(&amp;EXTI_InitStructure);</span><br><span class="line">	</span><br><span class="line">	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);					<span class="comment">// 注意：分组方式整个芯片只能用一种。最好放在main那里</span></span><br><span class="line">	NVIC_InitTypeDef NVIC_InitStructure;</span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannel = EXTI0_IRQn;				<span class="comment">// 选择中断通道</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChanneCmd = ENABLE;					<span class="comment">// 中断通道是使能还是失能</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = <span class="number">1</span>;		<span class="comment">// 抢占优先级</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelSubPriority = <span class="number">1</span>;				<span class="comment">// 响应优先级</span></span><br><span class="line">	NVIC_Init(&amp;NVIC_InitStructure);</span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannel = EXTI1_IRQn;				<span class="comment">// 选择中断通道</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChanneCmd = ENABLE;					<span class="comment">// 中断通道是使能还是失能</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = <span class="number">1</span>;		<span class="comment">// 抢占优先级</span></span><br><span class="line">	NVIC_InitStructure.NVIC_IRQChannelSubPriority = <span class="number">2</span>;				<span class="comment">// 响应优先级</span></span><br><span class="line">	NVIC_Init(&amp;NVIC_InitStructure);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int16_t</span> <span class="title function_">Encoder_Get</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> Encoder_Count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 中断函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">EXTI0_IREHandler</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="comment">// 只是让中断的模式固定所以判断一下</span></span><br><span class="line">	<span class="keyword">if</span> (EXTI_GetITStatus(EXTI_Line0) == SET)&#123;</span><br><span class="line">		<span class="keyword">if</span> (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_1) == <span class="number">0</span>)&#123;</span><br><span class="line">			Encoder_Count--;</span><br><span class="line">		&#125;</span><br><span class="line">		EXTI_ClearITPendingBit(EXTI_Line0);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">EXTI1_IREHandler</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (EXTI_GetITStatus(EXTI_Line1) == SET)&#123;</span><br><span class="line">		<span class="keyword">if</span> (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0) == <span class="number">0</span>)&#123;</span><br><span class="line">			Encoder_Count++;</span><br><span class="line">		&#125;</span><br><span class="line">		EXTI_ClearITPendingBit(EXTI_Line1);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h1 id="杂记"><a href="#杂记" class="headerlink" title="杂记"></a>杂记</h1><div class="alert alert-info"><div class="icon"><i class="fa fa-info"></i></div><div class="text"><p>可以考虑：在中断中对变量进行操作，当中断返回时，对中断变量进行显示和操作</p>
 </div></div>
 <div class="alert alert-warning"><div class="icon"><i class="fa fa-warning"></i></div><div class="text"><p>中断里不要写耗时太长的代码</p>
@@ -418,7 +325,7 @@
                     <a class="tag-none-link" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag">嵌入式</a>, <a class="tag-none-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a>
                 </div>
                 <div class="pull-date">
-                    <time datetime="2023-01-04T05:03:59.575Z" itemprop="dateModified">最后编辑：2023-01-04</time>
+                    <time datetime="2023-05-29T12:00:03.794Z" itemprop="dateModified">最后编辑：2023-05-29</time>
                 </div>
             </div>
         </footer>
@@ -437,30 +344,6 @@
             
         </nav>
     
-    
-        <div id="v-comments" class="post-comments bg-image"></div>
-<script>
-    var load_comm = () => {
-        const init = () => {
-            new Valine({
-                el: '#v-comments',
-                appId: '7UVT2Wn1SqeS4e8BL5kOHopx-gzGzoHsz',
-                appKey: 'dVH6ChWtZCsbOIW2v9PsTI3M',
-                visitor: true,
-                enableQQ: false,
-                path: '/2022/12/03/stm32%E4%B8%AD%E6%96%AD%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/'
-            });
-        }
-        if (typeof Valine === 'undefined') {
-            const src = '/vendors/valine@1.4.18/dist/Valine.min.js';
-            $.getScript(src, init);
-        } else {
-            init();
-        }
-    };
-</script>
-<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://valine.js.org/">comments powered by Valine.</a></noscript>
-
     
 </article>
 
@@ -493,7 +376,7 @@
                 文章
             </span>
             <span class="count">
-                46
+                47
             </span>
         </a>
         <a class="meta-item" href="/categories/">
@@ -532,7 +415,7 @@
                 
   <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
     <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E7%AC%94%E8%AE%B0/">Android笔记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blender/">blender</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a><span class="category-list-count">11</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android%E7%AC%94%E8%AE%B0/">Android笔记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blender/">blender</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a><span class="category-list-count">12</span></li></ul>
   </aside>
 
 
@@ -552,6 +435,12 @@
   <div class="tab-content">
       <ul class="list-group">
         
+        
+          
+          
+            <a class="list-group-item" href="/2023/05/29/STM32PWM/"><i class="fa  fa-book"></i> STM32PWM</a>
+            
+          
         
           
           
@@ -578,11 +467,7 @@
           
         
           
-          
-            <a class="list-group-item" href="/2023/03/19/STC15%E7%AC%94%E8%AE%B0/"><i class="fa  fa-book"></i> stc15笔记</a>
             
-          
-        
           
             
           
@@ -684,13 +569,13 @@
                     <ul class="kratos-social-icons">
                         <!-- Keep for compatibility -->
                         
-                        <li><a href="mailto:jensentsts@163.com"><i class="fa fa-envelope"></i></a></li>
                         
                         
                         
                         
                         
-                        <li><a target="_blank" rel="nofollow" href="https://github.com/jensentsts"><i class="fa fa-github"></i></a></li>
+                        
+                        
                         
                         <!-- New links -->
                         
@@ -731,10 +616,6 @@
                     </div>
                 
                 
-                    <div class="box theme-box" id="snow-switch">
-                        <span class="fa fa-snowflake-o"></span>
-                    </div>
-                
                 
             </div>
             <div class="box gotop-box">
@@ -755,11 +636,6 @@
     window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
     window.kr.siteRoot = "/";
 </script>
-
-    <div>
-        <canvas id="snow"></canvas>
-        <script async src="/js/snow.min.js"></script>
-    </div>
 
 
     <script async src="/js/candy.min.js"></script>
