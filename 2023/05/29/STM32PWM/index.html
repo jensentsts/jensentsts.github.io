@@ -25,7 +25,7 @@
 <meta property="og:description" content="考前拾遗，后面将没有多少时间学习STM32，直到我考完期末">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-29T11:48:28.000Z">
-<meta property="article:modified_time" content="2023-05-29T12:01:23.806Z">
+<meta property="article:modified_time" content="2023-05-29T12:20:50.385Z">
 <meta property="article:author" content="天雨森淼（舟泛四海）">
 <meta property="article:tag" content="嵌入式">
 <meta property="article:tag" content="笔记">
@@ -143,21 +143,33 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1685361683806"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1685362850385"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
                 <div class="kratos-post-inner-toc toc-div-class" >
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E9%83%A8%E5%88%86"><span class="toc-number">1.</span> <span class="toc-text">电路部分</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text"> </span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E9%83%A8%E5%88%86"><span class="toc-number">1.</span> <span class="toc-text">电路部分</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PWM"><span class="toc-number">2.</span> <span class="toc-text">PWM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%AF%94%E8%BE%83%E6%A8%A1%E5%BC%8F-OC"><span class="toc-number">3.</span> <span class="toc-text">输出比较模式(OC)</span></a></li></ol>
                 </div>
             
             <hr />
             <div itemprop="articleBody"><p>考前拾遗，后面将没有多少时间学习STM32，直到我考完期末</p>
 <span id="more"></span>
-<h1 id="电路部分"><a href="#电路部分" class="headerlink" title="电路部分"></a>电路部分</h1><p>STM32有四个定时器，每个定时器都有不同的输出通道（TIMy_Channelx），在STM32F103C8T6的四个定时器中，每个定时器都有四个输出通道，其中高级定时器的前三个输出通道拥有死区设置的功能。</p>
-<p>设置每个定时器的<code>arr</code>，在<code>CNT</code>寄存器取到不同的值时，<code>channel</code>将产生不同的电平。</p>
-<h1 id=""><a href="#" class="headerlink" title=" "></a> </h1></div>
+<h1 id="电路部分"><a href="#电路部分" class="headerlink" title="电路部分"></a>电路部分</h1><p>STM32有四个定时器，每个定时器都有不同的输出通道（TIMy_Channelx），在STM32F103C8T6的四个定时器中，每个定时器都有四个输出通道，其中高级定时器的前三个输出通道拥有死区生成和互补输出的功能。</p>
+<p>设置每个定时器的<code>CCR</code>，在<code>CNT</code>寄存器取到不同的值时，<code>channel</code>将产生不同的电平。</p>
+<p>每个通道有各自的<code>CCR</code>寄存器，但是同一个定时器里的不同（4个）通道共用同一个<code>CNT</code>计数器。</p>
+<h1 id="PWM"><a href="#PWM" class="headerlink" title="PWM"></a>PWM</h1><blockquote>
+<p>在<strong>具有惯性的系统</strong>中，可以通过对一系列脉冲的宽度进行调制，来等效地获得所需要的模拟参量，常用于电机速控等领域。</p>
+</blockquote>
+<p>按笔者的理解，这个系统不仅仅需要惯性，还需要<strong>阻尼</strong>。当我们失去对这个系统的控制时，这个系统会自发地向某种能量水平运动。例如小车会慢慢停下，灯泡会逐渐熄灭，电容充电到满为止（然后发热发光:(）。</p>
+<p>PWM参数$T_{ON}$是高电平持续时间，与之对应的是$T_{OFF}$，当然还有$T_S=T_{ON}+T_{OFF}$：</p>
+<script type="math/tex; mode=display">f=\frac{1}{T_S}</script><script type="math/tex; mode=display">占空比=\frac{T_{ON}}{T_S}</script><script type="math/tex; mode=display">分辨率=占空比变化步距</script><h1 id="输出比较模式-OC"><a href="#输出比较模式-OC" class="headerlink" title="输出比较模式(OC)"></a>输出比较模式(OC)</h1><p>电路的图片在江科大自化协PPT的第66页。简单来说，是配置了输出的设置之后，寄存器通过途中OC1（对于其它通道，会是OC2，OC3……）连接到GPIO输出上去。因此我们要使能TIM_TimeBase（让它开始计数），使能TIM_OC（让它开始比较），初始化GPIO（让它能正确地作用，从内部的信号到外界的输出）</p>
+<p>我不画表格了，md的表格太呆</p>
+<blockquote>
+<p>冻结：CNT=CCR时，REF为原状态<br>匹配时置有效电平：CNT=CCR时，REF置有效电平<br>匹配时置无效电平：CNT=CCR时，REF置无效电平<br>匹配时电平翻转：CNT=CCR时，REF电平翻转<br>强制为无效电平：CNT与CCR无效，REF强制为无效电平<br>强制为有效电平：CNT与CCR无效，REF强制为有效电平</p>
+<p><strong>PWM模式1</strong>：<br>向上计数：CNT &lt; CCR时，REF置有效电平；CNT &gt;= CCR时，REF置无效电平<br>向下计数：CNT &gt; CCR时，REF置无效电平；CNT &lt;= CCR时，REF置有效电平<br><strong>PWM模式2</strong>（反过来）：<br>向上计数：CNT &lt; CCR时，REF置无效电平；CNT &gt;= CCR时，REF置有效电平<br>向下计数：CNT &gt; CCR时，REF置有效电平；CNT &lt;= CCR时，REF置无效电平</p>
+</blockquote>
+</div>
         </div>
         
             <div class="kratos-copyright text-center clearfix">
@@ -246,7 +258,7 @@
                     <a class="tag-none-link" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag">嵌入式</a>, <a class="tag-none-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a>
                 </div>
                 <div class="pull-date">
-                    <time datetime="2023-05-29T12:01:23.806Z" itemprop="dateModified">最后编辑：2023-05-29</time>
+                    <time datetime="2023-05-29T12:20:50.385Z" itemprop="dateModified">最后编辑：2023-05-29</time>
                 </div>
             </div>
         </footer>
@@ -325,7 +337,7 @@
         <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
     </h4>
     <div class="textwidget">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E9%83%A8%E5%88%86"><span class="toc-text">电路部分</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text"> </span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E9%83%A8%E5%88%86"><span class="toc-text">电路部分</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PWM"><span class="toc-text">PWM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%AF%94%E8%BE%83%E6%A8%A1%E5%BC%8F-OC"><span class="toc-text">输出比较模式(OC)</span></a></li></ol>
     </div>
 </aside>
                 
