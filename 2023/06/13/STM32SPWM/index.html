@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   
   
-  <title>查看动态 | 天雨森淼</title>
+  <title>STM32SPWM | 天雨森淼</title>
   
   <meta name="author" content="天雨森淼（舟泛四海）" />
   <meta http-equiv="Cache-Control" content="no-transform" />
@@ -15,18 +15,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="format-detection" content="telphone=no, email=no" />
   
-    <meta name="keywords" content="" />
+    <meta name="keywords" content="嵌入式, 开发" />
   
-  <meta name="description" content="新年快乐！！！">
+  <meta name="description" content="最近在做DCAC和ACDC，随便写点东西记录一下开发的过程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="查看动态">
-<meta property="og:url" content="https://jensentsts.github.io/2023/01/22/2023%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90/index.html">
+<meta property="og:title" content="STM32SPWM">
+<meta property="og:url" content="https://jensentsts.github.io/2023/06/13/STM32SPWM/index.html">
 <meta property="og:site_name" content="天雨森淼">
-<meta property="og:description" content="新年快乐！！！">
+<meta property="og:description" content="最近在做DCAC和ACDC，随便写点东西记录一下开发的过程">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-01-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-01-21T15:59:15.002Z">
+<meta property="article:published_time" content="2023-06-13T11:41:51.000Z">
+<meta property="article:modified_time" content="2023-06-13T12:01:46.328Z">
 <meta property="article:author" content="天雨森淼（舟泛四海）">
+<meta property="article:tag" content="嵌入式">
+<meta property="article:tag" content="开发">
 <meta name="twitter:card" content="summary">
   
   <!-- 站点验证相关 -->
@@ -121,13 +123,15 @@
 
             <article itemscope itemtype="https://schema.org/Article">
     
-    <link itemprop="mainEntityOfPage" href="https://jensentsts.github.io/2023/01/22/2023%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90/">
+    <link itemprop="mainEntityOfPage" href="https://jensentsts.github.io/2023/06/13/STM32SPWM/">
     <div class="kratos-hentry kratos-post-inner clearfix">
         <header class="kratos-entry-header">
             
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">STM32SPWM</h1>
+            
             
             <ul class="kratos-post-meta text-center">
-                <li><time datetime="2023-01-21T16:00:00.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2023-01-22</time></li>
+                <li><time datetime="2023-06-13T11:41:51.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2023-06-13</time></li>
                 <li itemprop="author" itemscope itemtype="https://schema.org/Person">
                     <i class="fa fa-user"></i> 作者 <span itemprop="name">天雨森淼（舟泛四海）</span>
                 </li>
@@ -137,10 +141,23 @@
         </header>
         <div class="kratos-post-content">
             
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1686657706328"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
             
+            
+            
+                <div class="kratos-post-inner-toc toc-div-class" >
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8EPWM%E5%88%B0SPWM"><span class="toc-number">1.</span> <span class="toc-text">从PWM到SPWM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96"><span class="toc-number">1.1.</span> <span class="toc-text">优化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9D%82%E8%AE%B0"><span class="toc-number">2.</span> <span class="toc-text">杂记</span></a></li></ol>
+                </div>
             
             <hr />
-            <div itemprop="articleBody"><p>新年快乐！！！</p>
+            <div itemprop="articleBody"><p>最近在做DCAC和ACDC，随便写点东西记录一下开发的过程</p>
+<span id="more"></span>
+<h1 id="从PWM到SPWM"><a href="#从PWM到SPWM" class="headerlink" title="从PWM到SPWM"></a>从PWM到SPWM</h1><p>众所周知，对于某些用电容搭建起来的特殊电路，一段时间内输出一段特定占空比的<code>PWM波</code>可以让你的“特殊电路”输出特定大小的电压。<br>然后，我们知道，调整占空比就可以调整输出的电压大小。这也就意味着，占空比就相当于一个小滑块儿。<br>如果我们让这个小滑块缓慢而不停地上下抖动呢？那么我们就输出了正弦波。<br><code>SPWM</code>(Sinusoidal PWM)，<strong>正弦</strong>脉冲宽度调制<br>直接拿sin计算结果丢给PWM控制输出占空比就可以了。</p>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>我直接写了一个sin进去，网上大佬说可以使用sin表。但是我懒得去改。<br>反正我们这个最大才50Hz…</p>
+<h1 id="杂记"><a href="#杂记" class="headerlink" title="杂记"></a>杂记</h1><p>和个别组员发生矛盾冲突，期待解决的那一天。要相信，这世界，处处充满生机。</p>
 </div>
         </div>
         
@@ -194,7 +211,7 @@
     <script type="text/javascript">
         $(()=>{
             new QRCode("wechat-qr", {
-                text: "https://jensentsts.github.io/2023/01/22/2023%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90/",
+                text: "https://jensentsts.github.io/2023/06/13/STM32SPWM/",
                 width: 150,
                 height: 150,
                 correctLevel : QRCode.CorrectLevel.H
@@ -206,10 +223,9 @@
             const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
             const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
             const twitterBase   = "https://twitter.com/intent/tweet?";
-            const hostUrl       = "https://jensentsts.github.io/2023/01/22/2023%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90/";
-            const title         = "「」";
-            const excerpt       = `新年快乐！！！
-`;
+            const hostUrl       = "https://jensentsts.github.io/2023/06/13/STM32SPWM/";
+            const title         = "「STM32SPWM」";
+            const excerpt       = `最近在做DCAC和ACDC，随便写点东西记录一下开发的过程`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -228,10 +244,10 @@
             <div class="footer-tag clearfix">
                 <div class="pull-left">
                 <i class="fa fa-tags"></i>
-                    
+                    <a class="tag-none-link" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag">嵌入式</a>, <a class="tag-none-link" href="/tags/%E5%BC%80%E5%8F%91/" rel="tag">开发</a>
                 </div>
                 <div class="pull-date">
-                    <time datetime="2023-01-21T15:59:15.002Z" itemprop="dateModified">最后编辑：2023-01-21</time>
+                    <time datetime="2023-06-13T12:01:46.328Z" itemprop="dateModified">最后编辑：2023-06-13</time>
                 </div>
             </div>
         </footer>
@@ -240,13 +256,9 @@
         <nav class="navigation post-navigation clearfix" role="navigation">
             
             <div class="nav-previous clearfix">
-                <a title=" (无标题)" href="/2023/01/12/好时代来临力/">&lt; 上一篇</a>
+                <a title=" STM32PWM" href="/2023/05/29/STM32PWM/">&lt; 上一篇</a>
             </div>
             
-            
-            <div class="nav-next clearfix">
-                <a title=" (无标题)" href="/2023/01/26/最近git不知道为什么提交不上去了/">下一篇 &gt;</a>
-            </div>
             
         </nav>
     
@@ -305,6 +317,18 @@
 </aside>
             
                     <div class="sticky-area">
+                
+                    <aside id="krw-toc" class="widget widget-kratos-toc clearfix toc-div-class" >
+    <div class="photo-background"></div>
+    <h4 class="widget-title no-after">
+        <i class="fa fa-compass"></i>
+        文章目录
+        <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
+    </h4>
+    <div class="textwidget">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8EPWM%E5%88%B0SPWM"><span class="toc-text">从PWM到SPWM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96"><span class="toc-text">优化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9D%82%E8%AE%B0"><span class="toc-text">杂记</span></a></li></ol>
+    </div>
+</aside>
                 
                 
   <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
